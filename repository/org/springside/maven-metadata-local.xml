@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <plugins>
+    <plugin>
+      <name>SpringSide's Mini-Web Archetype</name>
+      <prefix>mini-web-archetype</prefix>
+      <artifactId>mini-web-archetype</artifactId>
+    </plugin>
+  </plugins>
+</metadata>

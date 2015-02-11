@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="companyinfoManage">
+	<!-- 公司管理信息查询 -->
+	<select id="companyinfoList" parameterType="cdata" resultType="cdata">
+		SELECT cp.company_id "companyId",
+		cp.company_name "companyName",
+		cp.org_code "orgCode",
+		cp.company_abbre "companyAbbre",
+		cp.company_domain "companyDomain",
+		cp.legal_represent "legalRepresent",
+		cp.tax_code "taxCode",
+		cp.tel "tel",
+		cp.fax "fax",
+		cp.zip_code "zipCode",
+		cp.email "email",
+		cp.shop_name "shopName",
+		cp.shop_address "shopAddress",
+		cp.bank_name "bankName",
+		cp.bank_account "bankAccount",
+		cp.remark "remark",
+		cp.description "description",
+		cp.company_logo "companyLogo",
+		cp.brand_logo "brandLogo"
+		FROM com_companyinfo_cp cp
+		WHERE 1 = 1
+		
+	</select>
+	<!-- 查询修改 -->
+	<update id="updateCompanyinfoDetail" parameterType="cdata">
+	  	<![CDATA[
+	  		UPDATE com_companyinfo_cp 
+	  		   SET company_name = #{companyName},
+	  		       org_code = #{orgCode},                         
+	  			   company_abbre = #{companyAbbre},
+	  			   company_domain = #{companyDomain},
+	  			   legal_represent = #{legalRepresent},
+	  			   tax_code = #{taxCode},
+	  			   tel = #{tel},
+	  			   fax = #{fax},
+	  			   zip_code = #{zipCode},
+	  			   email = #{email},
+	  			   shop_name = #{shopName},
+	  			   shop_address = #{shopAddress},
+	  			   bank_name = #{bankName},
+	  			   bank_account = #{bankAccount},
+	  			   remark = #{remark},
+	  			   description = #{description},
+	  			   company_logo = #{companyLogo},
+	  			   brand_logo = #{brandLogo}
+			WHERE company_id = #{companyId}
+		]]>
+	</update>
+	<select id="isCompanyinfoIdUnique" parameterType="string"
+		resultType="string">
+		select count(company_id) cnt from com_companyinfo_cp
+		t where
+		company_id=#{companyid}
+	</select>
+	<!-- 查询修改语句并保存到数据库中 -->
+	<select id="retrieveCompanyinfoDetail" parameterType="cdata"
+		resultType="cdata">
+      	<![CDATA[
+		  SELECT cp.company_id "companyId",
+			cp.company_name "companyName",
+			cp.org_code "orgCode",
+			cp.company_abbre "companyAbbre",
+			cp.company_domain "companyDomain",
+			cp.legal_represent "legalRepresent",
+			cp.tax_code "taxCode",
+			cp.tel "tel",
+			cp.fax "fax",
+			cp.zip_code "zipCode",
+			cp.email "email",
+			cp.shop_name "shopName",
+			cp.shop_address "shopAddress",
+			cp.bank_name "bankName",
+			cp.bank_account "bankAccount",
+			cp.remark "remark",
+			cp.description "description",
+			cp.company_logo "companyLogo",
+			cp.brand_logo "brandLogo"
+		FROM com_companyinfo_cp cp
+        WHERE cp.company_id = #{companyId}
+		]]>
+	</select>
+
+	<!-- 新建 -->
+	<insert id="createCompanyinfo" parameterType="cdata">
+	  	<![CDATA[
+			INSERT INTO com_companyinfo_cp (
+						company_id,
+						company_name,
+						org_code,
+						company_abbre,
+						company_domain,
+						legal_represent,
+						tax_code,
+						tel,
+						fax,
+						zip_code,
+						email,
+						shop_name,
+						shop_address,
+						bank_name,
+						bank_account,
+						remark,
+						description,
+						company_logo,
+						brand_logo
+			) VALUES (
+						#{companyId},
+						#{companyName},
+						#{orgCode},
+						#{companyAbbre},
+						#{companyDomain},
+						#{legalRepresent},
+						#{taxCode},
+						#{tel},
+						#{fax},
+						#{zipCode},
+						#{email},
+						#{shopName},
+						#{shopAddress},
+						#{bankName},
+						#{bankAccount},
+						#{remark},
+						#{description},
+						#{companyLogo},
+						#{brandLogo}
+			)
+		]]>
+	</insert>
+	<!--删除公司信息并保存 -->
+	<update id="deleteCompanyinfo" parameterType="cdata">
+  		<![CDATA[
+  		  DELETE FROM com_companyinfo_cp
+				  WHERE company_id = #{companyId}
+		]]>
+	</update>
+</mapper> 

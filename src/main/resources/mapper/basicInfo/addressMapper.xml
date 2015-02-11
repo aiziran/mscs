@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="addressManage">
+	<select id="addressList" parameterType="cdata" resultType="cdata">
+		SELECT
+		id,
+		name,
+		post,
+		mobileone,
+		mobiletwo,
+		qq,
+		email,
+		(SELECT DEPT_NAME FROM
+		com_dept_m WHERE DEPT_ID=a.dept ) "deptname"
+		FROM addressbook a
+		WHERE
+		owner='-1'
+		<if test="name!=null and name != ''">
+			AND (name LIKE concat('%',trim(#{name}),'%')) 
+		 </if>
+		<if test="post!=null and post != ''">
+			AND (post LIKE concat('%',trim(#{post}),'%')) 
+		 </if>
+		<if test="deptname!=null and deptname != ''">
+			AND (dept LIKE concat('%',trim(#{dept}),'%')) 
+		 </if>
+		<if test="qq!=null and qq!= ''">
+			AND (qq LIKE concat('%',trim(#{qq}),'%')) 
+		 </if>
+
+		<if test="email!=null and email != ''">
+			AND (email LIKE concat('%',trim(#{email}),'%')) 
+		 </if>
+		<if test="mobile!=null and mobile != ''">
+			AND (mobileone LIKE (concat('%',trim(#{mobile}),'%')) OR mobiletwo LIKE
+			(concat('%',trim(#{mobile}),'%')))
+		 </if>
+
+	</select>
+	<select id="addressDelete" parameterType="cdata" resultType="cdata">
+		DELETE FROM addressbook WHERE id=#{tid}
+	</select>
+
+	<select id="addressSelectOne" parameterType="cdata" resultType="cdata">
+		SELECT
+		id,
+		name,
+		post,
+		mobileone,
+		mobiletwo,
+		qq,
+		email,
+		(SELECT DEPT_NAME FROM
+		com_dept_m WHERE DEPT_ID=a.dept ) "deptname",
+		dept
+		FROM addressbook a
+		WHERE id=#{tid}  
+	</select>
+
+	<select id="addressSelectOneOwn" parameterType="cdata"
+		resultType="cdata">
+		SELECT
+		id,
+		name,
+		post,
+		mobileone,
+		mobiletwo,
+		qq,
+		email,
+		owner,
+		(SELECT DEPT_NAME FROM
+		com_dept_m WHERE DEPT_ID=a.dept ) "deptname",
+		dept
+		FROM addressbook a
+		WHERE id=#{tid} AND owner=#{owner}
+	</select>
+
+	<select id="addressUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE addressbook SET
+		name=#{name},
+		dept=#{dept},
+		mobileone=#{mobileone},
+		mobiletwo=#{mobiletwo},
+		email=#{email},
+		post=#{post},
+		qq=#{qq},
+		remark=#{remark}
+
+		WHERE id=#{tid}
+	</select>
+
+	<select id="addressInput" parameterType="cdata" resultType="cdata">
+		INSERT INTO addressbook(name,dept, mobileone,
+		mobiletwo,email,post,qq,remark,owner)
+		VALUES(#{name},#{dept},#{ mobileone},#{mobiletwo},#{email},#{post},#{qq},#{remark},#{owner})
+	</select>
+
+	<select id="addressOwnerList" parameterType="cdata" resultType="cdata">
+		SELECT
+		id,
+		name,
+		post,
+		mobileone,
+		mobiletwo,
+		qq,
+		email,
+		owner,
+		(SELECT DEPT_NAME FROM com_dept_m WHERE DEPT_ID=a.dept ) "deptname"
+		FROM
+		addressbook a
+		WHERE owner=#{owner}
+		<if test="name!=null and name != ''">
+			AND (name LIKE concat('%',trim(#{name}),'%')) 
+		 </if>
+		<if test="post!=null and post != ''">
+			AND (post LIKE concat('%',trim(#{post}),'%')) 
+		 </if>
+		<if test="deptname!=null and deptname != ''">
+			AND (dept LIKE concat('%',trim(#{dept}),'%')) 
+		 </if>
+		<if test="qq!=null and qq!= ''">
+			AND (qq LIKE concat('%',trim(#{qq}),'%')) 
+		 </if>
+
+		<if test="email!=null and email != ''">
+			AND (email LIKE concat('%',trim(#{email}),'%')) 
+		 </if>
+		<if test="mobile!=null and mobile != ''">
+			AND (mobileone LIKE (concat('%',trim(#{mobile}),'%')) OR mobiletwo LIKE
+			(concat('%',trim(#{mobile}),'%')))
+		 </if>
+	</select>
+
+	<select id="isFncCheckRepeatUnique" parameterType="cdata"
+		resultType="string">
+		SELECT COUNT(*) FROM addressbook WHERE NAME=#{name} AND
+		mobileone=#{mobileone}	</select>
+
+</mapper>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="codeGroupManage">
+
+	<!-- 查询组代码列表2012-01-14 -->
+	<select id="retrieveCodeGroupList" parameterType="cdata"
+		resultType="cdata">
+      	<![CDATA[
+	        SELECT code_group "codeGroup" ,
+			       code_group_name "codeGroupName", 
+			       use_flag "useFlag",
+			       code_group_desc "codeGroupDesc"
+			  FROM com_code_group
+			 WHERE 2>1
+		 ]]>
+		<if test="queryGroupName!=null and queryGroupName!=''">
+			AND code_group_name LIKE concat('%',trim(#{queryGroupName}),'%')
+		    </if>
+		ORDER BY code_group
+	</select>
+
+	<!-- 检测组代码是否已存在 SSQ 2012-01-14 -->
+	<select id="retrieveGroupCode" parameterType="cdata" resultType="cdata">
+	  	<![CDATA[
+	        SELECT code_group "codeGroup"
+			  FROM com_code_group
+			 WHERE code_group = trim(#{codeGroup})
+	  	]]>
+	</select>
+
+	<!-- 新建时检测组代码名称是否已存在 SSQ 2012-01-14 -->
+	<select id="retrieveGroupCodeName" parameterType="cdata"
+		resultType="cdata">
+      	<![CDATA[
+	        SELECT code_group_name "codeGroupName"
+			  FROM com_code_group
+			 WHERE code_group_name = trim(#{codeGroupName})
+	  	]]>
+	</select>
+
+
+	<!-- 代码组列表 2011-04-29 shijinglong -->
+	<select id="retrieveDeptList" resultType="cdata">
+		SELECT code_group as
+		"codeGroup",
+		code_group_name as "value"
+		FROM com_code_group t
+		WHERE use_flag='Y'
+	</select>
+
+
+
+
+
+
+	<!-- 更改时检测组代码名称是否已存在 SSQ 2012-01-14 -->
+	<select id="updateGroupCodeName" parameterType="cdata"
+		resultType="cdata">
+      	<![CDATA[
+	        SELECT code_group_name "codeGroupName"
+			  FROM com_code_group
+			 WHERE code_group_name = trim(#{codeGroupName})
+			   AND code_group != trim(#{codeGroup})
+	  	]]>
+	</select>
+
+	<!-- 添加组代码 SSQ 2012-01-14 -->
+	<insert id="createCodeGroup" parameterType="cdata">
+      	<![CDATA[
+	        INSERT INTO com_code_group (
+		                code_group,
+		                code_group_name,
+		                code_group_desc,
+		                use_flag,
+		                create_date,
+		                create_user
+	        ) VALUES (
+		                #{codeGroup},
+		                #{codeGroupName,jdbcType=VARCHAR},
+		                #{codeGroupDesc,jdbcType=VARCHAR},
+		                #{useFlag,jdbcType=VARCHAR},
+		                CURDATE(),
+		                #{userId,jdbcType=VARCHAR}
+	        )
+	  	]]>
+	</insert>
+
+	<!-- 查询组代码详细信息 SSQ 2012-01-14 -->
+	<select id="retrieveGroupCodeDetail" parameterType="cdata"
+		resultType="cdata">
+      	<![CDATA[
+	        SELECT code_group       "codeGroup",
+		           code_group_name  "codeGroupName",
+		           code_group_desc  "codeGroupDesc",
+		           use_flag         "useFlag",
+		           create_date      "createDate",
+		           create_user      "createUser",
+		           update_date      "updateDate",
+		           update_user      "updateUser"
+			  FROM com_code_group
+			 WHERE code_group = #{codeGroup}
+	  	]]>
+	</select>
+
+	<!-- 删除组代码 SSQ 2012-01-14 -->
+	<delete id="deleteGroupCodeDo" parameterType="cdata">
+      	<![CDATA[
+	        DELETE FROM com_code_group 
+			 	  WHERE code_group = #{codeGroup}
+	  	]]>
+	</delete>
+
+	<!-- 更改组代码信息 SSQ 2012-01-14 -->
+	<update id="updateGroupCodeDo" parameterType="cdata">
+      	<![CDATA[
+	        UPDATE com_code_group
+	           SET code_group_name = #{codeGroupName,jdbcType=VARCHAR},
+	               code_group_desc = #{codeGroupDesc,jdbcType=VARCHAR},
+	               use_flag = #{useFlag,jdbcType=VARCHAR},
+	               update_date = CURDATE(),
+	               update_user = #{userId,jdbcType=VARCHAR}
+	         WHERE code_group = #{codeGroup}
+	  	]]>
+	</update>
+</mapper>

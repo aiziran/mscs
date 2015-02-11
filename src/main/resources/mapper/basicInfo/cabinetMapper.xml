@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cabinetManage">
+	<!-- 查询列表 -->
+	<select id="cabinetList" parameterType="cdata" resultType="cdata">
+		SELECT c.id cabinetid,
+		c.cabinetnum cabinetnum,
+		c.archivesid archivesid,
+		a.archivesnum archivesnum,
+		a.archivesname archivesname
+		FROM
+		cabinet c,
+		archives a
+		WHERE
+		c.archivesid=a.id
+		<if test="queryCabinetId !=null and queryCabinetId!=''">
+			AND ( c.cabinetnum LIKE concat('%',trim(#{queryCabinetId}),'%')) 
+				</if>
+		<if test="queryArchiveId !=null and queryArchiveId!=''">
+			AND (a.archivesnum LIKE concat('%',trim(#{queryArchiveId}),'%')) 
+				</if>
+		<if test="queryArchiveName !=null and queryArchiveName!=''">
+			AND ( a.archivesname LIKE concat('%',trim(#{queryArchiveName}),'%'))
+		</if>
+	</select>
+	<!-- 查询按id -->
+	<select id="cabinetSelect" parameterType="cdata" resultType="cdata">
+		SELECT c.id cabinetid,
+		c.cabinetnum cabinetnum,
+		a.id archivesid,
+		a.archivesnum archivesnum,
+		a.archivesname archivesname
+		FROM
+		cabinet c,
+		archives a
+		WHERE
+		c.archivesid=a.id and c.id=#{cabinetid}
+	</select>
+	<select id="cabinetDelete" parameterType="cdata" resultType="cdata">
+
+		DELETE FROM cabinet
+		WHERE
+		id = #{cabinetid} ;
+	</select>
+	<select id="cabinetInsert" parameterType="cdata" resultType="cdata">
+		INSERT INTO cabinet
+		(
+		cabinetnum,
+		archivesid
+		)
+		VALUES
+		(
+		#{cabinetnum},
+		#{archivesid}
+		)
+
+	</select>
+	<select id="cabinetUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE cabinet
+		SET
+		cabinetnum = #{cabinetnum },
+		archivesid = #{archivesid}
+		WHERE id = #{cabinetid} 
+
+	</select>
+</mapper>

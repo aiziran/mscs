@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.springside</groupId>
+  <artifactId>springside3-parent</artifactId>
+  <version>3.3.4</version>
+  <versioning>
+    <versions>
+      <version>3.3.4</version>
+    </versions>
+    <lastUpdated>20110308132457</lastUpdated>
+  </versioning>
+</metadata>

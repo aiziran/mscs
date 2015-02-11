@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="assetsManage">
+
+
+	<select id="getList" parameterType="cdata" resultType="cdata">
+		SELECT a.* ,(SELECT c.user_name FROM com_user_m c WHERE
+		c.user_id=a.assetsuser) assetsuserId,
+		(SELECT c.user_name FROM com_user_m c WHERE c.user_id=a.assetssave)
+		assetssaveId,
+		(SELECT d.dept_name FROM com_dept_m d WHERE d.dept_id=a.managedept) deptId,
+		(SELECT d.dept_name FROM com_dept_m d WHERE d.dept_id=a.useddept)
+		usedeptId FROM assets a where 1=1
+		<if test="address!=null and address != ''">
+			AND (address LIKE concat('%',trim(#{address}),'%')) 
+		</if>
+		<if test="assetsname!=null and assetsname != ''">
+			AND (assetsname LIKE concat('%',trim(#{assetsname}),'%')) 
+		</if>
+		<if test="deptId!=null and deptId != ''">
+			AND (managedept LIKE concat('%',trim(#{deptId}),'%')) 
+		</if>
+		<if test="assetssaveId!=null and assetssaveId != ''">
+			AND (assetssave LIKE concat('%',trim(#{assetssaveId}),'%')) 
+		</if>
+		<if test="starttime!=null and starttime != ''">
+			<if test="endtime!=null and endtime != ''">
+				AND ( postingdate>=#{starttime} and #{endtime} >=postingdate) 
+		</if>
+		</if>
+
+	</select>
+
+	<!-- 插入 -->
+	<insert id="save" parameterType="cdata">
+		insert into assets(
+		tag,address,remark,assetstype,assetscode,assetsname,managedept,
+		useddept,assetsuser,assetssave,postingdate,originalvalue,fixedvalue,modle
+		) values(
+		#{tag}, #{address}, #{remark}, #{assetstype}, #{assetscode}, #{assetsname},
+		#{managedept}, #{useddept}, #{assetsuser},
+		#{assetssave}, #{postingdate}, #{originalvalue}, #{fixedvalue}, #{modle}
+		)
+      
+     </insert>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="cdata">
+		delete from assets where id=#{id}
+ </delete>
+	<!-- 查看详细 -->
+
+	<select id="select" parameterType="cdata" resultType="cdata">
+		SELECT a.* ,(SELECT c.user_name FROM com_user_m c WHERE
+		c.user_id=a.assetsuser) assetsuserId,
+		(SELECT c.user_name FROM com_user_m c WHERE c.user_id=a.assetssave)
+		assetssaveId,
+		(SELECT d.dept_name FROM com_dept_m d WHERE d.dept_id=a.managedept) deptId,
+		(SELECT d.dept_name FROM com_dept_m d WHERE d.dept_id=a.useddept)
+		usedeptId FROM assets a where a.id=#{id}
+	</select>
+	<!-- 修改 -->
+	<update id="update" parameterType="cdata">
+		update assets set
+		tag=#{tag},address=#{address},remark=#{remark},assetstype=#{assetstype},assetscode=#{assetscode},assetsname=#{assetsname},managedept=#{managedept},
+		useddept=#{useddept},assetsuser=#{assetsuser},assetssave=#{assetssave},postingdate=#{postingdate},originalvalue=#{originalvalue},fixedvalue=#{fixedvalue},modle=#{modle}
+		where id=#{id}
+      
+     </update>
+</mapper>

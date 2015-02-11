@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+	<!--系统版本号 -->
+	<ver>2.00</ver>
+	<!--数据库备份路径 -->
+	<expFilePath>D:\</expFilePath>
+	<!--数据库备份文件名前缀 -->
+	<expFilePrefix>HMIS_</expFilePrefix>
+	<!--备份时数据库连接,格式：user/pwd@sid -->
+	<dbConn>hmis/hmis@csvalue</dbConn>
+	<!--备份时其他命令串 -->
+	<otherCommand>owner=hmis buffer=65536</otherCommand>
+	<!--说明书上传路径 -->
+	<drugManualPath>D:\hmis\manual</drugManualPath>
+	<!--批文上传路径 -->
+	<drugCertPath>D:\hmis\cert</drugCertPath>
+	<!--报告上传路径 -->
+	<drugCheckReportPath>D:\hmis\checkreport</drugCheckReportPath>
+	<!--照片上传路径 -->
+	<drugPackagePicPath>D:\hmis\packagepic</drugPackagePicPath>
+	<!--原则舍入方式 四舍五入:0;全舍:1;全入:2 -->
+	<purRuleRoundMethod>1</purRuleRoundMethod>
+	<!--计划舍入方式 四舍五入:0;全舍:1;全入:2 -->
+	<purPlanRoundMethod>2</purPlanRoundMethod>
+	<!--安全系数 高 -->
+	<saftyFactorHigh>2.33</saftyFactorHigh>
+	<!--安全系数 低 -->
+	<saftyFactorLow>1.28</saftyFactorLow>
+	<!-- 0显示库存1不显示库存 -->
+	<stockflag>0</stockflag>
+</root>

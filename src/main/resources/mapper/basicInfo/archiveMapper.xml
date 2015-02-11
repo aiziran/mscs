@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="archiveManage">
+	<select id="archiveList" parameterType="cdata" resultType="cdata">
+
+		SELECT a.*,(SELECT COUNT(am.id) FROM attachment am WHERE am.aid=a.id
+		AND TYPE =0) "annexcount" ,
+		(SELECT COUNT(am.id) FROM attachment am
+		WHERE am.aid=a.id AND TYPE =1) "scancount" ,
+		(SELECT linkman FROM
+		contract WHERE contract.contractid=a.contractid) "linkman",
+		(SELECT
+		unit FROM contract WHERE contract.contractid=a.contractid) "unit",
+		(SELECT archivename FROM archivetype WHERE archivetype.id=a.type)
+		"typename",
+		(SELECT dept_Manager FROM com_dept_m WHERE a.manageid =
+		dept_id) "deptManager"
+		FROM archive a
+
+		WHERE 1=1
+		<if test="name!=null and name != ''">
+			AND (name LIKE concat('%',trim(#{name}),'%')) 
+		</if>
+		<if test="typename!=null and typename != ''">
+			AND (type LIKE concat('%',trim(#{type}),'%')) 
+		</if>
+		<if test="linkman!=null and linkman != ''">
+			AND (contractid LIKE concat('%',trim(#{contractid}),'%')) 
+		</if>
+		<if test="unit!=null and unit != ''">
+			AND (contractid LIKE concat('%',trim(#{contractid}),'%')) 
+		</if>
+		<if test="overtimeflag!=null and  overtimeflag neq '' ">
+			<![CDATA[
+		    	AND DATE_FORMAT(expirationdate , '%Y-%m-%d' )<= DATE_FORMAT(CURDATE() , '%Y-%m-%d' )
+			]]>
+		</if>
+		ORDER BY inputtime DESC
+	</select>
+	<!--根据档案的id查询出所有属于当前档案的部门的角色 包括总经理和董事长 -->
+	<select id="approvalUserList" parameterType="cdata" resultType="cdata">
+		SELECT c.user_id "userid" FROM com_user_m c,archive a,com_auth_user
+		u,com_dept_m d WHERE
+		a.id=#{aid}
+		AND (u.user_id= c.user_id )
+		AND ( u.auth_code =1000006 OR u.auth_code =1000074 OR (u.auth_code
+		=1000075 AND a.manageid = d.dept_id AND d.dept_manager = c.user_id) OR
+		(u.auth_code =1000077 AND c.DEPT_ID=a.manageid)) GROUP BY userid
+
+	</select>
+
+	<!-- 档案室列表 -->
+	<select id="archivesList" parameterType="cdata" resultType="cdata">
+		SELECT id,archivesname FROM archives
+	</select>
+	<select id="cabinetList" parameterType="cdata" resultType="cdata">
+		SELECT id,cabinetnum FROM cabinet WHERE archivesid=#{archivesid}
+	</select>
+	<select id="gridList" parameterType="cdata" resultType="cdata">
+		SELECT
+		id, gridnum FROM grid WHERE archivesid=#{archivesid} and
+		cabinetid=#{cabinetid}
+	</select>
+	<select id="searchMaxId" resultType="string">
+		SELECT MAX(id) FROM archive
+	</select>
+	<update id="updateArchive" parameterType="cdata">
+	  	<![CDATA[
+	  		UPDATE archive
+	  		   SET 
+					name=#{name},
+					type=#{type},
+					archivecount=#{archivecount},
+					isoriginal=#{isoriginal},
+					status=#{status},
+					location=#{location},
+					archivenum=#{archivenum},
+					manageid=#{manageid},
+					secretlevel=#{secretlevel},     	
+					contractid=#{contractid},
+					archivepeople=#{archivepeople},
+					mark=#{mark},
+					expirationdate=#{expirationdate},
+					projectid=#{projectid}
+			WHERE id = #{id}
+		]]>
+	</update>
+	<update id="updateAttachment" parameterType="cdata">
+	  	<![CDATA[
+	  		UPDATE attachment
+	  		   SET 
+					attachmentname=#{attachmentname},
+					attachmentpath=#{attachmentpath}
+			WHERE aid = #{aid} and type=#{type}
+		]]>
+	</update>
+	<select id="isExist" parameterType="cdata" resultType="string">
+		select id
+		from attachment
+		where aid=#{id} and type =#{type}
+	</select>
+	<select id="selectLendMaxId" parameterType="cdata" resultType="string">
+		select max(id) from lend 
+	</select>
+	<select id="retrieveArchive" parameterType="cdata" resultType="cdata">
+      	<![CDATA[
+		  select a.*,
+		  (select at.attachmentname from attachment at where at.aid=a.id and at.type=0) "uploadFileName",
+		  (select at.attachmentname from attachment at where at.aid=a.id and at.type=1) "scanFileName",
+		   (SELECT d.DEPT_NAME FROM com_dept_m d WHERE d.DEPT_ID=a.manageid) "deptname",
+		   (SELECT archivename FROM archivetype WHERE archivetype.id=a.type) "typename",a.mark,
+		   (SELECT projectname FROM archiveproject ap WHERE ap.id=a.projectid) "projectname"
+		  from archive a where a.id=#{id}
+		]]>
+	</select>
+	<select id="retrieveArchives" parameterType="cdata" resultType="string">
+      	<![CDATA[
+      		select  archivesname from archives where id=${archivesid} 
+		]]>
+	</select>
+	<select id="retrieveCabinet" parameterType="cdata" resultType="string">
+      	<![CDATA[
+      		select  cabinetnum "cabinetname" from cabinet where id=${cabinetid} 
+		]]>
+	</select>
+	<select id="retrieveGrid" parameterType="cdata" resultType="string">
+      	<![CDATA[
+      		select  gridnum "gridname" from grid where id=${gridid} 
+		]]>
+	</select>
+
+	<insert id="createArchive" parameterType="cdata">
+	  	<![CDATA[
+			INSERT INTO archive(
+					name,
+					type,
+					createtime,
+					archivecount,
+					isoriginal,
+					inputuser,
+					inputtime,
+					status,
+					location,
+					archivenum,
+					manageid,
+					secretlevel,
+					contractid,
+					mark,
+					archivepeople,
+					expirationdate,
+					projectid
+			) VALUES (
+					#{name},
+					#{type},
+					NOW(),
+					#{archivecount},
+					#{isoriginal},
+					#{inputuser},
+					NOW(),
+					#{status},
+					#{location},
+					#{archivenum},
+					#{manageid},
+					#{secretlevel},
+					#{contractid},
+					#{mark},
+					#{archivepeople},
+					#{expirationdate},
+					#{projectid}
+			)
+		]]>
+	</insert>
+	<insert id="createAttachment" parameterType="cdata">
+	  	<![CDATA[
+			INSERT INTO attachment(
+					attachmentname,
+					attachmentpath,
+					aid,
+					type
+			) VALUES (
+					#{attachmentname},
+					#{attachmentpath},
+					#{aid},
+					#{type}
+			)
+		]]>
+	</insert>
+	<!-- 新增借阅记录 -->
+	<insert id="createLendRecord" parameterType="cdata">
+	  	<![CDATA[
+			INSERT INTO lend(
+					aid,
+					lendtime,
+					user,
+					returntime,
+					reason,
+					returnstatus
+					 
+			) VALUES (
+					#{aid},
+					NOW(),
+					#{user},
+					#{returntime},
+					#{reason},
+					1
+					 
+					
+			)
+		]]>
+	</insert>
+	<!-- 新增审批 approvalstatus(档案状态)在新增的时候不插入值。代表未审批 -->
+	<insert id="createLendApproval" parameterType="cdata">
+	  	<![CDATA[
+			INSERT INTO lendapproval(
+					aid,
+					createtime,
+					owner,
+					lid
+			) VALUES (
+					#{aid},
+					NOW(),
+					#{owner},
+					#{lid}
+			)
+		]]>
+	</insert>
+	<!-- 打印时插入打印记录 -->
+	<insert id="createPrintLog" parameterType="cdata">
+	  	<![CDATA[
+			INSERT INTO printlog(
+					aid,
+					aname,
+					user,
+					printtime,
+					operateuser
+			) VALUES (
+					#{aid},
+					#{aname},
+					#{user},
+					NOW(),
+					#{operateuser}
+			)
+		]]>
+	</insert>
+	<update id="deleteShopInfoDo" parameterType="cdata">
+  		<![CDATA[
+  		  DELETE FROM shop
+				  WHERE shopid = #{shopid}
+		]]>
+	</update>
+
+	<!--打印二维码 -->
+	<select id="printDimension" parameterType="cdata" resultType="cdata">
+		SELECT id,mark,name,createtime,type FROM archive where id=#{id}
+	</select>
+
+
+	<select id="deleteArchive" parameterType="cdata" resultType="string">
+		DELETE FROM archive WHERE id=#{aid} 
+	</select>
+
+	<select id="archivesnameById" parameterType="string" resultType="string">
+		select contractname from contract where identifier=#{contractid}
+	</select>
+
+	<select id="selectDirfile" parameterType="string" resultType="string">
+		select attachmentpath from attachment where aid=#{aid} and type=0
+	</select>
+	<select id="selectscanfile" parameterType="string" resultType="string">
+		select attachmentpath from attachment where aid=#{aid} and type=1
+	</select>
+	<!-- //验证档案编号是否唯一 -->
+	<select id="isArchivenumUnique" parameterType="string"
+		resultType="string">
+		SELECT COUNT(archivenum) ar FROM archive WHERE archivenum=#{archivenum}
+	</select>
+</mapper> 

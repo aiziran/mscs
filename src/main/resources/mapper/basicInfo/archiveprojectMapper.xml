@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="archiveprojectManage">
+
+	<select id="archiveprojectList" parameterType="cdata"
+		resultType="cdata">
+		SELECT
+		id,
+		projectname,
+		projecttype
+		from archiveproject
+      </select>
+
+	<select id="archiveprojectDelete" parameterType="cdata"
+		resultType="cdata">
+		DELETE FROM archiveproject WHERE id=#{id}
+	</select>
+
+	<insert id="archiveprojectInput" parameterType="cdata">
+		INSERT into archiveproject
+		(
+		projectname,
+		projecttype
+		)
+		VALUES
+		(
+		#{projectname},
+		#{projecttype}
+		)
+
+	</insert>
+	<select id="queryArchiveByProject" parameterType="cdata"
+		resultType="cdata">
+		select a.*,
+		(select at.attachmentname from attachment at where at.aid=a.id and at.type=0)
+		"uploadFileName",
+		(select at.attachmentname from attachment at where at.aid=a.id and at.type=1)
+		"scanFileName",
+		(SELECT d.DEPT_NAME FROM com_dept_m d WHERE d.DEPT_ID=a.manageid) "deptname",
+		(SELECT archivename FROM archivetype WHERE archivetype.id=a.type)
+		"typename",
+		(SELECT projectname FROM archiveproject ap WHERE ap.id=a.projectid)
+		"projectname"
+		from archive a where 1=1
+		<if test="queryProjectId!=null and queryProjectId!= ''">
+			and a.projectid=#{queryProjectId}
+		 </if>
+		<if test="queryTypeid!=null and queryTypeid != ''">
+			and a.type=#{queryTypeid}
+		 </if>
+	</select>
+	<select id="queryAcconditionByType" parameterType="cdata"
+		resultType="cdata">
+		select * from accondition where 1=1
+		<if test="queryTypeid!=null and queryTypeid != ''">
+			and actype=#{queryTypeid}
+		 </if>
+	</select>
+	<select id="archiveprojectSelectOne" parameterType="cdata"
+		resultType="cdata">
+		SELECT id,
+		projectname,
+		projecttype
+		FROM archiveproject
+		WHERE id=#{id}
+	</select>
+	<update id="archiveprojectUpdate" parameterType="cdata">
+	  	<![CDATA[
+	  		UPDATE archiveproject 
+	  		   SET projectname = #{projectname},
+	  		       projecttype = #{projecttype}
+			 WHERE id = #{id}
+		]]>
+	</update>
+</mapper>
+      

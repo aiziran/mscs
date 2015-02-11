@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="allplanManage">
+	<select id="allplanlist" parameterType="cdata" resultType="cdata">
+		SELECT * FROM personplan WHERE 1=1
+		<if test="planowner!=null and planowner!= ''">
+			AND planonwer=#{planowner}
+		</if>
+		<if test="begintime!=null and begintime != ''">
+			<if test="endtime!=null and endtime != ''">
+		   <![CDATA[ 
+		    AND  (begintime >=#{begintime} and  endtime <= #{endtime} ) 
+		    ]]>
+			</if>
+
+		</if>
+
+		order by id desc
+	</select>
+</mapper>

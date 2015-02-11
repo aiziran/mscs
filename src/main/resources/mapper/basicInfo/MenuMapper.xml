@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menu">
+	<!-- 登录 -->
+	<select id="menurList" resultType="cdata">
+		SELECT menu_id "menuId",
+		menu_code "menuCode",
+		menu_name "menuName",
+		menu_desc "menuDesc",
+		menu_lvl "menuLvl",
+		menu_appl "menuAppl",
+		prnt_menu_id "prntMenuId",
+		menu_seq "menuSeq",
+		use_flag "useFlag"
+		FROM com_menu_m
+		ORDER BY menu_lvl, menu_seq
+	</select>
+
+	<!-- 查询菜单详情 -->
+	<select id="menuDetail" parameterType="cdata" resultType="cdata">
+		SELECT pcmm.menu_id "menuId",
+		pcmm.menu_code "menuCode",
+		pcmm.menu_name "menuName",
+		pcmm.menu_desc "menuDesc",
+		pcmm.menu_lvl "menuLvl",
+		pcmm.menu_appl "menuAppl",
+		pcmm.prnt_menu_id "prntMenuId",
+		pcmm.menu_seq "menuSeq",
+		pcmm.menu_seq as "menuSeqOrg",
+		pcmm.use_flag "useFlag",
+		( SELECT max(menu_seq)
+		FROM com_menu_m
+		WHERE prnt_menu_id = pcmm.prnt_menu_id
+		) as "maxMenuSeq"
+		FROM com_menu_m pcmm
+		WHERE pcmm.menu_id = #{menuId}
+	</select>
+
+	<!-- 新增菜单 -->
+	<select id="createMenu" parameterType="cdata" resultType="cdata">
+		SELECT
+		CASE
+		WHEN a.max_menu_seq > 9 THEN
+		CONVERT(CONCAT(SUBSTR(a.menu_code, 1, 2 * a.menu_lvl + 1),"",IFNULL(a.max_menu_seq,"")),CHAR(50))
+		ELSE
+		CONVERT(CONCAT(SUBSTR(a.menu_code, 1, 2 * a.menu_lvl + 1),"0",IFNULL(a.max_menu_seq,"")),CHAR(50))
+		END AS "menuCode",
+		'pbf.menu.' AS "menuName",
+		a.menu_lvl + 1 AS "menuLvl",
+		a.menu_id AS "prntMenuId",
+		a.max_menu_seq AS "maxMenuSeq"
+		FROM (SELECT t.menu_id,
+		t.menu_code,
+		t.menu_lvl,
+		(SELECT CAST(MAX(SUBSTR(menu_code, 2 * menu_lvl, 2)) AS SIGNED INTEGER) + 1
+		FROM com_menu_m
+		WHERE prnt_menu_id = t.menu_id) AS max_menu_seq
+		FROM com_menu_m t
+		WHERE t.menu_id = #{menuId}) a
+	</select>
+
+	<!-- 生成Menu ID -->
+	<select id="createMenuId" parameterType="cdata" resultType="cdata">
+		SELECT menuId FROM (SELECT MAX(CAST(menu_id AS SIGNED))+1 AS 'menuId'
+		FROM com_menu_m) t
+	</select>
+
+	<!-- 创建新菜单 -->
+	<insert id="createMenuDo" parameterType="cdata">
+		INSERT INTO com_menu_m (
+		MENU_ID,
+		menu_code,
+		menu_name,
+		menu_desc,
+		menu_lvl,
+		menu_appl,
+		menu_seq,
+		prnt_menu_id,
+		use_flag,
+		created_by,
+		creation_date
+		) VALUES (
+		#{menuId,jdbcType=VARCHAR},
+		#{menuCode},
+		trim(#{menuName}),
+		trim(#{menuDesc}),
+		trim(#{menuLvl}),
+		trim(#{menuAppl}),
+		trim(#{menuSeq}),
+		#{prntMenuId},
+		#{useFlag},
+		#{createBy},
+		CURDATE()
+		)
+    </insert>
+
+	<!-- 保存新菜单 -->
+	<insert id="updateMenuDo" parameterType="cdata">
+		UPDATE com_menu_m
+		SET menu_name = trim(#{menuName}),
+		menu_desc = trim(#{menuDesc}),
+		menu_appl = trim(#{menuAppl}),
+		menu_seq = trim(#{menuSeq}),
+		use_flag = #{useFlag},
+		LAST_UPDATED_BY = #{lastUpdatedBy},
+		LAST_UPDATE_DATE = CURDATE()
+		WHERE menu_id = #{menuId}
+    </insert>
+
+	<select id="retrieveMenuNavigation" parameterType="cdata"
+		resultType="cdata">
+    	<![CDATA[
+    	{call selectNodePriorterity(#{selectMenuId,mode=IN,jdbcType=VARCHAR})} 
+    	]]>
+	</select>
+	<!--删除菜单 -->
+	<delete id="deleteMenu">
+		delete from com_menu_m WHERE menu_id = #{menuId}
+  </delete>
+
+</mapper> 

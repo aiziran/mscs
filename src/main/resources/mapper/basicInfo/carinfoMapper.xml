@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="carinfoManage">
+	<!-- 查询列表 -->
+	<select id="carinfoList" parameterType="cdata" resultType="cdata">
+		SELECT
+		id,
+		carname,
+		carframeid,
+		seatnumber,
+		buytime,
+		annualinspection,
+		(select c.USER_NAME from com_user_m c where c.USER_ID=pilot) "pilot",
+		location,
+		drivinglicense,
+		outofwarranty,
+		(select c.USER_NAME from com_user_m c where c.USER_ID=manageid) "manageid"
+		FROM carinfo 
+	</select>
+	<!-- 查询 三天内过保车辆 -->
+	<select id="selectOverTimeList" parameterType="cdata"
+		resultType="cdata">
+		<![CDATA[
+		SELECT 	
+			id,
+			carname,
+			carframeid,
+			seatnumber,
+			buytime,
+			annualinspection,
+			(select c.USER_NAME from com_user_m c where c.USER_ID=pilot) "pilot",
+			location,
+			drivinglicense,
+			outofwarranty,
+			(select c.USER_NAME from com_user_m c where c.USER_ID=manageid) "manageid"
+			 FROM 	carinfo 
+			  WHERE  DATE_FORMAT(outofwarranty , '%Y-%m-%d' )<= DATE_FORMAT(CURDATE() , '%Y-%m-%d' )
+			 ]]>
+	</select>
+	<!-- 按id查询 -->
+	<select id="carinfoSeclectOne" parameterType="cdata" resultType="cdata">
+		SELECT id,
+		carname,
+		carframeid,
+		seatnumber,
+		buytime,
+		annualinspection,
+		pilot,
+		(select c.USER_NAME from com_user_m c where c.USER_ID=pilot) "pilotname",
+		location,
+		drivinglicense,
+		manageid,
+		outofwarranty,
+		(select c.USER_NAME from com_user_m c where c.USER_ID=manageid) "managename"
+		FROM carinfo WHERE id=#{id}
+	</select>
+	<!-- 按id删除 -->
+	<delete id="carinfoDelete" parameterType="cdata">
+		DELETE FROM
+		carinfo WHERE id = #{id}
+	</delete>
+	<!-- 修改 -->
+	<update id="carinfoUpdate" parameterType="cdata">
+		UPDATE carinfo
+		SET
+		carname=#{carname},
+		carframeid=#{carframeid},
+		seatnumber=#{seatnumber},
+		buytime=#{buytime},
+		annualinspection=#{annualinspection},
+		pilot=#{pilot},
+		location=#{location},
+		drivinglicense=#{drivinglicense},
+		outofwarranty=#{outofwarranty},
+		manageid=#{manageid}
+		WHERE
+		id = #{id} 
+
+	</update>
+	<select id="carinfoInsert" parameterType="cdata" resultType="cdata">
+		INSERT INTO carinfo
+		(
+		carname,
+		carframeid,
+		seatnumber,
+		buytime,
+		annualinspection,
+		pilot,
+		location,
+		drivinglicense,
+		manageid,
+		outofwarranty
+		)
+		VALUES
+		(
+		#{carname},
+		#{carframeid},
+		#{seatnumber},
+		#{buytime},
+		#{annualinspection},
+		#{pilot},
+		#{location},
+		#{drivinglicense},
+		#{manageid},
+		#{outofwarranty}
+		)
+
+	</select>
+</mapper>

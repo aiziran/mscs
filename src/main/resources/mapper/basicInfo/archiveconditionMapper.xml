@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="archiveconditionManage">
+
+	<select id="archiveconditionList" parameterType="cdata"
+		resultType="cdata">
+		SELECT
+		c.id,
+		(select name from archive a where a.id=c.archiveid) "archiveid",
+		(select ac.acname from accondition ac where ac.id=c.acconid) "acconid",
+		c.conddesc
+
+		from archivecondition c where c.projectid=${projectid}
+		order by c.id desc
+        
+      </select>
+
+	<update id="archiveconditionDelete" parameterType="cdata">
+  		<![CDATA[
+  		  DELETE FROM archivecondition
+				  WHERE id = #{id}
+		]]>
+	</update>
+
+	<insert id="archiveconditionInput" parameterType="cdata">
+
+		INSERT into archivecondition
+		(
+		archiveid,
+		acconid,
+		conddesc,
+		projectid
+
+		)
+		VALUES
+		(
+		#{archiveid},
+		#{acconditionid},
+		#{conddesc},
+		#{projectid}
+
+		)
+
+	</insert>
+
+
+</mapper>

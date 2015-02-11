@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="conferenceManage">
+
+	<!-- 查询最新通知 -->
+	<select id="conferenceGetNotice" parameterType="cdata"
+		resultType="cdata">
+		SELECT record
+		FROM
+		conference
+		where cstatus not in(0)
+
+		ORDER BY cstatus ASC, startdate DESC,starttime ASC
+		limit 1
+	
+	</select>
+
+	<!-- 查询个人通知 -->
+	<select id="getNotice" parameterType="cdata" resultType="cdata">
+		SELECT a.*,b.dept_name cname,c.USER_NAME uname
+		FROM
+		conference a,com_dept_m b,com_user_m c,participant p
+		WHERE a.organizer=b.dept_id AND a.compere=c.USER_id and
+		a.cstatus NOT IN(0) AND (a.participants='全体员工' OR (p.participantid=#{user_id}
+		AND a.id = p.conferenceid)) GROUP BY a.id
+		ORDER BY DATE(startdate) DESC, TIME(starttime) ASC
+	</select>
+
+
+	<!-- 查询所有 -->
+	<select id="conferenceSelect" parameterType="cdata" resultType="cdata">
+		SELECT a.*,b.dept_name cname,c.USER_NAME uname
+		FROM
+		conference a,com_dept_m b,com_user_m c
+		WHERE a.organizer=b.dept_id AND a.compere=c.USER_id
+		<if test="fromMainWindow!=null and fromMainWindow neq '' "><!-- 这个标志代表从主界面里调整过来的 -->
+			and cstatus = 1
+		</if>
+		ORDER BY DATE(startdate) DESC, TIME(starttime) ASC
+
+	</select>
+
+
+	<!-- 查询会议相关的id -->
+	<select id="selectParticipantId" parameterType="cdata"
+		resultType="cdata">
+		select participantid from participant where conferenceid=#{id}
+	</select>
+
+	<!-- 删除会议相关的id -->
+	<select id="deleteparticipant" parameterType="cdata" resultType="cdata">
+		delete from participant where conferenceid=#{id}
+	</select>
+
+	<select id="getMaxId" resultType="string">
+		select max(id) from conference
+	</select>
+
+	<!-- 查询id -->
+	<select id="conferenceSelectId" parameterType="cdata"
+		resultType="cdata">
+		SELECT
+		a.id id,
+		a.identifier identifier,
+		a.cstatus cstatus,
+		a.ctype ctype,
+		a.theme theme,
+		a.style style,
+		a.organizer organizer,
+		a.location location,
+		a.participants participants,
+		a.startdate startdate,
+		a.starttime starttime,
+		a.enddate enddate,
+		a.endtime endtime,
+		a.compere compere,
+		a.createtime createtime,
+		a.conclusion conclusion,
+		a.record record,
+		a.accessory accessory,
+		a.anotherparticipants anotherparticipants,
+		b.dept_name cname,c.USER_NAME uname
+		FROM
+		conference a,com_dept_m b,com_user_m c
+		WHERE a.organizer=b.dept_id AND a.compere=c.USER_id and id=#{id}
+	
+	</select>
+	<!-- 删除 -->
+	<select id="conferenceDelete" parameterType="cdata" resultType="cdata">
+
+		DELETE FROM conference WHERE id = #{aid}	
+	</select>
+	<!-- 添加 -->
+	<select id="conferenceInsert" parameterType="cdata" resultType="cdata">
+		INSERT INTO archive.conference
+		(
+		identifier,
+		cstatus,
+		ctype,
+		theme,
+		style,
+		organizer,
+		location,
+		participants,
+		startdate,
+		starttime,
+		enddate,
+		endtime,
+		compere,
+		createtime,
+		conclusion,
+		record ,
+		accessory,
+		anotherparticipants
+		)
+		VALUES
+		(
+		#{identifier},
+		#{cstatus},
+		#{ctype},
+		#{theme},
+		#{style},
+		#{organizer},
+		#{location},
+		#{participantnames},
+		#{startdate},
+		#{starttime},
+		#{enddate},
+		#{endtime},
+		#{compere},
+		#{createtime},
+		#{conclusion},
+		#{record },
+		#{accessory},
+		#{anotherparticipants}
+		)
+	</select>
+	<insert id="participant" parameterType="cdata">
+		insert into participant (conferenceid,participantid)
+		values (#{conferenceid},#{participants})
+	</insert>
+	<!--根据用户id查询用户姓名 -->
+	<select id="conferenceSelectUserId" parameterType="cdata"
+		resultType="cdata">
+		SELECT * FROM com_user_m where USER_ID=#{id}
+	</select>
+	<!--修改 -->
+	<select id="conferenceUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE
+		conference
+		SET
+		identifier = #{identifier} ,
+		cstatus = #{cstatus} ,
+		ctype = #{ctype} ,
+		theme = #{theme} ,
+		style =#{style} ,
+		organizer =#{organizer} ,
+		location = #{location} ,
+		participants =#{participantnames} ,
+		startdate = #{startdate} ,
+		starttime = #{starttime} ,
+		enddate = #{enddate} ,
+		endtime = #{endtime} ,
+		compere = #{compere} ,
+		createtime = #{createtime} ,
+		conclusion = #{conclusion} ,
+		record = #{record} ,
+		accessory = #{accessory},
+		anotherparticipants=#{anotherparticipants}
+
+		WHERE
+		id = #{id} 
+
+	</select>
+	<!--修改发布状态为已发布 -->
+	<select id="conferenceChangeStatus" parameterType="cdata"
+		resultType="cdata">
+		UPDATE
+		conference
+		SET
+		cstatus = #{cstatus}
+		WHERE
+		id = #{id} 
+
+	</select>
+
+	<select id="selectUser_id" parameterType="cdata" resultType="cdata">
+		select user_id user_ID from com_user_m 
+	</select>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="acconditionManage">
+
+	<select id="acconditionList" parameterType="cdata" resultType="cdata">
+		SELECT
+		a.id,
+		a.actype,
+		(select t.archivename from archivetype t where t.id=a.actype) "typename",
+		a.acname,
+		a.acdesc,
+		a.acimpt
+		from accondition a
+      </select>
+
+	<select id="acconditionDelete" parameterType="cdata" resultType="cdata">
+		DELETE FROM accondition WHERE id=#{id}
+	</select>
+
+	<insert id="acconditionInput" parameterType="cdata">
+		INSERT into accondition
+		(
+		actype,
+		acname,
+		acdesc,
+		acimpt
+		)
+		VALUES
+		(
+		#{actype},
+		#{acname},
+		#{acdesc},
+		#{acimpt}
+		)
+	</insert>
+	<select id="acconditionSelectOne" parameterType="cdata"
+		resultType="cdata">
+		SELECT a.id,
+		a.actype,
+		(select t.archivename from archivetype t where t.id=a.actype) "typename",
+		a.acname,
+		a.acdesc,
+		a.acimpt
+		FROM accondition a
+		WHERE a.id=#{id}
+	</select>
+	<update id="acconditionUpdate" parameterType="cdata">
+	  	<![CDATA[
+	  		UPDATE accondition 
+	  		   SET actype = #{actype},
+	  		       acname = #{acname},
+	  			   acdesc = #{acdesc},
+	  			   acimpt = #{acimpt}
+			 WHERE id = #{id}
+		]]>
+	</update>
+
+</mapper>   
+      

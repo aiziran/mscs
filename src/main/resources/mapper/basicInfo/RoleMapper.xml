@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="roleManage">
+
+	<!-- 用户权限列表 -->
+	<select id="roleList" parameterType="cdata" resultType="cdata">
+		SELECT r.role_id "roleId",
+		r.role_name "roleName",
+		r.create_date "createDate",
+		r.role_desc "roleDesc",
+		r.role_notes "roleNotes"
+		FROM com_role_m r
+		WHERE 1=1
+		<if test="queryRoleName !=null and queryRoleName !=''  ">
+			AND r.role_name LIKE '%'||trim(#{queryRoleName})||'%'
+		  </if>
+		ORDER BY r.role_id
+	</select>
+	<!-- 检测角色是否存在关联 ，以便方便删除 -->
+	<select id="checkDel" parameterType="cdata" resultType="cdata">
+      	<![CDATA[
+	        SELECT  r.role_id  
+			  FROM  com_auth_menu m, com_role_m r
+			 WHERE  r.role_id = #{roleId}
+			   AND	r.role_id = m.auth_code
+			UNION
+			SELECT  r.role_id
+			  FROM  com_auth_user u, com_role_m r
+			 WHERE  r.role_id = #{roleId}
+			   AND	r.role_id = u.auth_code
+      	]]>
+	</select>
+
+	<!-- 检测角色名称是否已存在 -->
+	<select id="checkRoleName" parameterType="cdata" resultType="cdata">
+      	<![CDATA[
+	       SELECT role_name FROM com_role_m m WHERE role_name = #{roleName} and role_id not in ('${roleId}')
+      	]]>
+	</select>
+
+	<!-- 删除角色信息 -->
+	<delete id="deleteDo" parameterType="cdata">
+      	<![CDATA[
+	        DELETE FROM com_role_m 
+	         	  WHERE role_id = #{delRoleId}
+      	]]>
+	</delete>
+
+	<!-- 更改角色信息 -->
+	<update id="updateRoleDo" parameterType="cdata">
+      	<![CDATA[
+        	UPDATE com_role_m
+	           SET role_name = #{roleName,jdbcType=VARCHAR},
+	               role_desc = #{roleDesc,jdbcType=VARCHAR},
+	               role_notes = #{roleNotes,jdbcType=VARCHAR},
+	               update_date = CURDATE(),
+	               update_by = #{userId,jdbcType=VARCHAR}
+	         WHERE role_id =  #{roleId,jdbcType=VARCHAR}
+      	]]>
+	</update>
+
+	<!-- 新建角色信息 -->
+	<insert id="createRoleDo" parameterType="cdata">
+      	<![CDATA[
+	        INSERT INTO com_role_m (
+		                role_name,
+		                role_desc,
+		                role_notes,
+		                create_date,
+		                create_by
+	        ) VALUES (
+		                #{roleName,jdbcType=VARCHAR},
+		                #{roleDesc,jdbcType=VARCHAR},
+		                #{roleNotes,jdbcType=VARCHAR},
+		                CURDATE(),
+		                #{userId,jdbcType=VARCHAR}
+	        )
+      	]]>
+	</insert>
+
+	<!-- 查询 菜单列表 -->
+	<select id="retrieveMenuList" resultType="cdata">
+      	<![CDATA[
+	        SELECT menu_id "menuId",
+			       menu_code "menuCode",
+			       menu_name "menuName",
+			       menu_desc "menuDesc",
+			       menu_lvl "menuLvl",
+			       menu_appl "menuAppl",
+			       prnt_menu_id "prntMenuId",
+			       menu_seq "menuSeq",
+			       use_flag "useFlag"
+			  FROM com_menu_m
+			 WHERE use_flag = 'Y'
+			 ORDER BY menu_lvl, menu_seq
+      	]]>
+	</select>
+
+	<!-- 查询 按钮Code -->
+	<select id="retrieveBtnCodeList" resultType="cdata">
+      	<![CDATA[
+	          SELECT code_id "codeId", 
+			       code_desc "codeDesc"
+			  FROM com_code 
+			 WHERE code_group = '01'
+			 ORDER BY code_order
+      	]]>
+	</select>
+
+	<!-- 查询菜单 -->
+	<select id="retrieveMenu" parameterType="cdata" resultType="cdata">
+      	<![CDATA[
+	        SELECT menu_id "menuId"
+			  FROM com_auth_menu
+			 WHERE menu_id = #{menuId}
+			   AND auth_code = #{authCode}
+     	]]>
+	</select>
+
+	<!-- 查询按钮 -->
+	<select id="retrieveBtn" parameterType="cdata" resultType="cdata">
+      	<![CDATA[
+	        SELECT code_id "codeId"
+			  FROM com_auth_btn
+			 WHERE menu_id = #{menuId}
+			   AND auth_code = #{authCode}
+      	]]>
+	</select>
+
+	<!-- 删除菜单权限 -->
+	<delete id="deleteAuthMenuDo" parameterType="cdata">
+      	<![CDATA[
+	        DELETE FROM com_auth_menu
+				  WHERE menu_id = #{menuId}
+				    AND auth_code = #{authCode}
+      	]]>
+	</delete>
+
+	<!-- 删除按钮权限 -->
+	<delete id="deleteAuthBtnDo" parameterType="cdata">
+      	<![CDATA[
+	        DELETE FROM com_auth_btn
+				  WHERE menu_id = #{menuId}
+				    AND auth_code = #{authCode}
+      	]]>
+	</delete>
+
+	<!-- 保存按钮权限 -->
+	<insert id="createAuthBtnDo" parameterType="cdata">
+      	<![CDATA[
+	        INSERT INTO com_auth_btn (
+		                code_id,
+		                auth_code,
+		                create_date,
+		                create_by,
+		                menu_id
+	        ) VALUES (
+		                #{codeId,jdbcType=VARCHAR},
+		                #{authCode,jdbcType=VARCHAR},
+		                CURDATE(),
+		                #{userId,jdbcType=VARCHAR},
+		                #{menuId,jdbcType=VARCHAR}
+	        )
+      	]]>
+	</insert>
+
+	<!-- 保存菜单权限 -->
+	<insert id="createAuthMenuDo" parameterType="cdata">
+      	<![CDATA[
+	        INSERT INTO com_auth_menu (
+		                menu_id,
+		                auth_code,
+		                creation_date,
+		                created_by
+	        ) VALUES (
+		                #{menuId,jdbcType=VARCHAR},
+		                #{authCode,jdbcType=VARCHAR},
+		                CURDATE(),
+		                #{userId,jdbcType=VARCHAR}
+	        )
+      	]]>
+	</insert>
+
+	<!-- 查询页面的按钮权限 -->
+	<select id="retrieveBtnList" parameterType="cdata" resultType="cdata">
+
+		SELECT distinct btn.code_id "codeId"
+		FROM com_auth_btn btn
+		WHERE menu_id = #{menuId}
+		AND auth_code in
+		<foreach item="authId" index="index" collection="authIds"
+			open="(" separator="," close=")">
+			#{authId}
+		   </foreach>
+	</select>
+</mapper> 

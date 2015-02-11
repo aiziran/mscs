@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="approvalManage">
+
+
+	<!-- 查询列表 -->
+	<select id="pageList" parameterType="cdata" resultType="cdata">
+		SELECT
+		stageid,
+		stage,
+		execute ,
+		bill ,
+		payfor,
+		(SELECT contractname FROM contract
+		WHERE contractid=#{contractid}) "contractname"
+		FROM stage
+		WHERE
+		contractid=#{contractid}
+	</select>
+	<!-- 查询详细 -->
+	<select id="retrieveDetail" parameterType="cdata" resultType="cdata">
+		SELECT
+		d.dept_name,
+		a.reason,
+		a.contractid,
+		a.stageid,
+		(SELECT stage FROM
+		stage WHERE stageid=a.stageid) "stage",
+		a.result
+		FROM app_result a ,
+		com_dept_m d
+		WHERE
+		a.dept_id=d.DEPT_ID AND
+		a.stageid=#{stageid}
+	</select>
+
+	<update id="updateApprovalResult" parameterType="cdata">
+		UPDATE
+		app_result SET
+		result=2,
+		reason=#{reason}
+		WHERE stageid=#{stageid}
+		AND
+		dept_id=#{dept_id}
+	</update>
+
+	<update id="agree" parameterType="cdata">
+		UPDATE app_result SET
+		result=1
+		WHERE stageid=#{stageid}
+		AND dept_id=#{dept_id}
+	</update>
+
+
+
+
+</mapper>

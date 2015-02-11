@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="companystructManage">
+	<select id="companyList" parameterType="cdata" resultType="cdata">
+		SELECT * FROM companystruct
+	</select>
+	<select id="companyDelete" parameterType="cdata" resultType="cdata">
+		DELETE FROM companystruct WHERE id=#{id}
+	</select>
+
+	<select id="companySelectOne" parameterType="cdata" resultType="cdata">
+		SELECT * FROM companystruct
+		WHERE id=#{id}  
+	</select>
+
+	<select id="companyUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE companystruct
+		SET inputer=#{inputer},
+		inputtime=#{inputtime},
+		structdeso=#{structdeso},
+		orgchart=#{orgchart}
+		WHERE id=#{id}
+	</select>
+
+	<select id="companyInput" parameterType="cdata" resultType="cdata">
+		INSERT INTO companystruct(inputer,inputtime,structdeso,orgchart)
+		VALUES(#{inputer},#{inputtime},#{ structdeso},#{orgchart})
+	</select>
+
+</mapper>

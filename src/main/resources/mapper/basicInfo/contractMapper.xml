@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contractManage">
+
+
+	<!-- 查询列表 -->
+	<select id="contractList" parameterType="cdata" resultType="cdata">
+		SELECT c.contractid "contractid",
+		gridid "gridid",
+		linkman "linkman",
+		tel
+		"tel",
+		identifier "identifier",
+		c.contractname "contractname",
+		sort
+		"sort",
+		number "number",
+		content "content",
+		user_id "user_id",
+		executestat
+		"executestat",
+		unit "unit",
+		SUM "sum",
+		pdfpath "pdfpath",
+		signedtime "signedtime",
+		dept_id "deptId",
+		remark
+		"remark",ct.contractname "contracttype"
+		FROM
+		contracttype ct,contract c LEFT OUTER JOIN browse b ON c.contractid =
+		b.contractid WHERE c.sort = ct.id ORDER BY signedtime DESC 
+		
+
+	</select>
+	<select id="contractListr" parameterType="cdata" resultType="cdata">
+		SELECT c.contractid "contractid",
+		gridid "gridid",
+		linkman "linkman",
+		tel
+		"tel",
+		identifier "identifier",
+		c.contractname "contractname",
+		sort
+		"sort",
+		number "number",
+		content "content",
+		user_id "user_id",
+		executestat
+		"executestat",
+		unit "unit",
+		SUM "sum",
+		pdfpath "pdfpath",
+		signedtime "signedtime",
+		remark "remark",ct.contractname "contracttype"
+		FROM
+		contracttype ct,contract c WHERE c.sort = ct.id
+		and (c.contractid=
+		#{ids})
+		ORDER BY signedtime DESC 
+		
+
+	</select>
+	<!-- 查询详细 -->
+	<select id="retrieveDetail" parameterType="cdata" resultType="cdata">
+
+		SELECT contractid "contractid",
+		gridid "gridid",
+		linkman "linkman",
+		tel
+		"tel",
+		identifier "identifier",
+		c.contractname "contractname",
+		sort
+		"sort",
+		number "number",
+		content "content",
+		user_id "user_id",
+		executestat
+		"executestat",
+		unit "unit",
+		SUM "sum",
+		pdfpath "pdfpath",
+		signedtime "signedtime",
+		remark "remark",ct.contractname "contracttype"
+		FROM
+		contract c,contracttype ct
+		WHERE contractid=#{contractid} AND
+		c.sort = ct.id 
+	</select>
+	<!-- 新建合同 -->
+	<insert id="createContract" parameterType="contractEntity">
+		INSERT INTO contract
+		(
+		gridid,
+		linkman,
+		tel,
+		identifier,
+		sort,
+		contractname,
+		number,
+		content,
+		user_id,
+		executestat,
+		unit,
+		SUM,
+		pdfpath,
+		remark,
+		archived,
+		signedtime
+		)
+		VALUES
+		(
+		#{gridid},
+		#{linkman},
+		#{tel},
+		#{identifier},
+		#{sort},
+		#{contractname},
+		#{number},
+		#{content},
+		#{user_id},
+		#{executestat},
+		#{unit},
+		#{sum},
+		#{pdfpath},
+		#{remark},
+		#{archived},
+		#{signedtime}
+		)
+	</insert>
+	<!-- 获得合同最大id -->
+	<select id="getMaxContractId" resultType="string">
+		SELECT MAX(contractid)
+		"contractid" FROM contract
+	</select>
+	<!-- 删除浏览权限 -->
+	<delete id="deleteBrowse" parameterType="string">
+		DELETE FROM browse WHERE
+		contractid=#{contractid}
+	</delete>
+	<!-- 建立浏览权限 -->
+	<insert id="createBrowse" parameterType="cdata">
+		INSERT INTO browse
+		(
+		contractid,
+		dept_id
+		)
+		values
+		<foreach collection="dept_id" item="item" index="index"
+			separator=",">
+			(#{contractid},#{item})
+		</foreach>
+	</insert>
+	<!-- 删除审批权限 -->
+	<delete id="deleteApproval" parameterType="string">
+		DELETE FROM approval
+		WHERE contractid=#{contractid}
+	</delete>
+	<!-- 建立审批权限 -->
+	<insert id="createApproval" parameterType="cdata">
+		INSERT INTO approval
+		(
+		contractid,
+		dept_id
+		)VALUES
+		<foreach collection="dept_id" item="item" index="index"
+			separator=",">
+			(#{contractid},#{item})
+		</foreach>
+	</insert>
+	<!-- 删除审批结果 -->
+	<delete id="deleteAppResult" parameterType="cdata">
+		DELETE FROM
+		app_result WHERE contractid = #{contractid}
+	</delete>
+
+	<select id="sendEmail" resultType="cdata" parameterType="string">
+		SELECT a.contractid,contractname,d.user_id user_ID
+		FROM contract c,approval a,com_user_m u,com_user_dept d,com_auth_user t
+		WHERE a.contractid = c.contractid AND ('250732' >=d.dept_id AND
+		a.dept_id = d.dept_id AND t.user_id =d.user_id AND
+		t.auth_code='1000077' and a.contractid=#{contractid} )
+		OR ( d.dept_id > '250732' AND a.dept_id = d.dept_id AND
+		a.contractid=#{contractid} )
+		AND c.contractid=#{contractid} GROUP BY user_id 
+</select>
+	<!-- 建立审批阶段 -->
+	<insert id="createStage" parameterType="cdata">
+		INSERT INTO stage
+		(stage,execute,bill , payfor ,contractid)VALUES
+		(
+		#{stage},
+		#{execute},
+		#{bill},
+		#{payfor},
+		#{contractid}
+		)
+	</insert>
+
+	<!-- 获得审批阶段的最大id -->
+	<select id="getMaxStageId" resultType="string">
+		SELECT MAX(stageid)
+		"stageid" FROM stage
+	</select>
+
+	<!-- 建立某审批部门某阶段的审批结果 -->
+	<insert id="createAppResult" parameterType="cdata">
+		INSERT INTO
+		app_result (stageid ,dept_id,contractid ) VALUES
+		(
+		#{stageid},
+		#{dept_id},
+		#{contractid}
+
+		)
+	</insert>
+	<!-- 获得某合同的浏览权限 -->
+	<select id="getBrowse" parameterType="cdata" resultType="string">
+		SELECT
+		dept_id FROM browse WHERE contractid=#{contractid}
+	</select>
+
+	<!-- 获得某合同的审批权限 -->
+	<select id="getApproval" parameterType="string" resultType="string">
+		SELECT dept_id FROM approval WHERE contractid=#{contractid}
+	</select>
+	<!-- 获得某合同的全部合同阶段id -->
+	<select id="getStageId" parameterType="string" resultType="string">
+		SELECT stageid FROM stage WHERE contractid=#{contractid}
+	</select>
+
+	<!-- 获得某合同的合同阶段详细信息 -->
+	<select id="getStageInfor" parameterType="string" resultType="cdata">
+		SELECT stageid "stageid",
+		stage "stage",
+		execute "execute" ,
+		bill "bill",
+		payfor "payfor" ,
+		contractid "contractid"
+
+		FROM
+		stage
+		WHERE
+		contractid=#{contractid}
+	</select>
+	<!-- 删除审批阶段 -->
+	<delete id="deleteStage" parameterType="string">
+		DELETE FROM stage WHERE
+		contractid=#{contractid}
+	</delete>
+
+	<!-- 删除数据 -->
+	<delete id="delete" parameterType="string">
+		DELETE FROM contract where
+		contractid=#{contractid}
+	</delete>
+
+	<!-- 获得合同类型 -->
+	<select id="selectContractType" resultType="cdata">
+		SELECT * from
+		contracttype
+	</select>
+	<!-- 查询需要当前人审批的所有合同 -->
+	<select id="searchContractIds" resultType="cdata">
+		SELECT contractid FROM
+		app_result WHERE dept_id=#{deptid} AND result=0 GROUP BY contractid
+	</select>
+
+	<select id="selectByArchives" parameterType="string" resultType="string">
+		SELECT archivesname FROM archives WHERE id = #{archivesid}
+	</select>
+	<select id="selectByCabinet" parameterType="string" resultType="string">
+		SELECT cabinetnum FROM cabinet,archives WHERE cabinet.archivesid =
+		archives.id AND cabinet.id=#{cabinetid}
+	</select>
+	<select id="selectByGrid" parameterType="string" resultType="string">
+		SELECT * FROM grid,cabinet,archives WHERE grid.id=#{gridid} AND
+		grid.cabinetid = cabinet.id AND cabinet.archivesid = archives.id
+
+	</select>
+
+	<select id="doUpdate" parameterType="cdata" resultType="cdata">
+		update contract set user_id=#{user_id},linkman=#{linkman},tel=#{tel},
+		archived=#{archived},gridid=#{gridid},executestat=#{executestat},
+		sort=#{sort},signedtime=#{signedtime},contractname=#{contractname},
+		unit=#{unit},number=#{number},sum=#{sum},
+		content=#{content},remark=#{remark},
+		pdfpath=#{pdfpath} where contractid=#{contractid}
+	</select>
+
+	<select id="isIdentifierUnique" parameterType="string"
+		resultType="string">
+		SELECT COUNT(identifier) ct FROM contract WHERE identifier=#{identifier}
+	</select>
+
+	<select id="selectById" parameterType="cdata" resultType="string">
+		SELECT user_id FROM contract WHERE contractid=#{contractid}
+		</select>
+</mapper>

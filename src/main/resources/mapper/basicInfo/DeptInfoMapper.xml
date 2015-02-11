@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="deptInfo">
+
+	<!-- 查询部门信息 -->
+	<select id="deptList" parameterType="cdata" resultType="cdata">
+		SELECT d.dept_id "deptId",
+		d.dept_name "deptName",
+		d.dept_type "deptType",
+		c.code_value1 "deptTypeName",
+		d.dept_manager "deptManager",
+		d.dept_tel "deptTel",
+		d.dept_address "deptAddress"
+		FROM com_dept_m d,
+		com_code c
+		WHERE d.use_flag = 'Y'
+		AND c.code_id = d.dept_type
+		AND c.code_group = '04'
+		<if test="queryDeptManager !=null and queryDeptManager !=''  ">
+			AND (d.dept_manager LIKE '%' || trim(#{queryDeptManager}) || '%') 
+			   </if>
+		<if test="queryDeptType!=null and queryDeptType neq '-1'">
+			AND (d.dept_type LIKE '%' || trim(#{queryDeptType}) || '%') 
+			   </if>
+		ORDER BY d.dept_id
+	</select>
+
+	<select id="deptDetail" parameterType="cdata" resultType="cdata">
+		SELECT d.dept_id "deptId",
+		d.dept_name "deptName",
+		d.dept_type "deptType",
+		d.dept_manager "deptManager",
+		d.dept_tel "deptTel",
+		d.dept_address "deptAddress",
+		d.dept_notes "deptNotes"
+		FROM com_dept_m d
+		WHERE d.use_flag = 'Y'
+		AND dept_id = #{deptId}
+	</select>
+
+	<!--检验deptName是否已存在 -->
+	<select id="validateDeptName" parameterType="cdata">
+	  	<![CDATA[
+			SELECT count(dept_name) "no"
+			  FROM com_dept_m
+			 WHERE dept_name = #{deptName} 
+			   AND dept_id <> #{deptId}
+		]]>
+	</select>
+
+	<!-- 保存更新的部门信息 -->
+	<update id="updateUserDetail" parameterType="cdata">
+	  	<![CDATA[
+	  		UPDATE com_dept_m 
+	  		   SET dept_name = #{deptName},
+	  		       dept_type = #{deptType},
+	  			   dept_manager = #{deptManager},
+	  			   dept_tel = #{deptTel},
+	  			   dept_address = #{deptAddress},
+	  			   dept_notes = #{deptNotes},
+	  			   update_by = #{createBy},
+	  		       update_date = CURDATE()
+			 WHERE dept_id = #{deptId}
+		]]>
+	</update>
+
+	<!-- 创建部门信息 -->
+	<insert id="createDept" parameterType="cdata">
+	  	<![CDATA[
+			INSERT INTO com_dept_m (
+						dept_id,
+						dept_name,
+						dept_type,
+						dept_manager,
+						dept_tel,
+						dept_address,
+						dept_notes,
+						create_by,
+						create_date
+			) VALUES (
+						SEQ_COM_DEPT_M.nextval,
+			            #{deptName},
+			            #{deptType},
+			            #{deptManager},
+			            #{deptTel},
+			            #{deptAddress},
+			            #{deptNotes},
+			            #{createBy},
+			            CURDATE()
+			)
+			)
+		]]>
+	</insert>
+
+</mapper> 

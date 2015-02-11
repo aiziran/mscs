@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contracttypeManage">
+
+
+	<!-- 添加 -->
+	<insert id="insertApprove" parameterType="cdata">
+		insert into contracttype values(#{id},#{contractname})
+	</insert>
+
+
+	<update id="updateApproval" parameterType="cdata">
+		UPDATE contracttype
+		SET
+		contractname=#{contractname}
+		WHERE id=#{id}
+	</update>
+
+	<delete id="deleteApproval" parameterType="cdata">
+		delete from contracttype where id=#{id}
+	</delete>
+
+	<select id="selectApproval" parameterType="cdata" resultType="cdata">
+		select * from contracttype
+	</select>
+
+	<select id="selectByIdApproval" parameterType="cdata"
+		resultType="cdata">
+		select * from contracttype where id=#{id}
+	</select>
+
+	<select id="selectContractNameApproval" parameterType="cdata"
+		resultType="cdata">
+		select * from contracttype 
+	</select>
+
+</mapper>

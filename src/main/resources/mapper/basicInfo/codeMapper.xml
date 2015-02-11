@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="codeManage">
+
+
+	<!-- 查询共同代码列表 -->
+	<select id="retrieveCodeList" parameterType="cdata" resultType="cdata">
+      	<![CDATA[
+	        SELECT cg.code_group_name "codeGroupName",
+			       cc.code_group "codeGroup",
+			       cc.code_id "codeId",
+			       cc.use_flag "useFlag",
+			       cc.code_order "codeOrder",
+			       cc.code_desc "codeDesc"
+			  FROM com_code_group cg, 
+			       com_code cc
+			 WHERE cg.code_group = cc.code_group
+			]]>
+		<if test="queryCodeGroup!=null and queryCodeGroup!='-1'">
+			AND cc.code_group = trim(#{queryCodeGroup})
+		    </if>
+		ORDER BY cg.code_group_name,cc.code_order
+	</select>
+
+	<!-- 查询公共代码详细信息 -->
+	<select id="retrieveCodeDetail" parameterType="cdata"
+		resultType="cdata">
+      	<![CDATA[
+	        SELECT cg.code_group_name "codeGroupName",
+			       cc.code_id "codeId",
+			       cc.code_group "codeGroup",
+			       cc.use_flag "useFlag",
+			       cc.code_order "codeOrder",
+			       cc.code_desc "codeDesc"
+			  FROM com_code cc, 
+			       com_code_group cg
+			 WHERE cc.code_group = #{codeGroup}
+			   AND cc.code_id = #{codeId}
+			   AND cc.code_group = cg.code_group
+	  	]]>
+	</select>
+
+	<!-- 检验代码ID是否存在 -->
+	<select id="retrieveCodeInfo" parameterType="cdata" resultType="cdata">
+      	<![CDATA[
+	        SELECT code_id "codeId"
+			  FROM com_code 
+			 WHERE code_group = #{codeGroup}
+			   AND code_id = #{codeId}
+      	]]>
+	</select>
+
+	<!-- 添加公共代码 -->
+	<insert id="createCode" parameterType="cdata">
+      	<![CDATA[
+	        INSERT INTO com_code (
+		                code_id,
+		                code_group,
+		                code_desc,
+		                use_flag,
+		                code_order,
+		                create_date,
+		                create_user
+	        ) VALUES (
+		                #{codeId},
+		                #{codeGroup},
+		                #{codeDesc,jdbcType=VARCHAR},
+		                #{useFlag,jdbcType=VARCHAR},
+		                #{codeOrder,jdbcType=NUMERIC},
+		                CURDATE(),
+		                #{userId,jdbcType=VARCHAR}
+	        )
+	  	]]>
+	</insert>
+
+	<!-- 更改公共代码信息 -->
+	<update id="updateCode" parameterType="cdata">
+      	<![CDATA[
+	        UPDATE com_code
+	           SET code_desc = #{codeDesc,jdbcType=VARCHAR},
+	               use_flag = #{useFlag,jdbcType=VARCHAR},
+	               code_order = #{codeOrder,jdbcType=NUMERIC},
+	               update_date = CURDATE(),
+	               update_user = #{userId,jdbcType=VARCHAR}
+	         WHERE code_group = #{codeGroup}
+	           AND code_id = #{codeId}
+	  	]]>
+	</update>
+
+</mapper>

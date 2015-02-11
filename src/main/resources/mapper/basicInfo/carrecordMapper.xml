@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="carrecordManage">
+	<!-- 查询列表 -->
+	<select id="carrecordList" parameterType="cdata" resultType="cdata">
+		SELECT
+		id,
+		carid,
+		(select c.carframeid from carinfo c where c.id=carid) "carframeid",
+		carname,
+		lender,
+		lendtime,
+		estimate_return_time,
+		actual_return_time,
+		approver,
+		approvetime,
+		status,
+		return_man FROM carrecord
+			 
+	</select>
+	<!-- 按id查询 -->
+	<select id="carrecordSeclectOne" parameterType="cdata"
+		resultType="cdata">
+		SELECT *,(select c.USER_NAME from com_user_m c where
+		c.USER_ID=lender) "lendername" FROM carrecord WHERE id=#{id}
+	</select>
+	<!-- 查询当前用户是否需要显示车辆使用记录菜单 -->
+	<select id="carrecordQualifications" parameterType="cdata"
+		resultType="cdata">
+		SELECT id FROM carinfo WHERE manageid=#{manageid}
+	</select>
+	<!-- 按id删除 -->
+	<select id="carrecordDelete" parameterType="cdata" resultType="cdata">
+		DELETE FROM carrecord WHERE id = #{id}
+	</select>
+	<!-- 修改 -->
+	<update id="carrecordUpdate" parameterType="cdata">
+		UPDATE
+		carrecord SET
+		carid=#{carid},
+		carname=#{carname},
+		lender=#{lender},
+		lendtime=#{lendtime},
+		estimate_return_time=#{estimate_return_time},
+		actual_return_time=#{actual_return_time},
+		approver=#{approver},
+		approvetime=#{approvetime},
+		status=#{status},
+		return_man=#{return_man}
+		WHERE
+		id = #{id} 
+
+	</update>
+	<select id="carrecordInsert" parameterType="cdata" resultType="cdata">
+		INSERT INTO carrecord
+		(
+		carid,
+		carname,
+		lender,
+		lendtime,
+		estimate_return_time,
+		actual_return_time,
+		approver,
+		approvetime,
+		status,
+		return_man
+		)
+		VALUES
+		(
+		#{carid},
+		#{carname},
+		#{lender},
+		#{lendtime},
+		#{estimate_return_time},
+		#{actual_return_time},
+		#{approver},
+		#{approvetime},
+		#{status},
+		#{return_man}
+		);
+
+	</select>
+</mapper>
