@@ -1,0 +1,230 @@
+<head>
+<title>购车综合计算</title>
+<SCRIPT src="./js/function.js" type=text/javascript></SCRIPT>
+<SCRIPT src="./js/public.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript>
+function chk_input()
+{
+   return (chk_one_input(document.getElementById("clgzjg"),"车辆购置价格")
+				&& chk_one_input(document.getElementById("clgzfj"),"车辆购置附加费")
+				&& chk_one_input(document.getElementById("dszzrx"),"第三者责任险")
+				&& chk_one_input(document.getElementById("clssx"),"车辆损失险")
+				//&& chk_one_input(document.getElementById("bjzrmpx"),"不计责任免赔险")
+				&& chk_one_input(document.getElementById("qcdqx"),"全车盗抢险")
+				&& chk_one_input(document.getElementById("blddpsx"),"玻璃单独破碎险")
+				&& chk_one_input(document.getElementById("qtbxfy"),"其它保险费用")
+				&& chk_one_input(document.getElementById("ylf"),"养路费")
+				&& chk_one_input(document.getElementById("ccsyf"),"车船使用费")
+				&& chk_one_input(document.getElementById("wrdlkhf"),"无人道路看护费")
+				&& chk_one_input(document.getElementById("zxf"),"照相费")
+				&& chk_one_input(document.getElementById("sjp"),"三角牌")
+				&& chk_one_input(document.getElementById("mhq"),"灭火器")
+				&& chk_one_input(document.getElementById("pzfy"),"牌照费用")
+				&& chk_one_input(document.getElementById("spfy"),"上牌费用")
+				&& chk_one_input(document.getElementById("ccsys"),"车船使用税")
+				&& chk_one_input(document.getElementById("tpf"),"托盘费")
+				&& chk_one_input(document.getElementById("qtfy"),"其它费用"));
+}
+
+function get_jsjg()
+{
+	if (!chk_input())
+	{
+	  return false;
+	}
+
+	document.getElementById("clgzfj").value = Math.round(document.getElementById("clgzjg").value*10/117); 
+	document.getElementById("clssx").value = Math.round(document.getElementById("clgzjg").value*0.009+175); 
+	document.getElementById("dszzrx").value = Math.round(document.getElementById("sel_dszzrx").value); 
+	document.getElementById("bjzrmpx").value = Math.round((parseInt(document.getElementById("dszzrx").value)+parseInt(document.getElementById("clssx").value))*0.2); 
+	document.getElementById("qcdqx").value = Math.round(document.getElementById("sel_qcdqx").value); 
+	document.getElementById("blddpsx").value = Math.round(document.getElementById("sel_blddpsx").value); 
+	
+	document.getElementById("gjjze").value = parseInt(document.getElementById("clgzjg").value) + 
+											parseInt(document.getElementById("clgzfj").value) + 
+											parseInt(document.getElementById("dszzrx").value) +
+											parseInt(document.getElementById("clssx").value) +
+											parseInt(document.getElementById("bjzrmpx").value) +
+											parseInt(document.getElementById("qcdqx").value) +
+											parseInt(document.getElementById("blddpsx").value) +
+											parseInt(document.getElementById("qtbxfy").value) +
+											parseInt(document.getElementById("ylf").value) +
+											parseInt(document.getElementById("ccsyf").value) +
+											parseInt(document.getElementById("wrdlkhf").value) +
+											parseInt(document.getElementById("zxf").value) +
+											parseInt(document.getElementById("sjp").value) +
+											parseInt(document.getElementById("mhq").value) +
+											parseInt(document.getElementById("pzfy").value) +
+											parseInt(document.getElementById("spfy").value) +
+											parseInt(document.getElementById("ccsys").value) +
+											parseInt(document.getElementById("tpf").value) +
+											parseInt(document.getElementById("qtfy").value); 
+	
+	return true;		  
+}
+
+</SCRIPT>
+<style type="text/css">
+  TD {
+	color: #000;
+	font-size: 12px;
+	
+}
+</style>
+</head>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0"
+				align="left" >
+				<tr>
+					<td vAlign=top width=579>
+						<DIV class=nameBor>
+							<DIV class=regnamebg style="font-size:12px;padding-left: 30px;COLOR:#ff0000;">购车综合费用计算器可以帮助您方便购车</DIV>
+							<TABLE width=100% border=0 cellPadding=0 cellSpacing=0
+								style="COLOR: #000" align="left">
+									<TR>
+										<TD width="140px" height="26" align=right><FONT
+											color=#ff0000>*</FONT>车辆购置价格：</TD>
+										<TD align=left style="height: 3px; "><INPUT class=namemenu
+											id=clgzjg style="width: 85px; " value=""  > 元</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right><FONT color=#ff0000>*</FONT>车辆购置附加费：</TD>
+										<TD align=left style="height: 15px; "><input name="Input18" class=namemenu
+											id=clgzfj  style="width: 85px; "style="width: 85px; " value="0" readonly="readonly"> 元 (车价÷11.7) 元</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>第三者责任险：</TD>
+										<TD align=left><INPUT name="Input2" class=namemenu
+											id=dszzrx value=1430 style="width: 85px; "> 元 选择赔偿限额：<SELECT id=sel_dszzrx
+											onchange="javascript:document.getElementById('dszzrx').value = this.value;">
+												<OPTION value=1150>5万元</OPTION>
+												<OPTION value=1430 selected>10万元</OPTION>
+												<OPTION value=1650>20万元</OPTION>
+												<OPTION value=1925>50万元</OPTION>
+												<OPTION value=2053>100万元</OPTION>
+										</SELECT>
+										</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>车辆损失险：</TD>
+										<TD align=left><INPUT name="Input3" class=namemenu
+											id=clssx value="1075" style="width: 85px;"> 元 (车价×0.9%+175)</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>不计责任免赔险：</TD>
+										<TD align=left><INPUT name="Input4" class=namemenu
+											id=bjzrmpx style="width:85px;"> 元 (第三责任险+车辆损失险)×20%</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>全车盗抢险：</TD>
+										<TD align=left><INPUT name="Input5" class=namemenu
+											id=qcdqx value=650 style="width: 85px; "> 元 赔偿限额： <SELECT id=sel_qcdqx
+											onchange="javascript:document.getElementById('qcdqx').value = this.value;">
+												<OPTION value=325>5万元</OPTION>
+												<OPTION value=650 selected>10万元</OPTION>
+												<OPTION value=1300>20万元</OPTION>
+												<OPTION value=3250>50万元</OPTION>
+												<OPTION value=6500>100万元</OPTION>
+										</SELECT> ×0.65%</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>玻璃单独破碎险：</TD>
+										<TD align=left><INPUT name="Input6" class=namemenu
+											id=blddpsx value=120 style="width: 85px; "> 元 赔偿限额： <SELECT
+											id=sel_blddpsx
+											onchange="javascript:document.getElementById('blddpsx').value = this.value;">
+												<OPTION value=60>5万元</OPTION>
+												<OPTION value=120 selected>10万元</OPTION>
+												<OPTION value=240>20万元</OPTION>
+												<OPTION value=600>50万元</OPTION>
+												<OPTION value=1200>100万元</OPTION>
+										</SELECT> ×0.12%</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>其它保险费用：</TD>
+										<TD align=left><INPUT name="Input7" class=namemenu
+											id=qtbxfy value="0" style="width: 85px; "> 元 如有其它保险费用</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>养路费：</TD>
+										<TD align=left><INPUT name="Input8" class=namemenu id=ylf
+											value="120" style="width: 85px;"> 元 轿车120/月；面包车等140/月</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>车船使用费：</TD>
+										<TD align=left><INPUT id=ccsyf class=namemenu value=100 style="width: 85px;">
+											元</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>无人道路看护费：</TD>
+										<TD align=left><INPUT name="Input9" class=namemenu
+											id=wrdlkhf value="30" style="width: 85px;"> 元 固定</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>照相费：</TD>
+										<TD align=left><INPUT name="Input10" class=namemenu
+											id=zxf value="30" style="width: 85px;"> 元 固定</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>三角牌：</TD>
+										<TD align=left><input name="Input11" class=namemenu
+											id=sjp value="90" style="width: 85px;"> 元</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>灭火器：</TD>
+										<TD align=left><INPUT name="Input12" class=namemenu
+											id=mhq value="130" style="width: 85px; "> 元</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>牌照费用：</TD>
+										<TD align=left><INPUT name="Input13" class=namemenu
+											id=pzfy value="250" style="width: 78px; "> 元</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>上牌费用：</TD>
+										<TD align=left><INPUT name="Input14" class=namemenu
+											id=spfy value="300" style="width: 80px; "> 元</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>车船使用税：</TD>
+										<TD align=left><INPUT name="Input15" class=namemenu
+											id=ccsys value="100" style="width: 78px; "> 元</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>托盘费：</TD>
+										<TD align=left><INPUT name="Input16" class=namemenu
+											id=tpf value="120" style="width: 77px; "> 元 固定</TD>
+									</TR>
+									<TR>
+										<TD height="26" align=right>其它费用：</TD>
+										<TD align=left><input name="Input17" class=namemenu
+											id=qtfy value="0" style="width: 78px; "> 元</TD>
+									</TR>
+									<TR>
+										<TD height="40" colSpan=2 align="center"><input name="button" type=button
+											id=send_cal style="font-size:14px;CURSOR: hand; width: 150px"
+											onClick="return get_jsjg();" value=马上计算>
+										</TD>
+									</TR>
+									<TR>
+										<TD align=left bgColor=#000000 colSpan=2 height=1></TD>
+									</TR>
+									<TR>
+										<TD height="40" align=right style="font-size:14px;">购车费用合计：</TD>
+										<TD align=left><input name="Input" class=namemenu
+											id=gjjze value=计算得出 readonly> 元</TD>
+									</TR>
+
+
+									<TR>
+										<TD align=left colSpan=2>
+											<DIV class=nemeBlueBg style="font-size:12px;padding-left: 30px;COLOR:#ff0000;">
+												贷款购车此四项保险为必买，全款购车只有第三者责任险为必买
+											</DIV>
+										</TD>
+									</TR>
+
+							</TABLE>
+					</TD>
+				</TR>
+			</TABLE>
+

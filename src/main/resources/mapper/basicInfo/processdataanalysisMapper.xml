@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="processdataanalysisManage">
+
+
+	<select id="datalist" resultType="cdata">
+		SELECT
+
+
+		ItemDatetime as itemdatetime,
+		ItemValue as itemvalue,
+		LineNo as lineno,
+		DataFileName as datafilename,
+		IsStatisticsed as isstatisticsed,
+		ItemSample as itemsample,
+		ProductName as productname
+		FROM qwdata where 1=1
+
+
+		<if test="lineNo!=null and lineNo!=''">
+			AND lineno =#{lineNo}
+	    </if>
+		<if test="weightsize!=null and weightsize!=''">
+			AND ItemSample =#{weightsize}
+	    </if>
+
+		<if test="statTime!=null and statTime!=''">
+	      <![CDATA[  and  DATE(ItemDatetime) >=DATE(#{statTime}) ]]>
+		</if>
+		<if test="endTime!=null and endTime!=''">
+                  <![CDATA[
+                    AND DATE(ItemDatetime)<=DATE(#{endTime}) 
+                    ]]>
+		</if>
+
+		<!-- <if test="statTime!=null and statTime!=''"> <if test="endTime!=null 
+			and endTime!=''"> AND ItemDatetime between #{statTime} and #{endTime} </if> 
+			</if> -->
+
+		ORDER BY ItemDatetime
+		limit 0,50;
+	</select>
+
+
+</mapper> 

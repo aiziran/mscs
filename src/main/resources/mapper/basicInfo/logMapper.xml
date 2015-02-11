@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="logManage">
+	<select id="logList" parameterType="cdata" resultType="cdata">
+		SELECT
+		c.*
+		FROM
+		carpadlog c
+
+		WHERE 1=1
+		<if test="TimeStart!=null and TimeStart neq ''">
+			<if test="TimeEnd == null or TimeEnd ==''">
+				AND DATE(c.actiontime) BETWEEN DATE(#{TimeStart}) AND
+				DATE(#{TimeStart})
+   </if>
+		</if>
+
+		<if test="TimeEnd!=null and TimeEnd neq ''">
+			<if test="TimeStart ==null or TimeStart == ''">
+				AND DATE(c.actiontime) BETWEEN DATE(#{TimeEnd}) AND DATE(#{TimeEnd})
+			</if>
+		</if>
+
+		<if
+			test="TimeStart!=null and TimeStart neq '' and TimeEnd!=null and TimeEnd neq ''">
+			AND DATE(c.actiontime) BETWEEN DATE(#{TimeStart}) AND DATE(#{TimeEnd})
+		</if>
+
+		<if test="actionname!=null and actionname neq ''">
+			AND (c.actionname LIKE concat('%',trim(#{actionname}),'%'))   
+   </if>
+
+		<if test="loginuser!=null and loginuser neq ''">
+			AND (c.loginuser LIKE concat('%',trim(#{loginuser}),'%'))  
+   </if>
+
+
+	</select>
+
+	<update id="delete" parameterType="cdata">
+		DELETE
+		FROM
+		carpadlog
+		WHERE
+		id=#{id}
+</update>
+	<update id="deleteAll">
+		DELETE FROM carpadlog 
+</update>
+
+
+
+
+</mapper>
+	

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.convention.default.parent.package"
+		value="crud-default" />
+	<constant name="struts.convention.package.locators" value="web" />
+	<constant name="struts.convention.package.locators.basePackage"
+		value="com.csValue" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.multipart.maxSize" value="100000000" />
+	<!-- 用于CRUD Action的parent package -->
+
+
+	<package name="crud-default" extends="convention-default">
+		<!-- 基于paramsPrepareParamsStack, 增加store interceptor保证actionMessage在redirect后不会丢失 -->
+		<result-types>
+			<result-type name="redirectParams"
+				class="ssdevframework.core.dispatcher.ServletRedirectParamsResult" />
+		</result-types>
+		<interceptors>
+			<interceptor name="menuIdInterceptor"
+				class="com.csValue.common.interceptor.MenuIdInterceptor" />
+			<interceptor-stack name="crudStack">
+				<interceptor-ref name="paramsPrepareParamsStack" />
+				<interceptor-ref name="store">
+					<param name="operationMode">AUTOMATIC</param>
+				</interceptor-ref>
+
+				<interceptor-ref name="menuIdInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="crudStack" />
+		<global-results>
+			<result name="sessionFaild">/WEB-INF/content/sessionFaild.jsp</result>
+		</global-results>
+
+		<!--上传 -->
+		<action name="fileUpload" class="org.csdn.action.FileUploadAction">
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpg
+                </param>
+				<param name="maximumSize">1024</param>
+			</interceptor-ref>
+			<result name="success">/uploadSuccess.jsp</result>
+			<result name="input">/fileUpload.jsp</result>
+		</action>
+
+
+	</package>
+
+	<!-- 使用Convention插件,实现约定大于配置的零配置文件风格. 特殊的Result路径在Action类中使用@Result设定. -->
+
+</struts>

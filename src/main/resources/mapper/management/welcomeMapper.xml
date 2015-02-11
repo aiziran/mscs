@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="welcome">
+
+	<!--欢迎页面初始化查询公告list -->
+	<select id="retrieveSystemNoticeList" parameterType="cdata"
+		resultType="cdata">
+     <![CDATA[
+			SELECT notice_id "noticeId", 
+			       notice_title "noticeTitle", 
+			       create_date "createDate"
+			  FROM tb_notice_board
+		]]>
+	</select>
+	<!--未审批订单数查询 -->
+	<select id="retrieveNotApprovedOrderCnt" parameterType="cdata"
+		resultType="cdata">
+     <![CDATA[
+		 SELECT COUNT(DISTINCT ORDER_NO)  "orderCnt"
+			  FROM TB_PURCHAS_DETAIL
+			 WHERE APPROVE_STATUS = 'N'
+		]]>
+	</select>
+	<!--未审批订单数查询 xin yun yun 2010-02-21 -->
+	<select id="retrieveNotMaintenanceDrugCnt" parameterType="cdata"
+		resultType="cdata">
+     <![CDATA[
+    SELECT COUNT(1) "drugCnt"
+        FROM tb_drug_dict td
+       WHERE td.chin_west_drug IS NULL
+    	 and td.pharma_class IS NULL
+    	 and td.drug_form IS NULL
+    	 and td.medc_insur_flag IS NULL
+    	 and td.prescript_flag IS NULL
+    	 and td.abc_class IS NULL
+   	     and td.toxi_property IS NULL
+   		 and td.special_drug IS NULL
+   	 	 and td.aid_flag IS NULL
+    	 and td.drug_method IS NULL
+    	 AND (td.direct_send_state != 'Y' OR td.aid_flag IS NULL)
+     	 and td.BAKUP2 IS NULL
+     	 and td.bakup3 IS NULL
+     	 and  NVL(td.drug_state,'') != 'N'
+	  		]]>
+	</select>
+	<!-- 出入库库存最后导入日期 -->
+	<select id="retrieveLastImportDate" parameterType="cdata"
+		resultType="cdata">
+       <![CDATA[
+ 		SELECT to_char(t.start_date,'YYYY-MM-DD') "startDate"  ,
+		       to_char(t.end_date,'YYYY-MM-DD') "endDate",
+		       to_char(t.create_date,'YYYY-MM-DD HH24:MI:SS') "createDate"
+		  FROM tb_import_log t
+		 WHERE t.create_date = (SELECT MAX(create_date) FROM tb_import_log)
+ 		]]>
+	</select>
+	<!--欢迎页面公告详情查看 -->
+	<select id="retrieveSystemNoticeDetail" parameterType="cdata"
+		resultType="cdata">
+       <![CDATA[
+ 			SELECT notice_id "noticeId",
+			       notice_title "noticeTitle",
+			       notice_content "noticeContent",
+			       start_date "startDate",
+			       end_date "endDate",
+			       (SELECT t.user_name FROM com_user_m t WHERE t.user_id = tb.create_by)  "createBy",
+			       create_date "createDate",
+			       (SELECT t.user_name FROM com_user_m t WHERE t.user_id = tb.update_by) "updateBy",
+			       update_date "updateDate"
+			  FROM tb_notice_board tb
+			 WHERE notice_id = #{noticeId}
+ 		]]>
+	</select>
+	<!-- 查询最新公告 -->
+
+	<select id="selectNotice" parameterType="cdata" resultType="cdata">
+		SELECT *
+		FROM
+		notice WHERE ishomepage = 1 AND (DATE(validity) > DATE(NOW()) OR(
+		DATE(validity) = DATE(NOW()) AND TIME(validity) >= TIME(NOW())))
+		ORDER BY sethomepagetime LIMIT 3
+	</select>
+
+	<!-- 查询最新会议 -->
+
+	<select id="selectAttention" parameterType="string" resultType="cdata">
+		SELECT *
+		FROM
+		conference,participant
+		WHERE (cstatus = 1 or cstatus=4) AND ((conference.id =
+		participant.conferenceid AND participantid=#{user_id})OR
+		participants='全体员工') AND ( startdate > DATE(NOW()) OR ( startdate =
+		DATE(NOW()) )) GROUP BY conference.id
+		ORDER BY startdate ,starttime DESC LIMIT 3
+	</select>
+	<!--查询最新未读邮件 -->
+	<select id="selectEmailList" parameterType="cdata" resultType="cdata">
+		SELECT *,( SELECT c.user_name FROM com_user_m c WHERE
+		c.user_id=sendto) "sendtouser" FROM email WHERE `read`=1 AND
+		OWNER=#{user_id} AND ownertype=2 ORDER BY createtime DESC LIMIT 3
+	</select>
+	<!--查询房地产新闻最新的前三条 -->
+	<select id="selectEstatenList" parameterType="cdata" resultType="cdata">
+		SELECT *,(SELECT c.user_name FROM com_user_m c WHERE
+		c.USER_ID=createuser) "createusername"
+		from estaten
+		WHERE newstype=#{newstype} order by createtime desc limit 3
+	</select>
+	<!--查询个人提醒 -->
+	<select id="selectAffairsList" parameterType="cdata" resultType="cdata">
+		SELECT COUNT(*) "emailCount",1 FROM email WHERE OWNER=TRIM(#{user_id})
+		AND ownertype =2 and `read`=1
+		UNION
+		SELECT COUNT(*) "conferenceCount",2 FROM conference WHERE cstatus = 1
+		UNION
+		SELECT COUNT(l.id) "lendCount",3 FROM lendapproval l, lend ld WHERE
+		l.owner=#{user_id} AND l.lid=ld.id AND l.approvalstatus IS NULL
+		UNION
+		SELECT COUNT(app_result_id) "approvalCount",4 FROM app_result WHERE
+		dept_id=#{deptid} AND result=0 GROUP BY contractid 
+	</select>
+</mapper> 

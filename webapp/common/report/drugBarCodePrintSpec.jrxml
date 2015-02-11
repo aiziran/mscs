@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="report name"
+		 columnCount="2"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="277"
+		 columnSpacing="0"
+		 leftMargin="20"
+		 rightMargin="20"
+		 topMargin="30"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<queryString><![CDATA[SELECT distinct td.drug_id as drug_id, td.drug_name as drug_name, td.drug_spec, td.hos_drug_code,td.manufact_name
+  FROM tb_drug_dict      td,
+       tb_drug_name_dict tn,
+       tb_drug_type      wsettype,
+       tb_drug_type      medctype,
+       tb_drug_type      formtype,
+       tb_drug_type      pharmatype,
+       tb_drug_type      prescripttype,
+       tb_drug_type      methodtype,
+       tb_drug_type      toxitype,
+       tb_drug_type      abctype,
+       tb_drug_type      specialtype
+ WHERE td.drug_form = formtype.drug_type_code(+)
+   AND td.hos_drug_code = tn.hos_drug_code(+)
+   AND td.toxi_property = toxitype.drug_type_code(+)
+   AND td.drug_method = methodtype.drug_type_code(+)
+   AND td.pharma_class = pharmatype.drug_type_code(+)
+   AND td.medc_insur_flag = medctype.drug_type_code(+)
+   AND td.chin_west_drug = wsettype.drug_type_code(+)
+   AND td.prescript_flag = prescripttype.drug_type_code(+)
+   AND td.abc_class = abctype.drug_type_code(+)
+   AND td.special_drug = specialtype.drug_type_code(+)
+   and td.drug_state = 'Y'
+   and td.drug_id in(
+   '1000000971',
+   '1000001784'
+   )
+ ORDER BY td.hos_drug_code, drug_spec]]></queryString>
+
+	<field name="DRUG_ID" class="java.lang.String"/>
+	<field name="DRUG_NAME" class="java.lang.String"/>
+	<field name="DRUG_SPEC" class="java.lang.String"/>
+	<field name="HOS_DRUG_CODE" class="java.lang.String"/>
+	<field name="MANUFACT_NAME" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="153"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="25"
+						y="43"
+						width="107"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="10" isBold="true" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DRUG_NAME}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="132"
+						y="43"
+						width="36"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="10" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DRUG_SPEC}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="168"
+						y="43"
+						width="69"
+						height="14"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="宋体" pdfFontName="STSong-Light" size="8" pdfEncoding ="UniGB-UCS2-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{MANUFACT_NAME}]]></textFieldExpression>
+				</textField>
+				<line direction="TopDown">
+					<reportElement
+						x="15"
+						y="19"
+						width="533"
+						height="0"
+						key="line"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+</graphicElement>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="15"
+						y="88"
+						width="533"
+						height="1"
+						key="line"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+</graphicElement>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="15"
+						y="19"
+						width="1"
+						height="69"
+						forecolor="#000000"
+						key="line"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+</graphicElement>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="548"
+						y="18"
+						width="1"
+						height="69"
+						forecolor="#000000"
+						key="line"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+</graphicElement>
+				</line>
+				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="390"
+						y="26"
+						width="79"
+						height="56"
+						key="image-1"/>
+					<box></box>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA["d:/t.png"]]></imageExpression>
+				</image>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

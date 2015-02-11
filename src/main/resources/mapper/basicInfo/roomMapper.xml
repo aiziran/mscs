@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="roomManage">
+
+	<select id="roomList" parameterType="cdata" resultType="cdata">
+		SELECT r.*,
+		(select contractname from salecontract s where r.salecontractid=s.id)
+		"contractname"
+		FROM roomresource r
+		WHERE 1=1
+		<if test="rid !=null and rid!=''">
+			AND (id LIKE concat('%',trim(#{rid}),'%')) 
+		</if>
+		<if test="sublocation !=null and sublocation!=''">
+			AND (sublocation LIKE concat('%',trim(#{sublocation}),'%')) 
+		</if>
+		<if test="Contractstatus !=null and Contractstatus!=''">
+			AND (Contractstatus LIKE concat('%',trim(#{Contractstatus}),'%')) 
+		</if>
+		<if test="paystatus !=null and paystatus!=''">
+			AND (paystatus LIKE concat('%',trim(#{paystatus}),'%')) 
+		</if>
+
+		order by id desc
+
+	</select>
+
+	<select id="roomInput" parameterType="cdata" resultType="cdata">
+		INSERT
+		INTO roomresource(sublocation, buildlocation,
+		unit,room,Contractstatus,begintime,endtime,paystatus,salecontractid)
+		VALUES(#{sublocation},#{
+		buildlocation},#{unit},#{room},#{Contractstatus},#{begintime},#{endtime},#{paystatus},#{salecontractid})
+	</select>
+
+	<select id="roomDelete" parameterType="cdata" resultType="cdata">
+		DELETE
+		FROM roomresource WHERE id=#{id}
+	</select>
+
+	<select id="roomUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE
+		roomresource SET
+		sublocation=#{sublocation},
+		buildlocation=#{buildlocation},
+		unit=#{unit},
+		room=#{room},
+		Contractstatus=#{Contractstatus},
+		begintime=#{begintime},
+		endtime=#{endtime},
+		paystatus=#{paystatus},
+		salecontractid=#{salecontractid}
+		WHERE id=#{id}
+	</select>
+
+	<select id="roomSelect" parameterType="cdata" resultType="cdata">
+		SELECT r.*,
+		(select contractname from salecontract s where r.salecontractid=s.id)
+		"contractname"
+		FROM roomresource r
+		WHERE id=#{id}  
+	</select>
+
+</mapper>

@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userManage">
+	<!-- 登录 -->
+	<select id="userList" parameterType="cdata" resultType="cdata">
+		SELECT u.user_id "userId",
+		u.user_name "userName",
+		u.dept_id "deptId",
+		u.position "position",
+		r.role_name "roleName",
+		c.code_desc "codeDesc",
+		u.email "email",
+		u.use_flag "useFlag",
+		u.phone_no "phoneNo",
+		u.mobile_no "mobileNo",
+		u.fax_no "faxNo",
+		u.sub_dept_id "sub_dept_id",
+		u.address "address"
+		FROM com_user_m u LEFT OUTER JOIN (SELECT * FROM com_code WHERE use_flag =
+		'Y') c ON
+		u.POSITION=c.code_id LEFT OUTER JOIN com_auth_user a ON u.user_id=a.USER_ID
+		LEFT OUTER JOIN com_role_m r ON a.AUTH_CODE=r.ROLE_ID
+		WHERE 1 = 1
+		<if test="queryUserId !=null and queryUserId!=''">
+			AND (u.user_id LIKE concat('%',trim(#{queryUserId}),'%')) 
+		</if>
+		<if test="queryUserName!=null and queryUserName!=''">
+			AND (u.user_name LIKE concat('%',trim(#{queryUserName}),'%')) 
+		</if>
+		<if
+			test="queryDepartment!=null and queryDepartment!='' and queryDepartment neq '-1'">
+			AND (u.dept_id LIKE concat('%',trim(#{queryDepartment}),'%')) 
+	    </if>
+		<if test="queryRoleName!=null and queryRoleName!=''">
+			AND (r.role_name LIKE concat('%',trim(#{queryRoleName}),'%')) 
+	    </if>
+		ORDER BY
+		<if
+			test="selPageOrderBy!=null and selPageOrderBy != '' and selPageOrder!=null and selPageOrder != '' ">
+			${selPageOrderBy} ${selPageOrder}
+		     </if>
+		<if test="selPageOrderBy==null or selPageOrderBy == ''">
+			u.use_flag desc,u.user_id
+		     </if>
+	</select>
+	<select id="retrieveUserDetail" parameterType="cdata"
+		resultType="cdata">
+	  	<![CDATA[
+		   SELECT u.user_id "userId",
+           u.user_name "userName",
+           u.password "password",
+           u.email "email",
+           u.phone_no "phoneNo",
+           u.fax_no "faxNo",
+           u.create_by "createBy",
+           u.create_date "createDate",
+           u.use_flag "useFlag",
+           u.address "address",
+           u.dept_id "deptId",
+           u.position "position",
+           u.mobile_no "mobileNo",
+           u.notes "notes",
+           u.sub_dept_id "subDeptId",
+            u.sub_dept_id "sub_dept_id",
+             a.auth_code "code",
+           u.SUPPLIER_ID "supplierId",
+		   u.HOSPITAL_ID "hospitalId",
+		   u.url_list "urllist",
+		    (SELECT r.role_name FROM com_role_m r WHERE r.role_id=a.auth_code) "rolename"
+        FROM com_user_m u RIGHT OUTER JOIN 
+             (SELECT a.auth_code, co.role_name, a.user_id
+                  FROM com_auth_user a, com_role_m co
+                 WHERE co.role_id = a.auth_code) a
+                 ON a.user_id = u.user_id 
+       WHERE u.user_id = #{detailUserId}
+		]]>
+	</select>
+
+	<select id="isDeptUsing" parameterType="cdata" resultType="cdata">
+	<![CDATA[
+	SELECT COUNT(dept_id) AS "cnt" FROM com_user_m WHERE dept_id=#{deptId}
+	]]>
+	</select>
+	<update id="updateUserDetail" parameterType="cdata">
+	  	<![CDATA[
+	  		UPDATE com_user_m 
+	  		   SET user_name = #{userName},
+	  		       password = #{password},
+	  		       email = #{email},
+	  			   phone_no = #{phoneNo},
+	  			   fax_no = #{faxNo},
+	  			   update_by = #{createBy},
+	  			   update_date = CURDATE(),
+	  			   use_flag = #{useFlag},
+	  			   address = #{address},
+	  			   dept_id = #{department},
+	  			   position = #{position},
+	  			   mobile_no = #{mobileNo},
+	  			   notes = #{notes},
+	  			   sub_dept_id = #{dept.dept_id,jdbcType=VARCHAR},
+	  			   supplier_id = #{suppId},
+	  			   hospital_id = #{hosId},
+	  			   url_list = #{pagelist}
+			WHERE user_id = #{userId}
+		]]>
+	</update>
+
+	<select id="isUserIdUnique" parameterType="string" resultType="string">
+		select count(user_id) cnt from com_user_m t where user_id=#{userId}
+	</select>
+
+	<select id="checkUserName" parameterType="cdata" resultType="string">
+		SELECT COUNT(inputer) cnt FROM inventory WHERE inputer=#{userName}
+	</select>
+
+	<insert id="savePhotoLog" parameterType="cdata">
+		insert into
+		defectpicture (
+		filepath,
+		lineno,
+		remark,
+		defecttype,
+		type,
+		smallbagid,
+		uploadtime
+		)values(
+		#{path},
+		#{lineNum},
+		#{remark},
+		#{defectType},
+		#{type},
+		#{smallbagid},
+		NOW()
+		)
+		
+	</insert>
+	<select id="selectSmallBagId" parameterType="CData" resultType="cdata">
+	SELECT id AS smallbagid,createtime FROM smallbagcheck WHERE jihao=#{lineNum} GROUP BY id ORDER BY id DESC LIMIT 1
+	</select>
+	<insert id="createUser" parameterType="cdata">
+	  	<![CDATA[
+			INSERT INTO com_user_m (
+						user_id,
+						user_name,
+						password,
+						email,
+						phone_no,
+						fax_no,
+						create_by,
+						create_date,
+						use_flag,
+						address,
+						dept_id,
+						position,
+						mobile_no,
+						notes,
+						sub_dept_id,
+						SUPPLIER_ID,
+						HOSPITAL_ID,
+						url_list
+			) VALUES (
+						#{userId},
+			            #{userName},
+			            #{password},
+			            #{email,jdbcType=VARCHAR},
+			            #{phoneNo,jdbcType=VARCHAR},
+			            #{faxNo,jdbcType=VARCHAR},
+			            #{createBy,jdbcType=VARCHAR},
+			            CURDATE(),
+			            #{useFlag,jdbcType=VARCHAR},
+			            #{address,jdbcType=VARCHAR},
+			            #{department,jdbcType=VARCHAR},
+			            #{position,jdbcType=VARCHAR},
+			            #{mobileNo,jdbcType=VARCHAR},
+			            #{notes,jdbcType=VARCHAR},
+			            #{dept.dept_id,jdbcType=VARCHAR},
+			            #{supplierId,jdbcType=VARCHAR},
+			            #{hospitalId,jdbcType=VARCHAR},
+			            #{pagelist}
+			)
+		]]>
+	</insert>
+	<!--创建用户角色 shijinglong 2011-04-27 -->
+	<insert id="createUserRole" parameterType="cdata">
+		<![CDATA[
+		INSERT INTO   com_auth_user 
+		 			  (user_id,
+		               auth_code,
+		               create_date,
+		               create_by) 
+             VALUES  (#{userId},
+		              #{authId},
+		              CURDATE(),
+		              #{createBy})
+		]]>
+	</insert>
+	<insert id="createUserDept" parameterType="cdata">
+		<![CDATA[
+			INSERT INTO com_user_dept (
+						user_id,
+						dept_id,
+						create_by,
+						create_date
+			) VALUES (
+						#{userId},
+			            #{department},				        
+				        #{createBy},
+				        CURDATE()
+			)
+		]]>
+	</insert>
+	<insert id="createDeptRole" parameterType="cdata">
+  		<![CDATA[
+		INSERT INTO   com_user_dept 
+		 			  (
+		 			   user_id,
+		               dept_id,		               
+		               create_date,
+		               create_by )
+             VALUES  (
+             		  #{userId},
+		              #{chk},		              
+		              CURDATE(),
+		              #{createBy})
+		]]>
+	</insert>
+
+	<!-- 修改角色后先把com_auth_user中对应的userId角色权限删除 -->
+	<delete id="deleteUserRole" parameterType="cdata">
+  		<![CDATA[
+			DELETE FROM com_auth_user WHERE user_id = #{userId}
+		]]>
+	</delete>
+
+	<!-- 修改角色后先把com_user_dept中对应的userId部门权限删除 shijinglong 2010-04-28 -->
+	<delete id="deleteDeptRole" parameterType="cdata">
+  	<![CDATA[
+		DELETE FROM com_user_dept WHERE user_id = #{userId}
+		]]>
+	</delete>
+	<delete id="deleteUser" parameterType="cdata">
+		DELETE FROM com_user_m WHERE user_id = #{userId}
+  	</delete>
+
+
+	<!-- 修改密码 孙江帆 -->
+
+	<update id="updateUserPwd" parameterType="cdata">
+	  	<![CDATA[
+	  		UPDATE com_user_m 
+	  		   SET password = #{password},
+	  		       update_by = #{createBy},
+	  			   update_date = CURDATE()
+			WHERE user_id = #{userId}
+		]]>
+	</update>
+	<!-- 后台人员信息 -->
+	<select id="behandList" parameterType="cdata" resultType="cdata">
+		SELECT u.user_id "userId",
+		u.user_name "userName",
+		u.dept_id "deptId",
+		u.position "position",
+		r.role_name "roleName",
+		c.code_desc "codeDesc",
+		u.email "email",
+		u.use_flag "useFlag",
+		u.phone_no "phoneNo",
+		u.mobile_no "mobileNo",
+		u.fax_no "faxNo",
+		u.sub_dept_id "sub_dept_id",
+		u.address "address"
+		FROM com_user_m u LEFT OUTER JOIN (SELECT * FROM com_code WHERE use_flag =
+		'Y') c ON
+		u.POSITION=c.code_id LEFT OUTER JOIN com_auth_user a ON u.user_id=a.USER_ID
+		LEFT OUTER JOIN com_role_m r ON a.AUTH_CODE=r.ROLE_ID
+		WHERE r.ROLE_ID='1000080'
+		<if test="queryUserId !=null and queryUserId!=''">
+			AND (u.user_id LIKE concat('%',trim(#{queryUserId}),'%')) 
+		</if>
+		<if test="queryUserName!=null and queryUserName!=''">
+			AND (u.user_name LIKE concat('%',trim(#{queryUserName}),'%')) 
+		</if>
+
+		ORDER BY
+		<if
+			test="selPageOrderBy!=null and selPageOrderBy != '' and selPageOrder!=null and selPageOrder != '' ">
+			${selPageOrderBy} ${selPageOrder}
+		     </if>
+		<if test="selPageOrderBy==null or selPageOrderBy == ''">
+			u.use_flag desc,u.user_id
+		     </if>
+	</select>
+	<!-- 机手信息 -->
+	<select id="handerList" parameterType="cdata" resultType="cdata">
+		SELECT u.user_id "userId",
+		u.user_name "userName",
+		u.dept_id "deptId",
+		u.position "position",
+		r.role_name "roleName",
+		c.code_desc "codeDesc",
+		u.email "email",
+		u.use_flag "useFlag",
+		u.phone_no "phoneNo",
+		u.mobile_no "mobileNo",
+		u.fax_no "faxNo",
+		u.sub_dept_id "sub_dept_id",
+		u.address "address"
+		FROM com_user_m u LEFT OUTER JOIN (SELECT * FROM com_code WHERE use_flag =
+		'Y') c ON
+		u.POSITION=c.code_id LEFT OUTER JOIN com_auth_user a ON u.user_id=a.USER_ID
+		LEFT OUTER JOIN com_role_m r ON a.AUTH_CODE=r.ROLE_ID
+		WHERE r.ROLE_ID='1000078'
+		<if test="queryUserId !=null and queryUserId!=''">
+			AND (u.user_id LIKE concat('%',trim(#{queryUserId}),'%')) 
+		</if>
+		<if test="queryUserName!=null and queryUserName!=''">
+			AND (u.user_name LIKE concat('%',trim(#{queryUserName}),'%')) 
+		</if>
+
+		ORDER BY
+		<if
+			test="selPageOrderBy!=null and selPageOrderBy != '' and selPageOrder!=null and selPageOrder != '' ">
+			${selPageOrderBy} ${selPageOrder}
+		     </if>
+		<if test="selPageOrderBy==null or selPageOrderBy == ''">
+			u.use_flag desc,u.user_id
+		     </if>
+	</select>
+
+	<!-- 质检员信息 -->
+	<select id="inspectorList" parameterType="cdata" resultType="cdata">
+		SELECT u.user_id "userId",
+		u.user_name "userName",
+		u.dept_id "deptId",
+		u.position "position",
+		r.role_name "roleName",
+		c.code_desc "codeDesc",
+		u.email "email",
+		u.use_flag "useFlag",
+		u.phone_no "phoneNo",
+		u.mobile_no "mobileNo",
+		u.fax_no "faxNo",
+		u.sub_dept_id "sub_dept_id",
+		u.address "address"
+		FROM com_user_m u LEFT OUTER JOIN (SELECT * FROM com_code WHERE use_flag =
+		'Y') c ON
+		u.POSITION=c.code_id LEFT OUTER JOIN com_auth_user a ON u.user_id=a.USER_ID
+		LEFT OUTER JOIN com_role_m r ON a.AUTH_CODE=r.ROLE_ID
+		WHERE r.ROLE_ID='1000079'
+		<if test="queryUserId !=null and queryUserId!=''">
+			AND (u.user_id LIKE concat('%',trim(#{queryUserId}),'%')) 
+		</if>
+		<if test="queryUserName!=null and queryUserName!=''">
+			AND (u.user_name LIKE concat('%',trim(#{queryUserName}),'%')) 
+		</if>
+
+		ORDER BY
+		<if
+			test="selPageOrderBy!=null and selPageOrderBy != '' and selPageOrder!=null and selPageOrder != '' ">
+			${selPageOrderBy} ${selPageOrder}
+		     </if>
+		<if test="selPageOrderBy==null or selPageOrderBy == ''">
+			u.use_flag desc,u.user_id
+		     </if>
+	</select>
+	<!-- 查找所有的操作界面的URL -->
+	<select id="findAllURL" resultType="cdata">
+		SELECT
+		  id,
+		  url,
+		  urlname
+		FROM com_user_operation
+		where 1=1
+		order by rankstr
+	</select>
+</mapper> 

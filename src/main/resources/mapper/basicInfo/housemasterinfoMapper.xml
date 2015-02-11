@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="housemasterinfoManage">
+	<!-- 查询列表 -->
+	<select id="housemasterinfoList" parameterType="cdata"
+		resultType="cdata">
+		SELECT h.*,
+		(select contractname from contract where
+		contract.identifier=h.contractnum) "contractname"
+		FROM housemasterinfo h
+		where 1=1
+		<if test="hname !=null and hname!=''">
+			AND (hname LIKE concat('%',trim(#{hname}),'%')) 
+		</if>
+		<if test="phone !=null and phone!=''">
+			AND (phone LIKE concat('%',trim(#{phone}),'%')) 
+		</if>
+		<if test="address !=null and address!=''">
+			AND (address LIKE concat('%',trim(#{address}),'%')) 
+		</if>
+		<if test="unit !=null and unit!=''">
+			AND (unit LIKE concat('%',trim(#{unit}),'%')) 
+		</if>
+	</select>
+	<!-- 删除 -->
+	<select id="housemasterinfoDelete" parameterType="cdata"
+		resultType="cdata">
+		DELETE FROM housemasterinfo
+		WHERE
+		id = #{id} ;
+	</select>
+	<!-- 新增 -->
+	<select id="housemasterinfoInsert" parameterType="cdata"
+		resultType="cdata">
+		INSERT INTO housemasterinfo
+		(
+		hname,
+		contractnum,
+		unit,
+		address,
+		phone
+		)
+		VALUES
+		(
+		#{hname},
+		#{contractnum},
+		#{unit},
+		#{address},
+		#{phone}
+		)
+	</select>
+	<!-- 查询（id） -->
+	<select id="housemasterinfoSelectId" parameterType="cdata"
+		resultType="cdata">
+		SELECT h.*,
+		(select contractname from contract where
+		contract.identifier=h.contractnum) "contractname"
+		FROM housemasterinfo h
+		where id=#{id}
+	</select>
+	<!-- 修改 -->
+	<select id="housemasterinfoUpdate" parameterType="cdata"
+		resultType="cdata">
+		UPDATE housemasterinfo
+		SET
+		hname = #{hname} ,
+		contractnum = #{contractnum} ,
+		unit = #{unit} ,
+		address = #{address} ,
+		phone = #{phone}
+
+		WHERE
+		id = #{id} 
+	</select>
+
+
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="importExcelManager">
+	<!-- 分页查找 -->
+	<select id="list" parameterType="CData" resultType="CData">
+		SELECT * FROM importexcel where currentdate = #{currentdate} or currentdate = #{currentdate1}
+		order by id desc
+	</select>
+	<!-- 查找batch -->
+	<select id="findBatch" parameterType="java.util.Map" resultType="cdata">
+		SELECT * FROM importexcel where order1 = #{order}
+	</select>
+	<!-- 插入Materials -->
+	<insert id="insertexcel" parameterType="com.csValue.basicInfor.importexcelManage.entity.Materials">
+		INSERT INTO importexcel
+            (plant,
+			 resource,
+			 pversion,
+             order1,
+             material,
+             description,
+             batch,
+             startdate,
+             starttime,
+             enddate,
+             endtime,
+             plannedquantity,
+             deliveredqty,
+             confirmedqty,
+             unitofmeasure,
+             description2,
+             purchaseorder,
+             poitem,
+             STATUS,
+             currentdate)
+		VALUES (#{plant},
+			#{resource},
+			#{pversion},
+			#{order},
+	        #{material},
+	        #{description},
+	        #{batch},
+	        #{startdate},
+	        #{starttime},
+	        #{enddate},
+	        #{endtime},
+	        #{plannedquantity},
+	        #{deliveredqty},
+	        #{confirmedqty},
+	        #{unitofmeasure},
+	        #{description2},
+	        #{purchaseorder},
+	        #{poitem},
+	        #{status},
+	        #{currentdate})
+	</insert>
+	<!-- 更新Materials -->
+	<update id="updateexcel" parameterType="com.csValue.basicInfor.importexcelManage.entity.Materials">
+		UPDATE importexcel
+		SET plant = #{plant},
+		  resource = #{resource},
+		  pversion = #{pversion},
+		  order1 = #{order},
+		  material = #{material},
+		  description = #{description},
+		  batch = #{batch},
+		  startdate = #{startdate},
+		  starttime = #{starttime},
+		  enddate = #{enddate},
+		  endtime = #{endtime},
+		  plannedquantity = #{plannedquantity},
+		  deliveredqty = #{deliveredqty},
+		  confirmedqty = #{confirmedqty},
+		  unitofmeasure = #{unitofmeasure},
+		  description2 = #{description2},
+		  purchaseorder = #{purchaseorder},
+		  poitem = #{poitem},
+		  status = #{status},
+		  currentdate = #{currentdate}
+		where id = #{id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="popupManage">
+
+	<select id="retrieveCartypeListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT
+		ct.id "carid",
+		ct.carname "carname",
+		ct.carframeid "carframeid"
+		FROM carinfo ct where manageid=#{approver}
+		
+	</select>
+	<select id="retrieveDeptPopup" parameterType="cdata" resultType="cdata">
+		SELECT DEPT_ID "deptid",DEPT_NAME "deptname" FROM com_dept_m
+	</select>
+
+	<select id="lendDetail" parameterType="cdata" resultType="cdata">
+		SELECT
+		(SELECT user_name FROM com_user_m WHERE user_id=OWNER)"username"
+		,(SELECT role_name FROM com_role_m WHERE role_id=(SELECT auth_code
+		FROM com_auth_user WHERE user_id=OWNER))"rolename",
+		IF(l.approvalstatus IS NULL ,'未审批',IF(l.approvalstatus=0,'同意','拒绝'))
+		"status"
+		FROM lendapproval l , lend ld WHERE l.lid=ld.id AND l.lid=#{lid}
+	</select>
+
+
+	<select id="lendcheck" parameterType="cdata" resultType="cdata">
+		SELECT (SELECT user_name FROM com_user_m WHERE user_id=OWNER)"username"
+		,(SELECT role_name FROM com_role_m WHERE role_id=(SELECT auth_code
+		FROM com_auth_user WHERE user_id=OWNER))"rolename",
+		IF(l.approvalstatus IS NULL ,'未审批',IF(l.approvalstatus=0,'同意','拒绝'))
+		"status"
+		FROM lendapproval l , lend ld WHERE l.lid=ld.id AND l.lid=#{lid}
+	</select>
+
+	<!-- 获取档案室列表 -->
+	<select id="retrieveArchivesListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT * FROM archives 
+	</select>
+	<!-- 获取档案室内柜子列表 -->
+	<select id="retrieveCabinetListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT * FROM cabinet where archivesid=#{archivesid}
+	</select>
+	<!-- 获取档案室内柜子内的格子列表 -->
+	<select id="retrieveGridListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT id, gridnum FROM grid WHERE archivesid=#{archivesid}
+		and cabinetid=#{cabinetid}
+	</select>
+	<!-- 获取用户列表 -->
+	<select id="retrieveUserListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT * FROM com_user_m 
+	</select>
+	<!-- 获取部门列表 -->
+	<select id="retrieveDeptListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT * FROM com_dept_m
+	</select>
+	<!-- 获取发送人 -->
+	<select id="sendto" parameterType="cdata" resultType="cdata">
+		SELECT * FROM com_user_m 
+	</select>
+	<!-- 获取档案类型列表 -->
+	<select id="retrieveTypeListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT * FROM archivetype
+	</select>
+
+	<!--借出记录查询 -->
+	<select id="loanNotesListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT l.*,
+		(select name from archive where
+		archive.id=l.aid) archivename
+		FROM lend l WHERE approvalstatus = 2
+	</select>
+
+	<!--打印记录查询 -->
+	<select id="printNotesListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT * FROM printlog 
+	</select>
+
+	<!--导出记录查询 -->
+	<select id="exportNotesListPopup" parameterType="cdata"
+		resultType="cdata">
+		SELECT e.*,
+		(select name from archive where
+		archive.id=e.aid) archivename
+		FROM exportlog e 
+	</select>
+
+	<!-- 获取合同类型列表 -->
+	<select id="contractType" parameterType="cdata" resultType="cdata">
+		SELECT contractid,contractname,identifier FROM contract where 1=1
+		<if test="identifier!=null and identifier!= ''">
+			AND (identifier LIKE concat('%',trim(#{identifier}),'%')) 
+		</if>
+		<if test="contractname!=null and contractname != ''">
+			AND (contractname LIKE concat('%',trim(#{contractname}),'%')) 
+		</if>
+	</select>
+	<!--副总编号 -->
+	<select id="selectDeputy" parameterType="cdata" resultType="cdata">
+		SELECT b.dept_id,a.user_id ,user_name ,dept_name FROM
+		com_user_m,(SELECT user_id FROM com_auth_user WHERE auth_code =
+		'1000075') a,com_dept_m b WHERE com_user_m.user_id = a.user_id AND
+		com_user_m.dept_id = b.dept_id
+	</select>
+
+	<!--打印记录查询 -->
+	<select id="selectArchiveName" parameterType="cdata" resultType="string">
+		SELECT a.name FROM archive a,lend l WHERE l.aid=a.id AND l.id=#{aid}
+	</select>
+	<select id="selectUser" parameterType="cdata" resultType="string">
+		select
+		user from lend where id=#{rlid}
+
+	</select>
+
+	<!-- 获取部门列表 -->
+	<select id="salecontractList" parameterType="cdata" resultType="cdata">
+		SELECT * FROM salecontract
+	</select>
+	<select id="officesupplyname" parameterType="cdata" resultType="cdata">
+		select id,name,returntype from officesupply
+	</select>
+	<!-- 获取生产线列表 -->
+	<select id="lineno" parameterType="cdata" resultType="cdata">
+		select *
+		from lineno
+	</select>
+	<!-- 品牌列表 -->
+	<select id="productor" parameterType="cdata" resultType="cdata">
+		select
+		distinct brand from productor  
+	</select>
+	<!-- 产品列表 -->
+	<select id="brand" parameterType="cdata" resultType="cdata">
+		select * from productor where 1=1
+		<if test="brand!=null and brand != ''">
+			AND brand=#{brand} 
+		</if>
+
+	</select>
+
+</mapper> 

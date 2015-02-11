@@ -1,0 +1,2117 @@
+/* CSS Document */
+	/**--------------------------------------------------------------
+system name		: polestar
+view ID			:
+program name    : 
+detail			: polestar / chinese default sytle sheet
+writer/date		: choi,hee-kang / 2007.03.22
+relation        :
+modify   		: 2007.03.22 / name / item
+-----------------------------------------------------------------**/
+	/* css style 
+width ; height ; background-color ; background-image ; font-size ; color ; text-decoration ; line-height ; font-weight ; text-align ; vertical-align ; padding */
+	/**00.global style************************************************************************************************************************************************/
+	/**00.01.global**/
+body {
+	margin: 0;
+	background-color: #405580;
+	font-family: "Simsun", Arial, sans-serif;
+	font-size: 12px;
+	color: #B8C3D9;
+	line-height: 16px;
+	scrollbar-face-color: #7D8FB3;
+	scrollbar-shadow-color: #4D628C;
+	scrollbar-highlight-color: #A3B1CC;
+	scrollbar-3dlight-color: #6C7FA6;
+	scrollbar-darkshadow-color: #002266;
+	scrollbar-track-color: #1D3973;
+	scrollbar-arrow-color: #B8C3D9;
+	margin: 0px
+}
+
+html,body {
+	height: 100%;
+	overflow: auto
+}
+
+body:active {
+	color: #B8C3D9
+}
+
+td {
+	font-family: "Simsun", Arial, sans-serif;
+	font-size: 12px;
+	line-height: 16px
+}
+
+th {
+	font-family: "Simsun", Arial, sans-serif;
+	font-size: 12px;
+	line-height: 16px
+}
+
+input {
+	background: Transparent;
+	font-family: "Simsun", Arial, sans-serif;
+	font-size: 12px;
+	color: #B8C3D9;
+	boder: 0
+}
+
+select {
+	background-color: #405580;
+	font-family: "Simsun", Arial, sans-serif;
+	font-size: 12px;
+	color: #B8C3D9;
+	border: 1px solid #7D8FB3
+}
+
+textarea {
+	background-color: #405580;
+	font-family: "Simsun", Arial, sans-serif;
+	font-size: 12px;
+	color: #B8C3D9;
+	border: 1px solid #7D8FB3;
+	clip: rect();
+	margin-top: 5px;
+	margin-bottom: 5px
+}
+
+div {
+	
+}
+
+p {
+	
+}
+
+img {
+	border: 0 none
+}
+
+/**00.02.link**/
+a {
+	text-decoration: none
+}
+
+a:link {
+	color: #99BBFF;
+	text-decoration: none
+}
+
+a:visited {
+	color: #99BBFF;
+	text-decoration: none
+}
+
+a:hover {
+	color: #FFFFFF;
+	text-decoration: none
+}
+
+a:active {
+	color: #7A96CC;
+	text-decoration: none
+}
+
+/**00.03.form**/
+.check_box {
+	background: Transparent;
+	border: 0 none
+}
+
+.radio_button {
+	background: Transparent;
+	border: 0 none
+}
+
+.select_box {
+	background-color: #405580;
+	font-size: 12px
+}
+
+.select_tree {
+	background-color: #405580;
+	font-size: 11px
+}
+
+.select_multi {
+	background-color: #002266;
+	font-size: 11px
+}
+
+/**01.login page**************************************************************************************************************************************************/
+	/**01.01.login page**/
+.body_login {
+	margin: 0;
+	background-color: #80BFFF
+}
+
+.login_bg {
+	background: url(/images/issm/login/bg_login.gif) repeat-x top
+}
+
+.login_box {
+	width: 620;
+	height: 320
+}
+
+.input.login {
+	height: 19px;
+	background-color: #8AA8E5;
+	border: solid 1px #CCDDFF;
+	font-family: "Simsun", Arial, sans-serif;
+	color: #FFFFFF;
+	line-height: 18px
+}
+
+.login_saveid {
+	font-family: "Tahoma", Arial, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	padding: 2 10 0 1
+}
+
+/**02.sub page****************************************************************************************************************************************************/
+	/**02.01.sub page common**/
+.body_sub {
+	margin: 0;
+	background-color: #405580
+}
+
+.body_popup {
+	margin: 0;
+	background-color: #405580
+}
+
+.btn_img {
+	vertical-align: text-bottom;
+	border: 0;
+	cursor: hand
+}
+
+.btn_disimg {
+	vertical-align: text-bottom;
+	border: 0
+}
+
+.iframe {
+	background: Transparent
+}
+
+/**02.02.frame space**/
+.Stop {
+	vertical-align: top;
+	text-align: center
+}
+
+.Smiddle {
+	height: 100%;
+	vertical-align: top;
+	text-align: center
+}
+
+.Sbottom {
+	height: 20px;
+	text-align: center;
+	padding: 0 0 2 0
+}
+
+.Scenter {
+	width: 100%;
+	height: 100%
+}
+
+.Sspace_Fleft {
+	width: 12px
+}
+
+.Sspace_left {
+	width: 0px
+}
+
+.Sspace_menu {
+	width: 180px;
+	vertical-align: top
+}
+
+.Sspace_center {
+	vertical-align: top;
+	text-align: center
+}
+
+.Sspace_right {
+	width: 12px
+}
+
+.Sspace_middle_top {
+	height: 15px
+}
+
+.Sspace_middle_bottom {
+	height: 15px
+}
+
+.Smenu {
+	width: 100%;
+	vertical-align: top
+}
+
+.Smenu_right {
+	width: 10px
+}
+
+/**02.03.input form**/
+input.input_enable {
+	height: 19px;
+	background-color: #405580;
+	border: solid 1px #7D8FB3;
+	clip: rect()
+}
+
+input.input_disable {
+	height: 19px;
+	background-color: #002266;
+	border: solid 1px #405580;
+	clip: rect()
+}
+
+input.Ienable_left {
+	height: 19px;
+	background-color: #405580;
+	border: solid 1px #7D8FB3;
+	clip: rect()
+}
+
+input.Ienable_center {
+	height: 19px;
+	background-color: #405580;
+	border: solid 1px #7D8FB3;
+	text-align: center;
+	clip: rect()
+}
+
+input.Ienable_right {
+	height: 19px;
+	background-color: #405580;
+	border: solid 1px #7D8FB3;
+	text-align: right;
+	clip: rect()
+}
+
+input.Idisable_left {
+	height: 19px;
+	background-color: #002266;
+	border: solid 1px #405580;
+	clip: rect()
+}
+
+input.Idisable_right {
+	height: 19px;
+	background-color: #002266;
+	border: solid 1px #405580;
+	text-align: right;
+	clip: rect()
+}
+
+input.Itrans_left {
+	height: 19px;
+	background: Transparent;
+	border: solid 0px #7D8FB3;
+	clip: rect()
+}
+
+input.Itrans_center {
+	height: 19px;
+	background: Transparent;
+	border: solid 0px #7D8FB3;
+	text-align: center;
+	clip: rect()
+}
+
+input.Itrans_right {
+	height: 19px;
+	background: Transparent;
+	border: solid 0px #7D8FB3;
+	text-align: right;
+	clip: rect()
+}
+
+input.none {
+	height: 19px;
+	background: Transparent;
+	border: solid 0px #7D8FB3;
+	text-align: center;
+	vertical-align: middle;
+	clip: rect()
+}
+
+input.trans {
+	height: 19px;
+	background: Transparent;
+	border: solid 0px #7D8FB3;
+	clip: rect()
+}
+
+textarea.txt_enable {
+	background-color: #405580;
+	border: 1px solid #7D8FB3;
+	margin: 1px;
+	clip: rect()
+}
+
+textarea.txt_disable {
+	background-color: #002266;
+	border: 1px solid #405580;
+	margin: 1px;
+	clip: rect()
+}
+
+/**02.04.top area**/
+.Stop_center {
+	vertical-align: top
+}
+
+.Stop_Ctop {
+	height: 19px;
+	vertical-align: top;
+	background-image: url(/images/issm/top/bg_ttop_center.gif)
+}
+
+.Stop_Cmiddle {
+	height: 60px;
+	vertical-align: top;
+	background-image: url(/images/issm/top/bg_tmiddle_center.gif)
+}
+
+.Stop_Cbottom {
+	height: 31px;
+	vertical-align: top;
+	background-image: url(/images/issm/top/bg_tbottom_center.gif)
+}
+
+.Stop_Ctop_left {
+	background: url(/images/issm/top/bg_ttop_left.gif) no-repeat left top;
+	padding: 0 0 0 10
+}
+
+.Stop_Ctop_right {
+	background: url(/images/issm/top/bg_ttop_right.gif) no-repeat right top;
+	font-size: 11px;
+	color: #97AFE0;
+	text-align: right;
+	vertical-align: bottom;
+	padding: 0 10 1 0
+}
+
+.Stop_Cmiddle_left {
+	width: 15px;
+	background: url(/images/issm/top/bg_tmiddle_left.gif) no-repeat left top
+}
+
+.Stop_Cmiddle_center {
+	vertical-align: top;
+	text-align: center;
+	padding: 8 0 0 0
+}
+
+.Stop_Cmiddle_nav {
+	width: 60px;
+	text-align: center
+}
+
+.Stop_Cmiddle_right {
+	width: 15px;
+	background: url(/images/issm/top/bg_tmiddle_right.gif) no-repeat right
+		top
+}
+
+.Stop_Cbottom_left {
+	width: 40%;
+	background: url(/images/issm/top/bg_tbottom_left.gif) no-repeat left top
+		;
+	padding: 0 0 8 10
+}
+
+.Stop_Cbottom_center {
+	width: 20%;
+	vertical-align: top;
+	text-align: center;
+	padding: 4 0 0 0;
+	white-space: nowrap
+}
+
+.Stop_Cbottom_right {
+	width: 40%;
+	background: url(/images/issm/top/bg_tbottom_right.gif) no-repeat right
+		top;
+	color: #CCDDFF;
+	text-align: right;
+	padding: 0 10 3 0
+}
+
+.Stop_Cbottom_space {
+	height: 15px
+}
+
+/**02.05.top menu**/
+.menu {
+	width: 180px
+}
+
+.menu_outline {
+	width: 100%;
+	background-color: #6688CC;
+	border: 1px solid #CCDDFF
+}
+
+.menu_1depth {
+	height: 20;
+	background: url(/images/issm/top/menu_bullet01_off.gif) no-repeat 6 5;
+	border-bottom: 1px solid #7191D1;
+	color: #DAE2F2;
+	padding: 0 7 0 18
+}
+
+.menu_1depth_mover {
+	height: 20;
+	background: url(/images/issm/top/menu_bullet01_on.gif) no-repeat 6 5
+		#295FCC;
+	border-bottom: 1px solid #7191D1;
+	color: #FFFFFF;
+	padding: 0 7 0 18;
+	cursor: hand
+}
+
+.menu_2depth {
+	height: 18;
+	background: url(/images/issm/top/menu_bullet02_off.gif) no-repeat 13 6
+		#567BC4;
+	border-bottom: 1px solid #6184C9;
+	color: #DAE2F2;
+	line-height: 14px;
+	padding: 0 7 0 21
+}
+
+.menu_2depth_mover {
+	height: 18;
+	background: url(/images/issm/top/menu_bullet02_on.gif) no-repeat 13 6
+		#295FCC;
+	border-bottom: 1px solid #6184C9;
+	color: #FFFFFF;
+	line-height: 14px;
+	padding: 0 7 0 21;
+	cursor: hand
+}
+
+/**02.06.left area**/
+.tree_outline {
+	width: 100%;
+	background-color: #5C7099
+}
+
+.tree_bg {
+	background-color: #002266;
+	vertical-align: top
+}
+
+.tree_contents {
+	width: 100%;
+	vertical-align: top;
+	padding: 4 0 0 2
+}
+
+.tree_tab {
+	width: 100%;
+	height: 20px;
+	background-image: url(/images/issm/body/tree_tab_enable.gif);
+	border-top: 1px solid #5C7099;
+	border-left: 1px solid #5C7099;
+	border-right: 1px solid #5C7099
+}
+
+.tree_tab_line {
+	width: 1px;
+	background-color: #5C7099
+}
+
+.tree_tab_enable {
+	text-align: center;
+	color: #DAE2F2;
+	font-weight: bold;
+	line-height: 14px;
+	padding: 1 0 0 0
+}
+
+.tree_tab_disable {
+	background-image: url(/images/issm/body/tree_tab_disable.gif);
+	text-align: center;
+	color: #6688CC;
+	line-height: 14px;
+	padding: 1 0 0 0
+}
+
+.tree_tab_mover {
+	background-image: url(/images/issm/body/tree_tab_disable.gif);
+	text-align: center;
+	color: #FFFFFF;
+	line-height: 14px;
+	padding: 1 0 0 0;
+	cursor: hand
+}
+
+.tree_tab_select {
+	height: 25px;
+	text-align: center;
+	padding: 1 0 0 0
+}
+
+.tree_head {
+	width: 100%;
+	height: 25px;
+	background-image: url(/images/issm/body/table_head.gif)
+}
+
+.tree_head_left {
+	width: 25%;
+	background: url(/images/issm/body/table_head_left.gif) no-repeat left
+		top;
+	text-align: left;
+	padding: 0 0 2 8;
+	white-space: nowrap
+}
+
+.tree_head_title {
+	width: 50%;
+	text-align: center;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding: 1 0 0 0
+}
+
+.tree_head_right {
+	width: 25%;
+	background: url(/images/issm/body/table_head_right.gif) no-repeat right
+		top;
+	text-align: right;
+	padding: 2 5 0 0
+}
+
+.defaultTreeTable {
+	margin: 0;
+	padding: 0;
+	border: 0
+}
+
+.containerTableStyle {
+	overflow: auto;
+	font-size: 11px
+}
+
+.standartTreeRow {
+	-moz-user-select: none
+}
+
+.selectedTreeRow {
+	background-color: #0055FF;
+	color: #FFFFFF;
+	-moz-user-select: none
+}
+
+.standartTreeImage {
+	width: 16px;
+	height: 18px;
+	overflow: hidden;
+	border: 0;
+	padding: 0;
+	margin: 0
+}
+
+.hiddenRow {
+	width: 1px;
+	overflow: hidden
+}
+
+.dragSpanDiv {
+	background-color: #0000CC;
+	border: thin #99BBFF solid 1px;
+	padding: 0 4 0 0
+}
+
+.dragSpanDiv td {
+	font-size: 11px;
+	color: #FFFFFF;
+	padding: 1 0 0 2
+}
+
+.contextMenu {
+	background-color: #6688CC;
+	text-align: left;
+	padding: 0 0 0 2;
+	margin: 0 1 0 1;
+	cursor: default
+}
+
+.contextMenu td {
+	font: 12px "Simsun", Arial, sans-serif;
+	color: #DAE2F2;
+	padding: 1 0 0 0
+}
+
+.contextMenuOver {
+	background-color: #295FCC;
+	text-align: left;
+	padding: 0 0 0 2;
+	margin: 0 1 0 1;
+	cursor: default
+}
+
+.contextMenuOver td {
+	font: 12px "Simsun", Arial, sans-serif;
+	color: #FFFFFF;
+	padding: 1 0 0 0
+}
+
+.contextMenuDown {
+	background-color: #295FCC;
+	text-align: left;
+	padding: 0 0 0 2;
+	margin: 0 1 0 1;
+	cursor: default
+}
+
+.contextMenuDown td {
+	font: 12px "Simsun", Arial, sans-serif;
+	color: #FFFFFF;
+	padding: 1 0 0 0
+}
+
+/*.menuTable			{ border:solid 1px #7D8FB3; margin:0px; padding:2 1 2 1 }*/
+.menuTable {
+	background-color: #6688CC;
+	border: solid #CCDDFF 1px;
+	margin: 0px;
+	-moz-user-select: none;
+	padding: 0px
+}
+
+.secondMenuTable {
+	background-color: #6688CC;
+	border: solid #CCDDFF 1px;
+	margin: 0px;
+	-moz-user-select: none;
+	padding: 0 1 0 2
+}
+
+.menudivider {
+	background-color: #6688CC;
+	border: solid #CCDDFF 1px;
+	height: 100%;
+	width: 2px;
+	overflow: hidden;
+	vertical-align: middle;
+	margin: 1 0 2 0
+}
+
+.menudividery {
+	background-color: #6688CC;
+	border: solid #CCDDFF 1px;
+	height: 2px;
+	width: 100%;
+	overflow: hidden
+}
+
+/**03.data table**************************************************************************************************************************************************/
+	/**03.01.data table common**/
+.table_head {
+	width: 100%;
+	height: 25px;
+	background-image: url(/images/issm/body/table_head.gif)
+}
+
+.table_head_left {
+	width: 25%;
+	background: url(/images/issm/body/table_head_left.gif) no-repeat left
+		top;
+	text-align: left;
+	padding: 0 0 2 8
+}
+
+.table_head_title {
+	width: 50%;
+	text-align: center;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding: 1 0 0 0
+}
+
+.table_head_right {
+	width: 25%;
+	background: url(/images/issm/body/table_head_right.gif) no-repeat right
+		top;
+	text-align: right;
+	padding: 2 5 0 0
+}
+
+.table_htab {
+	width: 100%
+}
+
+.table_htab_left {
+	width: 27px;
+	background-image: url(/images/issm/body/table_htab_distitle.gif);
+	vertical-align: top
+}
+
+.table_htab_center {
+	width: ;
+	background-image: url(/images/issm/body/table_htab_distitle.gif);
+	vertical-align: top
+}
+
+.table_htab_right {
+	width: auto;
+	background-image: url(/images/issm/body/table_htab_distitle.gif);
+	vertical-align: top;
+	text-align: right
+}
+
+.table_htab_space {
+	width: 1px;
+	background-color: #405580
+}
+
+.table_htab_bleft {
+	width: 5px;
+	height: 25px;
+	background: url(/images/issm/body/table_htab_enleft.gif) no-repeat left
+		top
+}
+
+.table_htab_bullet {
+	width: 17px;
+	background-image: url(/images/issm/body/table_head.gif);
+	text-align: center;
+	padding: 0 0 2 0
+}
+
+.table_htab_bright {
+	width: 5px;
+	height: 25px;
+	background: url(/images/issm/body/table_head.gif) no-repeat right top
+}
+
+.table_htab_object {
+	height: 25px;
+	float: left
+}
+
+.table_htab_enleft {
+	width: 5px;
+	height: 25px;
+	background: url(/images/issm/body/table_htab_enleft.gif) no-repeat left
+		top
+}
+
+.table_htab_entitle {
+	height: 25px;
+	background-image: url(/images/issm/body/table_htab_entitle.gif);
+	text-align: center;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding: 1 0 0 0
+}
+
+.table_htab_enright {
+	width: 5px;
+	height: 25px;
+	background: url(/images/issm/body/table_htab_enright.gif) no-repeat
+		right top
+}
+
+.table_htab_disleft {
+	width: 5px;
+	background: url(/images/issm/body/table_htab_disleft.gif) no-repeat left
+		top
+}
+
+.table_htab_distitle {
+	height: 25px;
+	background-image: url(/images/issm/body/table_htab_distitle.gif);
+	text-align: center;
+	color: #CCD4E3;
+	padding: 1 0 0 0
+}
+
+.table_htab_disMover {
+	height: 25px;
+	background-image: url(/images/issm/body/table_htab_distitle.gif);
+	text-align: center;
+	color: #FFFFFF;
+	padding: 1 0 0 0;
+	cursor: hand
+}
+
+.table_htab_disMout {
+	height: 25px;
+	background-image: url(/images/issm/body/table_htab_distitle.gif);
+	text-align: center;
+	color: #CCD4E3;
+	padding: 1 0 0 0
+}
+
+.table_htab_disright {
+	width: 5px;
+	height: 25px;
+	background: url(/images/issm/body/table_htab_disright.gif) no-repeat
+		right top
+}
+
+.table_htab_btnleft {
+	width: 5px;
+	background: url(/images/issm/body/table_htab_disleft.gif) no-repeat
+		right top
+}
+
+.table_htab_btn {
+	height: 25px;
+	background: url(/images/issm/body/table_htab_distitle.gif);
+	text-align: right;
+	padding: 2 0 0 0
+}
+
+.table_htab_btnright {
+	width: 5px;
+	background: url(/images/issm/body/table_htab_disright.gif) no-repeat
+		right top
+}
+
+.table_topline {
+	width: 100%;
+	height: 1px;
+	background-color: #0080FF
+}
+
+.table_outline {
+	width: 100%;
+	background-color: #5C7099
+}
+
+.table_bg {
+	background-color: #002266
+}
+
+.table_sspace {
+	height: 15px;
+	background-image: url(/images/issm/body/table_shadow.gif)
+}
+
+.table_vspace {
+	height: 10px
+}
+
+.table_stab_all {
+	width: 100%;
+	height: 19px
+}
+
+.table_stab_left {
+	vertical-align: top
+}
+
+.table_stab_right {
+	text-align: right;
+}
+
+.table_stab_object {
+	float: left
+}
+
+#table_stab {
+	display: inline;
+	font-size: 12px;
+	line-height: normal;
+	white-space: nowrap;
+}
+
+#table_stab ul {
+	display: inline;
+	vertical-align: bottom;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-left: solid 1px #405580;
+}
+
+#table_stab>ul a {
+	width: auto;
+}
+
+#table_stab li {
+	width: .1em;
+	display: inline;
+	background: url(/images/issm/body/tree_tab_enable.gif) repeat-x left top
+		;
+	margin: 0px;
+	padding-left: 6px;
+	border-top: solid 1px #405580;
+	border-right: solid 1px #405580;
+	text-align: center;
+}
+
+#table_stab a {
+	width: .1em;
+	background: url(/images/issm/body/tree_tab_enable.gif) repeat-x right
+		top;
+	padding: 4px 6px 2px 0px;
+	text-decoration: none;
+	color: #B8C7E6;
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#table_stab a {
+	float: none;
+}
+
+/* End IE5-Mac hack */
+#table_stab a:hover {
+	color: #DDE2ED;
+}
+
+#table_stab #current {
+	background-image: url(/images/issm/body/table_ohead.gif);
+}
+
+#table_stab #current a {
+	background-image: url(/images/issm/body/table_ohead.gif);
+	font-weight: bold;
+	color: #DDE2ED;
+	padding: 4px 6px 2px 0px;
+}
+
+/**03.02.link**/
+a.paging_num:link {
+	color: #293D66;
+	text-decoration: none
+}
+
+a.paging_num:visited {
+	color: #293D66;
+	text-decoration: none
+}
+
+a.paging_num:hover {
+	color: #293D66;
+	text-decoration: underline
+}
+
+a.paging_num:active {
+	color: #293D66;
+	text-decoration: underline
+}
+
+a.data_link:link {
+	color: #B8C3D9;
+	text-decoration: none
+}
+
+a.data_link:visited {
+	color: #B8C3D9;
+	text-decoration: none
+}
+
+a.data_link:hover {
+	color: #FFFFFF;
+	text-decoration: underline
+}
+
+a.data_link:active {
+	color: #5C7099;
+	text-decoration: underline
+}
+
+/**03.03.search table**/
+.search_bg {
+	background-color: #002266;
+	padding: 5px
+}
+
+.search_vline {
+	width: 1px;
+	background-color: #344973
+}
+
+.search_arrow {
+	width: 20px;
+	padding: 0 12 0 0
+}
+
+.search_title {
+	font-weight: bold;
+	text-align: right;
+	padding: 2 3 0 10;
+	white-space: nowrap
+}
+
+.search_item {
+	padding: 2 15 2 2
+}
+
+.search_btn {
+	width: 75px;
+	background-color: #002266;
+	text-align: center;
+	padding: 2 0 0 0
+}
+
+.search_Dbg_step1 {
+	
+}
+
+.search_Dbg_step2 {
+	width: 15px;
+	background-color: #BBFF33;
+	border: 3px solid #002266
+}
+
+.search_Dbg_step3 {
+	width: 15px;
+	background-color: #FFE566;
+	border: 3px solid #002266
+}
+
+.search_Dbg_item {
+	padding: 0 10 0 2
+}
+
+/**03.04.search tabke group select**/
+.search_select {
+	width: 448px
+}
+
+.search_select_item {
+	
+}
+
+.search_select_bullet {
+	height: 19px;
+	text-align: right;
+	padding: 0 10 0 0
+}
+
+.search_select_outline {
+	width: 448px;
+	background-color: #7D8FB3
+}
+
+.search_select_bg {
+	background-color: #002266;
+	vertical-align: top
+}
+
+.search_select_contents {
+	width: 100%;
+	height: 100%
+}
+
+.search_select_tab {
+	background-color: #405580;
+	color: #DAE2F2;
+	padding: 2 3 2 3
+}
+
+.search_select_tree {
+	width: 100%;
+	padding: 3px
+}
+
+.search_select_btn {
+	width: 100%;
+	height: 21px;
+	background-color: #002266;
+	border-top: 1px solid #173673;
+	text-align: center
+}
+
+/**03.05.search tabke time select**/
+.search_time {
+	float: left
+}
+
+.search_time_title {
+	text-align: right;
+	vertical-align: top;
+	padding: 4 5 0 5;
+	white-space: nowrap
+}
+
+.search_time_outline {
+	background-color: #7D8FB3
+}
+
+.search_time_bg {
+	background-color: #002266;
+	vertical-align: top
+}
+
+.search_time_inline {
+	background-color: #4D628C
+}
+
+.search_time_item {
+	text-align: center;
+	adding: 0 2 0 2;
+	white-space: nowrap
+}
+
+.search_time_num {
+	width: 15px;
+	height: 18px;
+	background-color: #002266;
+	text-align: center;
+	padding: 0 1 0 1;
+	cursor: hand
+}
+
+.search_time_snum {
+	width: 15px;
+	height: 18px;
+	background-color: #6688CC;
+	text-align: center;
+	color: #DAE2F2;
+	adding: 0 1 0 1;
+	cursor: hand
+}
+
+/**03.06.table split**/
+.table_split1 {
+	text-align: center
+}
+
+.table_split2 {
+	width: 50%;
+	text-align: center;
+	vertical-align: top
+}
+
+.table_split3 {
+	width: 33%;
+	text-align: center;
+	vertical-align: top
+}
+
+.table_split_space {
+	width: 8px
+}
+
+/**03.07.flash chart**/
+.chart_body {
+	background-color: #002266;
+	text-align: center
+}
+
+.chart_body_space {
+	background-color: #002266;
+	text-align: center;
+	padding: 5 5 10 5
+}
+
+.chart_object {
+	background-color: #405580;
+	text-align: center;
+	float: left;
+	margin: 5px
+}
+
+.chart_object_body {
+	background-color: #002266;
+	text-align: center
+}
+
+.chart_object_head {
+	width: 100%;
+	height: 19px;
+	background-image: url(/images/issm/body/table_ohead.gif)
+}
+
+.chart_ohead_left {
+	width: 15%;
+	text-align: left;
+	padding: 0 0 3 5
+}
+
+.chart_ohead_title {
+	width: 70%;
+	text-align: center;
+	color: #DDE2ED;
+	font-weight: bold;
+	white-space: nowrap
+}
+
+.chart_ohead_right {
+	width: 15%;
+	text-align: right;
+	padding: 0 5 2 0
+}
+
+/**03.06.list table***********************************************************************************************************************************************/
+	/*header 1line*/
+.Ltable_H10 {
+	height: 29px;
+	background-image: url(/images/issm/body/ltable_h10.gif);
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+/*header 2,3line*/
+.Ltable_H21 {
+	height: 24px;
+	background-image: url(/images/issm/body/ltable_h21.gif);
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+.Ltable_H22 {
+	height: 24px;
+	background-image: url(/images/issm/body/ltable_h22.gif);
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+.Ltable_H23 {
+	height: 24px;
+	background-image: url(/images/issm/body/ltable_h23.gif);
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+/*header no background*/
+.Ltable_Htext {
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: center
+}
+
+/*data 1line, total*/
+.Ltable_Hsp {
+	height: 1px;
+	background-color: #002266
+}
+
+.Ltable_D {
+	height: 20px;
+	background-color: #002266;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+.Ltable_Dtotal {
+	height: 20px;
+	background-color: #003399;
+	color: #CFD6E5;
+	font-weight: bold;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+.Ltable_Dbg_step1 {
+	
+}
+
+.Ltable_Dbg_step2 {
+	background-color: #BBFF33;
+	color: #000000;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+.Ltable_Dbg_step3 {
+	background-color: #FFE566;
+	color: #000000;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+/*contrast header, data, total*/
+.Ltable_HC10 {
+	height: 29px;
+	background-image: url(/images/issm/body/ltable_hc10.gif);
+	color: #D8EBEB;
+	font-weight: bold;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+.Ltable_HC21 {
+	height: 24px;
+	background-image: url(/images/issm/body/ltable_hc21.gif);
+	color: #D8EBEB;
+	font-weight: bold;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+.Ltable_HC22 {
+	height: 24px;
+	background-image: url(/images/issm/body/ltable_hc22.gif);
+	color: #D8EBEB;
+	font-weight: bold;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+.Ltable_HC23 {
+	height: 24px;
+	background-image: url(/images/issm/body/ltable_hc23.gif);
+	color: #D8EBEB;
+	font-weight: bold;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+.Ltable_DC {
+	height: 20px;
+	background-color: #003333;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+.Ltable_DCtotal {
+	height: 20px;
+	background-color: #005555;
+	color: #CFD6E5;
+	font-weight: bold;
+	text-align: center;
+	padding: 2 5 0 5
+}
+
+/*data mouse over*/
+.Ltable_mover {
+	height: 20px;
+	background-color: #2929CC;
+	color: #FFFFFF;
+	cursor: hand;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+.Ltable_mout {
+	height: 20px;
+	background-color: #002266;
+	color: #B8C3D9;
+	cursor: auto;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+.Ltable_mcheck {
+	height: 20px;
+	background-color: #000000;
+	color: #FFFFFF;
+	cursor: auto;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+.Ltable_Dmover {
+	height: 20px;
+	background-color: #2929CC;
+	color: #FFFFFF;
+	cursor: hand;
+	padding: 0 5 0 5
+}
+
+.Ltable_Dmout {
+	height: 20px;
+	background-color: #002266;
+	color: #B8C3D9;
+	cursor: auto;
+	padding: 0 5 0 5
+}
+
+.Dtable_LDmover {
+	height: ;
+	background-color: #2929CC;
+	color: #FFFFFF;
+	cursor: hand;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+.Dtable_LDmout {
+	height: ;
+	background-color: #002266;
+	color: #B8C3D9;
+	cursor: auto;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+/*data table paging*/
+.table_paging {
+	height: 25px;
+	vertical-align: middle;
+	background-image: url(/images/issm/body/table_paging.gif);
+	text-align: center
+}
+
+.paging_current {
+	color: #E6EAF2;
+	font-weight: bold
+}
+
+/*data view style*/
+.colresize {
+	cursor: ""
+}
+
+.ellipsis {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left
+}
+
+/**03.07.detail table*********************************************************************************************************************************************/
+	/*header first line*/
+.Dtable_H11 {
+	width: 16%;
+	height: 25px;
+	background: url(/images/issm/body/dtable_h10.gif) repeat-x;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: left;
+	padding: 4 2 2 8
+}
+
+.Dtable_H21 {
+	width: 16%;
+	height: 25px;
+	background: url(/images/issm/body/dtable_h10.gif) repeat-x;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: left;
+	padding: 4 2 2 8
+}
+
+.Dtable_H31 {
+	width: 16%;
+	height: 25px;
+	background: url(/images/issm/body/dtable_h10.gif) repeat-x;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: left;
+	padding: 4 2 2 8
+}
+
+/*header second line*/
+.Dtable_H12 {
+	width: 16%;
+	height: 25px;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: left;
+	padding: 4 2 2 8
+}
+
+.Dtable_H22 {
+	width: 16%;
+	height: 25px;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: left;
+	padding: 4 2 2 8
+}
+
+.Dtable_H32 {
+	width: 16%;
+	height: 25px;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: left;
+	padding: 4 2 2 8
+}
+
+/**data 1line*/
+.Dtable_Hsp {
+	height: 1px;
+	background-color: #829FD9
+}
+
+/*data contents*/
+.Dtable_D10 {
+	width: 84%;
+	background-color: #002266;
+	color: #B8C3D9;
+	text-align: left;
+	padding: 2 5 2 8
+}
+
+.Dtable_D20 {
+	width: 34%;
+	background-color: #002266;
+	color: #B8C3D9;
+	text-align: left;
+	padding: 2 5 2 8
+}
+
+.Dtable_D30 {
+	width: 17%;
+	background-color: #002266;
+	color: #B8C3D9;
+	text-align: left;
+	padding: 2 5 2 8
+}
+
+.Dtable_D31 {
+	background-color: #002266;
+	color: #B8C3D9;
+	text-align: left;
+	padding: 2 5 2 8
+}
+
+/**03.08.object table*********************************************************************************************************************************************/
+	/**object table**/
+.table_object_all {
+	background-color: #002266;
+	text-align: center;
+	padding: 5px
+}
+
+.table_object {
+	background-color: #405580;
+	text-align: center;
+	float: left;
+	margin: 5px
+}
+
+.table_sobject {
+	width: 100%;
+	background-color: #5C7099
+}
+
+.table_object_title {
+	height: 24px;
+	background-image: url(/images/issm/body/ltable_h21.gif);
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+.table_object_body {
+	background-color: #002266;
+	text-align: center
+}
+
+.table_object_space {
+	height: 10px
+}
+
+.table_object_head {
+	width: 100%;
+	height: 19px;
+	background-image: url(/images/issm/body/table_ohead.gif)
+}
+
+.table_object_heads {
+	width: 100%;
+	height: 19px;
+	background-image: url(/images/issm/body/table_ohead.gif);
+	border-left: solid 1px #405580;
+	border-top: solid 1px #405580;
+	border-right: solid 1px #405580
+}
+
+.table_ohead_left {
+	width: 15%;
+	text-align: left;
+	padding: 0 0 3 5
+}
+
+.table_ohead_title {
+	width: 70%;
+	text-align: center;
+	color: #DDE2ED;
+	font-weight: bold;
+	white-space: nowrap
+}
+
+.table_ohead_right {
+	width: 15%;
+	text-align: right;
+	padding: 0 5 2 0
+}
+
+.Dtable_object_LH10 {
+	height: 21px;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: center;
+	padding: 0 5 0 5;
+	white-space: nowrap
+}
+
+.Dtable_object_DH11 {
+	height: 21px;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: left;
+	padding: 0 2 0 8;
+	white-space: nowrap
+}
+
+.Dtable_object_DH12 {
+	width: 50%;
+	height: 21px;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: left;
+	padding: 0 2 0 8;
+	white-space: nowrap
+}
+
+.Dtable_object_LD10 {
+	background-color: #002266;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+.Dtable_object_DD10 {
+	background-color: #002266;
+	text-align: left;
+	padding: 0 5 0 8
+}
+
+/*table split*/
+.table_object_split {
+	width: 100%
+}
+
+.table_osplit1 {
+	text-align: center;
+	padding: 5px
+}
+
+.table_osplit2 {
+	width: 50%;
+	text-align: center;
+	vertical-align: top;
+	padding: 5px
+}
+
+.table_osplit3 {
+	width: 33%;
+	text-align: center;
+	vertical-align: top;
+	padding: 5px
+}
+
+.table_osplit_space {
+	vertical-align: top;
+	text-align: center;
+	padding: 18 5 5 5
+}
+
+.table_osplit_lspace {
+	width: 10px
+}
+
+.table_osplit_rspace {
+	width: 5px
+}
+
+.table_osplit_cspace {
+	width: 10px
+}
+
+/**04.extra style*************************************************************************************************************************************************/
+	/**04.01.popup**/
+.Ptop {
+	height: 52px;
+	vertical-align: top;
+	text-align: center
+}
+
+.Pmiddle {
+	height: 100%;
+	vertical-align: top;
+	text-align: center
+}
+
+.Pbottom {
+	height: 27px;
+	text-align: center
+}
+
+.Pcenter {
+	width: 100%;
+	height: 100%
+}
+
+.Ptop_Center {
+	width: 100%;
+	height: 45px;
+	background-image: url(/images/issm/body/bg_ptop_center.gif)
+}
+
+.Ptop_Cleft {
+	width: 25%;
+	vertical-align: bottom;
+	background: url(/images/issm/body/bg_ptop_left.gif) no-repeat left top;
+	padding: 0 0 5 10
+}
+
+.Ptop_Ccenter {
+	width: 50%;
+	vertical-align: bottom;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 18px;
+	padding: 0 0 10 0
+}
+
+.Ptop_Cright {
+	width: 25%;
+	background: url(/images/issm/body/bg_ptop_right.gif) no-repeat right top
+		;
+	font-size: 11px;
+	color: #97AFE0;
+	text-align: right;
+	padding: 2 10 0 0
+}
+
+.Ptop_space {
+	width: 100%;
+	height: 12px
+}
+
+.Pbottom_Center {
+	width: 100%;
+	height: 27px;
+	background-image: url(/images/issm/body/bg_pbottom_center.gif)
+}
+
+.Pbottom_Cleft {
+	width: 25%;
+	background: url(/images/issm/body/bg_pbottom_left.gif) no-repeat left
+		top;
+	padding: 0 0 0 10
+}
+
+.Pbottom_Ccenter {
+	width: 50%;
+	text-align: center;
+	padding: 2 0 0 0;
+	white-space: nowrap
+}
+
+.Pbottom_Cright {
+	width: 25%;
+	background: url(/images/issm/body/bg_pbottom_right.gif) no-repeat right
+		top;
+	padding: 2 10 0 0
+}
+
+.popup_tab_object {
+	height: 20px;
+	float: left
+}
+
+.popup_tab_space {
+	width: 1px
+}
+
+.popup_tab_enleft {
+	width: 5px;
+	height: 20px;
+	background: url(/images/issm/body/popup_tab_enleft.gif) no-repeat left
+		top
+}
+
+.popup_tab_entitle {
+	height: 20px;
+	background-image: url(/images/issm/body/popup_tab_entitle.gif);
+	text-align: center;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding: 2 0 0 0
+}
+
+.popup_tab_enright {
+	width: 5px;
+	height: 20px;
+	background: url(/images/issm/body/popup_tab_enright.gif) no-repeat right
+		top
+}
+
+.popup_tab_disleft {
+	width: 5px;
+	background: url(/images/issm/body/popup_tab_disleft.gif) no-repeat left
+		top
+}
+
+.popup_tab_distitle {
+	height: 20px;
+	background-image: url(/images/issm/body/popup_tab_distitle.gif);
+	text-align: center;
+	color: #CFD6E5;
+	padding: 2 0 0 0
+}
+
+.popup_tab_disMover {
+	height: 20px;
+	background-image: url(/images/issm/body/popup_tab_distitle.gif);
+	text-align: center;
+	color: #FFFFFF;
+	padding: 2 0 0 0;
+	cursor: hand
+}
+
+.popup_tab_disMout {
+	height: 20px;
+	background-image: url(/images/issm/body/popup_tab_distitle.gif);
+	text-align: center;
+	color: #CFD6E5;
+	padding: 2 0 0 0
+}
+
+.popup_tab_disright {
+	width: 5px;
+	height: 20px;
+	background: url(/images/issm/body/popup_tab_disright.gif) no-repeat
+		right top
+}
+
+/**04.02.progress bar**/
+.progress_outline {
+	width: 120px;
+	height: 120px;
+	border: 5px solid #4C7BD9
+}
+
+.progress_bg {
+	background-color: #1247B3;
+	text-align: center;
+	color: #E6EAF2
+}
+
+/**04.03.bar graph**/
+.table_Bgraph_sample {
+	width: 250px;
+	background-color: #143066;
+	border: 1px solid #FFFFFF;
+	color: #000000;
+	text-align: center
+}
+
+.Bgraph_sample_critical {
+	width: 40px;
+	background-image: url(/images/issm/body/graph_bar_critical.gif);
+	font-size: 11px;
+	line-height: 14px;
+	border-right: 1px solid #FFFFFF
+}
+
+.Bgraph_sample_major {
+	width: 40px;
+	background-image: url(/images/issm/body/graph_bar_major.gif);
+	font-size: 11px;
+	line-height: 14px;
+	border-right: 1px solid #FFFFFF
+}
+
+.Bgraph_sample_minor {
+	width: 40px;
+	background-image: url(/images/issm/body/graph_bar_minor.gif);
+	font-size: 11px;
+	line-height: 14px;
+	border-right: 1px solid #FFFFFF
+}
+
+.Bgraph_sample_info {
+	width: 40px;
+	background-image: url(/images/issm/body/graph_bar_info.gif);
+	font-size: 11px;
+	line-height: 14px;
+	border-right: 1px solid #FFFFFF
+}
+
+.Bgraph_sample_normal {
+	width: 40px;
+	background-image: url(/images/issm/body/graph_bar_normal.gif);
+	font-size: 11px;
+	line-height: 14px;
+	border-right: 1px solid #FFFFFF
+}
+
+.Bgraph_sample_down {
+	width: 40px;
+	background-image: url(/images/issm/body/graph_bar_down.gif);
+	font-size: 11px;
+	line-height: 14px;
+}
+
+.table_Bgraph {
+	width: 100px;
+	height: 14px
+}
+
+.Bgraph_outline {
+	width: 80px;
+	height: 12px;
+	background-color: #143066;
+	border: 1px solid #405580;
+	line-height: 12px
+}
+
+.Bgraph_data {
+	width: 20px;
+	height: 12px;
+	line-height: 12px;
+	padding: 2 0 0 3
+}
+
+/**04.04.error page**/
+.error_outline {
+	width: 100%;
+	background-color: #5C7099
+}
+
+.error_body {
+	background-color: #002266
+}
+
+.error_left {
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	vertical-align: top;
+	padding: 40 0 0 0
+}
+
+.error_right {
+	vertical-align: top;
+	padding: 10 10 0 0
+}
+
+.error_object_head {
+	width: 100%;
+	height: 19px;
+	background-image: url(/images/issm/body/table_ohead.gif);
+	border-left: solid 1px #5C7099;
+	border-top: solid 1px #5C7099;
+	border-right: solid 1px #5C7099
+}
+
+.error_ohead_left {
+	width: 25%;
+	text-align: left;
+	padding: 0 0 3 5
+}
+
+.error_ohead_title {
+	width: 50%;
+	text-align: center;
+	color: #DDE2ED;
+	font-weight: bold;
+	white-space: nowrap
+}
+
+.error_ohead_right {
+	width: 25%;
+	text-align: right;
+	padding: 0 5 2 0
+}
+
+.error_object_space {
+	height: 10px
+}
+
+.Dtable_error_H12 {
+	width: 20%;
+	height: 24px;
+	background-color: #829FD9;
+	color: #E1E6F0;
+	font-weight: bold;
+	text-align: left;
+	padding: 0 2 0 8
+}
+
+.Dtable_error_D10 {
+	width: 80%;
+	background-color: #002266;
+	text-align: left;
+	padding: 0 5 0 8
+}
+
+.Dtable_error_D00 {
+	width: 100%;
+	background-color: #002266;
+	text-align: left;
+	padding: 3 5 3 8
+}
+
+/**04.05.calendar**/
+.calendar_outline {
+	width: 100%;
+	background-color: #5C7099
+}
+
+.calendar_body {
+	background-color: #002266
+}
+
+/**04.06.status**/
+.status_txt_normal {
+	display: inline;
+	background: #009933;
+	border: solid 1px #00FF55;
+	color: #FFFFFF;
+	font-size: 11px;
+	padding: 1 4 0 4
+}
+
+/**11.25.popup message shijinglong**/
+.saymessage {
+	display: none;
+	behavior: url(common/htc/saymessage.htc);
+}
+
+/*11.25 data mouse over for no hand Justin Fu **/
+.Ltable_mover_new {
+	height: 20px;
+	background-color: #2929CC;
+	color: #FFFFFF;
+	cursor: auto;
+	text-align: center;
+	padding: 0 5 0 5
+}
+
+.Ltable_mout_new {
+	height: 20px;
+	background-color: #002266;
+	color: #B8C3D9;
+	cursor: auto;
+	text-align: center;
+	padding: 0 5 0 5
+}

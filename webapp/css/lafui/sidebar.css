@@ -1,0 +1,105 @@
+/*	-------------------------------------------------------------
+	LG CNS LAF/UI
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	Description:	Sidebar Styles
+	Filename:		sidebar.css
+	Version:		LAF/UI_2.0_2007_R1_20070427
+	-------------------------------------------------------------	*/
+
+#LsubMenu {
+background-color: #F7F7F7;
+}
+/*rounded corner 메뉴바의 위쪽, 아래쪽부분*/
+#LsubMenu-top {
+background: url("../../images/pbf/bg_submenu_tl.gif") no-repeat;
+}
+#LsubMenu-top div {
+background: url("../../images/pbf/bg_submenu_tr.gif") no-repeat right top;
+height: 3px;
+font-size: 1px;
+}
+#LsubMenu-bot {
+background: url("../../images/pbf/bg_submenu_bl.gif") no-repeat;
+}
+#LsubMenu-bot div {
+background: url("../../images/pbf/bg_submenu_br.gif") no-repeat right bottom;
+height: 10px;
+font-size: 1px;
+}
+#LsubMenu h1 {
+padding: 12px 0 11px 17px;
+background-color: #EFEFEF;
+}
+#LsubMenu .Ldepth1 {
+background: url("../../images/pbf/bg_submenu.gif") repeat-x;
+padding: 6px 0 2px 17px;
+}
+#LsubMenu .Ldepth2 {
+	margin: 9px 0 2px;
+	display: none;
+}
+#LsubMenu .Ldepth2 li span {
+display:inline; /*  */
+background: url("../../images/pbf/blt_orange1.gif") no-repeat;
+padding-left: 15px;
+}
+#LsubMenu .Ldepth2 li ul li span {
+	padding-left: 25px;
+	background-image: url("../../images/pbf/bullet_submenu.gif");
+	background-repeat: no-repeat;
+	background-position: 15px 50%;
+}
+#LsubMenu .Ldepth1 span {
+display: block;
+margin-right: 17px;
+}
+#LsubMenu .Ldepth1 span.Lopen {
+background: url("../../images/pbf/submenu_open.gif") no-repeat right 4px;
+}
+#LsubMenu .Ldepth1 span.Lclosed {
+background: url("../../images/pbf/submenu_closed.gif") no-repeat right 4px;
+}
+.Lbanner {
+display: block;
+margin-top: 10px;
+margin-left: 4px;
+}
+body.Lsideframe {
+background: #F7F7F7;
+}  
+/***************************font & link 관한 설정*******************************/
+#LsubMenu h1 {
+font-size: 1.2em;
+color: #165CB3;
+}
+#LsubMenu .Ldepth1 span, #LsubMenu .Ldepth1 a:link, #LsubMenu .Ldepth1 a:visited {
+color: #555555;
+}
+#LsubMenu .Ldepth1 span a:link, #LsubMenu .Ldepth1 span a:visited {
+font-weight: bold;
+}
+#LsubMenu .Ldepth2 span a:link, #LsubMenu .Ldepth2 span a:visited,
+#LsubMenu .Ldepth3 span a:link, #LsubMenu .Ldepth3 span a:visited {
+font-weight: normal;
+}
+#LsubMenu .Ldepth1 span a.Lselected:link, #LsubMenu .Ldepth1 span a.Lselected:visited  {
+color: #0770FF;
+}
+#LsubMenu .Ldepth2 span a.Lselected:link, #LsubMenu .Ldepth2 span a.Lselected:visited  {
+color: #0770FF;
+font-weight: bold; 
+text-decoration: none;
+}
+#LsubMenu .Ldepth3 span a.Lselected:link, #LsubMenu .Ldepth3 span a.Lselected:visited  {
+font-weight: bold;
+text-decoration: none;
+}
+#LsubMenu .Ldepth1 a:hover, #LsubMenu .Ldepth1 a:active {
+color: #0770FF;
+}
+.Lclosed, .Lopen{ 
+cursor: pointer;	
+font-weight: bold;
+}
+
+

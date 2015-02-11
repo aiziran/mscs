@@ -1,0 +1,54 @@
+/*	-------------------------------------------------------------
+	LG CNS LAF/UI
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	Description:	Default Tag Styles
+	Filename:		default.css
+	Version:		LAF/UI_2.0_2007_R1_20070427
+	-------------------------------------------------------------	*/
+
+/* ---------------------태크 설정----------------------*/
+* {margin: 0; padding: 0;}
+ul {list-style: none;}
+img {border: none;}
+option{padding-right: 0.5em;}
+form * {vertical-align: middle;}
+
+/*------------------------태크 글꼴 설정------------------------*/
+body {
+font: 75%/1.5em Dotum, 돋움, sans-serif;
+color: #333;
+}
+a:link, a:visited {
+color: #21528D;
+text-decoration: none;
+}
+a:hover, a:active {
+color: #0770FF;
+text-decoration: underline;
+}
+form *, input, select, 
+h2, h3, h4 {
+font-size: 1em;
+}
+h2 {
+color: #E17A0D;
+}
+h3 {
+color: #1F8CD8;
+}
+h1 {
+font-size: 1.2em;
+color: #555555;
+}
+/*********접근성 관련**********/
+hr {display: none;}	
+caption, legend{
+display:none;
+}
+fieldset{
+border:none;
+margin: 0; 
+padding: 0;
+}
+
+

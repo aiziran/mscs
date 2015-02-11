@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="useRateManage">
+
+
+	<select id="retrieveUseRateList" parameterType="cdata"
+		resultType="cdata">
+		SELECT a.hos_drug_code "hosDrugCode",
+		td.drug_name "drugName",
+		a.package_spec "packageSpec",
+		a.package_units "packageUnits",
+		a.manufact_id "manufactId",
+		SUM(a.quantity) "amountQuantity",
+		round(SUM(a.quantity) /
+		(to_date(#{queryEndDate}, 'yyyy-mm-dd') -
+		to_date(#{queryStartDate}, 'yyyy-mm-dd') + 1),
+		2) "avgQuantity",
+		round(COUNT(a.hos_drug_code) /
+		(to_date(#{queryEndDate}, 'yyyy-mm-dd') -
+		to_date(#{queryStartDate}, 'yyyy-mm-dd') + 1),
+		2) "useRate",
+		rank() over(order by round(COUNT(a.hos_drug_code) /
+		(to_date(#{queryEndDate}, 'yyyy-mm-dd') -
+		to_date(#{queryStartDate}, 'yyyy-mm-dd') + 1),
+		2) desc NULLS LAST) "rank"
+		FROM TB_DRUG_EXPORT_Detail a, tb_drug_export_master b, tb_drug_dict td
+		WHERE a.document_no = b.document_no
+		AND a.hos_drug_code = td.hos_drug_code
+		AND a.package_spec = td.package_spec
+		AND a.manufact_id = td.manufact_name
+		<if test="queryDepartment!=null and queryDepartment neq '-1'">
+			AND b.dept_id = #{queryDepartment}
+			   </if>
+		AND (td.special_drug = 'S0901' OR td.special_drug IS NULL)
+		AND (td.aid_flag = 'N' OR td.aid_flag IS NULL)
+		AND b.export_date BETWEEN to_date(#{queryStartDate}, 'yyyy-mm-dd') AND
+		to_date(#{queryEndDate}||'23:59:59', 'yyyy-mm-dd hh24:mi:ss')
+		GROUP BY a.hos_drug_code,
+		td.drug_name,
+		a.package_spec,
+		a.package_units,
+		a.manufact_id
+		ORDER BY "useRate" DESC,"hosDrugCode","packageSpec"
+	</select>
+</mapper> 

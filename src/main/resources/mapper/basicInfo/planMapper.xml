@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="planManage">
+	<select id="planList" parameterType="cdata" resultType="cdata">
+		SELECT p.*,
+		(select DEPT_NAME from com_dept_m where DEPT_ID=p.dept) "deptname"
+		FROM plan p
+		WHERE 1=1
+		<if test="name!=null and name != ''">
+			AND (name LIKE concat('%',trim(#{name}),'%')) 
+		</if>
+		<if test="starttime!=null and starttime != ''">
+			<if test="endtime!=null and endtime != ''">
+				AND (createtime >=#{starttime} and #{endtime} >= createtime ) 
+		</if>
+		</if>
+	</select>
+	<select id="planDelete" parameterType="cdata" resultType="cdata">
+		DELETE
+		FROM plan WHERE id=#{tid}
+	</select>
+
+	<select id="planSelectOne" parameterType="cdata" resultType="cdata">
+		SELECT p.*,
+		(select DEPT_NAME from com_dept_m where DEPT_ID=p.dept) "deptname"
+		FROM plan p
+		WHERE id=#{tid}  
+	</select>
+
+
+	<select id="planUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE
+		plan SET
+		name=#{name},
+		dept=#{dept},
+		context=#{context},
+		createtime=#{createtime},
+		starttime=#{starttime},
+		endtime=#{endtime}
+		WHERE id=#{tid}
+	</select>
+
+	<select id="planInput" parameterType="cdata" resultType="cdata">
+		INSERT
+		INTO plan(name,dept, context, createtime,starttime,endtime)
+		VALUES(#{name},#{dept},#{
+		context},#{createtime},#{starttime},#{endtime})
+	</select>
+
+</mapper>

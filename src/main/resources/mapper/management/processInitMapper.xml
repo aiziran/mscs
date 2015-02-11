@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="processInit">
+	<!--查询公告信息list lixinliang -->
+	<select id="retrieveLogHistory" resultType="cdata">
+		SELECT
+		a.min_process_date "minProcessDate",
+		a.max_process_date "maxProcessDate",
+		a.create_date "createDate",
+		a.delete_row_count "deleteRowCount",
+		a.table_name "tableName"
+		FROM (SELECT to_char(t.min_process_date,
+		'YYYY-MM-DD HH24:MI:SS') min_process_date,
+		to_char(t.max_process_date,
+		'YYYY-MM-DD HH24:MI:SS') max_process_date,
+		to_char(t.create_date,
+		'YYYY-MM-DD HH24:MI:SS') create_date,
+		delete_row_count,
+		'入库主表' table_name
+		FROM tb_once_month_log t
+		WHERE t.create_date =
+		(SELECT MAX(create_date)
+		FROM tb_once_month_log
+		WHERE table_name = 'tb_drug_import_master')
+		AND table_name = 'tb_drug_import_master'
+		UNION
+		SELECT to_char(t.min_process_date,
+		'YYYY-MM-DD HH24:MI:SS') min_process_date,
+		to_char(t.max_process_date,
+		'YYYY-MM-DD HH24:MI:SS') max_process_date,
+		to_char(t.create_date,
+		'YYYY-MM-DD HH24:MI:SS') create_date,
+		delete_row_count,
+		'入库明细表' table_name
+		FROM tb_once_month_log t
+		WHERE t.create_date =
+		(SELECT MAX(create_date)
+		FROM tb_once_month_log
+		WHERE table_name = 'tb_drug_import_detail')
+		AND table_name = 'tb_drug_import_detail'
+
+		UNION
+
+		SELECT to_char(t.min_process_date,
+		'YYYY-MM-DD HH24:MI:SS') min_process_date,
+		to_char(t.max_process_date,
+		'YYYY-MM-DD HH24:MI:SS') max_process_date,
+		to_char(t.create_date,
+		'YYYY-MM-DD HH24:MI:SS') create_date,
+		delete_row_count,
+		'出库主表' table_name
+		FROM tb_once_month_log t
+		WHERE t.create_date =
+		(SELECT MAX(create_date)
+		FROM tb_once_month_log
+		WHERE table_name = 'tb_drug_export_master')
+		AND table_name = 'tb_drug_export_master'
+		UNION
+		SELECT to_char(t.min_process_date,
+		'YYYY-MM-DD HH24:MI:SS') min_process_date,
+		to_char(t.max_process_date,
+		'YYYY-MM-DD HH24:MI:SS') max_process_date,
+		to_char(t.create_date,
+		'YYYY-MM-DD HH24:MI:SS') create_date,
+		delete_row_count,
+		'出库明细表' table_name
+		FROM tb_once_month_log t
+		WHERE t.create_date =
+		(SELECT MAX(create_date)
+		FROM tb_once_month_log
+		WHERE table_name = 'tb_drug_export_detail')
+		AND table_name = 'tb_drug_export_detail'
+		UNION
+		SELECT to_char(t.min_process_date,
+		'YYYY-MM-DD HH24:MI:SS') min_process_date,
+		to_char(t.max_process_date,
+		'YYYY-MM-DD HH24:MI:SS') max_process_date,
+		to_char(t.create_date,
+		'YYYY-MM-DD HH24:MI:SS') create_date,
+		delete_row_count,
+		'采购主表' table_name
+		FROM tb_once_month_log t
+		WHERE t.create_date =
+		(SELECT MAX(create_date)
+		FROM tb_once_month_log
+		WHERE table_name = 'tb_purchas_master')
+		AND table_name = 'tb_purchas_master'
+		UNION
+		SELECT to_char(t.min_process_date,
+		'YYYY-MM-DD HH24:MI:SS') min_process_date,
+		to_char(t.max_process_date,
+		'YYYY-MM-DD HH24:MI:SS') max_process_date,
+		to_char(t.create_date,
+		'YYYY-MM-DD HH24:MI:SS') create_date,
+		delete_row_count,
+		'采购明细表' table_name
+		FROM tb_once_month_log t
+		WHERE t.create_date =
+		(SELECT MAX(create_date)
+		FROM tb_once_month_log
+		WHERE table_name = 'tb_purchas_detail')
+		AND table_name = 'tb_purchas_detail') a
+		ORDER BY a.table_name DESC
+	</select>
+
+
+	<!-- 删除入库明细表中超出36个月以前的信息 lu wan bin 2010-02-21 -->
+	<delete id="deleteImportStorageDetailList" parameterType="cdata">
+      	<![CDATA[
+      		DELETE FROM tb_drug_import_detail
+			 WHERE document_no IN
+			       (SELECT distinct m.document_no
+			          FROM tb_drug_import_master m, tb_drug_import_detail d
+			         WHERE m.document_no = d.document_no
+			           AND m.import_date < add_months(CURDATE(), -36))
+		]]>
+	</delete>
+
+	<!-- 删除入库主表中超出36个月以前的信息 lu wan bin 2010-02-21 -->
+	<delete id="deleteImportStorageMasterList" parameterType="cdata">
+      	<![CDATA[
+	        DELETE FROM tb_drug_import_master
+			  WHERE import_date < add_months(CURDATE(), -36)
+		]]>
+	</delete>
+
+	<!-- 删除出库明细表中超出36个月以前的信息 lu wan bin 2010-02-21 -->
+	<delete id="deleteExportStorageDetailList" parameterType="cdata">
+      	<![CDATA[
+      		DELETE FROM tb_drug_export_detail
+			 WHERE document_no IN
+			       (SELECT distinct m.document_no
+			          FROM tb_drug_export_master m, tb_drug_export_detail d
+			         WHERE m.document_no = d.document_no
+			           AND m.export_date < add_months(CURDATE(), -36))
+		]]>
+	</delete>
+
+	<!-- 删除出库主表中超出36个月以前的信息 lu wan bin 2010-02-21 -->
+	<delete id="deleteExportStorageMasterList" parameterType="cdata">
+      	<![CDATA[
+	       DELETE FROM tb_drug_export_master
+			 WHERE export_date < add_months(CURDATE(), -36)
+		]]>
+	</delete>
+
+	<!-- 删除采购明细表中超出36个月以前的信息 -->
+	<delete id="deletePurchaseStorageDetailList" parameterType="cdata">
+    	<![CDATA[
+	    DELETE FROM tb_purchas_detail d
+ 		WHERE d.order_no IN (SELECT DISTINCT m.order_no
+                        	 FROM tb_purchas_master m
+                       		 WHERE m.order_date < add_months(CURDATE(), -36))
+    	]]>
+	</delete>
+
+	<!-- 删除采购主表中超出36个月以前的信息 -->
+	<delete id="deletePurchaseStorageMasterList" parameterType="cdata">
+      	<![CDATA[
+	       DELETE FROM tb_purchas_master m
+			 WHERE m.order_date < add_months(CURDATE(), -36)
+		]]>
+	</delete>
+
+	<!-- 业务处理操作信息插入到LOG表中 -->
+	<insert id="createOnceMonthLog" parameterType="cdata">
+      	<![CDATA[
+		INSERT INTO tb_once_month_log
+		  (min_process_date, max_process_date, table_name, delete_row_count, create_by)
+		VALUES
+		  (
+		   to_date(${minProcessDate},'yyyy-mm-dd hh24:mi:ss'),
+		   to_date(${maxProcessDate},'yyyy-mm-dd hh24:mi:ss'),
+		   #{tableName},
+		   #{deleteRowCount},
+		   #{createBy})
+		]]>
+	</insert>
+
+	<!-- 删除的入库主表数据插入到入库历史主表 -->
+	<insert id="createImportMasterHistory" parameterType="cdata">
+      	<![CDATA[
+      	INSERT INTO tb_drug_import_hst_master
+		  (document_no,
+		   dept_id,
+		   import_date,
+		   supplier_id,
+		   account_receivable,
+		   account_payed,
+		   additional_fee,
+		   import_class,
+		   sub_storage,
+		   operator,
+		   memos,
+		   create_by)
+		  SELECT m.document_no,
+		         m.dept_id,
+		         m.import_date,
+		         m.supplier_id,
+		         m.account_receivable,
+		         m.account_payed,
+		         m.additional_fee,
+		         m.import_class,
+		         m.sub_storage,
+		         m.operator,
+		         m.memos,
+		         #{createBy}
+		    FROM tb_drug_import_master m
+		   WHERE m.import_date < add_months(CURDATE(),-36)
+    	]]>
+	</insert>
+
+	<!-- 删除的入库明细表数据插入到入库历史明细表 -->
+	<insert id="createImportDetailHistory" parameterType="cdata">
+      	<![CDATA[
+			INSERT INTO tb_drug_import_hst_detail
+			  (document_no,
+			   item_no,
+			   hos_drug_code,
+			   drug_spec,
+			   units,
+			   batch_no,
+			   expire_date,
+			   manufact_id,
+			   purchase_price,
+			   discount,
+			   retail_price,
+			   package_spec,
+			   package_units,
+			   quantity,
+			   invoice_no,
+			   invoice_date,
+			   memos,
+			   create_by)
+			  SELECT d.document_no,
+			         d.item_no,
+			         d.hos_drug_code,
+			         d.drug_spec,
+			         d.units,
+			         d.batch_no,
+			         d.expire_date,
+			         d.manufact_id,
+			         d.purchase_price,
+			         d.discount,
+			         d.retail_price,
+			         d.package_spec,
+			         d.package_units,
+			         d.quantity,
+			         d.invoice_no,
+			         d.invoice_date,
+			         d.memos,
+			           #{createBy}
+			    FROM tb_drug_import_master m, tb_drug_import_detail d
+			   WHERE m.document_no = d.document_no
+			     AND m.import_date < add_months(CURDATE(),-36)
+    	]]>
+	</insert>
+
+
+	<!-- 出库主表删除的数据插入到出库历史主表 lu wan bin 2010-02-21 -->
+	<insert id="createExportMasterHistory" parameterType="cdata">
+      	<![CDATA[
+			INSERT INTO tb_drug_export_hst_master
+			  (document_no,
+			   dept_id,
+			   export_date,
+			   supplier_name,
+			   receiver_name,
+			   account_receivable,
+			   account_payed,
+			   additional_fee,
+			   export_class,
+			   sub_storage,
+			   operator,
+			   memos,
+			   create_by)
+			  SELECT m.document_no,
+			         m.dept_id,
+			         m.export_date,
+			         m.supplier_name,
+			         m.receiver_name,
+			         m.account_receivable,
+			         m.account_payed,
+			         m.additional_fee,
+			         m.export_class,
+			         m.sub_storage,
+			         m.operator,
+			         m.memos,
+			            #{createBy}
+			    FROM tb_drug_export_master m
+			   WHERE m.export_date < add_months(CURDATE(),-36)
+		]]>
+	</insert>
+
+	<!-- 出库明细表删除的数据插入到出库历史明细表 lu wan bin 2010-02-21 -->
+	<insert id="createExportDetailHistory" parameterType="cdata">
+      	<![CDATA[
+			INSERT INTO tb_drug_export_hst_detail
+			  (document_no,
+			   item_no,
+			   hos_drug_code,
+			   drug_spec,
+			   units,
+			   batch_no,
+			   expire_date,
+			   manufact_id,
+			   purchase_price,
+			   retail_price,
+			   package_spec,
+			   quantity,
+			   package_units,
+			   memos,
+			   create_by)
+			  SELECT d.document_no,
+			         d.item_no,
+			         d.hos_drug_code,
+			         d.drug_spec,
+			         d.units,
+			         d.batch_no,
+			         d.expire_date,
+			         d.manufact_id,
+			         d.purchase_price,
+			         d.retail_price,
+			         d.package_spec,
+			         d.quantity,
+			         d.package_units,
+			         d.memos,
+			           #{createBy}
+			    FROM tb_drug_export_master m, tb_drug_export_detail d
+			   WHERE m.document_no = d.document_no
+			     AND m.export_date < add_months(CURDATE(),-36)
+		]]>
+	</insert>
+
+	<!-- 采购主表删除的数据插入到采购历史主表 lu wan bin 2010-03-04 -->
+	<insert id="createPurchaseMasterHistory" parameterType="cdata">
+      	<![CDATA[
+		  INSERT INTO tb_purchas_hst_master
+		  (order_no,
+		   dept_id,
+		   order_date,
+		   memos,
+		   create_by)
+		  SELECT m.order_no,
+		         m.dept_id,
+		         m.order_date,
+		         m.memos,
+		          #{createBy}
+		    FROM tb_purchas_master m
+		   WHERE m.order_date < add_months(CURDATE(), -36)
+    	]]>
+	</insert>
+
+	<!-- 采购明细表删除的数据插入到采购历史明细表 lu wan bin 2010-03-04 -->
+	<insert id="createPurchaseDetailHistory" parameterType="cdata">
+      	<![CDATA[
+		  INSERT INTO tb_purchas_hst_detail
+		  (order_no,
+			drug_id,
+			drug_spec,
+			hos_drug_code,
+			drug_name,
+			package_spec,
+			package_units,
+			supplier_units,
+			supplier_amount,
+			manufact_id,
+			order_item_no,
+			approve_status,
+			stock_quantity,
+			trc_purchase_amount,
+			res_purchase_amount,
+			amount_per_supplier,
+			supplier_id,
+			supplier_name,
+			approve_by,
+			approve_date,
+			memos,
+			create_by)
+		  SELECT d.order_no,
+				d.drug_id,
+				d.drug_spec,
+				d.hos_drug_code,
+				d.drug_name,
+				d.package_spec,
+				d.package_units,
+				d.supplier_units,
+				d.supplier_amount,
+				d.manufact_id,
+				d.order_item_no,
+				d.approve_status,
+				d.stock_quantity,
+				d.trc_purchase_amount,
+				d.res_purchase_amount,
+				d.amount_per_supplier,
+				d.supplier_id,
+				d.supplier_name,
+				d.approve_by,
+				d.approve_date,
+				d.memos,
+		        #{createBy}
+		    FROM tb_purchas_master m, tb_purchas_detail d
+		   WHERE m.order_no = d.order_no
+		     AND m.order_date < add_months(CURDATE(),-36)
+    	]]>
+	</insert>
+
+	<!-- 被处理入库数据的最小日期和最大日期 -->
+	<select id="retrieveImportMaxMinDate" parameterType="cdata"
+		resultType="cdata">
+      	<![CDATA[
+		SELECT to_char(MAX(m.import_date), 'YYYY-MM-DD HH24:MI:SS')  "maxProcessDate",
+		       to_char(MIN(m.import_date), 'YYYY-MM-DD HH24:MI:SS')  "minProcessDate"
+		  FROM tb_drug_import_master m, tb_drug_import_detail d
+		 WHERE m.document_no = d.document_no
+		   AND m.import_date < add_months(CURDATE(), -36)
+		]]>
+	</select>
+
+	<!-- 被处理出库数据的最小日期和最大日期 -->
+	<select id="retrieveExportMaxMinDate" parameterType="cdata"
+		resultType="cdata">
+      	<![CDATA[
+		SELECT to_char(MAX(m.export_date), 'YYYY-MM-DD HH24:MI:SS')  "maxProcessDate",
+		       to_char(MIN(m.export_date), 'YYYY-MM-DD HH24:MI:SS')   "minProcessDate"
+		  FROM tb_drug_export_master m, tb_drug_export_detail d
+		 WHERE m.document_no = d.document_no
+		   AND m.export_date < add_months(CURDATE(),-36)
+		]]>
+	</select>
+
+	<!-- 被处理采购数据的最小日期和最大日期 -->
+	<select id="retrievePurchasMaxMinDate" parameterType="cdata"
+		resultType="cdata">
+      	<![CDATA[
+		SELECT to_char(MAX(m.order_date), 'YYYY-MM-DD HH24:MI:SS')   "maxProcessDate",
+		       to_char(MIN(m.order_date), 'YYYY-MM-DD HH24:MI:SS')   "minProcessDate"
+		  FROM tb_purchas_master m, tb_purchas_detail d
+		 WHERE m.order_no = d.order_no
+		   AND m.order_date < add_months(CURDATE(),-36)
+		]]>
+	</select>
+</mapper> 

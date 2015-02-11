@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="officesupplyrecordManage">
+	<!-- 查询列表 -->
+	<select id="officerecordList" parameterType="cdata" resultType="cdata">
+		SELECT o.*, (SELECT u.user_name FROM com_user_m u WHERE
+		o.recipientuser=u.user_id)recipientname,
+		(SELECT f.name FROM officesupply f WHERE f.id = o.officeid) name ,
+		(SELECT u.user_name FROM com_user_m u WHERE
+		o.approveuser=u.user_id)approvename
+		FROM officesupplyrecord o where 1=1
+		<if test="recipientuser !=null and recipientuser!=''">
+			AND (recipientuser LIKE concat('%',trim(#{recipientuser}),'%'))
+		</if>
+	</select>
+
+	<!-- 详细信息 -->
+	<select id="updateInput" parameterType="cdata" resultType="cdata">
+		SELECT o.*, (SELECT u.user_name FROM com_user_m u WHERE
+		o.recipientuser=u.user_id)recipientname,
+		(SELECT f.name FROM officesupply f WHERE f.id = o.officeid) name ,
+		(SELECT u.user_name FROM com_user_m u WHERE
+		o.approveuser=u.user_id)approvename ,
+		(SELECT u.user_name FROM com_user_m u WHERE o.returnuser=u.user_id)
+		returnname
+		FROM officesupplyrecord o where id=#{id}
+	</select>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="cdata">
+		update officesupplyrecord set recipientuser=#{recipientuser},
+		returntype=#{returntype},officeid=#{officeid},
+		returnstatus=#{returnstatus}, returntime=#{returntime},
+		returnuser=#{returnuser}
+		where id=#{id}
+	</update>
+
+	<!-- 插入 -->
+	<insert id="createInput" parameterType="cdata">
+		insert into officesupplyrecord
+		(recipientuser,approveuser,approvetime,officeid,returntype,
+		returnstatus,returntime,returnuser)
+		values(#{recipientuser},#{approveuser},now(), #{officeid},
+		#{returntype},
+		#{returnstatus}, #{returntime}, #{returnuser})
+	</insert>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="cdata">
+		delete from officesupplyrecord
+		where id=#{id}
+	</delete>
+</mapper> 

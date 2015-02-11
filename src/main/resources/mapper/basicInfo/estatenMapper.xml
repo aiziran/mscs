@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="estatenManage">
+
+	<select id="estatenList" parameterType="cdata" resultType="cdata">
+		SELECT *,(SELECT c.user_name FROM com_user_m c WHERE
+		c.USER_ID=createuser) "createusername" from estaten
+		where newstype =#{newstype}
+      	
+	</select>
+
+	<select id="estatenInput" parameterType="cdata" resultType="cdata">
+		INSERT INTO estaten(
+		subject,
+		detail,
+		createuser,
+		createtime,
+		profilepictures,
+		newstype
+		)
+		VALUES(
+		#{subject},
+		#{detail},
+		#{createuser},
+		NOW(),
+		#{profilepictures},
+		#{newstype}
+		)
+	</select>
+
+	<select id="estatenDelete" parameterType="cdata" resultType="cdata">
+		DELETE FROM estaten WHERE id=#{id}
+	</select>
+
+	<select id="estatenUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE estaten SET
+		subject=#{subject},
+		<if test="profilepictures !=null and profilepictures neq '' ">
+			profilepictures=#{profilepictures},
+			</if>
+		detail=#{detail}
+		WHERE id=#{id}
+	</select>
+
+	<select id="estatenSelect" parameterType="cdata" resultType="cdata">
+		SELECT *,(SELECT c.user_name FROM com_user_m c WHERE
+		c.USER_ID=createuser) "createusername"
+		from estaten
+		WHERE id=#{id} and newstype=#{newstype}
+	</select>
+
+</mapper>

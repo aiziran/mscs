@@ -1,0 +1,235 @@
+﻿/*공통 */
+BODY         { color:#181818; font-family:Tahoma, 굴림, Seoul, Gulim; font-size:8pt; margin-top:0px; margin-left:0px; margin-right:0px; margin-bottom:0px; overflow: auto;}
+BODY.margine { color:#666666; font-family:Tahoma, 굴림, Seoul, Gulim; font-size:8pt; margin-top:0px; margin-left:20px; margin-right:20px; margin-bottom:0px }
+TABLE, TR, TD       { color : #666666; font-family : Tahoma, 굴림, Seoul, Gulim; font-size : 8pt ; LINE-HEIGHT: 14pt }
+FORM                { margin : 0px; padding : 0px; }
+SELECT              { font-family : Tahoma, 굴림, Seoul, Gulim; font-size : 8pt; background : #FFFFFF }
+TEXTAREA            { font-family : Tahoma, 굴림, Seoul, Gulim; font-size : 8pt; line-height : 160% }
+INPUT               {	font-family : "Tahoma", "굴림", "Seoul", "Gulim";	font-size : 8pt;	color: 666666;	}
+IMG					{ border : 0; }
+
+A		   { COLOR: #666666; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; TEXT-DECORATION: none }
+A:visited { COLOR: #666666; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; TEXT-DECORATION: none }
+A:active  { COLOR: #666666; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; TEXT-DECORATION: none }
+A:hover   { COLOR: #003887; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; TEXT-DECORATION: none;}
+
+/*form 규정*/
+.form1               {	font-family : "Tahoma", "굴림", "Seoul", "Gulim";	font-size : 8pt;	border: 1px solid #999999;	height: 18px;	color: 666666;	background-color: #FFFFFF;}/*기본*/
+.form1-1             {	font-family : "Tahoma", "굴림", "Seoul", "Gulim";	font-size : 8pt;	border: 1px solid #999999;	color: 666666;	background-color: #FFFFFF;} /*TEXTAREA*/
+.form2               {	font-family : "Tahoma", "굴림", "Seoul", "Gulim";	font-size : 8pt;	border: 1px solid #999999;	height: 18px;	color: 666666;	background-color: #F3F3F3;	}/*입력수정불가*/
+.form2-1             {	font-family : "Tahoma", "굴림", "Seoul", "Gulim";	font-size : 8pt;	border: 1px solid #999999;	color: 666666;	background-color: #F3F3F3;} /*TEXTAREA*/
+.submit				{	font-family : "Tahoma", "굴림", "Seoul", "Gulim";	font-size : 8pt;	border: 1px solid #999999;	height: 18px;	color: #333333;	background-color: #EEEEEE;}/*SUBMIT*/
+.file				{	font-family : "Tahoma", "굴림", "Seoul", "Gulim";	font-size : 8pt;	border: 1px solid #999999;	height: 18px;	color: #333333;	background-color: #FFFFFF;}/*file*/
+
+/* LAY-OUT TABLE TD */
+.TA_01    {  PADDING-BOTTOM: 30; TEXT-ALIGN: JUSTIFY}/*컨텐츠 젤 바깥부분 테이블*/
+
+/* BLUE TABLE */
+TABLE.BT01    { BACKGROUND-COLOR: #FFFFFF; PADDING-LEFT: 5px; PADDING-RIGHT: 5px }
+   TR.BT01    { BACKGROUND-COLOR: #BBC9F3; PADDING-LEFT: 5px; PADDING-RIGHT: 5px }
+   TR.BT02    { BACKGROUND-COLOR: #ECEFFC; PADDING-LEFT: 5px; PADDING-RIGHT: 5px }
+   TD.BT01    {  }
+   TD.BT02    {  }
+
+/* GRAY TABLE */
+TABLE.KT01    { BACKGROUND-COLOR: #FFFFFF; PADDING-LEFT: 5px; PADDING-RIGHT: 5px }
+   TR.KT01    { BACKGROUND-COLOR: #CCCCCC; PADDING-LEFT: 5px; PADDING-RIGHT: 5px }
+   TR.KT02    { BACKGROUND-COLOR: #EEEEEE; PADDING-LEFT: 5px; PADDING-RIGHT: 5px }
+   TD.KT01    {  }
+   TD.KT02    {  }
+
+/* 본문 코드박스 규칙 */
+.CODE      { COLOR: #666666; BACKGROUND:#F7F7F7; FONT-FAMILY: Tahoma, 굴림;FONT-SIZE: 8pt; PADDING: 15 20 15 20; LINE-HEIGHT: 14pt; BORDER: SOLID #BBBBBB; BORDER-WIDTH: 1 1 1 1; VERTICAL-ALIGN: TOP }
+
+
+/* COLOR TABLE 01 */
+.T01_0    { BACKGROUND-COLOR: #D4E8EF }
+.T01_1    { BACKGROUND-COLOR: #CCCCCC }
+.T01_2    { BACKGROUND-COLOR: #DFE9F2; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-WEIGHT: BOLD } /* 테이블헤더 */
+.T01_3    { BACKGROUND-COLOR: #F4F4F4; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; LINE-HEIGHT: 12pt } /* 첫번째 줄 */
+.T01_4    { BACKGROUND-COLOR: #FBFBFB; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; LINE-HEIGHT: 12pt } /* 두번째 줄 */
+.T01_5    {  }
+
+
+/* COLOR TABLE 02 */
+.T02_0    { BACKGROUND-COLOR: #D4E8EF }
+.T02_1    { BACKGROUND-COLOR: #8DB2FA }
+.T02_2    { BACKGROUND-COLOR: #AAC5FC; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-WEIGHT: BOLD } /* 테이블헤더 */
+.T02_3    { BACKGROUND-COLOR: #FFFFFF; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; LINE-HEIGHT: 12pt } /* 첫번째 줄 */
+.T02_4    { BACKGROUND-COLOR: #DBE7FF; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; LINE-HEIGHT: 12pt } /* 두번째 줄 */
+.T02_5    {  }
+
+
+/* COLOR TABLE 03 */
+.T03_0    { BACKGROUND-COLOR: #D4E8EF }
+.T03_1    { BACKGROUND-COLOR: #CCCCCC }
+.T03_2    { BACKGROUND-COLOR: #DDDDDD; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-WEIGHT: BOLD } /* 테이블헤더 */
+.T03_3    { BACKGROUND-COLOR: #FFFFFF; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; LINE-HEIGHT: 12pt } /* 첫번째 줄 */
+.T03_4    { BACKGROUND-COLOR: #EFEFEF; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; LINE-HEIGHT: 12pt } /* 두번째 줄 */
+.T03_5    {  }
+
+
+/* COLOR TABLE app01 */
+.T01_app0    { BACKGROUND-COLOR: #D4E8EF; FONT-SIZE: 7pt }
+
+.T01_app1 { BACKGROUND-COLOR: #F6EDDA; FONT-SIZE: 7pt; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-WEIGHT: BOLD } /* 테이블헤더 */
+.T01_app2 { BACKGROUND-COLOR: #F4F4F4; FONT-SIZE: 7pt; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-WEIGHT: BOLD } /* 첫번째 줄 */
+.T01_app3 { BACKGROUND-COLOR: #FBFBFB ; FONT-SIZE: 7pt; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; LINE-HEIGHT: 12pt } /* 두번째 줄 */
+
+.T01_app4 { BACKGROUND-COLOR: #E9F2D4; FONT-SIZE: 7pt; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-WEIGHT: BOLD } /* 테이블헤더 */
+.T01_app5 { BACKGROUND-COLOR: #F4F4F4; FONT-SIZE: 7pt; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-WEIGHT: BOLD } /* 첫번째 줄 */
+.T01_app6 { BACKGROUND-COLOR: #FBFBFB ; FONT-SIZE: 7pt; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; LINE-HEIGHT: 12pt } /* 두번째 줄 */
+
+
+/* LAY-OUT TABLE TD */
+TD.T01-1       { COLOR: #4D4D4D; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 9pt; FONT-WEIGHT: BOLD; PADDING-TOP: 5; PADDING-LEFT: 20; PADDING-RIGHT: 20; PADDING-BOTTOM: 5; TEXT-ALIGN: JUSTIFY; LINE-HEIGHT: 14pt }/*본문타이틀 bold*/
+TD.T01-1-1     { COLOR: #4D4D4D; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 8pt;                    PADDING-TOP: 5; PADDING-LEFT: 20; PADDING-RIGHT: 20; PADDING-BOTTOM: 15; TEXT-ALIGN: JUSTIFY; LINE-HEIGHT: 14pt }/*본문내용*/
+TD.T01-1-2     { COLOR: #4D4D4D; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 9pt;                    PADDING-TOP: 5; PADDING-LEFT: 40; PADDING-RIGHT: 20; PADDING-BOTTOM: 5; TEXT-ALIGN: JUSTIFY; LINE-HEIGHT: 14pt }/*padding 40*/
+TD.T01-1-3     { COLOR: #4D4D4D; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 8pt;                    PADDING-TOP: 5; PADDING-LEFT: 40; PADDING-RIGHT: 20; PADDING-BOTTOM: 20; TEXT-ALIGN: JUSTIFY; LINE-HEIGHT: 14pt }/*padding 40*/
+TD.T01-1-4     { PADDING-TOP: 5; PADDING-LEFT: 20; PADDING-RIGHT: 20; PADDING-BOTTOM: 10;}/*padding 40*/
+
+.TITLE1    { COLOR: #000000; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 12pt; FONT-WEIGHT: BOLD }
+.TITLE2    { COLOR: #555555; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 10pt; FONT-WEIGHT: BOLD; PADDING-LEFT:10px }
+.icon_title { 
+	height:18px;
+	width : 16px ;  
+	background-image: url("/images/m_bu_ttl.gif");  
+	background-repeat: no-repeat;
+}
+
+.BUTTON    { PADDING-LEFT:5px }
+
+.HELP01    { COLOR: #4D4D4D; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 9pt; FONT-WEIGHT: BOLD; PADDING-LEFT: 10px; PADDING-RIGHT: 10px }
+.HELP02    { COLOR: #4D4D4D; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 8pt; LINE-HEIGHT:12pt; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 5px; PADDING-BOTTOM: 10px }
+
+
+
+/* Location Bar */
+.locationbar           { font-family : Tahoma, 굴림, Seoul, Gulim; font-size : 8pt; color : #666666; PADDING-RIGHT: 8px ; TEXT-ALIGN: RIGHT }
+.locationbar a:link    { font-family : Tahoma, 굴림, Seoul, Gulim; font-size : 8pt; color : #666666; text-decoration : none; }
+.locationbar a:visited { font-family : Tahoma, 굴림, Seoul, Gulim; font-size : 8pt; color : #666666; text-decoration : none; }
+.locationbar a:hover   { font-family : Tahoma, 굴림, Seoul, Gulim; font-size : 8pt; color : #007BB9; text-decoration : none; }
+
+
+/*subtitle*/
+.subtitle  { COLOR : #000000;	FONT-SIZE: 11pt;	FONT-WEIGHT: bold;	padding-left: 10px;}
+.subtitle2 { COLOR : #666666;	FONT-SIZE: 11pt;	FONT-WEIGHT: bold; }
+.subtitle3 { COLOR : #000000;	FONT-SIZE:  9pt;	FONT-WEIGHT: bold;}
+.icontitle { COLOR : #666666;	FONT-SIZE: 11pt;	FONT-WEIGHT: bold;}
+
+
+/* Copyright */
+.COPYRIGHTS             { COLOR: #AAAAAA; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 7pt; BACKGROUND-COLOR: #FFFFFF }
+.COPYRIGHTS a:link      { COLOR: #AAAAAA; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 7pt; BACKGROUND-COLOR: #FFFFFF; TEXT-DECORATION: NONE }
+.COPYRIGHTS a:visited   { COLOR: #AAAAAA; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 7pt; BACKGROUND-COLOR: #FFFFFF; TEXT-DECORATION: NONE }
+.COPYRIGHTS a:hover     { COLOR: #3C6DAA; FONT-FAMILY: Tahoma, 굴림, Seoul, Gulim; FONT-SIZE: 7pt; BACKGROUND-COLOR: #FFFFFF; TEXT-DECORATION: NONE }
+
+/* top_menu */
+.menu        {position:relative;  padding:0 0 0 0px;  margin:0 0 0 0;  background:url("/images/menu/menur_bg.gif") repeat-x;   height:32px;}
+.menu td     {float:left;  white-space:nowrap;}
+.menu td a   {float:left;  white-space:nowrap;  display:block;  color:#ffffff;  text-decoration:none;  font-size:11px;  font-weight:bold;  padding:0 0 0 8px;  height:32px;  line-height:32px;  text-align:left;  cursor:pointer;}
+.menu td a b {float:left;  white-space:nowrap;  display:block;  padding:0 16px 0 8px;  color:#fff;}
+.menu td.current a, .menu td a:hover    {color:#0050a9;  white-space:nowrap;  background:url("/images/menu/menur_hover_left.gif") no-repeat left;}
+.menu td.current a b, .menu td a:hover b{color:#0050a9;  white-space:nowrap;  background:url("/images/menu/menur_hover_right.gif") no-repeat right top;}
+.line        {background:url("/images/menu/h_menu_line.gif") no-repeat left;  width:2px;}
+.bar_l       {background:url("/images/menu/h_menu_left.gif");  width:3px;}
+.bar_r       {background:url("/images/menu/h_menu_right.gif");  width:3px;}
+
+/* Utility menu */
+.utilmenu  {background:url("/images/menu/h_l.gif") no-repeat;  white-space:nowrap;  padding:0 14px 0 6px;  font-size:9px;   text-align:top;}
+.name      {text-align:right;  white-space:nowrap;   width:100px;   color:#0082D1; padding-right:15px;}
+
+/* top 2depth menu */
+.2menu     {background:url("/images/menu/h_bu03.gif") no-repeat;   white-space:nowrap;   padding:0 6 0 10px;}
+
+
+/*--------------------------------------------LEFT--------------------------------------------*/
+/* Left_title */
+.leftMenuTitle         {color:#fff;  background:url("/images/menu/l_menu_title.gif") no-repeat;  padding:2px 5px 0 25px;   font-size:13px;  text-align:left;  font-weight:bold; height:36px;}
+
+/* left_Menu 2depth */
+.smenu                 {font-size:8pt;  padding:2px 0 0 5px;}
+.smenu  a:link         {font-size:8pt;  text-decoration:none;}
+.smenu  a:active       {font-size:8pt;  text-decoration:none;  color:#024C8C;}
+.smenu  a:visited      {font-size:8pt;  text-decoration:none;}
+.smenu  a:hover        {font-size:8pt;  text-decoration:none;}
+
+/* left_Menu 3depth */
+.smenusub              {background:#FBFBFB;  padding-left:20px;}
+.smenusub  a:link      {background:#FBFBFB;  text-decoration:none;}
+.smenusub  a:active    {background:#FBFBFB;  text-decoration:none;  color:#024C8C;}
+.smenusub  a:visited   {background:#FBFBFB;  text-decoration:none;}
+.smenusub  a:hover     {background:#FBFBFB;  text-decoration:none;}
+
+.leftbg                {background:url("/images/menu/l_menu_bg.gif") repeat-y;  background:#FFF;}
+
+/*main_contact*/
+div.contact_layout {width:160px;   border:3px solid #d7d7d7;   background:#f4f4f4;   margin:0 0 35px 5px;}
+.contact_title     {background:url("/images/menu/contac_line.gif") no-repeat 5px 5px;   padding-left:8px;    line-height:30px;letter-spacing:-0.03em;   font-size:12px;   font-weight:bold;   color:#296f9f;}
+.contact_li        {background:url("/images/menu/contac_blet.gif") no-repeat 0px 7px;   line-height:18px;   font-size:8pt;padding-left:9px;}
+.contact           {background:url("/images/menu/contac_dot.gif") repeat;   height:16px;}
+
+/*--------------------------------------------LEFT--------------------------------------------*/
+
+/* contents */
+.INDICATION   { font-family : Tahoma, 굴림 ; font-size : 13pt; color : #076199 ;}
+
+
+/* contents_calendar */
+.calendar_1 { font-family : Tahoma; font-size : 10pt; color : #6A6A6A; FONT-WEIGHT: BOLD}/*년 , 월(영문)표시*/
+.calendar_2 { font-family : Tahoma; font-size : 16pt; color : #6A6A6A; FONT-WEIGHT: BOLD}/*달력 월(숫자)표시*/
+.calendar_3 { font-family : Tahoma; font-size : 8pt; color : #D34100; }/*달력 날짜표시(일)*/
+.calendar_4 { font-family : Tahoma; font-size : 8pt; color : #7D7D7D; }/*달력 날짜표시(월~금)*/
+.calendar_5 { font-family : Tahoma; font-size : 8pt; color : #486E0D; }/*달력 날짜표시(토)*/
+.calendar_6 { font-family : Tahoma; font-size : 8pt; color : #DA1500; }/*달력 today,공휴일(기념일)*/
+.calendar_7 { BACKGROUND-COLOR: #FFFFFF; font-family : Tahoma; font-size : 8pt; color : #486E0D; }
+.calendar_3_m{ BACKGROUND-COLOR: #FFEBCF; font-family : Tahoma; font-size : 8pt; color : #D34100; } 
+.calendar_4_m{ BACKGROUND-COLOR: #F6F6F6; font-family : Tahoma; font-size : 8pt; color : #7D7D7D; } 
+.calendar_5_m{ BACKGROUND-COLOR: #EBF8CD; font-family : Tahoma; font-size : 8pt; color : #486E0D; } 
+ 
+
+/*.LAYER_1 {FONT-SIZE:9PT; FONT-FAMILY:"굴림"; COLOR:BLACK; BORDER:1 #EBCB5D SOLID; BACKGROUND-COLOR:#FFFAD9; PADDING:5 5;}//SPAN LAYER의 스타일*/
+
+
+
+/* contents_bulletin */
+.bulletin_1 { FONT-WEIGHT: BOLD }
+
+.bulletin_2 { COLOR: #666666 }
+.bulletin_2  a:link		 { COLOR: #666666 }
+.bulletin_2  a:active    { COLOR: #666666 }
+.bulletin_2  a:visited	 { COLOR: #666666 }
+.bulletin_2  a:hover	 { COLOR: #2391B2 }
+
+.bulletin_3 { PADDING-LEFT : 15px ; FONT-WEIGHT: BOLD }
+.bulletin_4 { PADDING-LEFT : 10px ; COLOR: #017CB8 }
+.bulletin_5 { PADDING-LEFT : 10px }
+
+/* contents_sitemap */
+.sitemap1 { COLOR: #000000 } /* 2depth */
+.sitemap1  a:link		 { COLOR: #000000 ; TEXT-DECORATION: NONE }
+.sitemap1  a:active      { COLOR: #000000 ; TEXT-DECORATION: NONE }
+.sitemap1  a:visited	 { COLOR: #000000 ; TEXT-DECORATION: NONE }
+.sitemap1  a:hover		 { COLOR: #003887 ; TEXT-DECORATION: NONE }
+
+.sitemap2 { COLOR: #707070 } /* 3depth */
+.sitemap3 { FONT-SIZE: 7PT ; COLOR: #F9AE54 ; PADDING-LEFT:16px  ; PADDING-TOP:5px ; PADDING-BOTTOM:5px ; line-height:150%} /* 4depth */
+
+/* contents_contact */
+.contact_1 { FONT-WEIGHT: BOLD ; COLOR: #707070 }
+.contact_2 { PADDING-LEFT: 5px;  COLOR: #000000 }
+.contact_3 { PADDING-LEFT: 5px;  COLOR: #707070 }
+
+.contact_4 { PADDING-LEFT: 5px;  COLOR: #007DB7 }
+.contact_4  a:link		 { PADDING-LEFT: 5px;  COLOR: #007DB7 ; TEXT-DECORATION: NONE }
+.contact_4  a:active     { PADDING-LEFT: 5px;  COLOR: #007DB7 ; TEXT-DECORATION: NONE }
+.contact_4  a:visited	 { PADDING-LEFT: 5px;  COLOR: #007DB7 ; TEXT-DECORATION: NONE }
+.contact_4  a:hover		 { PADDING-LEFT: 5px;  COLOR: #003887 ; TEXT-DECORATION: NONE }
+
+/* contents_pupup */
+.popup_1{ FONT-SIZE : 11pt; COLOR : #FFFFFF; FONT-WEIGHT: BOLD }
+.popup_2{ FONT-SIZE : 8pt; COLOR : #000000;FONT-WEIGHT: BOLD }
+
+/* Search_result 테이블헤더 */
+.T01_6    { border:#CECECF; border-width: 1 1 1 0; border-style:Solid;BACKGROUND-COLOR: #DFE9F2; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-WEIGHT: BOLD }
+.T01_7    { border:#CECECF; border-width: 0 1 1 0; border-style:Solid;BACKGROUND-COLOR: #DFE9F2; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-WEIGHT: BOLD }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="testManage">
+	<!-- 查询列表 -->
+	<select id="testList" parameterType="cdata" resultType="cdata">
+		SELECT *
+		FROM archives 
+	</select>
+	<!-- 按id查询 -->
+	<select id="testSeclectOne" parameterType="cdata" resultType="cdata">
+		SELECT * FROM archives WHERE id=#{detailUserId}
+	</select>
+	<!-- 按id删除 -->
+	<select id="testDelete" parameterType="cdata" resultType="cdata">
+		DELETE
+		FROM archives WHERE id = #{aid}
+	</select>
+	<!-- 修改 -->
+	<select id="testUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE
+		archives SET
+		archivesnum = #{archivesnum} ,
+		archivesname = #{archivesname}
+		WHERE
+		id = #{aid} 
+
+	</select>
+	<select id="testInsert" parameterType="cdata" resultType="cdata">
+		INSERT
+		INTO archives
+		(
+		archivesnum,
+		archivesname
+		)
+		VALUES
+		(
+		#{archivesnum},
+		#{archivesname}
+		);
+
+	</select>
+
+	<select id="isArchivesnumUnique" parameterType="string"
+		resultType="string">
+		SELECT COUNT(archivesnum) ar FROM archives WHERE archivesnum=#{archivesnum}
+	</select>
+</mapper>

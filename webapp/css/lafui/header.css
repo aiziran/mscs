@@ -1,0 +1,129 @@
+/*	-------------------------------------------------------------
+	LG CNS LAF/UI
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	Description:	Header Styles
+	Filename:		header.css
+	Version:		LAF/UI_2.0_2007_R1_20070427
+	-------------------------------------------------------------	*/
+
+/* Header : Masthead
+---------------------------------------------------------*/
+#Lmasthead p img{
+float: left;
+padding: 10px 0 0 35px;
+}
+#Lmasthead ul {
+float: right;
+margin-top: 3px;
+}
+#Lmasthead ul li {
+display: inline;
+padding-right: 3px;
+}
+#Lmasthead ul li.Lpipe {
+background: url("../../images/pbf/pipe.gif") no-repeat;
+padding-left: 7px;
+}
+/* 사이트 위쪽에 전체 검색이 있는 경우 */
+#Lsitesearch { 
+float: right;
+margin: 3px 0 0 12px;
+}
+#Lsitesearch select {
+width: 90px;
+margin-bottom: 1px;
+}
+#Lsitesearch #Lss-word {
+width: 120px;
+border: 1px solid #CCC;
+padding: 2px 2px 0px;
+}
+
+/* Header : Main Menu
+---------------------------------------------------------*/
+#LmainMenu {
+position: absolute;
+top: 44px;
+left: 200px;
+width: 790px;
+height: 50px;
+text-align: center;
+}
+#LmainMenu .Ldepth1 {
+float: left;
+background: url("../../images/pbf/mmtab_l.gif") no-repeat;
+margin-right: 4px;
+}
+#LmainMenu .Ldepth1 span {
+display: block;
+float: left;
+background: url("../../images/pbf/mmtab_r.gif") no-repeat right top;
+height: 25px;
+padding: 5px 20px 0 20px;
+}
+#LmainMenu .Ldepth1Current {
+float: left;
+background: url("../../images/pbf/mmtab_l_on.gif") no-repeat;
+margin-right: 4px;
+}
+#LmainMenu .Ldepth1Current span {
+display: block;
+float: left;
+background: url("../../images/pbf/mmtab_r_on.gif") no-repeat right top;
+height: 25px;
+padding: 5px 20px 0 20px;
+}
+/* depth2 */
+* html #LmainMenu li ul {
+margin-left:-100px;
+}/*ie hack*/
+#LmainMenu li ul li {
+float: left;
+padding: 2px 10px 0;
+background: url("../../images/pbf/pipe_mm.gif") no-repeat right 65%;
+}
+#LmainMenu li ul li.Lcurrent {
+font-weight: bold;
+background: url("../../images/pbf/pipe_mm.gif") no-repeat right;
+}
+#LmainMenu li ul li.Llast {
+background: none;
+}
+#LmainMenu li ul.Lmenu1 { /* 각 메뉴별 위치조절을 위해 클래스를 사용하였음 */
+	left:0;
+	width:460px; /* width가 지정안되면 IE에서 리스트가 세로로 나올 수 있음 */
+} 
+#LmainMenu li ul.Lmenu2 {
+	left:0;
+	width:380px;
+}
+#LmainMenu li ul.Lmenu3 {
+	left:30px;
+	width:460px;
+}
+#LmainMenu li ul.Lmenu4 {
+	width:190px;
+}
+#LmainMenu li ul.Lmenu5 {
+	left:200px;
+	width:380px; 
+}
+
+/***************************font & link 관한 설정*******************************/
+#LmainMenu li ul {
+font-weight: normal;
+}  
+#LmainMenu li span a:link, #LmainMenu li span a:visited {
+color: #FFF;
+font-weight: bold;
+}
+#LmainMenu li span a:hover, #LmainMenu li span a:active {
+color: #F3F620;
+text-decoration: none;
+}
+#LmainMenu li.Ldepth1Current span a:link, #LmainMenu li.Ldepth1Current span a:visited,
+#LmainMenu li.Ldepth1Current span a:hover, #LmainMenu li.Ldepth1Current span a:active {
+color: #2D6D9D;
+}
+
+

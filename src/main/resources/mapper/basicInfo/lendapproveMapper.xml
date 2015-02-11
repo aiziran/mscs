@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lendapproveManage">
+	<!-- 查询列表 -->
+	<select id="lendapproveList" parameterType="cdata" resultType="cdata">
+		SELECT l.*,(SELECT a.name FROM archive a WHERE a.id=l.aid) "name" ,
+		IF(l.approvalstatus IS NULL ,'未审批',IF(l.approvalstatus=0,'同意','拒绝'))
+		"status",
+		ld.user "user",
+		ld.reason "reason"
+		FROM lendapproval l, lend ld
+		WHERE l.owner=#{owner} AND l.lid=ld.id ORDER BY DATE(createtime) DESC
+		,approvalstatus,TIME(createtime) asc
+	</select>
+
+	<!-- 档案审批 -->
+	<select id="lendcheck" parameterType="cdata" resultType="cdata">
+		SELECT l.*,(SELECT a.name FROM archive a WHERE a.id=l.aid) "name" ,
+		(SELECT a.status FROM archive a WHERE a.id=l.aid) "statu" ,
+		IF(ld.approvalstatus IS NULL
+		,'未审批',IF(ld.approvalstatus=1,'未通过','通过')) "status",
+		ld.user "user",
+		ld.reason "reason",
+		ld.returntime "returntime",
+		ld.returnstatus
+		FROM
+		lendapproval l, lend ld WHERE l.lid=ld.id GROUP BY lid ORDER BY
+		DATE(createtime) DESC ,TIME(createtime) asc
+	</select>
+
+	<!-- 按id查询 -->
+	<select id="lendapproveSeclectOne" parameterType="cdata"
+		resultType="cdata">
+		SELECT * FROM archives WHERE id=#{detailUserId}
+	</select>
+	<!-- 查询该档案的审批是否有没操作过的用户 -->
+	<select id="selectCount" parameterType="cdata" resultType="string">
+		SELECT count(id) "count" FROM lendapproval WHERE aid=#{aid} and
+		lid=#{lid} AND approvalstatus IS NULL 
+	</select>
+	<select id="selectTotalCount" parameterType="cdata" resultType="string">
+		SELECT count(id) "count" FROM lendapproval WHERE aid=#{aid} and
+		lid=#{lid} 
+	</select>
+	<select id="selectAgreeCount" parameterType="cdata" resultType="string">
+		SELECT count(id) "count" FROM lendapproval WHERE aid=#{aid} and
+		lid=#{lid} and approvalstatus = 0
+	</select>
+	<!-- 按id删除 -->
+	<select id="lendapproveDelete" parameterType="cdata" resultType="cdata">
+		DELETE FROM archives WHERE id = #{aid}
+	</select>
+	<!-- 修改 -->
+	<select id="lendapproveUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE lendapproval SET
+		approvalstatus=${status}
+		WHERE
+		id = #{id} 
+
+	</select>
+	<!-- 借出 -->
+	<update id="updateLend" parameterType="cdata">
+		UPDATE lend SET
+		approvalstatus=#{status},reallendtime=#{reallendtime},returnstatus=#{returnstatus},
+		archivetype=#{archivetype},realreturntime=#{realreturntime},returnuser=#{returnuser},returntime=#{returntime}
+		WHERE
+		id = #{rlid} 
+
+	</update>
+	<!-- 归还 -->
+	<update id="updatereturnLend" parameterType="cdata">
+		UPDATE lend
+		SET
+		returnstatus=#{returnstatus},
+		realreturntime=#{realreturntime},returnuser=#{returnuser}
+		WHERE
+		id = #{rlid} 
+
+	</update>
+	<select id="selectId" parameterType="cdata" resultType="string">
+		SELECT
+		aid FROM lend WHERE id =#{rlid}
+		
+	</select>
+
+	<select id="selectArchivetype" parameterType="cdata" resultType="string">
+		SELECT archivetype FROM lend WHERE id =#{rlid}
+		
+	</select>
+
+	<update id="updateArchive" parameterType="cdata">
+		UPDATE archive
+		SET
+		status=${statu}
+		WHERE
+		id = #{aid} 
+
+	</update>
+
+	<update id="updateReturnTime" parameterType="cdata">
+		update lend
+		set returntime=#{returntime} where id=#{id}
+	</update>
+	<select id="lendapproveInsert" parameterType="cdata" resultType="cdata">
+		INSERT INTO archives
+		(
+		archivesnum,
+		archivesname
+		)
+		VALUES
+		(
+		#{archivesnum},
+		#{archivesname}
+		);
+
+	</select>
+
+	<select id="selectUser" parameterType="cdata" resultType="string">
+		select
+		user from lend where id=#{rlid}
+
+	</select>
+</mapper>

@@ -1,0 +1,80 @@
+/*	-------------------------------------------------------------
+	LG CNS LAF/UI
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	Description:	Layout Styles
+	Filename:		layout.css
+	Version:		LAF/UI_2.0_2007_R1_20070427
+	-------------------------------------------------------------	*/
+
+/* from CSS Master 
+------------------------------*/
+.Lfclear:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+.Lfclear {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.Lfclear {display: block;}
+/* End hide from IE-mac */
+/* ------ from CSS Master end */
+
+/* Accessibility */
+#Laccessibility {display: none;}
+		
+/* Base Setup : Layout Grid 
+---------------------------------------------------------*/
+body.Ltop2, body.Ltop1 {
+background: #FFF url("../../images/pbf/bg_header.gif") repeat-x;
+}
+body.Ltop0 {
+background: #FFF url("../../images/pbf/bg_header_top0.gif") repeat-x;
+}
+#Lwrap { 
+background: url("../../images/pbf/bg_footer.gif") repeat-x left bottom;
+}
+#Lwrap-in {
+width: 1024px;
+/*margin: 0 auto;*/ /*전체 중앙정렬의 경우 사용할 수 있음(nonframe메뉴)*/
+}
+#Lheader {
+position: relative;/*mainMenu를 header에 대해 absolute positioning 하기 위한것*/
+width: 1025px;
+}
+body.Ltop2 #Lheader {
+height: 92px;
+}/*원래top높이92px이며, 2depth공간이있으므로 side와의간격은 따로주지않음(nonframe메뉴)*/
+body.Ltop1 #Lheader {
+height: 80px;
+}/*원래top높이72px에 side와의간격8px 더함(nonframe메뉴)*/
+body.Ltop0 #Lheader {
+height: 72px;
+}/*원래top높이64px에 side와의간격8px 더함(nonframe메뉴)*/
+#LmiddleLayer {
+background: url("../../images/pbf/bg_under_submenu.gif") repeat-y -100px 0;
+}
+#Lsidebar {
+float: left;
+width: 200px;
+min-height: 400px;
+}
+* html #Lsidebar {
+height: 400px;	
+}
+#Lcontent {
+float: left;
+width: 1025px;
+padding: 15px 0 20px 25px;
+}
+#Lfooter {
+clear: both;
+width: 1025px;
+height: 51px;
+padding-top: 10px;
+}/* CSS Document */
+
+
+

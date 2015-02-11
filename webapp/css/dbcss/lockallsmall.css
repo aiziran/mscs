@@ -1,0 +1,145 @@
+/*ʽ*/
+body,form,img {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	font-size: 12px;
+	font-family: "", Arial;
+	line-height: 18px;
+}
+
+/* body {
+	background: #696866;
+} */
+
+dl,dd,dt,ul,ol,li,h1,h2,h3,h4,h5,h6 {
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+a:link,a:visited {
+	text-decoration: none;
+	color: #000;
+}
+
+a:active,a:hover {
+	text-decoration: underline;
+	color: #ff6600;
+}
+
+input[type=radio],input[type=checkbox] {
+	cursor: pointer;
+}
+
+.clear {
+	clear: both;
+	font-size: 0px;
+	visibility: hidden;
+	width: 0px;
+	line-height: 0px
+}
+
+.jd,.jd dd,.jd dt,.jd li {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.centess {
+	margin: 0 auto;
+	width: 986px;
+	background: #fff;
+}
+
+/*ͷ Download by http://www.codefans.net */
+/*.ttop{width:986px; height:37px; background:#ffffff url(http://images.yoka.com/pic/news/2008/0825/logobg.gif);margin:0 auto;overflow:hidden;}*/
+.ttop i,.ttop p,.ttop b,.ttop s,.ttop u,.ttop span {
+	display: block;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	font-weight: normal;
+	font-variant: normal;
+	float: left;
+}
+
+.ttop u {
+	padding-right: 20px;
+}
+
+.ttop p {
+	padding-top: 10px;
+}
+
+.ttop b {
+	float: right;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+
+.ttop i {
+	float: right;
+	padding: 10px 30px 0 0;
+}
+
+.ttop span {
+	float: right;
+	padding: 10px 10px 0 0;
+	width: 200px;
+}
+
+.searchtxt {
+	border: 1px solid #cdcdcd;
+	color: #cdcdcd;
+	line-height: 14px;
+	width: 200px;
+	height: 14px;
+	float: right;
+}
+
+/*β*/
+#bnav {
+	clear: both;
+	width: 986px;
+	height: 13px;
+	padding: 8px 0 5px 0;
+	background: #333;
+	border-bottom: 1px solid #555;
+	text-align: center;
+	color: #a9a9a9;
+	margin: 0 auto;
+	line-height: 13px;
+}
+
+#bnav a {
+	color: #a9a9a9;
+	text-decoration: none;
+	margin: 0 12px 0 13px;
+}
+
+#bnav a:hover {
+	color: #f00;
+	text-decoration: underline;
+}
+
+#bback {
+	width: 986px;
+	height: 16px;
+	padding-top: 3px;
+	height: 23px;
+	background: #444;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#bback input {
+	font-size: 12px;
+	line-height: 14px;
+}
+/*#copy{width:986px;padding:20px 0 30px 0;text-align:center;height:50px;background:#444 url(http://www.yoka.com/index/beauty/img/copybg.gif);color:#fff;margin:0 auto;}*/
+#copy a {
+	color: #fff;
+}

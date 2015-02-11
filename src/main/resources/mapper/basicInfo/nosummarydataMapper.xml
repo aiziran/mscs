@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nosummarydataManage">
+
+
+	<!--未汇总数据 -->
+
+	<select id="datalist" resultType="cdata">
+		SELECT
+
+		ItemDatetime as
+		itemdatetime,
+		ItemValue as itemvalue,
+		LineNo as
+		lineno,
+		DataFileName as
+		datafilename,
+		IsStatisticsed as isstatisticsed,
+		ItemSample as
+		itemsample,
+		ProductName as productname
+		FROM qwdata where
+		1=1
+
+		<if test="statTime!=null and statTime!=''">
+	      <![CDATA[  and  DATE(itemdatetime) >=DATE(#{statTime}) ]]>
+		</if>
+		<if test="endTime!=null and endTime!=''">
+                  <![CDATA[
+                    AND DATE(itemdatetime)<=DATE(#{endTime}) 
+                    ]]>
+		</if>
+
+		<!-- <if test="statTime!=null and statTime !=''"> <if test="endTime!=null 
+			and endTime!=''"> AND itemdatetime between #{statTime} and #{endTime} </if> 
+			</if> -->
+		ORDER BY
+		ItemDatetime
+		limit 0,50;
+	</select>
+
+	<delete id="deleteInvilidata">
+		DELETE
+		FROM qwdata where
+		ItemValue>=#{standardDeviation}
+	</delete>
+
+
+
+
+
+
+
+
+</mapper> 

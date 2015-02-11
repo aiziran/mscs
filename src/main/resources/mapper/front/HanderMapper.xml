@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Hander">
+
+
+	<!-- 登录 -->
+	<select id="userLogin" parameterType="String" resultType="hashmap">
+		SELECT
+		pcum.user_id userId,
+		pcum.password,
+		pcum.user_name userName,
+		pcum.user_full_name userFullName,
+		pcum.phone_no phoneNo,
+		pcum.email,
+		pcum.dept_id deptCd,
+		(select dept_name from com_dept_m b where b.dept_id = pcum.dept_id) as
+		deptName,
+		pcum.sub_dept_id,
+
+		(select sub_dept_name from com_dept_sub b where b.dept_id = pcum.dept_id and
+		b.sub_dept_id = pcum.sub_dept_id) as subDeptName,
+		pcum.address_line1_info addressLine1Info,
+		pcum.address_line2_info addressLine2Info,
+		pcum.address_line3_info addressLine3Info,
+		pcum.SUPPLIER_ID supplierId,
+		pcum.HOSPITAL_ID hospitalId
+		FROM com_user_m pcum
+		WHERE pcum.user_id = #{userId}
+		AND pcum.use_flag = 'Y' 
+	</select>
+
+	<!-- top 页菜单列表 -->
+	<select id="topMenuList" parameterType="map" resultType="hashmap">
+		SELECT pcmm.menu_id menuId,
+		pcmm.menu_code menuCode,
+		pcmm.menu_name menuName,
+		pcmm.menu_desc menuDesc,
+		pcmm.menu_lvl menuLvl,
+		pcmm.menu_appl menuAppl
+		FROM com_menu_m pcmm
+		WHERE pcmm.use_flag = 'Y'
+		AND pcmm.menu_lvl = 1
+		AND pcmm.menu_id IN
+		(SELECT DISTINCT (menu_id)
+		FROM com_auth_menu
+		WHERE auth_code IN
+		<foreach item="code" collection="authCode" open="(" separator=","
+			close=")">
+			#{code}
+				</foreach>
+		)
+		ORDER BY menu_lvl, menu_seq
+	</select>
+
+	<!-- 一级菜单 -->
+	<select id="leftMenuLvl1" parameterType="list" resultType="hashmap">
+		SELECT pcmm.menu_id menuId,
+		menu_code menuCode,
+		menu_name menuName,
+		menu_desc menuDesc,
+		menu_lvl menuLvl,
+		menu_appl menuAppl,
+		prnt_menu_id prntMenuId,
+		menu_seq menuSeq
+		FROM com_menu_m pcmm
+		JOIN (SELECT distinct(menu_id) FROM com_auth_menu WHERE auth_code in
+		<foreach item="code" collection="authCode" open="(" separator=","
+			close=")">
+			#{code}
+				</foreach>
+		) pcam
+		ON pcam.menu_id = pcmm.menu_id
+		WHERE pcmm.use_flag = 'Y'
+		AND 4 > pcmm.menu_lvl
+		AND pcmm.menu_id = #{topMenuId}
+	</select>
+
+	<!-- 4级菜单 -->
+	<select id="leftMenuLvl23" parameterType="map" resultType="hashmap">
+		select
+		menuId,
+		menuCode,
+		menuName,
+		menuDesc,
+		menuLvl,
+		menuAppl,
+		prntMenuId
+		from (
+		SELECT pcmm.menu_id menuId,
+		menu_code menuCode,
+		menu_name menuName,
+		menu_desc menuDesc,
+		menu_lvl menuLvl,
+		menu_appl menuAppl,
+		prnt_menu_id prntMenuId,
+		menu_seq menuSeq
+		FROM com_menu_m pcmm
+		JOIN (SELECT distinct(menu_id) FROM com_auth_menu WHERE auth_code in
+		<foreach item="code" collection="authCode" open="(" separator=","
+			close=")">
+			#{code}
+						</foreach>
+		) pcam
+		ON pcam.menu_id = pcmm.menu_id
+		WHERE pcmm.use_flag = 'Y'
+		AND 5 > pcmm.menu_lvl
+		AND pcmm.prnt_menu_id = #{topMenuId}
+		ORDER BY pcmm.menu_seq) a
+	</select>
+
+	<select id="userRoleList" parameterType="String" resultType="hashmap">
+		SELECT auth_code authCode FROM com_auth_user WHERE user_id = #{userId}
+	</select>
+
+	<select id="getDeptRole" parameterType="String" resultType="hashmap">
+		SELECT userdept.dept_id code, dept.dept_name VALUE
+		FROM com_user_dept userdept, com_dept_m dept
+		WHERE userdept.dept_id = dept.dept_id
+		AND user_id = #{userId}
+	</select>
+
+	<select id="getSpecialDrugType" resultType="hashmap">
+		SELECT
+		drug.drug_type_code code, drug.drug_type_name value
+		FROM tb_drug_type drug
+		WHERE drug.drug_type_code like 'S09' || '%'
+		AND drug.drug_type_lvl != 1
+		ORDER BY drug.drug_type_code
+	</select>
+	<select id="getLoginDeptName" parameterType="String" resultType="hashmap">
+		SELECT DEPT_NAME "loginDeptName" FROM COM_DEPT_M WHERE DEPT_ID =
+		#{userDepartment}
+	</select>
+	<!--查看收件箱的未读邮件 -->
+	<select id="selectNoReadEmailNum" parameterType="cdata"
+		resultType="string">
+		select count(*) from email where `read`=1 and
+		owner=#{user_id} and ownertype=2
+	</select>
+	<!--查询3天内过保的车辆数量 -->
+	<select id="selectOutofwarranty" parameterType="cdata"
+		resultType="string">
+			<![CDATA[
+		SELECT COUNT(id) FROM carinfo WHERE  DATE_FORMAT(outofwarranty , '%Y-%m-%d' )<= DATE_FORMAT(CURDATE() , '%Y-%m-%d' )
+		]]>
+	</select>
+	<!--查询3天内过期档案 -->
+	<select id="selectExpirationdate" parameterType="cdata"
+		resultType="string">
+			<![CDATA[
+		SELECT COUNT(id) FROM archive WHERE DATE_FORMAT(expirationdate , '%Y-%m-%d' )<= DATE_FORMAT(CURDATE() , '%Y-%m-%d' )
+		]]>
+	</select>
+</mapper> 

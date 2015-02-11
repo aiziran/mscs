@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manpowerManage">
+	<select id="manpowerList" parameterType="cdata" resultType="cdata">
+		SELECT m.id,
+		(SELECT DEPT_NAME FROM com_dept_m d WHERE d.DEPT_ID=m.dept) deptname,
+		m.name,
+		m.identity_card "identitycard",
+		m.birthdate,
+		m.sex,
+		m.politics_status "politicsstatus",
+		m.native_place "nativeplace",
+		m.education,
+		m.position,
+		m.age ,
+		m.phone,
+		m.mobile,
+		m.email,
+		m.address,
+		m.school,
+		m.graduate_time "graduatetime",
+		m.household_register_location "houselocation",
+		m.isonjob,
+		m.photo_path "photopath",
+		m.employedtime,
+		m.positionname positionname,
+		m.annex annex,
+		m.endemployedtime endemployedtime,
+		m.startemployedtime startemployedtime
+		FROM employeeinfo m
+		WHERE 1=1
+		<if test="name!=null and name != ''">
+			AND (name LIKE concat('%',trim(#{name}),'%'))
+	    </if>
+		<if test="age!=null and age!=''">
+			AND (age LIKE concat('%',trim(#{age}),'%'))
+	    </if>
+		<if test="deptname!=null and deptname!=''">
+			ANd (dept LIKE concat('%',trim(#{dept}),'%'))
+	    </if>
+		<if test="mobile!=null and mobile!=''">
+			AND (mobile LIKE concat('%',trim(#{mobile}),'%'))
+	    </if>
+		<if test="identitycard!=null and identitycard!=''">
+			AND (identity_card LIKE concat('%',trim(#{identitycard}),'%'))
+	    </if>
+		<if test="email!=null and email!=''">
+			AND (email LIKE concat('%',trim(#{email}),'%'))
+	    </if>
+		<if test="isonjob!=null and isonjob!=''">
+			AND (isonjob LIKE concat('%',trim(#{isonjob}),'%'))
+	    </if>
+		<if test="position!=null and position!=''">
+			AND (position LIKE concat('%',trim(#{position}),'%'))
+	    </if>
+	</select>
+
+	<select id="manpowerInput" parameterType="cdata" resultType="cdata">
+		INSERT INTO
+		employeeinfo(
+		name,
+		dept,
+		identity_card,
+		birthdate,
+		sex,
+		politics_status,
+		native_place,
+		education,
+		position,
+		age,
+		phone,
+		mobile,
+		email,
+		address,
+		school,
+		graduate_time,
+		household_register_location,
+		isonjob,
+		photo_path,
+		employedtime,
+		positionname,
+		annex,
+		endemployedtime,
+		startemployedtime
+		)
+		VALUES(
+		#{name},
+		#{dept},
+		#{identitycard},
+		#{birthdate},
+		#{sex},
+		#{politicsstatus},
+		#{nativeplace},
+		#{education},
+		#{position},
+		#{age},
+		#{phone},
+		#{mobile},
+		#{email},
+		#{address},
+		#{school},
+		#{graduatetime},
+		#{houselocation},
+		#{isonjob},
+		#{photopath},
+		#{employedtime},
+		#{positionname},
+		#{annex},
+		#{endemployedtime},
+		#{startemployedtime}
+		)
+	</select>
+
+	<select id="manpowerSelectOne" parameterType="cdata" resultType="cdata">
+		SELECT m.id,
+		m.dept,
+		(SELECT DEPT_NAME FROM com_dept_m d WHERE d.DEPT_ID=m.dept) deptname,
+		m.name,
+		m.identity_card "identitycard",
+		m.birthdate,
+		m.sex,
+		m.politics_status "politicsstatus",
+		m.native_place "nativeplace",
+		m.education,
+		m.position,
+		m.age ,
+		m.phone,
+		m.mobile,
+		m.email,
+		m.address,
+		m.school,
+		m.graduate_time "graduatetime",
+		m.household_register_location "houselocation",
+		m.isonjob,
+		m.photo_path "photopath",
+		m.employedtime,
+		m.positionname,
+		m.annex,
+		m.endemployedtime,
+		m.startemployedtime
+		FROM employeeinfo m
+		WHERE id=#{tid}
+	</select>
+
+	<select id="manpowerUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE employeeinfo
+		SET
+		name=#{name},
+		dept=#{dept},
+		identity_card=#{identitycard},
+		birthdate=#{birthdate},
+		sex=#{sex},
+		politics_status=#{politicsstatus},
+		native_place=#{nativeplace},
+		education=#{education},
+		position=#{position},
+		age=#{age},
+		phone=#{phone},
+		mobile=#{mobile},
+		email=#{email},
+		address=#{address},
+		school=#{school},
+		graduate_time=#{graduatetime},
+		household_register_location=#{houselocation},
+		isonjob= #{isonjob},
+		photo_path=#{photopath},
+		employedtime=#{employedtime},
+		positionname=#{positionname},
+		annex=#{annex},
+		endemployedtime=#{endemployedtime},
+		startemployedtime=#{startemployedtime}
+		WHERE id=#{tid}
+	</select>
+
+	<select id="manpowerUpdateImg" parameterType="cdata" resultType="cdata">
+		UPDATE employeeinfo
+		SET
+		name=#{name},
+		dept=#{dept},
+		identity_card=#{identitycard},
+		birthdate=#{birthdate},
+		sex=#{sex},
+		politics_status=#{politicsstatus},
+		native_place=#{nativeplace},
+		education=#{education},
+		position=#{position},
+		age=#{age},
+		phone=#{phone},
+		mobile=#{mobile},
+		email=#{email},
+		address=#{address},
+		school=#{school},
+		graduate_time=#{graduatetime},
+		household_register_location=#{houselocation},
+		isonjob= #{isonjob},
+		employedtime=#{employedtime},
+		positionname=#{positionname},
+		annex=#{annex},
+		endemployedtime=#{endemployedtime},
+		startemployedtime=#{startemployedtime}
+		WHERE id=#{tid}
+	</select>
+
+	<select id="manpowerDelete" parameterType="cdata" resultType="cdata">
+		DELETE FROM employeeinfo WHERE id=#{tid}
+	</select>
+
+</mapper>
+	

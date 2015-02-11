@@ -1,0 +1,156 @@
+/*  -------------------------------------------------------------
+  LG CNS LAF/UI
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Description:  Typography Styles
+  Filename:   typo.css
+  Version:    LAF/UI_2.0_2007_R1_20070330
+  ------------------------------------------------------------- */
+  
+/* Base Setup : Font & Link 
+---------------------------------------------------------*/
+body {
+font: 75%/1.5em Dotum, 돋움, sans-serif;
+color: #333;
+}
+
+a:link, a:visited {
+color: #21528D;
+text-decoration: none;
+}
+a:hover, a:active {
+color: #0770FF;
+text-decoration: underline;
+}
+#Lcontent {
+line-height: 1.7em; 
+}
+
+.Lgray {
+color: #00B9AD; 
+}
+
+/* font-size 재설정
+---------------------------------------------------------*/
+form *, input, select, 
+h2, h3, h4 {
+font-size: 1em;
+}
+#LpageHeader h1, #LsubMenu h1 {
+font-size: 1.2em;
+}
+#Lbreadcrumb, #Lfooter, .Lpaging {
+font-size: 0.9em;
+}
+.Ldepth1Current, .Ltemplatecolor {
+  font-weight : bold; 
+}
+
+/* font-family 재설정
+---------------------------------------------------------*/
+.Lpaging {
+font-family: 宋体;
+}
+
+/* font-color 재설정
+---------------------------------------------------------*/
+form *, #LpageHeader h1, #Lfooter {
+color: #555555;
+}
+#Lbreadcrumb, #Lbreadcrumb a {
+color: #AAAAAA;
+}
+#Lbreadcrumb #Lhere {
+color: #333333;
+}
+h2 {
+color: #E17A0D;
+}
+h3 {
+color: #1F8CD8;
+}
+#LsubMenu h1 {
+color: #165CB3;
+}
+.Lunitbox h2 {
+color: #888888;
+}
+.Lpaging {
+color: #666666;
+}
+
+.Ltemplatecolor {
+color: #C63426;
+}
+
+/* link,visited 링크 (메인메뉴, 서브메뉴, UnitTab, Paging, 강조Text)
+---------------------------------------------------------*/
+#LmainMenu .Ldepth1 span a:link, #LmainMenu .Ldepth1 span a:visited {
+color: #FFFFFF;
+}
+#LsubMenu .Ldepth1 span, #LsubMenu .Ldepth1 a:link, #LsubMenu .Ldepth1 a:visited {
+color: #555555;
+}
+.Lunittab span a:link, .Lunittab span a:visited {
+color: #777777;
+}
+#LmainMenu .Ldepth1 span a:link, #LmainMenu .Ldepth1 span a:visited,
+#LsubMenu .Ldepth1 span a:link, #LsubMenu .Ldepth1 span a:visited,
+.Lstrong-link,
+.Lpaging .Lfirst, .Lpaging .Llast {
+font-weight: bold;
+}
+#LsubMenu .Ldepth2 span a:link, #LsubMenu .Ldepth2 span a:visited,
+#LsubMenu .Ldepth3 span a:link, #LsubMenu .Ldepth3 span a:visited {
+font-weight: normal;
+}
+
+.Lpaging a:link, .Lpaging a:visited {
+text-decoration: none; 
+color: #666666;
+}
+#LsubMenu .Ldepth1 span a.Lselected:link, #LsubMenu .Ldepth1 span a.Lselected:visited  {
+color: #0770FF;
+}
+#LsubMenu .Ldepth2 span a.Lselected:link, #LsubMenu .Ldepth2 span a.Lselected:visited  {
+color: #0770FF;
+font-weight: bold;
+text-decoration: none;
+}
+#LsubMenu .Ldepth3 span a.Lselected:link, #LsubMenu .Ldepth3 span a.Lselected:visited  {
+font-weight: bold;
+text-decoration: none;
+}
+
+/* hover,active 링크 (메인메뉴, 서브메뉴, UnitTab, Paging)
+---------------------------------------------------------*/
+#LmainMenu .Ldepth1 span a:hover, #LmainMenu .Ldepth1 span a:active {
+color: #F3F620;
+text-decoration: none;
+}
+#LsubMenu .Ldepth1 a:hover, #LsubMenu .Ldepth1 a:active {
+color: #0770FF;
+}
+.Lunittab span a:hover, .Lunittab span a:active {
+color: #E17A0D;
+text-decoration: none;
+}
+.Lpaging a:active, .Lpaging a:hover {
+text-decoration: underline; 
+color: #E17A0D;
+}
+
+/* 현재 선택된 상태 표시 (메인메뉴, UnitTab, Paging)
+---------------------------------------------------------*/
+#LmainMenu #Lcurrent span a {
+color: #2D6D9D;
+}
+.Lunittab .Lunittab-on span a:link,
+.Lunittab .Lunittab-on span a:visited {
+color: #927A00;  /*#E17A0D*/
+}
+.Lpaging .Lnow {
+color: #E17A0D;
+font-weight: bold;
+}
+
+

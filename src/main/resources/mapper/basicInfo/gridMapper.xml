@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gridManage">
+	<!-- 查询列表 -->
+	<select id="gridList" parameterType="cdata" resultType="cdata">
+		SELECT g.id gridid,
+		g.gridnum gridnum,
+		c.cabinetnum cabinetnum,
+		a.archivesnum archivesnum,
+		a.archivesname archivesname,
+		g.remark remark
+
+		FROM
+		grid g,cabinet c,archives a
+
+		WHERE
+		g.cabinetid=c.id AND g.archivesid=a.id
+		<if test="queryGridId !=null and queryGridId!=''">
+			AND (g.gridnum LIKE concat('%',trim(#{queryGridId}),'%')) 
+				</if>
+		<if test="queryCabinetId !=null and queryCabinetId!=''">
+			AND (c.cabinetnum LIKE concat('%',trim(#{queryCabinetId}),'%')) 
+				</if>
+		<if test="queryArchiveId !=null and queryArchiveId!=''">
+			AND (a.archivesnum LIKE concat('%',trim(#{queryArchiveId}),'%')) 
+				</if>
+	</select>
+	<!-- 查询按id -->
+	<select id="gridSelect" parameterType="cdata" resultType="cdata">
+		SELECT
+		g.id gridid,
+		g.gridnum gridnum,
+		c.cabinetnum cabinetnum,
+		a.id archivesid,
+		c.id cabinetid,
+		a.archivesnum archivesnum,
+		a.archivesname archivesname,
+		g.remark remark
+
+		FROM
+		grid g,cabinet c,archives a
+
+		WHERE
+		g.cabinetid=c.id AND g.archivesid=a.id AND g.id=#{gridid}
+	</select>
+	<!--删除 -->
+	<select id="gridDelete" parameterType="cdata" resultType="cdata">
+		DELETE
+		FROM grid
+		WHERE
+		id = #{gridid}
+		
+		
+	</select>
+	<!--新增 -->
+	<select id="gridInsert" parameterType="cdata" resultType="cdata">
+		INSERT
+		INTO grid
+		(
+		gridnum,
+		cabinetid,
+		archivesid,
+		remark
+		)
+		VALUES
+		(
+		#{gridnum},
+		#{cabinetid},
+		#{archivesid},
+		#{remark}
+		)
+	</select>
+	<!--修改 -->
+	<select id="gridUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE
+		grid
+		SET
+
+		gridnum = #{gridnum} ,
+		cabinetid = #{cabinetid} ,
+		archivesid = #{archivesid} ,
+		remark = #{remark}
+
+		WHERE
+		id = #{gridid} 
+
+	</select>
+</mapper>

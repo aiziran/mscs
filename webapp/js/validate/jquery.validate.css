@@ -1,0 +1,9 @@
+<style type="text/css">       
+label.error {     
+	color: Red;           
+	padding-left: 10px;       
+}    
+input.error  {    
+	border: dashed 1px red;       
+}  	 	                    
+</style>

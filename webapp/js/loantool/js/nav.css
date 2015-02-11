@@ -1,0 +1,1060 @@
+﻿.sobar i,.toptext,.sobar span,.sobar span strong b,.topsobtn,.topguide a i,.goto,.tpnav span a.current,.tpcon p.tpc1 i,.selsobtn,.tpnav em a
+	{
+	background: url(http://i0.sinaimg.cn/qc/revision2/bghnavso4.png)
+		no-repeat scroll -9999em 0 transparent
+}
+
+.bgsub,.subnavs a,.nav6on {
+	background: url(http://i0.sinaimg.cn/qc/revision2/bgsubnav.png)
+		no-repeat scroll -9999em 0 transparent
+}
+
+.topNav {
+	height: 60px;
+	width: 950px;
+	margin: 0 auto;
+	clear: both;
+	position: relative
+}
+
+.logo {
+	width: 130px;
+	height: 60px;
+	display: block;
+	background: url(http://i3.sinaimg.cn/qc/20090916/shouye/h_logo.png)
+		no-repeat 0 center;
+	float: left;
+	overflow: hidden;
+	text-indent: -999em
+}
+
+.topNav a img {
+	border: none !important
+}
+
+.subTi {
+	width: 120px;
+	padding: 20px 0 0 8px;
+	display: block;
+	float: left;
+	overflow: hidden
+}
+
+.sobar {
+	width: 455px;
+	height: 30px;
+	position: absolute;
+	left: 235px;
+	top: 18px
+}
+
+.sobar i {
+	width: 94px;
+	height: 30px;
+	display: block;
+	background-position: 0 -30px;
+	float: left
+}
+
+.toptext {
+	width: 238px;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #a3b9d8 !important;
+	border-right: none !important;
+	background-position: 0 0;
+	float: left;
+	font-size: 14px;
+	text-indent: 4px
+}
+
+.fon {
+	color: #ccc
+}
+
+.sobar span {
+	width: 60px;
+	height: 26px;
+	margin-top: display : block;
+	border: 1px solid #a3b9d8;
+	border-left: none;
+	background-position: 50% 0;
+	float: left;
+	position: relative;
+	z-index: 998
+}
+
+.sobar span strong {
+	display: block;
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+}
+
+.sobar span strong ins {
+	text-decoration: none
+}
+
+.sobar span strong b {
+	height: 19px;
+	line-height: 19px;
+	border-left: 1px solid #cecece;
+	display: block;
+	margin-top: 4px;
+	font-weight: normal;
+	color: #999;
+	text-indent: 7px;
+	background-position: -249px -81px;
+	cursor: pointer;
+	font-size: 14px
+}
+
+.sobar span strong b.on {
+	background-position: -249px -123px
+}
+
+.sobar span em {
+	border: 1px solid #a3b9d8;
+	border-top: none;
+	position: absolute;
+	left: 0;
+	top: 26px;
+	z-index: 9999;
+	background-color: #fff;
+	width: 59px;
+	display: none;
+	filter: alpha(opacity = 95);
+	-moz-opacity: 0.95;
+	opacity: 0.95;
+	zoom: 1;
+	height: auto
+}
+
+.sobar span em a {
+	cursor: pointer;
+	display: block;
+	height: 20px;
+	line-height: 20px;
+	background-color: #fff;
+	color: 999;
+	text-indent: 7px;
+	font-size: 14px;
+}
+
+.sobar span em a:link,.sobar span em a:visited {
+	font-size: 14px !important;
+	text-decoration: none !important;
+}
+
+.sobar span em a:hover {
+	background-color: #e2ebf8;
+	text-decoration: none !important;
+	color: #0b477e
+}
+
+.topsobtn {
+	width: 55px;
+	height: 28px;
+	background-position: -58px -71px;
+	cursor: pointer;
+	border: none;
+	float: left
+}
+
+.topguide {
+	width: auto;
+	height: 50px;
+	display: block;
+	float: right;
+	overflow: hidden;
+	margin-top: 10px
+}
+
+.topguide a {
+	width: 56px;
+	height: 50px;
+	display: block;
+	float: left;
+	text-align: center
+}
+
+.topguide a i {
+	width: 30px;
+	height: 28px;
+	display: block;
+	margin: auto;
+}
+
+.topguide a i.g1 {
+	background-position: -132px -32px
+}
+
+.topguide a i.g2 {
+	background-position: -193px -32px
+}
+
+.topguide a i.g3 {
+	background-position: -256px -32px
+}
+
+.topguide a i.g4 {
+	background-position: -318px -32px
+}
+
+.Hnav {
+	height: 70px;
+	width: 950px;
+	margin: 0 auto;
+	background: url(http://i0.sinaimg.cn/qc/revision2/bgh_navs.png)
+		no-repeat 0 0
+}
+
+.Hnav div {
+	float: left;
+	font-family: Arial, Helvetica, sans-serif
+}
+
+.hnav1 {
+	width: 205px
+}
+
+.hnav2 {
+	width: 290px
+}
+
+.hnav3 {
+	width: 171px
+}
+
+.hnav4 {
+	width: 182px
+}
+
+.hnav5 {
+	width: 102px
+}
+
+.Hnav div strong {
+	width: 50px;
+	height: 60px;
+	display: block;
+	float: left;
+	font-weight: normal;
+	margin-left: 10px;
+	margin-top: 5px
+}
+
+.Hnav div strong b a {
+	width: 42px;
+	height: 35px;
+	display: block;
+	text-indent: -999em;
+	background: url(http://i1.sinaimg.cn/qc/revision2/hnavbgs.png) no-repeat
+		0 0
+}
+
+.Hnav div.hnav1 strong b a {
+	background-position: 0 0
+}
+
+.Hnav div.hnav1 strong b a:hover {
+	background-position: 0 -36px
+}
+
+.Hnav div.hnav2 strong b a {
+	background-position: -65px 0
+}
+
+.Hnav div.hnav2 strong b a:hover {
+	background-position: -65px -36px
+}
+
+.Hnav div.hnav3 strong b a {
+	background-position: -130px 0
+}
+
+.Hnav div.hnav3 strong b a:hover {
+	background-position: -130px -36px
+}
+
+.Hnav div.hnav4 strong b a {
+	background-position: -195px 0
+}
+
+.Hnav div.hnav4 strong b a:hover {
+	background-position: -195px -36px
+}
+
+.Hnav div strong a {
+	display: block;
+	color: #e5e7f4;
+	line-height: 22px;
+	text-indent: 2px
+}
+
+.Hnav div em {
+	display: block;
+	float: left;
+	padding-top: 9px;
+}
+
+.Hnav div em a {
+	margin: auto 6px;
+	color: #e5e7f4;
+	line-height: 28px
+}
+
+.Hnav div a:visited {
+	color: #e5e7f4
+}
+
+.Hnav div a:hover {
+	color: #ff3;
+}
+
+.hnav5 {
+	height: 70px;
+	position: relative;
+	z-index: 99
+}
+
+.hnav5 h3 {
+	font-size: 16px;
+	font-family: \5fae\8f6f\96c5\9ed1, \5b8b\4f53;
+	font-weight: bold
+}
+
+.hnav5 h3 a {
+	line-height: 30px;
+	height: 30px;
+	margin-top: 7px;
+	display: block;
+	text-align: center;
+	color: #fedf50;
+	background: url(http://i1.sinaimg.cn/qc/revision2/nav6dn.png) no-repeat
+		center 100%
+}
+
+.hnav5 h3 a:visited {
+	color: #fedf50 !important
+}
+
+.hnav5 h3 a:hover {
+	color: #fedf50;
+	text-decoration: none !important;
+	background: url(http://i0.sinaimg.cn/qc/revision2/nav6up.png) no-repeat
+		center 100%
+}
+
+.cartypes {
+	width: 950px;
+	height: 158px;
+	margin: auto;
+	background: url(http://i2.sinaimg.cn/qc/revision2/bgtypes.png) no-repeat
+		0 0;
+	clear: both;
+	z-index: 5
+}
+
+.typelist {
+	width: 756px;
+	display: block;
+	background: url(http://i2.sinaimg.cn/qc/home/carstype.png) no-repeat 1px
+		8px;
+	height: 59px;
+	float: left;
+	font-weight: normal;
+	border-right: 1px solid #c5d2e2;
+	overflow: hidden
+}
+
+.selectso span {
+	width: 115px;
+	display: block;
+	float: left;
+	padding: 7px 0 0 5px
+}
+
+.selectso span select {
+	width: 113px;
+	border: 1px solid #ceced0;
+	color: #666
+}
+
+.selectso span select.sele1 {
+	margin-bottom: 5px
+}
+
+.selsobtn {
+	width: 58px;
+	height: 48px;
+	background-position: 0 -70px;
+	cursor: pointer;
+	border: none;
+	margin: 7px 0 0 5px
+}
+
+.tpnav span {
+	width: auto !important
+}
+
+.tpnav span a {
+	margin-right: 8px
+}
+
+.bgtpL {
+	width: auto !important;
+	border-right: 0;
+	height: 99px;
+	float: left
+}
+
+.bgtpR {
+	display: none;
+	width: 192px;
+	height: 99px;
+	float: left;
+	overflow: hidden
+}
+
+.typelist a {
+	width: 75px;
+	height: 58px;
+	display: block;
+	padding-top: 40px;
+	text-align: center;
+	float: left;
+}
+
+.typelist a.narrow {
+	width: 67px
+}
+
+.typelist a.wide {
+	width: 82px
+}
+
+.bgtpcars {
+	height: 98px;
+	background: #fff url(http://i2.sinaimg.cn/qc/revision2/bgtpcars.png)
+		repeat-x 0 0;
+	border-bottom: 1px solid #c5d2e2;
+	clear: both;
+	margin: auto 1px;
+	clear: both
+}
+
+.tpnav {
+	height: 34px;
+	font-family: Arial, Helvetica, sans-serif
+}
+
+.tpnav strong {
+	width: 75px;
+	float: left;
+	text-align: center;
+	display: block;
+	padding-top: 12px
+}
+
+.tpnav b {
+	width: 130px;
+	display: block;
+	float: right;
+	text-align: right;
+	padding-top: 12px;
+	padding-right: 8px;
+	font-weight: normal;
+}
+
+.tpnav b a {
+	text-decoration: underline;
+	color: #888
+}
+
+.tpnav span,.tpnav em {
+	width: 536px;
+	float: left;
+	height: 30px;
+	display: block;
+	padding-top: 4px
+}
+
+.tpnav em {
+	width: 170px;
+	font-style: normal !important
+}
+
+.tpnav span a,.tpnav em a {
+	width: 67px;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	float: left;
+	text-align: center;
+}
+
+.tpnav em a {
+	width: 79px;
+}
+
+.tpnav i a {
+	line-height: 38px;
+	margin: auto 10px
+}
+
+.tpnav span a.current,.tpnav em a.current {
+	background-position: -113px -72px;
+	font-weight: bold;
+	color: #c00 !important;
+}
+
+.tpnav em a.current {
+	background-position: -113px -102px;
+}
+
+.tpcon {
+	background: url(http://i1.sinaimg.cn/qc/revision2/tpcongeline.gif)
+		repeat-x 0 center;
+	overflow: hidden;
+	zoom: 1
+}
+
+.tpcon p strong {
+	width: 115px;
+	height: 33px;
+	line-height: 33px;
+	display: block;
+	float: left;
+	text-indent: 10px;
+	font-weight: normal
+}
+
+.tpcon p.tpc1 strong.tpmore {
+	width: 55px;
+}
+
+.tpcon p.tpc1 i {
+	width: 50px;
+	height: 33px;
+	line-height: 33px;
+	display: block;
+	float: left;
+	text-align: center;
+	background-position: -60px -116px;
+	clear: left;
+}
+
+.tpcon p strong a:link,.tpcon p strong a:visited {
+	color: #888
+}
+
+.bgtpR p em a:link,.bgtpR p em a:visited {
+	color: #666
+}
+
+.bgtpR h3 {
+	line-height: 30px;
+	padding-top: 5px;
+	padding-left: 10px
+}
+
+.bgtpR p em {
+	width: 50%;
+	float: left;
+	text-indent: 10px;
+	padding-top: 6px
+}
+
+.bgsub {
+	width: 950px;
+	height: 72px;
+	margin: auto;
+	background-position: 0 -78px;
+}
+
+.subnavs a {
+	width: 158px;
+	height: 38px;
+	display: block;
+	float: left;
+	text-indent: -9999em
+}
+
+.subnavs a.nav1 {
+	width: 159px
+}
+
+.subnavs a.nav1:hover {
+	background-position: 0 -40px
+}
+
+.subnavs a.nav2:hover {
+	background-position: -159px -40px
+}
+
+.subnavs a.nav3:hover {
+	background-position: -317px -40px
+}
+
+.subnavs a.nav4:hover {
+	background-position: -475px -40px
+}
+
+.subnavs a.nav5:hover {
+	background-position: -633px -40px
+}
+
+.nav6 {
+	width: 159px;
+	height: 38px;
+	display: block;
+	float: left;
+	position: relative;
+	z-index: 999
+}
+
+.nav6on {
+	background: url(http://i0.sinaimg.cn/qc/revision2/bgsubnav.png)
+		no-repeat -791px -40px !important
+}
+
+.goto {
+	display: block;
+	padding: 0 25px 0 10px;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #e5e7f4;
+	cursor: pointer;
+	background-position: 65px -118px;
+	position: absolute;
+	left: 10px;
+	top: 36px;
+	z-index: 998;
+}
+
+.over {
+	border: 1px solid #ccc;
+	border-bottom: none;
+	background-color: #f7f7f7;
+	line-height: 29px;
+	color: #333;
+}
+
+.qhcitys {
+	width: 798px;
+	position: absolute;
+	right: 0;
+	top: 66px;
+	border: 1px solid #ccc;
+	background-color: #f7f7f7;
+	padding: 3px 0;
+	z-index: 997;
+	display: none;
+	-moz-box-shadow: 3px 3px 5px #336bab;
+	-webkit-box-shadow: 3px 3px 5px #336bab;
+	box-shadow: 3px 3px 5px #336bab;
+}
+
+.qhcitys a {
+	width: 46px;
+	text-indent: 10px;
+	line-height: 22px;
+	display: block;
+	float: left
+}
+
+.qhcitys a:link {
+	color: #333;
+}
+
+.qhcitys a:visited {
+	color: #333 !important
+}
+
+.qhcitys a:hover {
+	color: #c00 !important
+}
+
+.nav6 i.goto {
+	left: 72px;
+	top: 3px;
+	color: #334a7c;
+}
+
+.nav6 strong {
+	font-family: arial, \5fae\8f6f\96c5\9ed1, \9ED1\4F53;
+	color: #0d2d6d;
+	font-size: 15px;
+	width: 80px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	display: block;
+}
+
+.nav6on {
+	background-position: -791px 0
+}
+
+.nav6 strong a {
+	text-indent: 0;
+	width: 80px;
+	color: #334a7c;
+	font-size: 15px !important
+}
+
+.nav6 strong a:hover {
+	text-decoration: none !important
+}
+
+.nav6 strong a:visited {
+	color: #334a7c;
+	font-size: 15px
+}
+
+.subqh {
+	right: 0;
+	top: 33px;
+	_right: -1px;
+}
+
+.subqh a {
+	height: 22px
+}
+
+.subnavs a.up2,.subnavs a.up2:hover {
+	background-position: -159px 0
+}
+
+.subnavs a.up3,.subnavs a.up3:hover {
+	background-position: -317px 0
+}
+
+.subnavs a.up4,.subnavs a.up4:hover {
+	background-position: -475px 0
+}
+
+.subnavs a.up5,.subnavs a.up5:hover {
+	background-position: -633px 0
+}
+
+.up6 {
+	background: url(http://i0.sinaimg.cn/qc/revision2/bgsubnav.png)
+		no-repeat -791px 0 !important;
+}
+
+.up6 strong a {
+	color: #fff !important
+}
+
+.up6 i.goto {
+	color: #fff
+}
+
+.nav6 i.over {
+	border: 1px solid #ccc;
+	padding: 0 24px 0 10px;
+	border-bottom: none;
+	background-color: #f7f7f7;
+	line-height: 29px;
+	color: #333;
+}
+
+.subitem {
+	line-height: 33px;
+	padding-left: 8px;
+	clear: both
+}
+
+.subitem a {
+	margin: auto 8px;
+}
+
+.subitem a:link,.subitem a:visited {
+	color: #fff
+}
+
+.subitem a:hover {
+	color: #ffe912
+}
+
+.subitem a.on {
+	color: #ffe912;
+	font-weight: bold
+}
+
+.sqnldiv {
+	clear: both;
+	overflow: hidden;
+	zoom: 1;
+	padding: 3px 5px 0;
+	_padding-top: 0px;
+	background-image: none !important;
+	text-align: left
+}
+
+.sqnldiv div {
+	width: 48%;
+	float: left;
+	line-height: 21px;
+	background-image: none !important
+}
+
+.sqnldiv div strong {
+	color: #c00;
+	font-weight: normal;
+	padding-left: 5px
+}
+
+.sqnldiv div a {
+	margin: auto 8px
+}
+
+.sqnldiv div a:visited {
+	color: #333
+}
+
+div.sq_ge {
+	width: 10px !important;
+	height: 58px;
+	background: url(http://i2.sinaimg.cn/qc/xiwenxin/0927tu/sq_ge.png)
+		no-repeat 0 5px !important;
+	float: left;
+	margin: auto 10px
+}
+
+.divsq3 div {
+	width: 32%;
+}
+
+.divsq3 div a {
+	margin: auto 6px
+}
+
+.divsq3 div.sq_ge {
+	margin: auto 3px
+}
+
+.topguide a:visited,.tpnav strong a:link,.tpnav strong a:visited,.tpnav span a:link,.tpnav span a:visited,.tpcon p strong.tpmore a:visited,.tpnav i a:visited,.typelist a:link,.typelist a:visited,.footer a:visited
+	{
+	color: #333
+}
+
+.topguide a:hover,.tpnav strong a:hover,.tpnav span a:hover,.tpnav b a:hover,.tpcon p strong a:hover,.tpcon p strong.tpmore a:hover,.bgtpR p em a:hover,.tpnav i a:hover,.typelist a:hover,.footer a:hover,.nav6 strong a:hover
+	{
+	color: #c00
+}
+
+/***最新添加**/
+.ad_top {
+	zoom: 1;
+	overflow: hidden;
+	padding: 8px 0;
+	border: 1px solid #ddd;
+	border-top: 0;
+	font-family: Arial, Helvetica, sans-serif
+}
+
+.ad_top a {
+	color: #666
+}
+
+.ad_top b {
+	padding: 0
+}
+
+.ad_top a:hover {
+	color: #c00
+}
+
+.ad_top li {
+	float: left;
+	line-height: 20px;
+	overflow: hidden;
+	list-style: none;
+	background-image: none;
+	padding: 0
+}
+
+.ad_top b a,.ad_top b a:visited {
+	color: #000;
+	margin-right: 8px
+}
+
+.ad_top li.ad_top_li1,.ad_top li.ad_top_li2 {
+	border-right: 1px dashed #d6d6d6
+}
+
+.ad_top_li1 {
+	width: 416px
+}
+
+.ad_top_li2 {
+	width: 330px
+}
+
+.ad_top_li3 {
+	width: 200px
+}
+
+.ad_top li p a {
+	margin-right: 8px
+}
+
+.ad_top li p {
+	padding-left: 10px
+}
+
+.footer {
+	text-align: center;
+	line-height: 25px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 10px 0;
+	color: #333
+}
+
+.footer a {
+	margin: auto 5px
+}
+
+.subfoot {
+	width: 948px;
+	border: 1px solid #ddd;
+	margin: 10px auto 0;
+	clear: both;
+	overflow: hidden;
+	zoom: 1
+}
+
+.subfoot div {
+	width: 118px;
+	float: left;
+	background: url(http://i1.sinaimg.cn/qc/xiwenxin/0927tu/sub.png)
+		no-repeat 100% -47px
+}
+
+.subfoot div.last {
+	background-image: none
+}
+
+.subfoot div strong a {
+	display: block;
+	margin: 10px 0 0 15px;
+	height: 30px;
+	line-height: 30px
+}
+
+.subfoot div strong a:visited {
+	color: #333 !important
+}
+
+.subfoot div i {
+	display: block;
+	height: 10px;
+	width: 117px;
+	margin-left: 2px;
+	_margin-left: 1px;
+	background: url(http://i1.sinaimg.cn/qc/xiwenxin/0927tu/sub.png)
+		no-repeat 0 -47px;
+}
+
+.subfoot div p {
+	padding: 0 0 10px 15px
+}
+
+.subfoot div p a {
+	display: block;
+	line-height: 22px;
+	color: #333 !important
+}
+
+.subfoot div p.first a {
+	width: 57px;
+	float: left
+}
+
+.subfootb input.btn_so {
+	height: 22px;
+	width: 49px;
+	background: url(http://i0.sinaimg.cn/qc/xiwenxin/0927tu/h_norepeat.png)
+		no-repeat -132px -529px;
+	border: none;
+	cursor: pointer
+}
+
+.subfootb {
+	background: url(http://i2.sinaimg.cn/qc/xiwenxin/0927tu/h_repeat_x.png)
+		repeat-x 0 -557px;
+	width: 948px;
+	margin: auto;
+	border: 1px solid #ddd;
+	border-top: none;
+	height: 47px;
+	overflow: hidden;
+	zoom: 1
+}
+
+.subfootb h2 {
+	background: url(http://i1.sinaimg.cn/qc/xiwenxin/0927tu/sub.png)
+		no-repeat 0 0;
+	height: 47px;
+	width: 300px;
+	float: left;
+}
+
+.subfootb h2 a {
+	height: 45px;
+	display: block;
+	text-indent: -9999em;
+}
+
+.subfootb p {
+	padding: 12px 10px 0 0;
+	text-align: right;
+	float: right
+}
+
+.subfootb p input,.subfootb p select {
+	float: left;
+	color: #333;
+	border: 1px solid #ccc;
+	margin-right: 2px
+}
+
+.subfootb p select {
+	height: 23px;
+	line-height: 23px;
+	margin-top: 0;
+	*margin-top: 1px;
+	_margin-top: 1px;
+}
+
+.subfootb p input.intext {
+	height: 17px;
+	padding-top: 4px;
+	border: 1px solid #cdcdcf;
+	width: 120px;
+	margin-left: 12px;
+	text-indent: 5px;
+}
+
+.btn_so:hover {
+	background-position: -132px -485px !important
+}
+
+.none {
+	display: none
+}
+
+.subtyst {
+	height: 60px;
+	zoom: 1;
+	border-bottom: 1px solid #d2deee
+}
+
+.sqtyps {
+	height: 100px
+}

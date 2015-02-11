@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="deptManage">
+	<!--查询数据权限信息列表 -->
+	<select id="retrieveDeptList" parameterType="cdata" resultType="cdata">
+		SELECT d.dept_id "deptId",
+		d.dept_name "deptName",
+		d.dept_type
+		"deptType",
+		c.code_DESC "deptTypeName" ,
+		d.dept_manager "deptManager",
+		d.dept_tel "deptTel",
+		d.dept_address "deptAddress",
+		a.user_name "user_name"
+		FROM com_code c,com_dept_m d LEFT OUTER JOIN com_user_m a ON
+		d.dept_Manager = a.user_id WHERE d.use_flag = 'Y' AND c.code_id =
+		d.dept_type AND
+		c.code_group = '04'
+
+
+
+		<if
+			test="queryDeptType !=null and queryDeptType neq '' and queryDeptType neq '-1'">
+			AND (d.dept_type LIKE concat('%',trim(#{queryDeptType}),'%'))
+		</if>
+		<if test="queryDeptManager!=null and queryDeptManager neq '' ">
+			AND (d.dept_manager IN (SELECT user_id FROM com_user_m WHERE user_name
+			LIKE CONCAT('%',TRIM(#{queryDeptManager}),'%'))) 
+			   </if>
+		ORDER BY
+		<if
+			test="selPageOrderBy!=null and selPageOrderBy != '' and selPageOrder!=null and selPageOrder != '' ">
+			${selPageOrderBy} ${selPageOrder}
+		     </if>
+		<if test="selPageOrderBy==null or selPageOrderBy == ''">
+			d.use_flag desc,d.dept_id
+		     </if>
+	</select>
+
+	<!--查询部门类型list -->
+	<select id="retrieveDeptTypeList" resultType="cdata">
+	  	<![CDATA[
+			SELECT code_id code,
+			       code_desc value
+			  FROM com_code
+			 WHERE code_group = '04'
+			   AND use_flag = 'Y'
+		]]>
+	</select>
+
+	<!--新建部门保存 -->
+	<insert id="createDeptDo" parameterType="cdata">
+	  	<![CDATA[
+			INSERT INTO com_dept_m (
+						dept_name,
+						dept_type,
+						dept_manager,
+						dept_tel,
+						dept_address,
+						dept_notes,
+						create_by,
+						create_date
+			) VALUES (
+			            #{deptName},
+			            #{deptType},
+			            #{deptManager},
+			            #{deptTel},
+			            #{deptAddress},
+			            #{deptNotes},
+			            #{createBy},
+			            CURDATE()
+			)
+		]]>
+	</insert>
+
+	<!--修改部门详情前的查询 -->
+	<select id="updateDept" parameterType="cdata" resultType="cdata">
+	  	<![CDATA[
+			SELECT 
+	         d.dept_id "deptId",
+		     d.dept_name "deptName",
+		     d.dept_type "deptType",
+		     d.dept_manager "deptManager",
+		     d.dept_tel "deptTel", 
+		     d.dept_address "deptAddress",
+		      a.user_name "user_name",	
+		     d.dept_notes "deptNotes"
+	 FROM com_dept_m d LEFT OUTER JOIN com_user_m  a ON  d.dept_Manager = a.user_id WHERE 
+			 d.dept_id = #{deptId}
+		]]>
+	</select>
+
+	<!--修改部门保存 -->
+	<update id="updateDeptDo" parameterType="cdata">
+	  	<![CDATA[
+	  		UPDATE com_dept_m 
+	  		   SET dept_name = #{deptName},
+	  		       dept_type = #{deptType},
+	  			   dept_manager = #{deptManager},
+	  			   dept_tel = #{deptTel},
+	  			   dept_address = #{deptAddress},
+	  			   dept_notes = #{deptNotes},
+	  			   update_by = #{createBy},
+	  		       update_date = CURDATE()
+			 WHERE dept_id = #{deptId}
+		]]>
+	</update>
+
+	<!--删除部门保存前需要判断user表与user_dept表中是否存在use_flag='Y'的关联dept_id wangbp 2011-05-06 -->
+	<select id="deleteDept" parameterType="cdata" resultType="cdata">
+	  	<![CDATA[
+	  		SELECT  dept_id,
+	  				user_id
+			  FROM  com_user_m
+			 WHERE  dept_id = #{deptId}
+			UNION
+			SELECT  dept_id,
+	  				user_id
+			  FROM  com_user_dept
+			 WHERE  dept_id = #{deptId}
+		]]>
+	</select>
+
+	<!--删除部门保存 -->
+	<update id="deleteDeptDo" parameterType="cdata">
+  		<![CDATA[
+	  		UPDATE com_dept_m 
+	  		   SET use_flag = 'N',
+	  		   	   update_by = #{createBy},
+	  		       update_date = CURDATE()
+			 WHERE dept_id = #{deptId}
+		]]>
+	</update>
+
+	<!--检验deptName是否已存在 -->
+	<select id="validateDeptName" parameterType="cdata" resultType="cdata">
+	  	<![CDATA[
+			SELECT dept_name
+			  FROM com_dept_m
+			 WHERE dept_name = #{deptName} 
+			   AND dept_id <> #{deptId}
+		]]>
+	</select>
+</mapper>
+
+ 	

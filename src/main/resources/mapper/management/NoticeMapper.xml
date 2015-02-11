@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+	<!--查询公告信息list lixinliang -->
+	<select id="retrieveNoticeBoardList" parameterType="cdata"
+		resultType="cdata">
+		SELECT notice_id "noticeId",
+		notice_title "noticeTitle",
+		notice_content "noticeContent",
+		to_char(start_date,'yyyy-MM-dd') "startDate",
+		to_char(end_date,'yyyy-MM-dd') "endDate",
+		to_char(create_date,'yyyy-MM-dd') "createDate",
+		(SELECT t.user_name FROM com_user_m t WHERE t.user_id = tb.create_by)
+		"createBy",
+		to_char(update_date,'yyyy-MM-dd') "updateDate",
+		(SELECT t.user_name FROM com_user_m t WHERE t.user_id = tb.update_by)
+		"updateBy"
+		FROM tb_notice_board tb
+		WHERE (start_date &lt;= to_date(#{queryEndDate}, 'YYYY-MM-DD')+1)
+		AND (end_date >= to_date(#{queryStartDate}, 'YYYY-MM-DD'))
+		<if test="queryNoticeTitle!=null and queryNoticeTitle!=''">
+			AND UPPER(notice_title) LIKE '%'||UPPER(#{queryNoticeTitle})||'%'
+			</if>
+		ORDER BY start_date DESC,end_date DESC
+	</select>
+
+	<!--查询公告信息详情 lixinliang -->
+	<select id="retrieveNoticeBoardDetai" parameterType="string"
+		resultType="cdata">
+		<![CDATA[
+			SELECT notice_id "noticeId",
+			       notice_title "noticeTitle",
+			       notice_content "noticeContent",
+			       to_char(start_date,'yyyy-MM-dd') "startDate",
+			       to_char(end_date,'yyyy-MM-dd') "endDate",
+			       (SELECT t.user_name FROM com_user_m t WHERE t.user_id = tb.create_by) "createBy",
+			       to_char(create_date,'yyyy-MM-dd') "createDate",
+			       (SELECT t.user_name FROM com_user_m t WHERE t.user_id = tb.update_by) "updateBy",
+			       to_char(update_date,'yyyy-MM-dd') "updateDate"
+			  FROM tb_notice_board tb
+			 WHERE notice_id = #{noticeId}
+		]]>
+	</select>
+
+	<!--查询公告新建保存 lixinliang -->
+	<select id="insertNoticeBoardDetail" parameterType="cdata">
+		<![CDATA[
+			INSERT INTO tb_notice_board
+				  (notice_id,
+				   notice_title,
+				   notice_content,
+				   start_date,
+				   end_date,
+				   create_date,
+				   create_by,
+				   update_date,
+				   update_by)
+				VALUES
+				  (seq_tb_notice_board.NEXTVAL,
+				   #{noticeTitle},
+				   #{noticeContent},
+				   to_date(#{startDate}, 'YYYY-MM-DD'),
+				   to_date(#{endDate}, 'YYYY-MM-DD'),
+				   CURDATE(),
+				   #{userId},
+				   CURDATE(),
+				   #{userId})
+		]]>
+	</select>
+
+	<!--查询公告修改保存 xin yun yun 2010-02-21 -->
+	<select id="updateNoticeBoardDetail" parameterType="cdata">
+	  	<![CDATA[
+			UPDATE tb_notice_board
+			   SET notice_title   = #{noticeTitle},
+			       notice_content = #{noticeContent},
+			       start_date     = to_date(#{startDate}, 'YYYY-MM-DD'),
+			       end_date       = to_date(#{endDate}, 'YYYY-MM-DD'),
+			       update_date    = CURDATE(),
+			       update_by      = #{userId}
+			 WHERE notice_id = #{noticeId}
+		]]>
+	</select>
+
+
+</mapper> 

@@ -1,0 +1,1928 @@
+/*
+-----------------------------------------------
+    LWebCalendar Cascading Style Sheet Layout
+    
+    Author:   AhnKyeongChan
+    Version:  2008-10-23
+----------------------------------------------- */
+	/* [Begin] SilverLight skin. default */
+	/* =Appearance calendar standart view
+----------------------------------------------- */
+.lwebcalendar {
+	background: url(/images/lwebcomponent/lwebcalendar/cal_bg_single.png)
+		no-repeat;
+	border: 0px solid green;
+	font: 1em Dotum, 돋움, Arial, sans-serif;
+	z-index: 99;
+	height: 178px;
+	padding: 16px;
+	width: 146px;
+}
+
+.lwebcalendar table {
+	table-layout: auto;
+}
+
+/* =Appearance minimized maximized
+----------------------------------------------- */
+.lwebcalendar_minimized {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/cal_bg_single_mini.png)
+		no-repeat;
+	height: 25px;
+	padding: 0;
+	width: 178px;
+}
+
+/* =Style for iframe (must have same values as real dimensions of calendar)
+----------------------------------------------- */
+.lwebcalendar_ifr {
+	height: 172px;
+	width: 177px;
+}
+
+/* =Appearance header of calendar in minimized view
+----------------------------------------------- */
+.lwebcalendar_minimized .lwebcalendar_Header {
+	margin-left: 16px;
+	padding-top: 4px;
+}
+
+/* =Appearance header of calendar in standard view
+----------------------------------------------- */
+.lwebcalendar .lwebcalendar_Header {
+	text-align: right;
+	width: 144px;
+	height: 13px;
+}
+
+/* =Appearance header title 
+----------------------------------------------- */
+.lwebcalendar .winTitle {
+	color: black;
+	font-size: 11px;
+	float: left;
+	cursor: move;
+}
+
+/* =Common appearance headers buttons 
+----------------------------------------------- */
+.lwebcalendar .btn,.btn_mini,.btn_close,.btn_today,.btn_clr {
+	float: right;
+	height: 12px;
+	width: 13px;
+}
+
+/* =Button mini 
+----------------------------------------------- */
+.lwebcalendar .btn_mini {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_mini.gif)
+		no-repeat;
+}
+
+/* =Button mini in minimized view 
+----------------------------------------------- */
+.lwebcalendar_minimized .btn_mini {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_maxi.gif)
+		no-repeat;
+}
+
+/* =Button close 
+----------------------------------------------- */
+.lwebcalendar .btn_close {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_close.gif)
+		no-repeat;
+}
+
+/* =Button today 
+----------------------------------------------- */
+.lwebcalendar .btn_today {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_today.gif)
+		no-repeat;
+}
+
+/* Button clear */ /* =Button today 
+----------------------------------------------- */
+.lwebcalendar .btn_clr {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_clr.gif)
+		no-repeat;
+}
+
+/* Calendar body */ /* =Button today 
+----------------------------------------------- */
+.lwebcalendar .entbox {
+	width: 145px;
+	clear: both;
+}
+
+/* Common style for each cell of calendar 
+----------------------------------------------- */
+.lwebcalendar td {
+	border: 0px;
+	padding: 0px;
+	font-size: 11px;
+	font-family: Tahoma;
+}
+
+/* Month left button
+----------------------------------------------- */
+.lwebcalendar .lwebcalendar_month td.month_btn_left,.lwebcalendar .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/cal_arrow_bwd.gif) center
+		center no-repeat;
+	background-repeat: no-repeat;
+	width: 9px;
+}
+
+/* Month right button
+----------------------------------------------- */
+.lwebcalendar .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/cal_arrow_fwd.gif) center
+		center no-repeat;
+}
+
+/* =Month span 
+----------------------------------------------- */
+.lwebcalendar .lwebcalendar_month td.month_btn_left span,.lwebcalendar .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+/* Appearance months shorts labels 
+----------------------------------------------- */
+.lwebcalendar .lwebcalendar_dlabel {
+	border-bottom: 1px solid #7e7e7e;
+	color: #7e7e7e;
+	border-top: 0px;
+	padding-left: 2px;
+}
+
+/* Common styles for months and days labels 
+----------------------------------------------- */
+.lwebcalendar .lwebcalendar_dlabel td,.lwebcalendar .lwebcalendar_days td,.lwebcalendar .lwebcalendar_days_ie td
+	{
+	font-size: 10px;
+	font-family: Tahoma;
+	text-align: center;
+	vertical-align: middle;
+	width: 18px;
+	height: 18px;
+	color: #7e7e7e;
+}
+
+/* Appearance days
+----------------------------------------------- */
+.lwebcalendar .lwebcalendar_days td,.lwebcalendar .lwebcalendar_days_ie td
+	{
+	border: 0px;
+	cursor: pointer;
+}
+
+/* Appearance days for IE
+----------------------------------------------- */
+.lwebcalendar .lwebcalendar_days_ie td {
+	height: 16px;
+}
+
+/* Comma between month and year
+----------------------------------------------- */
+.lwebcalendar td.comma {
+	visibility: visible;
+}
+
+/* Common style for month and year labels
+----------------------------------------------- */
+.lwebcalendar div.planeMonth,.lwebcalendar div.planeYear {
+	height: auto;
+	overflow: auto;
+}
+
+/* Appearance year
+----------------------------------------------- */
+div.lwebcalendar div.planeYear {
+	display: inline;
+	width: 28px;
+}
+
+/* Days of this month
+----------------------------------------------- */
+.lwebcalendar td.thismonth {
+	color: black;
+	padding: 1px;
+}
+
+/* Days of other months 
+----------------------------------------------- */
+.lwebcalendar td.othermonth {
+	visibility: hidden;
+}
+
+/* Weekend
+----------------------------------------------- */
+.lwebcalendar td.weekend {
+	color: #a70000;
+	padding: 1px;
+}
+
+/* Insensitive days
+----------------------------------------------- */
+.lwebcalendar td.insensitive {
+	color: #b5b5b5;
+	cursor: default;
+	padding: 1px;
+}
+
+/* Selected day
+----------------------------------------------- */
+.lwebcalendar td.selected {
+	background-color: #36b1df;
+	color: white !important;
+}
+
+/* Current day
+----------------------------------------------- */
+.lwebcalendar td.current {
+	font-weight: bold !important;
+	color: black;
+}
+
+/* Hovered day
+----------------------------------------------- */
+.lwebcalendar td.hover {
+	border: 1px solid #b5b5b5;
+	color: #000000;
+	padding: 0px;
+}
+
+/* Holidays
+----------------------------------------------- */
+.lwebcalendar td.holiday {
+	font-weight: bold;
+	color: #a70000;
+}
+
+/* [End] SilverLight skin. default */
+	/* [Begin] LWebCalendarRichSelector */ /* =Button today 
+----------------------------------------------- */
+.lwebcalendar div.lwebcalendar_RichSelector {
+	position: absolute;
+	background-color: #ffffff;
+	display: block;
+}
+
+/* =Button today 
+----------------------------------------------- */
+.lwebcalendar textarea.lwebcalendar_RichSelector,.lwebcalendar select.lwebcalendar_RichSelector
+	{
+	font-family: verdana;
+	position: absolute;
+	font-size: 9px;
+	overflow: hidden;
+	border-width: 0px;
+	z-index: 100;
+}
+
+/* =Button today 
+----------------------------------------------- */
+.lwebcalendar select.lwebcalendar_RichSelector {
+	border: 1px solid #555555;
+}
+
+/* [End] LWebCalendarRichSelector */ /* [Begin] Yahoolike skin. */
+.lwebcalendar_yahoolike {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Yahoolike/cal_bg_single.gif)
+		no-repeat;
+	border: 1px solid gray;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	background-color: #f7f9fb;
+	width: 178px;
+	height: 172px;
+	padding: 5px;
+	z-index: 99;
+}
+
+.lwebcalendar_yahoolike_minimized {
+	height: 25px;
+	padding: 0;
+	width: 178px;
+}
+
+.lwebcalendar_yahoolike_ifr {
+	height: 172px;
+	width: 190px;
+}
+
+.lwebcalendar_yahoolike .lwebcalendar_Header {
+	text-align: right;
+	width: 178px;
+}
+
+.lwebcalendar_yahoolike_minimized .lwebcalendar_Header {
+	margin-left: 16px;
+	padding-top: 4px;
+	width: 155px;
+}
+
+.lwebcalendar_yahoolike .winTitle {
+	color: black;
+	font-size: 12px;
+	float: left;
+	cursor: move;
+}
+
+.lwebcalendar_yahoolike .entbox {
+	margin: 3px 3px 3px 3px;
+	width: 172px;
+}
+
+.lwebcalendar_yahoolike td {
+	font-size: 9px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.lwebcalendar_yahoolike .lwebcalendar_month {
+	background-color: #f7f9fb;
+	border: 0px solid #e0e0e0;
+}
+
+.lwebcalendar_yahoolike .lwebcalendar_month td.month_btn_left,.lwebcalendar_yahoolike .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Yahoolike/bwd_arrow.gif)
+		center center no-repeat;
+	background-repeat: no-repeat;
+	width: 9px;
+}
+
+.lwebcalendar_yahoolike .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Yahoolike/fwd_arrow.gif)
+		center center no-repeat;
+}
+
+.lwebcalendar_yahoolike .lwebcalendar_month td.month_btn_left span,.lwebcalendar_yahoolike .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+.lwebcalendar_yahoolike .lwebcalendar_dlabel {
+	border-width: 0px;
+}
+
+.lwebcalendar_yahoolike .lwebcalendar_dlabel td,.lwebcalendar_yahoolike .lwebcalendar_days td,.lwebcalendar_yahoolike .lwebcalendar_days_ie td
+	{
+	font-size: 10pt;
+	text-align: left;
+	vertical-align: middle;
+	width: 20px;
+	height: 21px;
+	color: #666;
+}
+
+.lwebcalendar_yahoolike .lwebcalendar_days_ie td {
+	height: 18px;
+}
+
+.lwebcalendar_yahoolike .lwebcalendar_days td,.lwebcalendar_yahoolike .lwebcalendar_days_ie td
+	{
+	border: 1px solid #e0e0e0;
+	background-color: #fff;
+	text-align: center;
+	cursor: pointer;
+}
+
+.lwebcalendar_yahoolike td.comma {
+	visibility: hidden;
+}
+
+.lwebcalendar_yahoolike div.planeMonth,.lwebcalendar_yahoolike div.planeYear
+	{
+	height: auto;
+	overflow: auto;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.lwebcalendar_yahoolike td.thismonth {
+	color: #003db8;
+}
+
+.lwebcalendar_yahoolike td.othermonth {
+	color: #999;
+	background-color: #eee;
+	visibility: visible;
+}
+
+.lwebcalendar_yahoolike td.weekend {
+	color: #003db8;
+}
+
+.lwebcalendar_yahoolike td.unsensitive {
+	color: #ccc;
+	font-style: italic;
+	cursor: default;
+}
+
+.lwebcalendar_yahoolike td.selected {
+	border: 1px solid white;
+	background-color: lightblue;
+	color: #ffffff;
+}
+
+.lwebcalendar_yahoolike td.current {
+	color: #00c;
+	font-weight: bold !important;
+}
+
+.lwebcalendar_yahoolike td.hover {
+	border: 1px solid #426FD9;
+	background-color: #426FD9;
+	color: white;
+}
+
+.lwebcalendar_yahoolike td.holiday {
+	font-weight: bold;
+	color: #00c;
+	text-decoration: underline;
+}
+
+/* [Begin] lwebcalendar_RichSelector */
+.lwebcalendar_yahoolike textarea.lwebcalendar_RichSelector,.lwebcalendar_yahoolike select.lwebcalendar_RichSelector
+	{
+	font-family: Arial;
+	font-size: 10pt;
+	overflow: hidden;
+}
+
+.lwebcalendar_yahoolike select.lwebcalendar_RichSelector {
+	border: 1px solid #7b9ebd;
+}
+
+/* [End] lwebcalendar_RichSelector */ /* [End] Yahoolike skin. */
+	/* [Begin] Simple Grey skin. */
+.lwebcalendar_simplegrey {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplegrey/cal_bg_single.png)
+		no-repeat;
+	border: 0px solid green;
+	font-family: Arial;
+	z-index: 99;
+	height: 174px;
+	width: 160px;
+	padding: 16px;
+}
+
+.lwebcalendar_simplegrey_ifr {
+	height: 195px;
+	width: 189px;
+}
+
+.lwebcalendar_simplegrey .entbox {
+	width: 161px;
+	height: 174px;
+}
+
+.lwebcalendar_simplegrey td {
+	font-size: 10px;
+	font-family: Tahoma;
+	text-align: center;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_month td {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_month .planeYear {
+	margin-left: 4px;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_month td.month_btn_left,.lwebcalendar_simplegrey .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplegrey/bwd_arrow.png)
+		center center no-repeat;
+	background-repeat: no-repeat;
+	width: 9px;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplegrey/fwd_arrow.png)
+		center center no-repeat;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_month td.month_btn_left span,.lwebcalendar_simplegrey .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_dlabel {
+	margin-top: 10px;
+	border-bottom: 1px solid #7e7e7e;
+	color: #7e7e7e;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_dlabel td,.lwebcalendar_simplegrey .lwebcalendar_days td,.lwebcalendar_simplegrey .lwebcalendar_days_ie td
+	{
+	font-size: 11px;
+	font-family: Tahoma;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	width: 24px;
+	height: 21px;
+	color: #7e7e7e;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_dlabel {
+	border-top: 0px;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_dlabel td {
+	color: black;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_days td,.lwebcalendar_simplegrey .lwebcalendar_days_ie td
+	{
+	border: 0px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.lwebcalendar_simplegrey .lwebcalendar_days_ie td {
+	height: 16px;
+}
+
+.lwebcalendar_simplegrey td.comma {
+	visibility: visible;
+}
+
+.lwebcalendar_simplegrey div.planeMonth,.lwebcalendar_simplegrey div.planeYear
+	{
+	height: auto;
+	overflow: auto;
+}
+
+div.lwebcalendar_simplegrey div.planeYear {
+	display: inline;
+	width: auto;
+}
+
+.lwebcalendar_simplegrey td.thismonth {
+	color: black;
+	padding: 1px;
+	width: 24px;
+	height: 21px
+}
+
+.lwebcalendar_simplegrey td.othermonth {
+	visibility: visible;
+}
+
+.lwebcalendar_simplegrey td.weekend {
+	color: black;
+	padding: 1px;
+}
+
+.lwebcalendar_simplegrey td.insensitive {
+	color: #b5b5b5;
+	cursor: default;
+	padding: 1px;
+}
+
+.lwebcalendar_simplegrey td.selected {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplegrey/cell_select.png)
+		center center no-repeat;
+	color: black !important;
+}
+
+.lwebcalendar_simplegrey td.current {
+	color: black;
+	font-weight: bold !important
+}
+
+.lwebcalendar_simplegrey td.hover {
+	border: 1px solid #b5b5b5;
+	color: #ffffff;
+	padding: 0px;
+}
+
+.lwebcalendar_simplegrey td.holiday {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #000;
+}
+
+/* [Begin] lwebcalendar_RichSelector */
+.lwebcalendar_simplegrey textarea.lwebcalendar_RichSelector,.lwebcalendar_simplegrey select.lwebcalendar_RichSelector
+	{
+	font-family: Arial;
+	font-size: 10pt;
+	overflow: hidden;
+}
+
+.lwebcalendar_simplegrey select.lwebcalendar_RichSelector {
+	border: 1px solid #7b9ebd;
+}
+
+/* [End] lwebcalendar_RichSelector */ /* ]End] Simple Grey Skin */
+	/* [Begin] Simple Blue skin. */
+.lwebcalendar_simpleblue {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_SimpleBlue/cal_bg_single.png)
+		no-repeat;
+	border: 0px solid green;
+	font-family: Arial;
+	z-index: 99;
+	height: 174px;
+	width: 160px;
+	padding: 16px;
+}
+
+.lwebcalendar_simpleblue_ifr {
+	height: 195px;
+	width: 189px;
+}
+
+.lwebcalendar_simpleblue .entbox {
+	width: 161px;
+	height: 174px;
+}
+
+.lwebcalendar_simpleblue td {
+	font-size: 10px;
+	font-family: Tahoma;
+	text-align: center;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_month td {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_month .planeYear {
+	margin-left: 4px;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_month td.month_btn_left,.lwebcalendar_simpleblue .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_SimpleBlue/bwd_arrow.png)
+		center center no-repeat;
+	background-repeat: no-repeat;
+	width: 9px;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_SimpleBlue/fwd_arrow.png)
+		center center no-repeat;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_month td.month_btn_left span,.lwebcalendar_simpleblue .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_dlabel {
+	border-bottom: 1px solid #7e7e7e;
+	margin-top: 10px;
+	color: #7e7e7e;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_dlabel td,.lwebcalendar_simpleblue .lwebcalendar_days td,.lwebcalendar_simpleblue .lwebcalendar_days_ie td
+	{
+	font-size: 11px;
+	font-family: Tahoma;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	width: 24px;
+	height: 21px;
+	color: #7e7e7e;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_dlabel {
+	border-top: 0px;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_dlabel td {
+	color: black;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_days td,.lwebcalendar_simpleblue .lwebcalendar_days_ie td
+	{
+	border: 0px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.lwebcalendar_simpleblue .lwebcalendar_days_ie td {
+	height: 16px;
+}
+
+.lwebcalendar_simpleblue td.comma {
+	visibility: visible;
+}
+
+.lwebcalendar_simpleblue div.planeMonth,.lwebcalendar_simpleblue div.planeYear
+	{
+	height: auto;
+	overflow: auto;
+}
+
+div.lwebcalendar_simpleblue div.planeYear {
+	display: inline;
+	width: auto;
+}
+
+.lwebcalendar_simpleblue td.thismonth {
+	color: black;
+	padding: 1px;
+	width: 24px;
+	height: 21px
+}
+
+.lwebcalendar_simpleblue td.othermonth {
+	visibility: visible;
+}
+
+.lwebcalendar_simpleblue td.weekend {
+	color: black;
+	padding: 1px;
+}
+
+.lwebcalendar_simpleblue td.insensitive {
+	color: #b5b5b5;
+	cursor: default;
+	padding: 1px;
+}
+
+.lwebcalendar_simpleblue td.selected {
+	background-color: #6fdcfa;
+	color: black !important;
+}
+
+.lwebcalendar_simpleblue td.current {
+	color: black;
+	font-weight: bold !important
+}
+
+.lwebcalendar_simpleblue td.hover {
+	border: 1px solid #6fdcfa;
+	color: #ffffff;
+	padding: 0px;
+}
+
+.lwebcalendar_simpleblue td.holiday {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #000;
+}
+
+/* [End] Simple Blue skin. */ /* [Begin] Vista Style skin. */
+.lwebcalendar_vista {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_vista/cal_bg_single.png)
+		no-repeat;
+	border: 0px solid green;
+	font-family: Arial;
+	z-index: 99;
+	height: 174px;
+	width: 178px;
+	padding: 16px;
+}
+
+.lwebcalendar_vista_ifr {
+	height: 195px;
+	width: 189px;
+}
+
+.lwebcalendar_vista .entbox {
+	height: 174px;
+	width: 161px;
+}
+
+.lwebcalendar_vista td {
+	font-size: 10px;
+	font-family: Tahoma;
+	text-align: center;
+}
+
+.lwebcalendar_vista .lwebcalendar_month {
+	color: #018ad1;
+}
+
+.lwebcalendar_vista .lwebcalendar_month td {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.lwebcalendar_vista .lwebcalendar_month .planeYear {
+	margin-left: 4px;
+}
+
+.lwebcalendar_vista .lwebcalendar_month td.month_btn_left,.lwebcalendar_vista .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_vista/bwd_arrow.png)
+		center center no-repeat;
+	background-repeat: no-repeat;
+	width: 9px;
+}
+
+.lwebcalendar_vista .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_vista/fwd_arrow.png)
+		center center no-repeat;
+}
+
+.lwebcalendar_vista .lwebcalendar_month td.month_btn_left span,.lwebcalendar_vista .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+.lwebcalendar_vista .lwebcalendar_dlabel {
+	border-bottom: 1px solid #7e7e7e;
+	color: #7e7e7e;
+	margin-top: 10px;
+}
+
+.lwebcalendar_vista .lwebcalendar_dlabel td,.lwebcalendar_vista .lwebcalendar_days td,.lwebcalendar_vista .lwebcalendar_days_ie td
+	{
+	font-size: 11px;
+	font-family: Tahoma;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	width: 24px;
+	height: 21px;
+	color: #7e7e7e;
+}
+
+.lwebcalendar_vista .lwebcalendar_dlabel {
+	border-top: 0px;
+}
+
+.lwebcalendar_vista .lwebcalendar_dlabel td {
+	color: black;
+}
+
+.lwebcalendar_vista .lwebcalendar_days td,.lwebcalendar_vista .lwebcalendar_days_ie td
+	{
+	border: 0px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.lwebcalendar_vista .lwebcalendar_days_ie td {
+	height: 16px;
+}
+
+.lwebcalendar_vista td.comma {
+	visibility: visible;
+}
+
+.lwebcalendar_vista div.planeMonth,.lwebcalendar_vista div.planeYear {
+	height: auto;
+	overflow: auto;
+}
+
+div.lwebcalendar_vista div.planeYear {
+	display: inline;
+	width: auto;
+}
+
+.lwebcalendar_vista td.thismonth {
+	color: black;
+	padding: 1px;
+	width: 24px;
+	height: 21px
+}
+
+.lwebcalendar_vista td.othermonth {
+	visibility: visible;
+}
+
+.lwebcalendar_vista td.weekend {
+	color: black;
+	padding: 1px;
+}
+
+.lwebcalendar_vista td.insensitive {
+	color: #b5b5b5;
+	cursor: default;
+	padding: 1px;
+}
+
+.lwebcalendar_vista td.selected {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_vista/cell_select.png)
+		center center no-repeat;
+	color: black !important;
+}
+
+.lwebcalendar_vista td.current {
+	color: black;
+	font-weight: bold !important;
+}
+
+.lwebcalendar_vista td.hover {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_vista/cell_hover.png)
+		center center no-repeat;
+	color: #000000;
+	padding: 0px;
+}
+
+.lwebcalendar_vista td.holiday {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #000;
+}
+
+/* [Begin] lwebcalendar_RichSelector */
+.lwebcalendar_vista textarea.lwebcalendar_RichSelector,.lwebcalendar_vista select.lwebcalendar_RichSelector
+	{
+	font-family: Arial;
+	font-size: 10pt;
+	overflow: hidden;
+}
+
+.lwebcalendar_vista select.lwebcalendar_RichSelector {
+	border: 1px solid #7b9ebd;
+}
+
+/* [End] lwebcalendar_RichSelector */ /* [End] Vista Style Skin */
+	/* [Begin] Simple Color Dark Style Skin */
+.lwebcalendar_simplecolordark {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplecolordark/cal_bg_single.png)
+		repeat-x;
+	border: 0px solid green;
+	font-family: Arial;
+	z-index: 99;
+	height: 164px;
+	width: 160px;
+	padding: 10px;
+}
+
+.lwebcalendar_simplecolordark_ifr {
+	height: 189px;
+	width: 182px;
+}
+
+.lwebcalendar_simplecolordark .entbox {
+	width: 161px;
+	height: 164px;
+}
+
+.lwebcalendar_simplecolordark td {
+	font-size: 10px;
+	font-family: Tahoma;
+	font-weight: bold;
+	text-align: center;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_month td {
+	font-size: 12px;
+	color: #b2b405;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_month .planeYear {
+	margin-left: 4px;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_month td.month_btn_left,.lwebcalendar_simplecolordark .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplecolordark/bwd_arrow.png)
+		center center no-repeat;
+	background-repeat: no-repeat;
+	width: 9px;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplecolordark/fwd_arrow.png)
+		center center no-repeat;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_month td.month_btn_left span,.lwebcalendar_simplecolordark .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_dlabel {
+	margin-top: 10px;
+	border-bottom: 1px solid #7e7e7e;
+	color: #7e7e7e;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_dlabel td,.lwebcalendar_simplecolordark .lwebcalendar_days td,.lwebcalendar_simplecolordark .lwebcalendar_days_ie td
+	{
+	font-size: 11px;
+	font-family: Tahoma;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	width: 24px;
+	height: 21px;
+	color: #7e7e7e;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_dlabel {
+	border-top: 0px;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_dlabel td {
+	color: #a5a5a5;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_days td,.lwebcalendar_simplecolordark .lwebcalendar_days_ie td
+	{
+	border: 0px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.lwebcalendar_simplecolordark .lwebcalendar_days_ie td {
+	height: 16px;
+}
+
+.lwebcalendar_simplecolordark td.comma {
+	visibility: visible;
+}
+
+.lwebcalendar_simplecolordark div.planeMonth,.lwebcalendar_simplecolordark div.planeYear
+	{
+	height: auto;
+	overflow: auto;
+}
+
+div.lwebcalendar_simplecolordark div.planeYear {
+	display: inline;
+	width: auto;
+}
+
+/* begin: days colors */
+.lwebcalendar_simplecolordark td.thismonth {
+	color: #717171;
+	padding: 1px;
+	width: 24px;
+	height: 21px
+}
+
+.lwebcalendar_simplecolordark td.othermonth {
+	visibility: visible;
+	color: #3b3b3b;
+}
+
+.lwebcalendar_simplecolordark td.weekend {
+	color: #717171;
+	padding: 1px;
+}
+
+.lwebcalendar_simplecolordark td.insensitive {
+	color: #b5b5b5;
+	cursor: default;
+	padding: 1px;
+}
+
+.lwebcalendar_simplecolordark td.selected {
+	background-color: #404040;
+	color: white !important;
+}
+
+.lwebcalendar_simplecolordark td.current {
+	color: #717171;
+	font-weight: bold !important
+}
+
+.lwebcalendar_simplecolordark td.hover {
+	border: 1px solid white;
+	padding: 0px;
+}
+
+.lwebcalendar_simplecolordark td.holiday {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #b2b405;
+}
+
+/* [End] Simple Color Dark Style Skin */
+	/* [Begin] Simple Color Sand Style Skin */
+.lwebcalendar_simplecolorsand {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplecolorsand/cal_bg_single.png)
+		repeat-x;
+	border: 1px solid #c3c9aa;
+	font-family: Arial;
+	z-index: 99;
+	height: 164px;
+	width: 160px;
+	padding: 10px;
+}
+
+.lwebcalendar_simplecolorsand_ifr {
+	height: 189px;
+	width: 182px;
+}
+
+.lwebcalendar_simplecolorsand .entbox {
+	width: 161px;
+	height: 164px;
+}
+
+.lwebcalendar_simplecolorsand td {
+	font-size: 10px;
+	font-family: Tahoma;
+	font-weight: bold;
+	text-align: center;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_month .planeYear {
+	margin-left: 4px;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_month td {
+	font-size: 12px;
+	color: #575757;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_month td.month_btn_left,.lwebcalendar_simplecolorsand .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplecolorsand/bwd_arrow.png)
+		center center no-repeat;
+	background-repeat: no-repeat;
+	width: 9px;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_simplecolorsand/fwd_arrow.png)
+		center center no-repeat;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_month td.month_btn_left span,.lwebcalendar_simplecolorsand .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_dlabel {
+	margin-top: 10px;
+	border-bottom: 1px solid #7e7e7e;
+	color: #717171;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_dlabel td,.lwebcalendar_simplecolorsand .lwebcalendar_days td,.lwebcalendar_simplecolorsand .lwebcalendar_days_ie td
+	{
+	font-size: 11px;
+	font-family: Tahoma;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	width: 24px;
+	height: 21px;
+	color: #7e7e7e;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_dlabel {
+	border-top: 0px;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_dlabel td {
+	color: #3b3b3b;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_days td,.lwebcalendar_simplecolorsand .lwebcalendar_days_ie td
+	{
+	border: 0px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.lwebcalendar_simplecolorsand .lwebcalendar_days_ie td {
+	height: 16px;
+}
+
+.lwebcalendar_simplecolorsand td.comma {
+	visibility: visible;
+}
+
+.lwebcalendar_simplecolorsand div.planeMonth,.lwebcalendar_simplecolorsand div.planeYear
+	{
+	height: auto;
+	overflow: auto;
+}
+
+div.lwebcalendar_simplecolorsand div.planeYear {
+	display: inline;
+	width: auto;
+}
+
+.lwebcalendar_simplecolorsand td.thismonth {
+	color: #3b3b3b;
+	padding: 1px;
+	width: 24px;
+	height: 21px
+}
+
+.lwebcalendar_simplecolorsand td.othermonth {
+	visibility: visible;
+	color: #a5a5a5;
+}
+
+.lwebcalendar_simplecolorsand td.weekend {
+	color: #3b3b3b;
+	padding: 1px;
+}
+
+.lwebcalendar_simplecolorsand td.insensitive {
+	color: #b5b5b5;
+	cursor: default;
+	padding: 1px;
+}
+
+.lwebcalendar_simplecolorsand td.selected {
+	background-color: #f5c453;
+	color: black !important;
+}
+
+.lwebcalendar_simplecolorsand td.current {
+	color: #3b3b3b;
+	font-weight: bold !important
+}
+
+.lwebcalendar_simplecolorsand td.hover {
+	border: 1px solid #f5c453;
+	padding: 0px;
+}
+
+.lwebcalendar_simplecolorsand td.holiday {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #3b3b3b;
+}
+
+/* [End] Simple Color Sand Style Skin */
+	/* [Begin] Classic Style Skin */
+.lwebcalendar_classic {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Classic/cal_bg_single.gif)
+		no-repeat;
+	background-color: white;
+	border: 1px solid gray;
+	font-family: Arial;
+	z-index: 99;
+	height: auto;
+	width: 145px;
+	padding: 5px 10px 5px 10px;
+}
+
+.lwebcalendar_classic_ifr {
+	height: 147px;
+	width: 167px;
+}
+
+.lwebcalendar_classic .entbox {
+	width: 145px;
+}
+
+.lwebcalendar_classic table {
+	table-layout: auto;
+	margin: 0 auto;
+}
+
+.lwebcalendar_classic td {
+	font-size: 11px;
+	font-family: Tahoma;
+	text-align: center;
+	font-weight: bold;
+}
+
+.lwebcalendar_classic .lwebcalendar_month div.planeYear {
+	margin-left: 4px;
+}
+
+.lwebcalendar_classic .lwebcalendar_month td.month_btn_left,.lwebcalendar_classic .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/cal_arrow_bwd.gif) center
+		center no-repeat;
+	background-repeat: no-repeat;
+	width: 11px;
+}
+
+.lwebcalendar_classic .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/cal_arrow_fwd.gif) center
+		center no-repeat;
+}
+
+.lwebcalendar_classic .lwebcalendar_month td.month_btn_left span,.lwebcalendar_classic .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+.lwebcalendar_classic .lwebcalendar_dlabel {
+	border-bottom: 0px solid #7e7e7e;
+	color: #7e7e7e;
+	background-color: #c4d4e5;
+	margin-top: 5px;
+}
+
+.lwebcalendar_classic .lwebcalendar_dlabel td,.lwebcalendar_classic .lwebcalendar_days td,.lwebcalendar_classic .lwebcalendar_days_ie td
+	{
+	font-size: 11px;
+	font-family: Tahoma;
+	font-weight: normal;
+	text-align: left;
+	vertical-align: middle;
+	width: 18px;
+	height: 18px;
+	color: black;
+}
+
+.lwebcalendar_classic .lwebcalendar_dlabel {
+	border-top: 1px solid #7e7e7e;
+}
+
+.lwebcalendar_classic .lwebcalendar_days td,.lwebcalendar_classic .lwebcalendar_days_ie td
+	{
+	border: 0px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.lwebcalendar_classic .lwebcalendar_days_ie td {
+	height: 16px;
+}
+
+.lwebcalendar_classic td.comma {
+	visibility: visible;
+}
+
+.lwebcalendar_classic div.planeMonth,.lwebcalendar_classic div.planeYear
+	{
+	height: auto;
+	overflow: auto;
+}
+
+div.lwebcalendar_classic div.planeYear {
+	display: inline;
+	width: 28px;
+}
+
+.lwebcalendar_classic td.thismonth {
+	border-top: 1px solid #7e7e7e;
+	color: #0052ab;
+	text-decoration: underline;
+	padding: 1px;
+}
+
+.lwebcalendar_classic td.othermonth {
+	border-top: 1px solid #7e7e7e;
+	visibility: visible;
+	color: #0052ab;
+}
+
+.lwebcalendar_classic td.weekend {
+	border-top: 1px solid #7e7e7e;
+	color: #0052ab;
+	text-decoration: underline;
+	padding: 1px;
+}
+
+.lwebcalendar_classic td.insensitive {
+	color: #b5b5b5;
+	cursor: default;
+	padding: 1px;
+}
+
+.lwebcalendar_classic td.selected {
+	border-top: 1px solid #7e7e7e;
+	background-color: #f5c453;
+	color: #0052ab !important;
+}
+
+.lwebcalendar_classic td.current {
+	border-top: 1px solid #7e7e7e;
+	color: #0052ab;
+	font-weight: bold !important
+}
+
+.lwebcalendar_classic td.hover {
+	border: 1px solid #f5c453;
+	padding: 0px;
+}
+
+.lwebcalendar_classic td.holiday {
+	font-weight: bold;
+	color: #0052ab;
+}
+
+/* [Begin] lwebcalendar_RichSelector */
+.lwebcalendar_classic div.lwebcalendar_RichSelector {
+	position: absolute;
+	background-color: #ffffff;
+	display: block;
+}
+
+.lwebcalendar_classic textarea.lwebcalendar_RichSelector,.lwebcalendar_classic select.lwebcalendar_RichSelector
+	{
+	font-family: verdana;
+	position: absolute;
+	font-size: 9px;
+	overflow: hidden;
+	border-width: 0px;
+	z-index: 100;
+}
+
+.lwebcalendar_classic select.lwebcalendar_RichSelector {
+	border: 1px solid #555555;
+}
+
+/* [End] lwebcalendar_RichSelector */ /* [End] Classic Style Skin */
+	/* [Begin] LWebCalendar Black Skin */
+.lwebcalendar_black {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Black/cal_bg_single.png)
+		no-repeat;
+	font-family: Arial;
+	z-index: 99;
+	height: 173px;
+	padding: 14px 10px 0px 8px;
+	width: 161px;
+}
+
+.lwebcalendar_black_minimized {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/cal_bg_single_mini.png)
+		no-repeat;
+	height: 25px;
+	padding: 0px;
+	width: 179px;
+}
+
+.lwebcalendar_black_ifr {
+	height: 173px;
+	width: 179px;
+}
+
+.lwebcalendar_black_minimized .lwebcalendar_Header {
+	margin-left: 16px;
+	padding-top: 4px;
+}
+
+.lwebcalendar_black .lwebcalendar_Header {
+	text-align: right;
+	width: 144px;
+	height: 13px;
+}
+
+.lwebcalendar_black .winTitle {
+	color: #fff;
+	font-size: 11px;
+	float: left;
+	cursor: move;
+}
+
+.lwebcalendar_black .btn,.btn_mini,.btn_close,.btn_today,.btn_clr {
+	float: right;
+	height: 12px;
+	width: 13px;
+}
+
+.lwebcalendar_black .btn_mini {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_mini.gif)
+		no-repeat;
+}
+
+.lwebcalendar_black_minimized .btn_mini {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_maxi.gif)
+		no-repeat;
+}
+
+.lwebcalendar_black .btn_close {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_close.gif)
+		no-repeat;
+}
+
+.lwebcalendar_black .btn_today {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_today.gif)
+		no-repeat;
+}
+
+.lwebcalendar_black .btn_clr {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_clr.gif)
+		no-repeat;
+}
+
+.lwebcalendar_black .entbox {
+	width: 161px;
+	clear: both;
+}
+
+.lwebcalendar_black td {
+	font-size: 11px;
+	font-family: Tahoma;
+	text-align: center;
+}
+
+.lwebcalendar_black .lwebcalendar_month td {
+	color: #ffd028;
+	font-weight: bold;
+}
+
+.lwebcalendar_black .lwebcalendar_month td.month_btn_left,.lwebcalendar_black .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Black/cal_arrow_bwd.gif)
+		center center no-repeat;
+	background-repeat: no-repeat;
+	width: 9px;
+}
+
+.lwebcalendar_black .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Black/cal_arrow_fwd.gif)
+		center center no-repeat;
+}
+
+.lwebcalendar_black .lwebcalendar_month td.month_btn_left span,.lwebcalendar_black .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+.lwebcalendar_black .lwebcalendar_dlabel {
+	border-bottom: 1px solid #fff;
+	border-top: 0px;
+	padding-left: 2px;
+	margin-top: 4px;
+}
+
+.lwebcalendar_black .lwebcalendar_days {
+	margin-top: 10px;
+}
+
+.lwebcalendar_black .lwebcalendar_days_ie {
+	width: 161px;
+	margin-top: 13px;
+}
+
+.lwebcalendar_black .lwebcalendar_dlabel td,.lwebcalendar_black .lwebcalendar_days td,.lwebcalendar_black .lwebcalendar_days_ie td
+	{
+	color: #fff;
+	font-size: 11px;
+	font-family: Tahoma;
+	text-align: center;
+	vertical-align: middle;
+	width: 20px;
+	height: 17px;
+}
+
+.lwebcalendar_black .lwebcalendar_days td,.lwebcalendar_black .lwebcalendar_days_ie td
+	{
+	border: 0px;
+	cursor: pointer;
+	color: #fff;
+}
+
+.lwebcalendar_black .lwebcalendar_days_ie td {
+	height: 15px;
+}
+
+.lwebcalendar_black td.comma {
+	visibility: visible;
+	padding-right: 3px;
+}
+
+.lwebcalendar_black div.planeMonth,.lwebcalendar_black div.planeYear {
+	height: auto;
+	overflow: auto;
+}
+
+div.lwebcalendar_black div.planeYear {
+	display: inline;
+	width: 28px;
+}
+
+.lwebcalendar_black td.thismonth {
+	color: #fff;
+	padding: 1px;
+}
+
+.lwebcalendar_black td.othermonth {
+	visibility: visible;
+	color: #fedb2f;
+}
+
+.lwebcalendar_black td.weekend {
+	color: #b1b1b1;
+	padding: 1px;
+}
+
+.lwebcalendar_black td.insensitive {
+	color: #333;
+	cursor: default;
+	padding: 1px;
+}
+
+.lwebcalendar_black td.selected {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Black/cell_select.png)
+		center center no-repeat;
+	color: white !important;
+}
+
+.lwebcalendar_black td.current {
+	font-weight: bold !important;
+	color: #fff;
+}
+
+.lwebcalendar_black td.hover {
+	border: 1px solid #b5b5b5;
+	padding: 0px;
+}
+
+.lwebcalendar_black td.holiday {
+	font-weight: bold;
+	color: #FF00D4;
+}
+
+/* [Begin] lwebcalendar_RichSelector */
+.lwebcalendar_black div.lwebcalendar_RichSelector {
+	position: absolute;
+	background-color: #ffffff;
+	display: block;
+}
+
+.lwebcalendar_black textarea.lwebcalendar_RichSelector,.lwebcalendar_black select.lwebcalendar_RichSelector
+	{
+	font-family: verdana;
+	position: absolute;
+	font-size: 9px;
+	overflow: hidden;
+	border-width: 0px;
+	z-index: 100;
+}
+
+.lwebcalendar_black select.lwebcalendar_RichSelector {
+	border: 1px solid #555555;
+}
+
+/* [End] lwebcalendar_RichSelector */
+	/* [End] LWebCalendar Black Skin */
+	/* [Begin] LWebCalendar Blue Skin */
+.lwebcalendar_blue {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Blue/cal_bg_single.gif)
+		no-repeat;
+	font-family: Arial;
+	z-index: 99;
+	height: 173px;
+	padding: 14px 10px 0px 8px;
+	width: 161px;
+}
+
+.lwebcalendar_blue_minimized {
+	background:
+		url(/images/lwebcomponent/lwebcalendar/cal_bg_single_mini.png)
+		no-repeat;
+	height: 25px;
+	padding: 0px;
+	width: 179px;
+}
+
+.lwebcalendar_blue_ifr {
+	height: 173px;
+	width: 179px;
+}
+
+.lwebcalendar_blue_minimized .lwebcalendar_Header {
+	margin-left: 16px;
+	padding-top: 4px;
+}
+
+.lwebcalendar_blue .lwebcalendar_Header {
+	text-align: right;
+	width: 144px;
+	height: 13px;
+}
+
+.lwebcalendar_blue .winTitle {
+	color: #fff;
+	font-size: 11px;
+	float: left;
+	cursor: move;
+}
+
+.lwebcalendar_blue .btn,.btn_mini,.btn_close,.btn_today,.btn_clr {
+	float: right;
+	height: 12px;
+	width: 13px;
+}
+
+.lwebcalendar_blue .btn_mini {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_mini.gif)
+		no-repeat;
+}
+
+.lwebcalendar_blue_minimized .btn_mini {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_maxi.gif)
+		no-repeat;
+}
+
+.lwebcalendar_blue .btn_close {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_close.gif)
+		no-repeat;
+}
+
+.lwebcalendar_blue .btn_today {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_today.gif)
+		no-repeat;
+}
+
+.lwebcalendar_blue .btn_clr {
+	background: url(/images/lwebcomponent/lwebcalendar/btn_clr.gif)
+		no-repeat;
+}
+
+.lwebcalendar_blue .entbox {
+	width: 161px;
+	clear: both;
+}
+
+.lwebcalendar_blue td {
+	font-size: 11px;
+	font-family: Tahoma;
+	text-align: center;
+}
+
+.lwebcalendar_blue .lwebcalendar_month td {
+	color: #01699e;
+	font-weight: bold;
+}
+
+.lwebcalendar_blue .lwebcalendar_month td.month_btn_left,.lwebcalendar_blue .lwebcalendar_month td.month_btn_right
+	{
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Blue/cal_arrow_bwd.gif)
+		center center no-repeat;
+	background-repeat: no-repeat;
+	width: 9px;
+}
+
+.lwebcalendar_blue .lwebcalendar_month td.month_btn_right {
+	background: transparent
+		url(/images/lwebcomponent/lwebcalendar/__lwebcalendar_skin_Blue/cal_arrow_fwd.gif)
+		center center no-repeat;
+}
+
+.lwebcalendar_blue .lwebcalendar_month td.month_btn_left span,.lwebcalendar_blue .lwebcalendar_month td.month_btn_right span
+	{
+	visibility: hidden;
+}
+
+.lwebcalendar_blue .lwebcalendar_dlabel {
+	border-bottom: 1px solid #fff;
+	border-top: 0px;
+	padding-left: 2px;
+	margin-top: 4px;
+}
+
+.lwebcalendar_blue .lwebcalendar_days {
+	margin-top: 10px;
+}
+
+.lwebcalendar_blue .lwebcalendar_days_ie {
+	width: 161px;
+	margin-top: 13px;
+}
+
+.lwebcalendar_blue .lwebcalendar_dlabel td {
+	color: #5e6366;
+}
+
+.lwebcalendar_blue .lwebcalendar_dlabel td,.lwebcalendar_blue .lwebcalendar_days td,.lwebcalendar_blue .lwebcalendar_days_ie td
+	{
+	font-size: 11px;
+	font-family: Tahoma;
+	text-align: center;
+	vertical-align: middle;
+	width: 20px;
+	height: 17px;
+}
+
+.lwebcalendar_blue .lwebcalendar_days td,.lwebcalendar_blue .lwebcalendar_days_ie td
+	{
+	border: 0px;
+	cursor: pointer;
+	color: #fff;
+}
+
+.lwebcalendar_blue .lwebcalendar_days_ie td {
+	height: 15px;
+}
+
+.lwebcalendar_blue td.comma {
+	visibility: visible;
+	padding-right: 3px;
+}
+
+.lwebcalendar_blue div.planeMonth,.lwebcalendar_blue div.planeYear {
+	height: auto;
+	overflow: auto;
+}
+
+div.lwebcalendar_blue div.planeYear {
+	display: inline;
+	width: 28px;
+}
+
+.lwebcalendar_blue td.thismonth {
+	color: #919294;
+	padding: 1px;
+}
+
+.lwebcalendar_blue td.othermonth {
+	visibility: visible;
+	color: #73aabe;
+}
+
+.lwebcalendar_blue td.weekend {
+	color: #036497;
+	padding: 1px;
+}
+
+.lwebcalendar_blue td.insensitive {
+	color: #d0d0d0;
+	cursor: default;
+	padding: 1px;
+}
+
+.lwebcalendar_blue td.selected {
+	background: #04648c;
+	color: white !important;
+	font-weight: bold;
+}
+
+.lwebcalendar_blue td.current {
+	font-weight: bold !important;
+	color: #919294;
+}
+
+.lwebcalendar_blue td.hover {
+	border: 1px solid #b5b5b5;
+	padding: 0px;
+}
+
+.lwebcalendar_blue td.holiday {
+	font-weight: bold;
+	color: #ed3a64;
+}
+
+/* [Begin] lwebcalendar_RichSelector */
+.lwebcalendar_blue div.lwebcalendar_RichSelector {
+	position: absolute;
+	background-color: #ffffff;
+	display: block;
+}
+
+.lwebcalendar_blue textarea.lwebcalendar_RichSelector,.lwebcalendar_blue select.lwebcalendar_RichSelector
+	{
+	font-family: verdana;
+	position: absolute;
+	font-size: 9px;
+	overflow: hidden;
+	border-width: 0px;
+	z-index: 100;
+}
+
+.lwebcalendar_blue select.lwebcalendar_RichSelector {
+	border: 1px solid #555555;
+}
+
+/* [End] lwebcalendar_RichSelector */ /* [End] LWebCalendar Blue Skin */
+	/* [Begin] LWebCalendar Input CSS */
+.date {
+	background: white
+		url("/images/lwebcomponent/lwebcalendar/icon_minicalendar.gif") center
+		right no-repeat;
+	font-size: 9pt;
+	border: 1px solid #999;
+	color: #666;
+	height: 20px;
+	width: 84px;
+	vertical-align: middle;
+	padding: 1px 1px 0px 1px;
+}
+/* [End] LWebCalendar Input CSS */

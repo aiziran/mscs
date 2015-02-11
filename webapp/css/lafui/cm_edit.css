@@ -1,0 +1,29 @@
+/*  -------------------------------------------------------------
+  LG CNS LAF/UI
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Description:  Common Styles : Detail - Edit
+  Filename:   cm_edit.css
+  Version:    LAF/UI_2.0_2007_R1_20070330
+  ------------------------------------------------------------- */
+  
+/* Detail - Edit
+---------------------------------------------------------*/
+td img {
+vertical-align: middle;
+padding-left: 5px;
+}
+td select {
+width: 120px;
+}
+.Lrequired {
+color: #E17A0D;
+padding-right: 2px;
+}
+input#Lm, input#Lf {
+margin-right: 3px;
+}
+* html input#Lm, * html input#Lf {
+margin-right: 0px;
+}/*IE용 보정*/
+
+

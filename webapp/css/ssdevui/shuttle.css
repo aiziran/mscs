@@ -1,0 +1,60 @@
+/*******************shuttle**************************/
+#Lshuttle {
+	position: relative;
+	width: 756px;
+}
+
+#LleftBox h2,#LrightBox h2 {
+	font-size: 1.0em;
+	color: #E17A0D;
+	font-weight: bold;
+}
+
+#LleftBox {
+	width: 270px;
+	height: 300px;
+	float: left;
+}
+
+#LleftBox ul {
+	border: 2px solid #D4D4D4;
+	overflow: auto;
+	width: 270px;
+	height: 300px;
+}
+
+#LrightBox {
+	width: 270px;
+	height: 300px;
+	float: right;
+	margin-right: 5px;
+}
+
+#LrightBox ul {
+	border: 2px solid #D4D4D4;
+	overflow: auto;
+	width: 270px;
+	height: 300px;
+}
+
+#Larrow {
+	width: 30px;
+	position: absolute;
+	top: 155px;
+	left: 355px;
+}
+
+.selected {
+	background: #F7F9E7;
+}
+
+.Lbtn {
+	height: 20px;
+	width: 50px;
+	color: #615C1C;
+	background: #E3E1C5;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #DDDAAA #C9C39C #C9C39C #DDDAAA;
+	margin-bottom: 2px;
+}

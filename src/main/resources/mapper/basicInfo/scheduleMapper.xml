@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="scheduleManage">
+	
+	<select id="findAll" resultType="cdata">
+		SELECT * FROM cil_schedule
+	</select>
+	
+	<update id="updateSchedule" parameterType="cdata">
+		UPDATE cil_schedule
+		SET
+		DAY = #{day},
+		WEEK = #{week},
+		MONTH = #{month}
+		WHERE type = #{type}
+	</update>
+	
+</mapper>

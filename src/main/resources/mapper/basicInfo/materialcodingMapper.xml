@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="materialcodingManage">
+	<!-- 分页显示 -->
+	<select id="selectAllInfo" resultType="cdata" parameterType="cdata">
+		SELECT
+          id,
+		  codednum,
+		  componenttypes,
+		  componentclassify,
+		  smttht,
+		  attrname,
+		  arguments,
+		  attrname2,
+		  arguments2,
+		  productname,
+		  counts,
+		  productinfo,
+		  manufacturer,
+		  units,
+		  remark,
+		  inserttime
+	      FROM t_code
+		WHERE 1 = 1
+		<if test="id!=null and id!=''">
+			AND id = #{id}
+	    </if>
+	    <if test="attrname3!=null and attrname3!=''">
+			AND attrname like concat('%',trim(#{attrname3}),'%')
+	    </if>
+	    <if test="attrname4!=null and attrname4!=''">
+			AND attrname2 like concat('%',trim(#{attrname4}),'%')
+	    </if>
+	    <if test="codednum2!=null and codednum2!=''">
+			AND codednum like concat('%',trim(#{codednum2}),'%')
+	    </if>
+	    <if test="componenttypes2!=null and componenttypes2!=''">
+			AND componenttypes like concat('%',trim(#{componenttypes2}),'%')
+	    </if>
+	    <if test="componentclassify2!=null and componentclassify2!=''">
+			AND componentclassify like concat('%',trim(#{componentclassify2}),'%')
+	    </if>
+	    <if test="productname2!=null and productname2!=''">
+			AND productname like concat('%',trim(#{productname2}),'%')
+	    </if>
+	    <if test="productinfo2!=null and productinfo2!=''">
+			AND productinfo like concat('%',trim(#{productinfo2}),'%')
+	    </if>
+	    <if test="manufacturer2!=null and manufacturer2!=''">
+			AND manufacturer like concat('%',trim(#{manufacturer2}),'%')
+	    </if>
+	    <if test="units2!=null and units2!=''">
+			AND units like concat('%',trim(#{units2}),'%')
+	    </if>
+	    ORDER BY codednum
+	</select>
+	<!-- 获取属相相同的物料信息 -->
+	<select id="selectOneInfo" parameterType="cdata" resultType="cdata">
+		SELECT
+          id,
+		  codednum,
+		  componenttypes,
+		  componentclassify,
+		  smttht,
+		  attrname,
+		  arguments,
+		  attrname2,
+		  arguments2,
+		  productname,
+		  counts,
+		  productinfo,
+		  manufacturer,
+		  units,
+		  remark,
+		  inserttime
+	      FROM t_code
+		WHERE 1 = 1
+		<if test="id!=null and id!=''">
+			AND id = #{id}
+	    </if>
+		<if test="codednum!=null and codednum!=''">
+			AND LEFT(codednum, 8) = #{codednum} ORDER BY inserttime DESC
+	    </if>
+	</select>
+	<!-- 获取元件类型 -->
+	<select id="selectAllTypes" resultType="cdata" parameterType="cdata">
+		SELECT
+		  id,
+		  componenttypes,
+		  codednum
+		FROM t_componenttypes
+		WHERE 1=1
+		<if test="componenttypes!=null and componenttypes!=''">
+			AND componenttypes = #{componenttypes}
+	    </if>
+		<if test="componenttypes3!=null and componenttypes3!=''">
+			AND componenttypes like concat('%',trim(#{componenttypes3}),'%')
+	    </if>
+	</select>
+	<!-- 获取元件分类 -->
+	<select id="selectAllClassify" resultType="cdata" parameterType="cdata">
+		SELECT
+		  cc.id,
+		  cc.componentclassify,
+		  cc.codednum,
+		  ct.componenttypes
+		FROM t_componentclassify cc,
+		  t_componenttypes ct
+		WHERE 1 = 1
+		    AND cc.typesid = ct.id
+		<if test="componentclassify!=null and componentclassify!=''">
+			AND cc.componentclassify = #{componentclassify}
+	    </if>
+		<if test="componenttypes!=null and componenttypes!=''">
+			AND ct.componenttypes = #{componenttypes}
+	    </if>
+	    <if test="componentclassify2!=null and componentclassify2!=''">
+			AND componentclassify like concat('%',trim(#{componentclassify2}),'%')
+	    </if>
+	</select>
+	<!-- 获取元件属性名称 -->
+	<select id="selectAllAttr" resultType="cdata" parameterType="cdata">
+		SELECT DISTINCT attrname FROM 
+		(SELECT
+			  ca.id,
+			  cc.attrname,
+			  cc.componentclassify,
+			  ca.whichattr,
+			  ca.arguments,
+			  ca.codednum
+			FROM t_componentattr ca
+			  LEFT JOIN t_componentclassify cc
+			    ON ca.cid = cc.id
+			WHERE 1 = 1
+			    AND ca.whichattr = '1' 
+			UNION ALL 
+			SELECT
+	           ca.id,
+	           cc.attrname2,
+	           cc.componentclassify,
+	           ca.whichattr,
+	           ca.arguments,
+	           ca.codednum
+	         FROM t_componentattr ca
+	           LEFT JOIN t_componentclassify cc
+	             ON ca.cid = cc.id
+	         WHERE 1 = 1
+	             AND ca.whichattr = '2') a
+		WHERE 1=1
+		<if test="whichattr!=null and whichattr!=''">
+			AND whichattr = #{whichattr}
+	    </if>
+	    <if test="componentclassify!=null and componentclassify!=''">
+			AND componentclassify = #{componentclassify}
+	    </if>
+	    <if test="componentclassify2!=null and componentclassify2!=''">
+			AND componentclassify like concat('%',trim(#{componentclassify2}),'%')
+	    </if>
+	</select>
+	<!-- 获取元件属性参数 -->
+	<select id="getArguments" resultType="cdata" parameterType="cdata">
+		SELECT
+		  id,
+		  attrname,
+		  componentclassify,
+		  whichattr,
+		  arguments,
+		  codednum
+		FROM
+		(SELECT
+			  ca.id,
+			  cc.attrname,
+			  cc.componentclassify,
+			  ca.whichattr,
+			  ca.arguments,
+			  ca.codednum
+			FROM t_componentattr ca
+			  LEFT JOIN t_componentclassify cc
+			    ON ca.cid = cc.id
+			WHERE 1 = 1
+			    AND ca.whichattr = '1' 
+			UNION ALL 
+			SELECT
+	           ca.id,
+	           cc.attrname2,
+	           cc.componentclassify,
+	           ca.whichattr,
+	           ca.arguments,
+	           ca.codednum
+	         FROM t_componentattr ca
+	           LEFT JOIN t_componentclassify cc
+	             ON ca.cid = cc.id
+	         WHERE 1 = 1
+	             AND ca.whichattr = '2') a
+		WHERE 1=1
+		<if test="whichattr!=null and whichattr!=''">
+			AND whichattr = #{whichattr}
+	    </if>
+	    <if test="attrname!=null and attrname!=''">
+			AND attrname = #{attrname}
+	    </if>
+	    <if test="componentclassify!=null and componentclassify!=''">
+			AND componentclassify = #{componentclassify}
+	    </if>
+	    <if test="codednum!=null and codednum!=''">
+			AND codednum = #{codednum}
+	    </if>
+	    <if test="arguments!=null and arguments!=''">
+			AND arguments = #{arguments}
+	    </if>
+	</select>
+	<insert id="savematerialinfo" parameterType="cdata">
+		INSERT INTO t_code
+            (codednum,
+             componenttypes,
+             componentclassify,
+             smttht,
+             attrname,
+             arguments,
+             attrname2,
+		  	 arguments2,
+             productname,
+             counts,
+             productinfo,
+             manufacturer,
+             units,
+             remark,
+             inserttime)
+		values (#{codednum},
+		        #{componenttypes},
+		        #{componentclassify},
+		        #{smttht},
+		        #{attrname},
+		        #{arguments},
+		        #{attrname2},
+		        #{arguments2},
+		        #{productname},
+		        #{counts},
+		        #{productinfo},
+		        #{manufacturer},
+		        #{units},
+		        #{remark},
+		        #{inserttime});
+	</insert>
+	<!-- 删除物料信息 -->
+	<delete id="deleteInfo" parameterType="cdata">
+		DELETE
+		FROM t_code
+		WHERE id = #{id}
+	</delete>
+	<!-- 修改物料信息 -->
+	<update id="updatematerialinfo" parameterType="cdata">
+		UPDATE t_code
+		SET codednum = #{codednum},
+		  componenttypes = #{componenttypes},
+		  componentclassify = #{componentclassify},
+		  smttht = #{smttht},
+		  attrname = #{attrname},
+		  arguments = #{arguments},
+		  attrname2 = #{attrname2},
+		  arguments2 = #{arguments2},
+		  productname = #{productname},
+		  counts = #{counts},
+		  productinfo = #{productinfo},
+		  manufacturer = #{manufacturer},
+		  units = #{units},
+		  remark = #{remark}
+		WHERE id = #{id}
+	</update>
+	<!-- 物料属性配置页面 -->
+	<select id="attrconfig" parameterType="cdata" resultType="cdata">
+		SELECT * FROM
+		(SELECT
+			  ca.id,
+			  cc.attrname,
+			  cc.componentclassify,
+			  ca.whichattr,
+			  ca.arguments,
+			  ca.codednum,
+			  ct.componenttypes
+			FROM t_componentattr ca
+			  LEFT JOIN t_componentclassify cc
+			    ON ca.cid = cc.id
+			  LEFT JOIN t_componenttypes ct
+                ON cc.typesid = ct.id
+			WHERE 1 = 1
+			    AND ca.whichattr = '1' 
+			UNION ALL 
+			SELECT
+	           ca.id,
+	           cc.attrname2,
+	           cc.componentclassify,
+	           ca.whichattr,
+	           ca.arguments,
+	           ca.codednum,
+	           ct.componenttypes
+	         FROM t_componentattr ca
+	           LEFT JOIN t_componentclassify cc
+	             ON ca.cid = cc.id
+	           LEFT JOIN t_componenttypes ct
+                 ON cc.typesid = ct.id
+	         WHERE 1 = 1
+	             AND ca.whichattr = '2') a
+		WHERE 1 = 1
+		<if test="id!=null and id!=''">
+			AND id = #{id}
+	    </if>
+		<if test="attrname3!=null and attrname3!=''">
+			AND attrname like concat('%',trim(#{attrname3}),'%')
+	    </if>
+	</select>
+	<!-- 元件类型配置 -->
+	<select id="typesconfig" parameterType="cdata" resultType="cdata">
+		SELECT
+		  id,
+		  componenttypes,
+		  codednum
+		FROM t_componenttypes
+		WHERE 1=1
+		<if test="id!=null and id!=''">
+			AND id = #{id}
+	    </if>
+	    <if test="componenttypes3!=null and componenttypes3!=''">
+			AND componenttypes = #{componenttypes3}
+	    </if>
+	    <if test="componenttypes2!=null and componenttypes2!=''">
+			AND componenttypes like concat('%',trim(#{componenttypes2}),'%')
+	    </if>
+	</select>
+	<!-- 元件分类配置 -->
+	<select id="classifyconfig" parameterType="cdata" resultType="cdata">
+		SELECT
+		  cc.id,
+		  cc.componentclassify,
+		  cc.attrname,
+		  cc.attrname2,
+		  cc.codednum,
+		  ct.componenttypes
+		FROM t_componentclassify cc,
+		  t_componenttypes ct
+		WHERE 1 = 1
+		AND cc.typesid = ct.id
+		<if test="id!=null and id!=''">
+			AND cc.id = #{id}
+	    </if>
+		<if test="componentclassify2!=null and componentclassify2!=''">
+			AND cc.componentclassify like concat('%',trim(#{componentclassify2}),'%')
+	    </if>
+		<if test="componentclassify3!=null and componentclassify3!=''">
+			AND cc.componentclassify = #{componentclassify3}
+	    </if>
+	</select>
+	<!--  -->
+	<select id="findCid" parameterType="cdata" resultType="cdata">
+		SELECT
+		  cc.id cid
+		FROM t_componentclassify cc
+		  LEFT JOIN t_componenttypes ct
+		    ON cc.typesid = ct.id
+		WHERE 1 = 1
+		    AND ct.componenttypes = #{componenttypes}
+		    AND cc.componentclassify = #{componentclassify}
+		    <if test="attrSql!=null and attrSql!=''">
+				${attrSql}
+		    </if>
+	</select>
+	<!-- 新增物料属性 -->
+	<insert id="saveattr" parameterType="cdata">
+		INSERT INTO t_componentattr
+            (cid,
+             whichattr,
+             arguments,
+             codednum)
+		VALUES (#{cid},
+		        #{whichattr},
+		        #{arguments},
+		        #{codednum})
+	</insert>
+	<!-- 修改物料属性 -->
+	<update id="updateattr" parameterType="cdata">UPDATE t_componentattr
+		SET cid = #{cid},
+		  whichattr = #{whichattr},
+		  arguments = #{arguments},
+		  codednum = #{codednum}
+		WHERE id = #{id}</update>
+	<!-- 删除物料属性 -->
+	<delete id="deleteattr" parameterType="cdata">
+		DELETE
+		FROM t_componentattr
+		WHERE id = #{id}
+	</delete>
+	<!-- 新增元件分类 -->
+	<insert id="saveclassify" parameterType="cdata">
+		INSERT INTO t_componentclassify
+            (componentclassify,
+             typesid,
+             attrname,
+             attrname2,
+             codednum)
+		VALUES (#{componentclassify},
+				#{typesid},
+				#{attrname},
+				#{attrname2},
+		        #{codednum})
+	</insert>
+	<!-- 修改元件分类 -->
+	<update id="updateclassify" parameterType="cdata">
+		UPDATE t_componentclassify
+		SET componentclassify = #{componentclassify},
+		  typesid = #{typesid},
+		  attrname = #{attrname},
+		  attrname2 = #{attrname2},
+		  codednum = #{codednum}
+		WHERE id = #{id}
+	</update>
+	<!-- 删除元件分类 -->
+	<delete id="deleteclassify" parameterType="cdata">
+		DELETE
+		FROM t_componentclassify
+		WHERE id = #{id}
+	</delete>
+	<!-- 新增元件类型 -->
+	<insert id="savetypes" parameterType="cdata">
+		INSERT INTO t_componenttypes
+            (componenttypes,
+             codednum)
+		VALUES (#{componenttypes},
+		        #{codednum})
+	</insert>
+	<!-- 修改元件类型 -->
+	<update id="updatetypes" parameterType="cdata">
+		UPDATE t_componenttypes
+		SET componenttypes = #{componenttypes},
+		  codednum = #{codednum}
+		WHERE id = #{id}
+	</update>
+	<!-- 删除元件类型 -->
+	<delete id="deletetypes" parameterType="cdata">
+		DELETE
+		FROM t_componenttypes
+		WHERE id = #{id}
+	</delete>
+	<!-- 物料属性参数和编码号有重复报警提示 -->
+	<select id="isrepeatattr" parameterType="cdata" resultType="cdata">
+		SELECT *
+		FROM (SELECT *
+		FROM (SELECT
+		        ca.id,
+		        ca.cid,
+		        cc.attrname,
+		        cc.componentclassify,
+		        ca.whichattr,
+		        ca.arguments,
+		        ca.codednum,
+		        ct.componenttypes
+		      FROM t_componentattr ca
+		        LEFT JOIN t_componentclassify cc
+		          ON ca.cid = cc.id
+		        LEFT JOIN t_componenttypes ct
+		          ON cc.typesid = ct.id
+		      WHERE 1 = 1
+		          AND ca.whichattr = '1' 
+			      UNION ALL
+				     SELECT
+		               ca.id,
+		               ca.cid,
+		               cc.attrname2,
+		               cc.componentclassify,
+		               ca.whichattr,
+		               ca.arguments,
+		               ca.codednum,
+		               ct.componenttypes
+		             FROM t_componentattr ca
+		               LEFT JOIN t_componentclassify cc
+		                 ON ca.cid = cc.id
+		               LEFT JOIN t_componenttypes ct
+		                 ON cc.typesid = ct.id
+		             WHERE 1 = 1
+		                 AND ca.whichattr = '2') a
+				WHERE 1 = 1
+				<if test="id!=null and id!=''">
+			   		AND id != #{id}
+			   	</if>
+			   	  AND componenttypes = #{componenttypes}
+		          AND componentclassify = #{componentclassify}
+		          AND whichattr = #{whichattr}
+		          AND attrname = #{attrname}
+		   		) tc
+			WHERE 1 = 1
+			    AND arguments = #{arguments}
+			     OR codednum = #{codednum}
+	</select>
+	<!-- 查看元件类型和元件分类是否有关联 -->
+	<select id="isrelevance" parameterType="cdata" resultType="cdata">
+		SELECT
+		  id,
+		  typesid,
+		  componentclassify,
+		  attrname,
+		  attrname2,
+		  codednum
+		FROM t_componentclassify
+		WHERE 1 = 1
+		    AND typesid = #{id}
+	</select>
+	<!-- 查看元件分类和物料属性是否有关联 -->
+	<select id="isrelevanceclassify" resultType="cdata" parameterType="cdata">
+		SELECT
+		  id,
+		  cid,
+		  whichattr,
+		  arguments,
+		  codednum
+		FROM t_componentattr
+		WHERE 1 = 1
+		    AND cid = #{id}
+	</select>
+	<!-- 模糊查询获取元件属性 -->
+	<select id="selectAttr" parameterType="cdata" resultType="cdata">
+		SELECT
+		  id,
+		  typesid,
+		  componentclassify,
+		  attrname,
+		  attrname2,
+		  codednum
+		FROM t_componentclassify
+		WHERE 1 = 1
+		<if test="attrname!=null and attrname!=''">
+		    AND attrname LIKE concat('%',trim(#{attrname}),'%')
+	    </if>
+		<if test="attrname2!=null and attrname2!=''">
+		    AND attrname2 LIKE concat('%',trim(#{attrname2}),'%')
+	    </if>
+	</select>
+	<!-- 元件类型和编码号有重复提示 -->
+	<select id="isrepeattypes" resultType="cdata" parameterType="cdata">
+		SELECT * FROM
+		(SELECT
+		  id,
+		  componenttypes,
+		  codednum
+		FROM t_componenttypes
+		WHERE 1=1
+		<if test="id!=null and id!=''">
+			AND id != #{id}
+		</if>
+		) tc
+		WHERE 1=1
+		AND componenttypes = #{componenttypes}
+		OR codednum = #{codednum}
+	</select>
+	<!-- 元件分类是否重复 -->
+	<select id="isrepeatclassify" parameterType="cdata" resultType="cdata">
+		SELECT
+		  cc.id,
+		  cc.typesid,
+		  cc.componentclassify,
+		  cc.attrname,
+		  cc.attrname2,
+		  cc.codednum,
+		  ct.componenttypes
+		FROM t_componentclassify cc
+		  LEFT JOIN t_componenttypes ct
+		    ON cc.typesid = ct.id
+		WHERE 1 = 1
+			<if test="id!=null and id!=''">
+				AND cc.id != #{id}
+			</if>
+		    AND cc.componentclassify = #{componentclassify}
+		    AND ct.componenttypes = #{componenttypes}
+	</select>
+</mapper>   
+      

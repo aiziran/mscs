@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="20">
+	<queryString>
+		<![CDATA[SELECT td.drug_id as drug_id, td.drug_name as drug_name, td.drug_spec, td.hos_drug_code,td.manufact_name,td.package_spec
+  FROM tb_drug_dict      td,
+       tb_drug_name_dict tn,
+       tb_drug_type      wsettype,
+       tb_drug_type      medctype,
+       tb_drug_type      formtype,
+       tb_drug_type      pharmatype,
+       tb_drug_type      prescripttype,
+       tb_drug_type      methodtype,
+       tb_drug_type      toxitype,
+       tb_drug_type      abctype,
+       tb_drug_type      specialtype
+ WHERE td.drug_form = formtype.drug_type_code(+)
+   AND td.hos_drug_code = tn.hos_drug_code(+)
+   AND td.toxi_property = toxitype.drug_type_code(+)
+   AND td.drug_method = methodtype.drug_type_code(+)
+   AND td.pharma_class = pharmatype.drug_type_code(+)
+   AND td.medc_insur_flag = medctype.drug_type_code(+)
+   AND td.chin_west_drug = wsettype.drug_type_code(+)
+   AND td.prescript_flag = prescripttype.drug_type_code(+)
+   AND td.abc_class = abctype.drug_type_code(+)
+   AND td.special_drug = specialtype.drug_type_code(+)
+
+ ORDER BY td.hos_drug_code, drug_spec]]>
+	</queryString>
+	<field name="DRUG_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DRUG_NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DRUG_SPEC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="HOS_DRUG_CODE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MANUFACT_NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PACKAGE_SPEC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="82">
+			<textField>
+				<reportElement x="35" y="9" width="95" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="宋体" size="12" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DRUG_NAME}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="35" y="27" width="206" height="48"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="3of9" drawText="true" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{DRUG_ID}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="130" y="10" width="57" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="宋体" size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{PACKAGE_SPEC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="10" width="54" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="宋体" size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{MANUFACT_NAME}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="28" y="3" width="221" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="28" y="78" width="221" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="28" y="4" width="1" height="74" forecolor="#000000"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="249" y="4" width="1" height="74" forecolor="#000000"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

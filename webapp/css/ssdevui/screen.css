@@ -1,0 +1,18 @@
+/*	-------------------------------------------------------------
+	LG CNS LAF/UI
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	Description:	Screen Import CSS
+	Filename:		screen.css
+	Version:		LAF/UI_2.0_2007_R1_20070719
+	-------------------------------------------------------------	*/
+@import url("default.css");
+
+@import url("layout.css");
+
+@import url("header.css");
+
+@import url("sidebar.css");
+
+@import url("footer.css");
+
+@import url("area.css");

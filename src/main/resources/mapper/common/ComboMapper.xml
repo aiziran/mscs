@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comboManage">
+
+	<!-- 医院列表 -->
+	<select id="retrieveHosListALL" parameterType="cdata"
+		resultType="cdata">
+		SELECT DISTINCT d.HOSPITAL_ID "code", d.HOSPITAL_NAME
+		"value"
+		FROM tb_hospital_info d
+	</select>
+
+
+	<!-- 部门用户别列表 -->
+	<select id="retrieveDeptList" parameterType="cdata" resultType="cdata">
+		SELECT DISTINCT d.dept_id "code", d.dept_name "value"
+		FROM com_dept_m d,
+		(SELECT * FROM com_user_dept
+		<where>
+			<if test="loginDeptId neq '999999'.toString()">
+				and user_id = #{userId}
+				and dept_id = #{loginDeptId}
+		       		</if>
+		</where>
+		) t
+		WHERE d.dept_id = t.dept_id
+	</select>
+
+	<!-- 部门列表 2011-04-29 shijinglong -->
+	<select id="retrieveDeptListALL" resultType="cdata">
+		SELECT dept_id as
+		"code",
+		dept_name as "value"
+		FROM com_dept_m t
+		WHERE use_flag='Y'
+	</select>
+
+	<!-- 职务列表 2011-04-29 shijinglong -->
+	<select id="retrievePositionList" resultType="cdata">
+		<![CDATA[
+		SELECT code_id "code",
+			   code_desc "value"
+		  FROM com_code
+		 WHERE code_group = '02'
+		   AND use_flag = 'Y' 
+         ORDER BY code_order
+		]]>
+	</select>
+
+	<!-- 权限列表 2011-04-29 shijinglong -->
+	<select id="retrieveAuthList" resultType="cdata">
+		 <![CDATA[
+		SELECT r.role_id   "code",
+		       r.role_name "value"
+		  FROM com_role_m r
+		 ORDER BY r.role_id
+		]]>
+	</select>
+	<!-- 权限列表 后台管理人员 -->
+	<select id="behandAuthList" resultType="cdata">
+		 <![CDATA[
+		SELECT r.role_id   "code",
+		       r.role_name "value"
+		  FROM com_role_m r where r.role_id=1000080
+		 ORDER BY r.role_id
+		]]>
+	</select>
+	<!-- 权限列表 机手 -->
+	<select id="handerAuthList" resultType="cdata">
+		 <![CDATA[
+		SELECT r.role_id   "code",
+		       r.role_name "value"
+		  FROM com_role_m r where r.role_id=1000078
+		 ORDER BY r.role_id
+		]]>
+	</select>
+
+	<!-- 权限列表 质检员 -->
+	<select id="inspectorAuthList" resultType="cdata">
+		 <![CDATA[
+		SELECT r.role_id   "code",
+		       r.role_name "value"
+		  FROM com_role_m r where r.role_id=1000079
+		 ORDER BY r.role_id
+		]]>
+	</select>
+
+	<!-- 当前用户的所辖部门列表 2011-04-29 shijinglong -->
+	<select id="retrieveDeptAuthList" parameterType="cdata"
+		resultType="cdata">
+		<![CDATA[
+ 		 SELECT DISTINCT t.user_id "userId",
+               d.dept_id "deptId",
+           d.dept_name "deptName",
+           CASE
+             WHEN t.user_id IS NULL THEN '0'
+             ELSE '1'
+         END AS "flag"
+        FROM com_dept_m d LEFT OUTER JOIN (SELECT * 
+                              FROM com_user_dept 
+                             WHERE user_id = #{userId}) t
+      ON  d.dept_id = t.dept_id where d.USE_FLAG='Y'
+		]]>
+	</select>
+	<!-- 当前所有状态为'Y'的用户列表 2011-5-6 lixinliang -->
+	<select id="retrievePOCreate" resultType="cdata">
+		<![CDATA[
+			SELECT USER_ID "code",
+	               USER_NAME "value"
+			  FROM COM_USER_M
+			 WHERE USE_FLAG = 'Y'
+		]]>
+	</select>
+
+	<!-- 代码组列表 2011-05-06 shijinglong -->
+	<select id="retrieveCodeGroup" resultType="cdata">
+		SELECT code_group as "code",
+		code_group_name as "value"
+		FROM com_code_group
+	</select>
+
+	<!--查询部门类型list csq -->
+	<select id="retrieveDeptTypeList" resultType="cdata">
+	  	<![CDATA[
+			SELECT code_id "code",
+			       code_desc "value"
+			  FROM com_code
+			 WHERE code_group = '04'
+			   AND use_flag = 'Y'
+		]]>
+	</select>
+
+	<!--分库管理列表 csq -->
+	<select id="retrieveFenKuList" resultType="cdata">
+	  	<![CDATA[
+			  SELECT code.code_desc "value", code.code_id "code"
+		        FROM com_code code
+		       WHERE code.code_group = 'fenku'
+		         AND code.use_flag = 'Y'
+		       ORDER BY code.code_order
+		]]>
+	</select>
+
+	<!--采购类别列表 csq -->
+	<select id="retrievePoTypeList" resultType="cdata">
+	  	<![CDATA[
+			SELECT code.code_desc "value", code.code_id code
+			  FROM com_code code
+			 WHERE code.code_group = 'poType'
+			   AND code.use_flag = 'Y'
+			 ORDER BY code.code_order
+		]]>
+	</select>
+
+	<!--库房列表 sjl -->
+	<select id="retrieveSubDeptList" parameterType="cdata"
+		resultType="cdata">
+	  	<![CDATA[
+			select sub_dept_id "code", 
+			       sub_dept_name as "value"
+ 			  from com_dept_sub
+ 		     where dept_id = #{deptId}
+		]]>
+	</select>
+</mapper> 

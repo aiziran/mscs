@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="personManage">
+
+	<select id="personList" parameterType="cdata" resultType="cdata">
+		SELECT *
+		FROM personplan
+		where 1=1
+		<if test="planid !=null and planid!=''">
+			AND (id LIKE concat('%',trim(#{planid}),'%')) 
+		</if>
+		<if test="planname !=null and planname!=''">
+			AND (planname LIKE concat('%',trim(#{planname}),'%')) 
+		</if>
+		<if test="finishstatus !=null and finishstatus!=''">
+			AND (finishstatus LIKE concat('%',trim(#{finishstatus}),'%')) 
+		</if>
+		<if test="planonwer !=null and planonwer!=''">
+			AND (planonwer LIKE concat('%',trim(#{planonwer}),'%')) 
+		</if>
+		<if test="ruletime !=null and ruletime!=''">
+			AND (ruletime LIKE concat('%',trim(#{ruletime}),'%')) 
+		</if>
+		order by id desc
+	</select>
+
+	<select id="personInput" parameterType="cdata" resultType="cdata">
+		INSERT INTO personplan(planname, planContent,
+		begintime,endtime,finishstatus,reason,planonwer,ruletime,altertime)
+		VALUES(#{planname},#{
+		planContent},#{begintime},#{endtime},#{finishstatus},#{reason},#{planonwer},#{ruletime},#{altertime})
+	</select>
+
+	<select id="personDelete" parameterType="cdata" resultType="cdata">
+		DELETE FROM personplan WHERE id=#{id}
+	</select>
+
+	<select id="personUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE personplan SET
+		planname=#{planname},
+		planContent=#{planContent},
+		begintime=#{begintime},
+		endtime=#{endtime},
+		finishstatus=#{finishstatus},
+		reason=#{reason},
+		planonwer=#{planonwer},
+		ruletime=#{ruletime},
+		altertime=#{altertime}
+		WHERE id=#{id}
+	</select>
+
+	<select id="personSelect" parameterType="cdata" resultType="cdata">
+		SELECT p.*
+		FROM personplan p
+		WHERE id=#{id}  
+	</select>
+
+</mapper>

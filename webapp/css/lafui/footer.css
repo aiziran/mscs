@@ -1,0 +1,36 @@
+/*	-------------------------------------------------------------
+	LG CNS LAF/UI
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	Description:	Footer Styles
+	Filename:		footer.css
+	Version:		LAF/UI_2.0_2007_R1_20070427
+	-------------------------------------------------------------	*/
+#Lfooter {
+	position: relative;
+}
+
+#Lfooter img {
+	padding: 5px 0 0 42px;
+}
+
+#Lsitemenu-f {
+	position: absolute;
+	top: 15px;
+	right: 0;
+}
+
+#Lcopyright {
+	position: absolute;
+	right: 0;
+	bottom: 6px;
+}
+
+#Lsitemenu-f li {
+	display: inline;
+	padding-right: 1px;
+}
+
+#Lsitemenu-f .Lpipe {
+	background: url("../../images/pbf/pipe.gif") no-repeat;
+	padding-left: 6px;
+}

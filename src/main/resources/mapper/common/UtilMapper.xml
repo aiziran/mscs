@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="utilManage">
+
+	<!-- 获取数据库系统的日期 年月日 -->
+	<select id="getDBdate" resultType="cdata">
+		select to_char(CURDATE(), 'YYYY-MM-DD') "dbDate" from dual
+	</select>
+
+	<!-- 获取数据库系统的日期 年月 -->
+	<select id="getDBdateMonth" resultType="cdata">
+		select to_char(CURDATE(), 'YYYY-MM') "dbDate" from dual
+	</select>
+
+	<!-- 获取数据库系统的日期+i(月) -->
+	<select id="getDBdateMonthNext" parameterType="cdata"
+		resultType="cdata">
+		select to_char(add_months(CURDATE(),${num}), 'YYYY-MM') "dbDate" from dual
+	</select>
+
+	<!-- 获取数据库系统的日期+i(月) -->
+	<select id="getDBdateMonthNextByDay" parameterType="cdata"
+		resultType="cdata">
+		select to_char(add_months(CURDATE(),${num}), 'YYYY-MM-DD') "dbDate" from
+		dual
+	</select>
+
+	<select id="getDBdateAddedDay" parameterType="cdata" resultType="cdata">
+		select to_char(CURDATE()+${num}, 'YYYY-MM-DD') "dbDate" from dual
+	</select>
+
+	<select id="getDBdateBySec" resultType="cdata">
+		select to_char(CURDATE(),
+		'yyyymmddHH24MISS') "dbDate" from dual
+	</select>
+
+	<!-- 生成上传文件的id -->
+	<select id="retrieveFileId" resultType="cdata">
+	  	<![CDATA[
+		  	SELECT SEQ_TB_FILE.NEXTVAL "fileId" from dual
+			]]>
+	</select>
+
+	<!-- 保存上传的文件 -->
+	<select id="insertFile" parameterType="cdata" resultType="cdata">
+	  	<![CDATA[
+		  	INSERT INTO tb_file
+					  (file_id,
+					   file_name,
+					   file_url,
+					   file_name_orig,
+					   create_date) 
+			     VALUES(
+					  #{fileId},
+					  #{fileName},
+					  #{fileUrl},
+					  #{fileNameOrl},
+					  CURDATE())
+			]]>
+	</select>
+
+	<!-- 文件下载 -->
+	<select id="retrieveDownFileInfo" parameterType="cdata"
+		resultType="cdata">
+	  	<![CDATA[
+		  	SELECT file_id,
+				   file_name,
+				   file_url,
+				   file_name_orig
+			  FROM tb_file
+			 WHERE file_id = #{fileId}
+			]]>
+	</select>
+
+</mapper> 

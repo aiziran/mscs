@@ -1,0 +1,554 @@
+/**
+ *------------------------------------------------------------------------------
+ * PROJ : Web Grid Component
+ * NAME : lwebgrid.css
+ * DESC : Web Grid Cascading Style Sheet
+ *        프로젝트 적용시, 주석 처리 한 부분을 중심으로 수정하여 사용
+ *
+ *  Copyright(저작권) Do Not Erase This Comment!!! (이 주석문을 지우지 말것)
+ *
+ *  Do Not re-distribute with-out permission. especially out-side of LG-CNS.
+ *  허가 없이 재배포 해서는 안된다. 특히 LG-CNS의 외부로 유출을 하여서는 안된다. 
+ * 
+ * AUTHOR : $Author: hongdoohee $
+ * VER  : v1.0
+ * Copyright(c) 2008 LG CNS,  All rights reserved.
+ *------------------------------------------------------------------------------
+ *                  변         경         사         항                       
+ *------------------------------------------------------------------------------
+ * $$Log: lwebgrid.css,v $
+  *------------------------------------------------------------------------------
+ */
+ 
+/**
+ * Web Grid Container  
+ * 가장 바깥의 컨터이너 DIV로 구성
+ */
+.lwebgrid {	  
+	border:                   1px solid #B6B6B6;      /* container border 조정 */
+	overflow:                 hidden;
+	display:                  block;
+}
+
+/**
+ * Web Grid Container TD
+ * Web Grid TD 에서 공통으로 사용하는 CSS
+ */
+.lwebgrid td {	
+	padding:                  0px;	
+	word-break:               keep-all;
+	white-space:              nowrap;
+}
+
+/**
+ * Web Grid Header Container
+ * 헤더의 컨테이너 DIV로 구성
+ */
+.lwebgrid-head {		
+	position:                 absolute;
+	overflow:                 hidden;
+	border-top:               1px solid #B6B6B6;      /* container top border 조정 */
+   border-bottom:            1px solid #B6B6B6;	     /* container bottom border 조정 */
+}
+
+/**
+ * Web Grid Header Table
+ * 헤더를 구성하는 테이블 
+ */
+.lwebgrid-head table {   
+	background-color:         #DFE9F2;                /* table backgroud color 조정 */  	
+	border-collapse:          collapse;
+}
+
+/**
+ * Web Grid Header Table TD
+ * 헤더를 구성하는 테이블 TD 
+ */
+.lwebgrid-head td {		
+	font-size:                12px;                   /* font size 조정 */	
+	text-overflow:            ellipsis;
+	overflow:                 hidden;
+	
+	height:                   23px;                   /* header height 조정 */
+	border-width:             1px;
+	border-style:             solid;	
+	
+	color:                    #666666;                /* header font color 조정 */
+	font-weight:              bold;
+	text-align:               center;
+}
+
+/**
+ * Web Grid Header Sort Image
+ * 헤더를 구성하는 정렬 이미지
+ */
+.lwebgrid-head td img {
+	width:                    8px;
+	height:                   7px;
+	margin:                   0px 5px 0px 5px;
+	display:                  none;
+}
+
+/**
+ * Web Grid Bodyr Container
+ * 바디의 컨테이너 DIV로 구성
+ */
+.lwebgrid-body {		
+	position: 		           absolute; 
+	overflow: 		           auto;	
+	background:		           #ffffff;                /* container background color 조정 */	
+}
+
+/**
+ * Web Grid Body Table
+ * 바디를 구성하는 테이블 
+ */
+.lwebgrid-body table {
+	table-layout: 	           fixed;
+	empty-cells: 	           show;		
+	border-collapse:          collapse;
+}
+
+/**
+ * Web Grid Body Table TD
+ * 바디를 구성하는 테이블 TD 
+ */
+.lwebgrid-body td {	
+	font-size:		           11px;                   /* font size 조정 */
+	overflow: 		           hidden;
+	
+	text-overflow:            ellipsis;
+	height: 		              22px;                   /* body height 조정 */
+	border-width: 	           0px 1px 1px 0px;
+	border-style: 	           solid;
+	padding:                  1px 1px 0px 5px;	   
+}
+
+/**
+ * Web Grid Body Table Selected TD
+ * 선택된 행 배경 색
+ */
+.lwebgrid-body tr.selected td {
+	background:               #D1D1D1;                /* selected td background color 조정 */	
+}
+
+/**
+ * Web Grid Body Table Odd TD
+ * 홀수행 배경 색
+ */
+.lwebgrid-body tr.odd td {
+	background:               #FBFBFB;                /* Odd background color 조정 */	
+}
+
+/**
+ * Web Grid Body Table Even TD
+ * 짝수행 배경 색
+ */
+.lwebgrid-body tr.even td {
+	background:               #F4F4F4;                /* Even td background color 조정 */	
+}
+
+/**
+ * Web Grid Body Table MouseOver TD
+ * 마우스오버 된 행 배경 색
+ */
+.lwebgrid-body tr.over td {
+	background:               #EDEDED;                /* Moseover td background color 조정 */	
+}
+
+
+/**
+ * Web Grid InfoRow Container
+ * 정보행의 컨테이너 DIV로 구성
+ */
+.lwebgrid-info {		
+	position:                 absolute;
+	overflow:                 hidden;
+	border-top:               1px solid #B6B6B6;      /* container top border 조정 */
+   border-bottom:            1px solid #EDEDED;	     /* container bottom border 조정 */
+   display:                  none;
+}
+
+/**
+ * Web Grid InfoRow Table
+ * 정보행을 구성하는 테이블 
+ */
+.lwebgrid-info table {   
+	background-color:         #DFE9F2;                /* table backgroud color 조정 */  	
+   border-collapse:          collapse;	
+}
+
+/**
+ * Web Grid InfoRow Table TD
+ * 정보행을 구성하는 테이블 TD 
+ */
+.lwebgrid-info td {		
+   
+   font-size:                10px;                   /* font size 조정 */ 
+   text-overflow:            ellipsis;
+   overflow:                 hidden;
+   
+   height:                   23px;                   /* header height 조정 */
+   border-width:             0px 1px 1px 0px;
+   border-style:             solid;
+   padding:                  1px 1px 0px 5px;
+   
+   color:                    #666666;                /* header font color 조정 */
+   font-weight:              bold;
+   text-align:               center;	
+}
+
+/**
+ * Web Grid Preload Style
+ * 프리로딩 기본 스타일
+ */
+.waiting {
+   background-image:         url('/images/lwebgrid_images/waiting.gif');
+   background-repeat:        no-repeat;
+   background-position:      center center;
+   background-color:         white;
+}
+
+/**
+ * Web Grid Preload Style
+ * 프리로딩 기본 (큰아이콘) 스타일 
+ */
+.bigWaiting {
+   background-image:         url('/images/lwebgrid_images/bigWaiting.gif');
+   background-repeat:        no-repeat;
+   background-position:      center 20%;
+   background-color:         white;
+}
+
+/**
+ * Web Grid Preload Style
+ * 프리로딩 검정색 배경 기본 스타일
+ */
+.blackWaiting {
+   background-image:         url('/images/lwebgrid_images/blackWaiting.gif');
+   background-repeat:        no-repeat;
+   background-position:      center center;
+   background-color:         black;
+}
+
+/**
+ * Web Grid Preload Style
+ * 프리로딩 검정색 배경 기본 (큰아이콘) 스타일 
+ */
+.bigBlackWaiting {
+   background-image:         url('/images/lwebgrid_images/bigBlackWaiting.gif'); 
+   background-repeat:        no-repeat;
+   background-position:      center center;
+   background-color:         black;
+}
+
+
+/**
+ * Web Grid Dynamic Data Paging Sorting Background Style
+ * DDP Sort[Asc] Background Style
+ */
+.lwebgrid-sort-asc {
+   margin:                   0;
+   padding:                  0;
+
+   background-image:         url('/images/lwebgrid_images/asc.png'); 
+   background-repeat:        no-repeat;
+   background-position:      95% center;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Sorting Background Style
+ * DDP Sort[Dsc] Background Style
+ */
+.lwebgrid-sort-dsc {
+   margin:                   0;
+   padding:                  0;
+
+   background-image:         url('/images/lwebgrid_images/dsc.png'); 
+   background-repeat:        no-repeat;
+   background-position:      95% center;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Bar Style
+ * DDA 네비게이션 바 스타일
+ */
+.lwebgrid-navigation {
+   margin:                   0;
+   padding:                  0;
+   list-style:               none;
+   float:                    left;
+   height:                   24px;
+
+   background-image:         url('/images/lwebgrid_images/navi_bar_bg.gif'); 
+   background-repeat:        repeat-x;
+   background-position:      center center;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Left Background Style
+ * DDA 네비게이션 좌측 배경 스타일
+ */
+.naviLeftBackground {
+   float:                    left;
+   height:                   24px;
+   padding-left:             6px;
+   background-image:         url('/images/lwebgrid_images/navi_bar_l.gif'); 
+   background-repeat:        no-repeat;    
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Right Background Style
+ * DDA 네비게이션 우측 배경 스타일
+ */
+.naviRightBackground {
+   float:                    right;     
+   height:                   24px;
+   width:                    200px;
+   background-image:         url('/images/lwebgrid_images/navi_bar_r.gif'); 
+   background-repeat:        no-repeat;    
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation Right Background Style
+ * DDP 네비게이션 우측 배경 스타일
+ */
+.naviRightBackgroundForPaing {
+   float:                    right;     
+   height:                   24px;
+   width:                    350px;
+   background-image:         url('/images/lwebgrid_images/navi_bar_r_350.gif'); 
+   background-repeat:        repeat-x;    
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation RowCount Style
+ * DDA 네비게이션 행정보 스타일
+ */
+.naviRowCount {
+  float:                     left;
+  padding-top:               4px;
+  margin-right:              10px; 
+  width:                     150px;  
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Preloading Style
+ * DDA 네비게이션 프리로딩 스타일
+ */
+.naviPreloading {
+  float:                     left;
+  padding-top:               5px;
+  margin-right:              10px; 
+  width:                     160px;
+}  
+  
+/**
+ * Web Grid Dynamic Data Appendig Navigation ProgressBar Style
+ * DDA 네비게이션 프로그래스바 스타일
+ */  
+.naviProgressbar {
+   width:                    120px; 
+   height:                   12px; 
+   margin-bottom:            -1px;
+   background-position:      -120px 50%; 
+   background-image:         url('/images/lwebgrid_images/percentImage_back.png'); 
+}  
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation RowSize Per Page Style
+ * DDA 네비게이션 페이지별 행정보 스타일
+ */
+.naviRowSize {
+   float:                    right;
+   width:                    140px; 
+   margin-top:               1px; 
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation Page Select Index Style
+ * DDP 네비게이션 페이지 인덱스 Select 스타일
+ */
+.naviSelectIndex {
+   float:                    right;
+   width:                    30px; 
+   margin-top:               2px; 
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Icon Style
+ * DDA 네비게이션 아이콘 스타일
+ */
+.naviIcon {
+   width:                    30px;  
+   margin:                   0;
+   padding:                  0;
+   float:                    right;  
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Icon A-Tag Style
+ * DDA 네비게이션 아이콘 A 태그 스타일
+ */
+.naviIcon a {
+   width:                    20px;
+   height:                   20px;
+   background:               url('/images/lwebgrid_images/buttons.gif');
+   background-repeat:        no-repeat;        
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation NextPage Icon Style
+ * DDA 네비게이션 다음페이지 아이콘 A 태그 스타일
+ */
+.lwebgridNaviNextPage a {
+   background-position:      -60px 2px;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation NextPage Icon Mouseover Style
+ * DDA 네비게이션 다음페이지 아이콘 A 태그 마우스오버 스타일
+ */
+.lwebgridNaviNextPage a:hover {
+   background-position:      -60px -18px;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation EndPage Icon Style
+ * DDA 네비게이션 마지막페이지 아이콘 A 태그 스타일
+ */
+.lwebgridNaviEndPage a {
+   background-position:      -80px 2px;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation EndPage Icon Mouseover Style
+ * DDA 네비게이션 마지막페이지 아이콘 A 태그 마우스 오버 스타일
+ */
+.lwebgridNaviEndPage a:hover {
+   background-position:      -80px -18px;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Stop Icon Style
+ * DDA 네비게이션 멈춤 아이콘 A 태그 스타일
+ */
+.lwebgridNaviStop a {    
+   background-position:      -120px 2px;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Stop Icon Mouseover Style
+ * DDA 네비게이션 멈춤 아이콘 A 태그 마우스오버 스타일
+ */
+.lwebgridNaviStop a:hover {
+   background-position:      -120px -18px;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Refresh Icon Style
+ * DDA 네비게이션 새로고침 아이콘 A 태그 스타일
+ */
+.lwebgridNaviRefresh a {
+   background-position:      -140px 2px;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Refresh Icon Mouseover Style
+ * DDA 네비게이션 새로고침 아이콘 A 태그 마우스오버 스타일
+ */
+.lwebgridNaviRefresh a:hover {
+   background-position:      -140px -18px;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Erase Icon Style
+ * DDA 네비게이션 삭제 아이콘 A 태그 스타일
+ */
+.lwebgridNaviErase a {
+   background-position:      -160px 2px;
+}
+
+/**
+ * Web Grid Dynamic Data Appendig Navigation Erase Icon Mouseover Style
+ * DDA 네비게이션 삭제 아이콘 A 태그 마우스오버 스타일
+ */
+.lwebgridNaviErase a:hover {
+   background-position:      -160px -18px;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation Index Style
+ * DDP 네비게이션 Index 스타일
+ */
+.lwebgridNaviIndex {
+   padding-top:              5px;    
+   float:                    right; 	
+   width:                    150px;
+   text-align:               center;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation NextPage Icon Style
+ * DDP 네비게이션 다음페이지 아이콘 A 태그 스타일
+ */
+.lwebgridNaviMoveNextPage a {
+   background-position:      -60px 2px;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation NextPage Icon Mouseover Style
+ * DDP 네비게이션 다음페이지 아이콘 A 태그 마우스오버 스타일
+ */
+.lwebgridNaviMoveNextPage a:hover {
+   background-position:      -60px -18px;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation NextIndex Icon Style
+ * DDP 네비게이션 다음인덱스 아이콘 A 태그 스타일
+ */
+.lwebgridNaviMoveNextIndex a {
+   background-position:      -80px 2px;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation NextIndex Icon Mouseover Style
+ * DDP 네비게이션 다음인덱스 아이콘 A 태그 마우스 오버 스타일
+ */
+.lwebgridNaviMoveNextIndex a:hover {
+   background-position:      -80px -18px;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation BeforePage Icon Style
+ * DDP 네비게이션 이전페이지 아이콘 A 태그 스타일
+ */
+.lwebgridNaviMoveBeforePage a {
+   background-position:      -40px 2px;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation BeforePage Icon Mouseover Style
+ * DDP 네비게이션 이전페이지 아이콘 A 태그 마우스오버 스타일
+ */
+.lwebgridNaviMoveBeforePage a:hover {
+   background-position:      -40px -18px;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation BeforeIndex Icon Style
+ * DDP 네비게이션 이전인덱스 아이콘 A 태그 스타일
+ */
+.lwebgridNaviMoveBeforeIndex a {
+   background-position:      -20px 2px;
+}
+
+/**
+ * Web Grid Dynamic Data Paging Navigation BeforeIndex Icon Mouseover Style
+ * DDP 네비게이션 이전인덱스 아이콘 A 태그 마우스 오버 스타일
+ */
+.lwebgridNaviMoveBeforeIndex a:hover {
+   background-position:      -20px -18px;
+}
+

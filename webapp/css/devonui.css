@@ -1,0 +1,374 @@
+* { margin:0; padding:0; }
+img { border:none; }
+a:link {text-decoration: none ; color: #21528D;}
+a:visited {text-decoration: none ; color: #666666;}
+a:active {text-decoration: none ; color: #21528D;}
+a:hover {text-decoration: underline ; color: #0770FF;}
+body {
+	font: 75%/1.5em Dotum, 돋움, sans-serif; 
+	color: #111111;
+}
+/******************************** TOP ***********************************/
+#header {
+    background:url(../../images/top_bg2.gif) repeat-x left bottom;
+    height:72px;
+}
+#Lmasthead p img{
+	float: left;
+	margin-top:15px;
+}
+#Lmasthead ul {
+	float: right;
+	margin-top: 3px;
+}
+#Lmasthead ul li {
+	display: inline;
+	padding: 0 7px;
+}
+#Lmasthead ul li.Lpipe {
+    background: url("../../images/pipe.gif") no-repeat right;
+	padding: 0 6px;
+}
+#LmainMenu {
+	position: absolute;
+	top: 42px;
+	left: 200px;
+	width: 790px;
+	height: 50px;
+	text-align: center;
+}
+/* depth1 */
+#LmainMenu li {
+	float: left;
+	margin-right: 4px;
+}
+#LmainMenu li span {
+	display: block;
+	float:left;
+	height: 25px;
+	padding: 5px 15px 0 15px;
+}
+/******************************** SIDEBAR ***********************************/
+#sidebar {
+	background:#EFEFEF;
+	width:200px;
+	height:100%;
+}
+#sidebar h2{
+	width:150px;
+	margin-left:45px;
+}
+.depth1 {
+	height:22px;
+	background-color:#E7E7E7;
+	padding : 5px 18px 1px 15px;
+	border-top:1px solid #FFFFFF;
+	border-bottom:1px solid #D4D4D4;
+}
+	
+.depth1 {
+	font-family: 宋体; 
+	font-size: 1.0em;
+	height:18px;
+	color: #555555;
+	font-weight: bold;
+}
+	
+.depth1 a:link {text-decoration: none ; color: #555555;}
+.depth1 a:visited {text-decoration: none ; color: #555555;}
+.depth1 a:active {text-decoration: none ; color: #21528D;}
+.depth1 a:hover {text-decoration: underline ; color: #0770FF;}
+
+/******************************** CONTENT ***********************************/
+.table_bg {
+	background-color: #D4D4D4;
+}
+.table_header_right {
+	color: #333333;
+	height: 24px;
+	background-color: #F7F7F7;
+	text-align: right;
+	padding : 2px, 5px, 2px, 5px;
+	font-weight:normal;
+	font-size:0.75em;
+}
+.table_header_right a:link {text-decoration: none ; color: #333333;}
+.table_header_right a:visited {text-decoration: none ; color: #333333;}
+.table_header_right a:active {text-decoration: none ; color: #21528D;}
+.table_header_right a:hover {text-decoration: underline ; color: #0770FF;}
+
+.table_header_center {
+	color: #333333;
+	height: 24px;
+	background-color: #F7F7F7;
+	text-align: center;
+	padding : 2px 5px;
+	font-size:0.75em;
+}
+.table_header_center a:link {text-decoration: none ; color: #333333;}
+.table_header_center a:visited {text-decoration: none ; color: #333333;}
+.table_header_center a:active {text-decoration: none ; color: #21528D;}
+.table_header_center a:hover {text-decoration: underline ; color: #0770FF;}
+
+.table_default {
+	color: #333333;
+	height: 22px;
+	background-color: #FFFFFF;
+	padding : 3px 5px;
+	font-size:0.75em;
+}
+.table_default_error {
+	color: #333333;
+	height: 22px;
+	background-color: #FFFFFF;
+	padding : 3px 5px;
+	font-size:1.0em;
+}
+.table_center {
+	color: #333333;
+	height: 22px;
+	background-color: #FFFFFF;
+	text-align: center;
+	padding : 3px 5px;
+	font-size:0.75em;
+}
+.con_w {width:752px;}
+.noneDisplay { display:none; }
+.input_textfield_search {
+	height: 20px;
+	border: 1px solid #999999;
+	color: #555555;
+	text-decoration: none;
+	background-color: #FFFFFF;
+	padding: 3px 0px 0px 3px;
+	margin-bottom: 2px;
+} 
+.con_subtitle1 {
+	color: #E17A0D;
+	font-weight: bold;
+	padding-bottom : 5px;
+	font-size:1.0em;
+}
+
+h2{ margin:20px 0 0 25px; }
+/*************** 페이지 타이틀 영역*****************/
+#LpageTitleArea {
+	background: url("../../images/dot_contitle.gif") repeat-x left bottom;
+	margin:25px 0 10px 25px;
+	width:752px;
+}
+#LpageTitleArea h1 {
+    font-size: 1.2em;
+	color: #555555;
+	font-weight: bold;	
+	padding-bottom:4px; margin:0;
+} 
+
+.LbtnArea {
+	width:752px;
+	margin:10px 0 0 25px;
+	clear:both;
+}
+.LbtnArea label, legend, caption, .noDisplay {
+	display:none;
+}
+.LbtnArea li{
+	float: right;
+}
+.LbtnArea input {
+	margin-left: 4px;
+	height:22px;
+	width: 68px;
+	color:#2359A3;
+	background:#F7F7F7;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #D8DEE2 #ACBCC6 #ACBCC6 #D8DEE2;
+}
+* html .LbtnArea input {
+	padding-top: 2px;
+} 
+.popupBtn{ width:580px; }
+/*************** search 영역*****************/
+#LsearchArea {
+	background: url("../../images/sbox_tl.gif") no-repeat left top;
+    width:752px;
+	margin:0 0 10px 25px;
+}
+#LsearchArea div {
+	width:100%;
+	background: url("../../images/sbox_bl.gif") no-repeat left bottom;
+}
+#LsearchArea div form {
+	position: relative;
+	background: url("../../images/sbox_tr.gif") no-repeat right top;
+	width: 100%;
+}
+#LsearchArea div form fieldset {
+	background: url("../../images/sbox_br.gif") no-repeat right bottom;
+	margin:0; padding:9px;
+}
+#LsearchArea div div {
+	position: relative;
+	background: url("../../images/sbox_tr.gif") no-repeat right top;
+	width: 100%;
+}
+#LsearchArea div div fieldset {
+	background: url("../../images/sbox_br.gif") no-repeat right bottom;
+	margin:0; padding:9px;
+}
+#LsearchArea ul{
+	width: 670px;
+}
+#LsearchArea p {
+	position: absolute;
+	bottom:8px;
+	right:20px;
+}
+#LsearchArea ul li{
+	float: right;
+}
+#LsearchArea ul li label{
+	display:block;
+	float:left;
+	margin: 2px 5px 0 1px;
+}
+#LsearchArea ul li input{
+	border: 1px solid #CCC;
+	padding: 2px 2px 0px;
+}
+* html #LsearchArea ul li input{
+	margin-bottom: 1px;
+}
+#LsearchArea ul li select{
+	width: auto;
+}
+* html #LsearchArea ul li select{
+	margin-bottom: 1px;
+	
+}
+/*************** paging 영역*****************/
+.table_pagenum{ width:752px; }
+.table_pagenum {
+	font-family: "verdana"; 
+	color: #666666;
+	font-size: 11px;
+	text-align: center;
+	width: 100%;
+	height: 29px;
+	background-color: #F7F7F7;
+	border-bottom : 1px solid #D4D4D4;
+	}
+.table_pagenum a:link {text-decoration: none ; color: #666666;}
+.table_pagenum a:visited {text-decoration: none ; color: #666666;}
+.table_pagenum a:active {text-decoration: none ; color: #E17A0D;}
+.table_pagenum a:hover {text-decoration: underline ; color: #E17A0D;}
+.table_pagenum_on {
+	font-family: "verdana"; 
+	color: #E17A0D;;
+	font-size: 11px;
+	font-weight: bold;
+	}
+.font_small {
+	font-family: 宋体; 
+	font-size: 11px;
+	line-height:16px;
+	color: #333333;
+	}
+.font_small a:link {text-decoration: none ; color: #21528D;}
+.font_small a:visited {text-decoration: none ; color: #21528D;}
+.font_small a:active {text-decoration: none ; color: #21528D;}
+.font_small a:hover {text-decoration: underline ; color: #0770FF;}
+
+/*************** data 영역*****************/
+fieldset{ border:none; }
+.con_w{ margin-left:25px; }
+.tdWidth1 { width:13%; }
+.tdWidth2 { width:37%; }
+.tdWidth3 { width:25px; }
+.tdWidth4 { width:80px; }
+.tdWidth5 { width:120px; }
+.tdWidth6 { width:20%; }
+.tdWidth7 { width:30%; }
+.tdWidth8 { width:50px; }
+.tdWidth9 { width:300px; }
+table thead th{ font-weight:normal; }
+.required { color:red; }
+textarea { width:99%; height:200px; } 
+.fileType { height:21px;} 
+/*******************에러 페이지들**************************/
+.errorBox{
+    border: 5px solid #F9F9F9;
+	padding : 15px, 30px, 15px, 30px;
+	width:700px;
+}
+.errorBox h2{
+    margin:0;
+}
+.errorBox .LbtnArea{
+    width:100%;
+}
+.errorImg {
+    width:139px;
+    height:94px;
+    float:left;
+}
+.errorDesc {
+    float:left;
+}
+/*******************shuttle**************************/
+
+#Lshuttle{ position:relative; width:756px; margin-left:25px;} 
+#LleftBox h2, #LrightBox h2 { 
+	font-size:1.0em;
+	color: #E17A0D;
+	font-weight: bold;
+}
+#LleftBox { 
+	width:270px;
+	height:300px;
+	float:left;
+}
+#LleftBox ul{ 
+    border: 2px solid #D4D4D4;
+	overflow:auto;
+	width:270px;
+	height:300px;
+	
+}
+#LrightBox { 
+	width:270px;
+	height:300px;
+	float:right;
+	margin-right:5px;
+}
+#LrightBox ul{ 
+    border: 2px solid #D4D4D4;
+	overflow:auto;
+	width:270px;
+	height:300px;
+}
+#Larrow {
+	width:30px;
+	position:absolute;
+	top:155px;
+	left:355px;
+}
+.selected {
+	background:#F7F9E7;
+}
+.Lbtn{
+	height:20px;
+	width: 50px;
+	color:#615C1C;
+	background:#E3E1C5;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #DDDAAA #C9C39C #C9C39C #DDDAAA;
+	margin-bottom:2px;
+}
+
+
+
+
+

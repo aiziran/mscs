@@ -1,0 +1,82 @@
+/*  -------------------------------------------------------------
+  LG CNS LAF/UI
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Description:  Common Styles : Search Box
+  Filename:   cm_sbox.css
+  Version:    LAF/UI_2.0_2007_R1_20070330
+  ------------------------------------------------------------- */
+
+/* 전체 레이아웃 및 백그라운드 이미지
+---------------------------------------------------------*/
+#Lsbox {
+background: url("../../images/pattern/sbox_tl.gif") no-repeat;
+margin-bottom: 20px;
+}
+#Lsbox form {
+background: url("../../images/pattern/sbox_tr.gif") no-repeat right top;
+position: relative;
+width: 100%;
+}
+#Lsbox-in {
+background: url("../../images/pattern/sbox_bl.gif") no-repeat left bottom;
+padding: 10px;
+}
+* html #Lsbox-in {
+padding: 9px;
+}/*IE용 보정*/
+#Lsbox-in ul {
+width: 760px;
+display: table-cell;
+}
+#Lsbox-btn {
+position: absolute;
+bottom: 0;
+right: 0;
+background: url("../../images/pattern/sbox_br.gif") no-repeat right bottom;
+padding: 10px;
+}
+* html #Lsbox-btn {
+right: -1px;
+}/*IE용 보정*/
+#Lsbox-in ul li {
+float: left;
+}
+#Lsbox-in ul#Lin3 li, #Lsbox-in ul#Lin4 li {
+float: right;
+}
+
+/* 항목별 사이즈 및 항목간 간격
+---------------------------------------------------------*/
+#Lsbox-in #Lin11, #Lsbox-in #Lin21 {
+width: 240px;
+}
+#Lsbox-in #Lin12, #Lsbox-in #Lin22 {
+width: 216px;
+}
+#Lsbox-in #Lin13, #Lsbox-in #Lin23 {
+width: 221px;
+}
+#Lsbox-in #Lin11 input, #Lsbox-in #Lin21 input {
+width: 144px;
+}
+#Lsbox-in #Lin12 select, #Lsbox-in #Lin13 select,
+#Lsbox-in #Lin22 select, #Lsbox-in #Lin23 select {
+width: 150px;
+}
+#Lsbox #Lin2 {
+padding-top: 5px;
+}
+* html #Lsbox #Lin2 {
+padding-top: 3px;
+}/*IE용 보정*/
+#Lsbox-in #Lin31 {
+padding-right: 10px;
+}
+#Lsbox-in #Lin31 select, #Lsbox-in #Lin32 select {
+width: 55px;
+}
+#Lsbox-in #Lin33 select {
+width: 80px;
+}
+
+

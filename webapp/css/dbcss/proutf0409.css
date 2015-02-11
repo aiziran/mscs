@@ -1,0 +1,450 @@
+.left p {
+	display: block;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+}
+
+.left li,.left dt,.left dd {
+	white-space: normal;
+}
+
+.centess {
+	width: 100%px;
+	overflow: hidden;
+	background: #fff;
+	padding-bottom: 10px;
+	font-family: '宋体';
+}
+
+.centess a:link,.centess a:visited {
+	text-decoration: none;
+	color: #D11873;
+}
+
+.centess a:active,.centess a:hover {
+	text-decoration: underline;
+	color: #D11873;
+}
+/* download by http://www.codefans.net */
+.m2 {
+	width: 606px;
+	overflow: hidden;
+}
+
+.m2lf {
+	float: left;
+}
+
+.m2lf img {
+	float: left;
+	width: 100px;
+	height: 100px;
+	border: 1px solid #F5D7DE;
+}
+
+.m2rg {
+	float: left;
+	padding-left: 20px;
+}
+
+.m2rg b {
+	display: block;
+	font-size: 14px;
+	width: 475px;
+	padding: 6px 0 8px 0;
+	overflow: hidden;
+	text-overflow: hidden;
+	white-space: nowrap;
+}
+
+.m2rg b a:link,.m2rg b a:visited {
+	text-decoration: none;
+	color: #D11873;
+}
+
+.m2rg b a:active,.m2rg b a:hover {
+	text-decoration: underline;
+	color: #D11873;
+}
+
+.m2rg b.st1 {
+	background: #FFE6F2;
+	width: 456px;
+	padding: 6px 0 2px 5px;
+	font-weight: normal;
+}
+
+.m2rg b.st2 {
+	padding: 6px 0 0 0;
+	font-weight: normal;
+	color: #D32121;
+}
+
+.m2rg b.st3 {
+	width: 456px;
+	padding: 0;
+	font-weight: normal;
+	color: #D32121;
+	font-size: 12px;
+}
+
+.m2rg b span {
+	font-size: 12px;
+	color: #6E6B6B;
+}
+
+.m2rg dl {
+	width: 461px;
+	padding: 10px 0 5px 0;
+	overflow: hidden;
+}
+
+.m2rg dl dt {
+	float: left;
+	width: 332px;
+	overflow: hidden;
+	text-overflow: hidden;
+	white-space: nowrap;
+	color: #666465;
+}
+
+.m2rg dl dt.st1 {
+	color: #000;
+}
+
+.m2rg dl dt.st2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.m2rg dl dt.st3 {
+	width: 370px;
+	color: #000;
+}
+
+.m2rg dl dt.st4 {
+	width: auto;
+}
+
+.m2rg dl dd {
+	float: right;
+	color: #666465;
+}
+
+.m2rg dl dd.dd2 {
+	float: left;
+	color: #000;
+	margin-top: -3px;
+}
+
+.m2rg dl dd.dd3 {
+	float: left;
+}
+
+.m2rg p {
+	width: 456px;
+	color: #666465;
+	line-height: 22px;
+	color: #666465;
+	word-wrap: break-word;
+}
+
+.m2rg .condiv {
+	width: 456px;
+	color: #666465;
+	line-height: 22px;
+	color: #666465;
+	word-wrap: break-word;
+	overflow: hidden;
+}
+
+.c4 {
+	width: 100%;
+	overflow: hidden;
+	padding-bottom: 12px;
+}
+
+.c4 .m2 {
+	margin: 4px 0 0 25px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+.c4 .m2 .m2rg dl {
+	padding: 12px 0 10px 0;
+}
+
+.b5 {
+	clear: both;
+	width: 100%;
+	overflow: hidden;
+	background: url(${ctx }/images/dbimages/b4.gif) repeat-x;
+	margin-top: 14px;
+}
+
+.b5b {
+	margin-top: 1px;
+	padding-top: 26px;
+}
+
+.b5c {
+	margin-top: 1px;
+	padding: 6px 0 30px 0;
+}
+
+.b5d {
+	background: none;
+	padding: 0 0 30px 0;
+	margin-top: 0;
+}
+
+.b5e {
+	background: url(${ctx }/images/dbimages/lineb.gif) repeat-x;
+	margin-top: 1px;
+	padding-top: 26px;
+}
+
+.b5tit {
+	height: 29px;
+	padding: 22px 0 0 15px;
+}
+
+.b5tit em {
+	color: #6B6A6A;
+	display: block;
+	float: left;
+	font-style: normal;
+	padding: 1px 0 0 0;
+}
+
+.b5tit1 {
+	height: 32px;
+	background: url(../images/lineb.gif) repeat-x;
+}
+
+.b5tit2 {
+	padding-top: 10px;
+}
+
+.b5tit i {
+	float: right;
+	padding-right: 12px;
+}
+
+.b5tit b {
+	display: block;
+	float: left;
+	font-size: 14px;
+	padding-right: 28px;
+}
+
+.b5tit b.bb {
+	font-size: 12px;
+	padding: 3px 8px 0 0;
+}
+
+.b5tit dl {
+	float: left;
+}
+
+.b5tit dl.st1 {
+	float: right;
+	padding: 2px 12px 0 0;
+}
+
+.b5tit dl dt {
+	float: left;
+	padding: 0 12px 0 0;
+}
+
+.b5tit dl dt.st1 {
+	float: left;
+	padding: 0;
+	margin-top: -2px;
+}
+
+.b5tit dl dt i {
+	float: left;
+	width: 18px;
+	height: 17px;
+	background: #D5D4D4;
+	font-weight: bold;
+	text-align: center;
+	margin-right: 15px;
+	display: inline;
+	cursor: pointer;
+	padding: 0;
+}
+
+.b5tit dl dt i.on {
+	background: #F9DEE5;
+}
+
+.b5tit dl dd {
+	float: left;
+}
+
+.b5tit ul {
+	float: right;
+	margin-top: -2px;
+}
+
+.b5tit ul li {
+	float: left;
+	padding-right: 8px;
+}
+
+.b5tit ul li a {
+	display: block;
+	width: 53px;
+	height: 21px;
+	text-align: center;
+	line-height: 21px;
+	border: 1px solid #ddd;
+	color: #999;
+}
+
+.b5tit ul li a:hover {
+	border: 1px solid #CFCBC2;
+	color: #7D7B6F;
+}
+
+.b5tit ul li a:link,.b5tit ul li a:visited {
+	text-decoration: none;
+	color: #999;
+}
+
+.b5tit ul li a:active,.b5tit ul li a:hover {
+	text-decoration: underline;
+	color: #7D7B6F;
+}
+
+.b5titspan {
+	float: right;
+	padding-right: 8px;
+}
+
+.b5 .m0 {
+	padding: 20px 6px 16px 15px;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+#bbv {
+	position: fixed;
+	top: 300px;
+	right: 10px;
+	_position: absolute;
+	_top: expression(documentElement.scrollTop +300);
+}
+
+#dbimg {
+	width: 50px;
+	height: 50px;
+	height: 22px;
+	background: url(${ctx }/images/dbimages/pk.gif);
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	padding-top: 28px;
+	cursor: pointer;
+}
+
+#xsyc {
+	border: 2px dotted #f00;
+	position: absolute;
+	line-height: 10px;
+	width: 15px;
+	height: 15px;
+	top: -20px;
+	opacity: 0.9;
+	filter: alpha(opacity = 90);
+	z-index: 999;
+}
+
+#dbnr {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 55px;
+	border: 6px solid #FBDDE7;
+	background: #FCFCFC;
+	width: 272px;
+	overflow: hidden;
+	z-index: 9;
+}
+
+#dbnr b {
+	display: block;
+	clear: both;
+	height: 26px;
+	font-size: 14px;
+	padding: 8px 0 0 10px;
+}
+
+#dbnr b span {
+	float: left;
+}
+
+#dbnr b span.span2 {
+	float: right;
+	padding-right: 7px;
+	font-size: 12px;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+#dbnr ul {
+	width: 246px;
+	overflow: hidden;
+	padding: 0 0 4px 14px;
+}
+
+#dbnr ul li {
+	width: 240px;
+	overflow: hidden;
+	padding: 0 0 7px 0;
+	color: #CA0065;
+}
+
+#dbnr img {
+	cursor: pointer;
+}
+
+.pkbut {
+	clear: both;
+	height: 45px;
+	background: url(${ctx }/images/dbimages/pkline.gif) repeat-x;
+	padding-left: 60px;
+}
+
+.pkbut span {
+	display: inline-block;
+	float: left;
+	width: 65px;
+	height: 22px;
+	background: url(${ctx }/images/dbimages/allbut4.gif) no-repeat;
+	text-align: center;
+	line-height: 22px;
+	color: #C54870;
+	margin: 12px 18px 0 0;
+	cursor: pointer;
+}
+
+.pkbut span a:link,.pkbut span a:visited {
+	text-decoration: none;
+	color: #C54870;
+}
+
+.pkbut span a:active,.pkbut span a:hover {
+	text-decoration: none;
+	color: #C54870;
+}
+
+#tishi {
+	width: 100%;
+	text-align: center;
+	padding-bottom: 10px;
+}

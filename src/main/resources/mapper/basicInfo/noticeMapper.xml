@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="noticeManage">
+	<!--查询全部 -->
+	<select id="noticeList" parameterType="cdata" resultType="cdata">
+		select n.*, u.USER_NAME uname
+		from notice n,com_user_m u
+		where u.USER_ID=n.createby
+		order by n.createtime desc
+	</select>
+	<!--获取部门名称 -->
+	<select id="noticeGetDeptName" parameterType="cdata" resultType="cdata">
+		select DEPT_NAME from com_dept_m where DEPT_ID=#{deptid}	
+	</select>
+	<!--置顶操作 -->
+	<select id="noticeChange" parameterType="cdata" resultType="cdata">
+		update notice set ishomepage=1,sethomepagetime=#{createtime} where
+		id=#{id}
+	</select>
+	<!--查询 -->
+	<select id="noticeSelectId" parameterType="cdata" resultType="cdata">
+		select * from notice where id=#{id}
+	</select>
+	<!--删除 -->
+	<select id="noticeDelete" parameterType="cdata" resultType="cdata">
+		DELETE FROM notice WHERE id = #{id}
+	</select>
+
+	<select id="viewDetailById" parameterType="cdata" resultType="cdata">
+		SELECT * from archive
+		WHERE id=#{id}  
+	</select>
+	<select id="viewBorrowRecord" parameterType="cdata" resultType="cdata">
+		SELECT a.name,a.isoriginal,l.lendtime,l.reason,l.returntime,l.user
+		FROM lend l,archive a
+		WHERE l.aid = a.id AND a.id=#{id}  
+	</select>
+	<select id="viewAuditRecord" parameterType="cdata" resultType="cdata">
+		SELECT * FROM lend WHERE approvalstatus !=0 AND aid=#{id} order by id
+		desc
+	</select>
+
+
+	<!--修改 -->
+	<select id="noticeUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE archive.notice
+		SET
+
+		title = #{title} ,
+		createby = #{createby} ,
+		content = #{content} ,
+		annex = #{annex} ,
+		validity = #{validity} ,
+		ishomepage = #{ishomepage} ,
+		sethomepagetime = #{sethomepagetime} ,
+		location = #{location} ,
+		createtime = #{createtime}
+
+		WHERE
+		id = #{id} ;
+	</select>
+	<!--增加 -->
+	<select id="noticeInsert" parameterType="cdata" resultType="cdata">
+
+		INSERT INTO archive.notice
+		(
+		title,
+		createby,
+		content,
+		annex,
+		validity,
+		ishomepage,
+		sethomepagetime,
+		location,
+		createtime
+		)
+		VALUES
+		(
+		#{title},
+		#{createby},
+		#{content},
+		#{annex},
+		#{validity},
+		#{ishomepage},
+		#{sethomepagetime},
+		#{location},
+		#{createtime}
+		);
+	</select>
+</mapper>

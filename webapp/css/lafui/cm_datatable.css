@@ -1,0 +1,117 @@
+/*  -------------------------------------------------------------
+  LG CNS LAF/UI
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Description:  Common Styles : Data Table
+  Filename:   cm_datatable.css
+  Version:    LAF/UI_2.0_2007_R1_20070330
+  ------------------------------------------------------------- */
+
+/* Table - Basic
+---------------------------------------------------------*/
+.Ltbl-b, .Ltbl-list, .Ltbl-dt {
+border-collapse: collapse;
+width: 95%;
+}
+.Ltbl-b td, .Ltbl-b th {
+border: 1px solid #D4D4D4;
+padding: 3px 10px 1px;
+}
+
+.Ltbl-b th {
+background-color: #E7E7E7;
+}
+/* Table - Detail
+---------------------------------------------------------*/
+.Ltbl-dt th, .Ltbl-dt td {
+border: 1px solid #D4D4D4;
+padding: 4px 5px 2px;
+}
+
+.Ltbl-dt th {
+background-color: #F7F7F7;
+font-weight: normal;
+text-align: right;
+width: 20%;
+}
+.Ltbl-dt td {
+width: 30%;
+}
+.Ltbl-dt-edit th {
+padding: 5px 5px 3px;
+}
+.Ltbl-dt .Ltbl-dt-textf {
+padding: 4px 5px;
+}
+* html .Ltbl-dt .Ltbl-dt-textf {
+padding: 3px 5px;
+}
+
+/* Table - List & Paging
+---------------------------------------------------------*/
+.Ltbl-list thead th {
+border: 1px solid #D4D4D4;
+padding: 4px 5px 2px;
+background-color: #F7F7F7;
+font-weight: normal;
+}
+.Ltbl-list .Lthead-deco {
+background-color: #E7F0F6;
+height: 4px;
+padding: 0;
+}
+.Ltbl-list tbody td {
+border: 1px solid #D4D4D4;
+padding: 3px 5px 2px;
+text-align: center;
+}
+.Ltbl-list tbody td input.Ltype-checkbox {
+height: 18px;
+}/*IE용 보정*/
+.Ltbl-list thead th.Lcheck {
+width: 20px;
+}
+.Ltbl-list tbody td.Lresult {
+text-align: right;
+}
+.Ltbl-list tbody td.Lremark,
+.Ltbl-list tbody td.Ltxtleft {
+text-align: left;
+}
+
+/* 행 롤오버 효과(lib.js 참조) */
+.Ltbl-list tbody tr.first-child td {
+background: transparent;
+}
+.Ltbl-list tbody tr.over td {
+background-color: #F7F9E7;
+}
+
+/* Paging */
+.Ltbl-bot {
+height: 28px;
+background-color: #F7F7F7;
+border-bottom: 1px solid #D4D4D4;
+}
+.Lpaging {
+text-align: center;
+padding-top: 6px;
+}
+* html .Lpaging {
+padding-top: 7px;
+}/*IE용 보정*/
+.Lpaging li {
+display: inline;
+background: url("../../images/pattern/paging_bar.gif") no-repeat left 40%;
+padding-left: 8px;
+margin-left: 3px;
+}
+.Lpaging img {
+vertical-align: -1px;
+}
+.Lpaging .Lfirst, .Lpaging .Lpre, .Lpaging .Lone, .Lpaging .Lnext, .Lpaging .Llast {
+background: none;
+padding: 0px;
+margin: 0px;
+}
+
+

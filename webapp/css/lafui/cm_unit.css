@@ -1,0 +1,134 @@
+/*  -------------------------------------------------------------
+  LG CNS LAF/UI
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Description:  Common Styles : Unit
+  Filename:   cm_unit.css
+  Version:    LAF/UI_2.0_2007_R1_20070330
+  ------------------------------------------------------------- */
+	/* Unit Header - Basic
+---------------------------------------------------------*/
+.Lunit-header {
+	position: relative;
+	height: 27px;
+	background: url("../../images/pattern/bg_unitheader.gif") repeat-x left
+		bottom;
+	margin: 20px 0 10px;
+}
+
+.Lmore {
+	position: absolute;
+	bottom: 7px;
+	right: 0;
+}
+
+/* Unit Header - Tab
+---------------------------------------------------------*/
+.Lunit-header-tab {
+	height: 27px;
+}
+
+.Lunittab {
+	position: absolute;
+	top: 0;
+	left: 5px;
+}
+
+.Lunittab li {
+	float: left;
+	background: url("../../images/unittab_l.gif") no-repeat;
+	margin-right: 3px;
+}
+
+.Lunittab li span {
+	display: block;
+	background: url("../../images/pattern/unittab_r.gif") no-repeat right
+		top;
+	float: left;
+	height: 27px;
+	padding: 3px 15px 0 15px;
+}
+
+.Lunittab .Lunittab-on {
+	background: url("../../images/pattern/unittab_l_on.gif") no-repeat;
+}
+
+.Lunittab .Lunittab-on span {
+	display: block;
+	background: url("../../images/pattern/unittab_r_on.gif") no-repeat right
+		top;
+}
+
+/* Unit Content : Image & Description
+---------------------------------------------------------*/
+.Lunit-img {
+	float: left;
+	margin-bottom: 10px;
+}
+
+.Lunit-dscr {
+	float: right;
+	margin-bottom: 6px;
+	line-height: 1.33em;
+}
+
+/* Unit Content : List
+---------------------------------------------------------*/
+.Llist-unit li {
+	background: url(../../images/pattern/bullet_item01.gif) no-repeat 0
+		0.6em;
+	padding-left: 10px;
+}
+
+.Llist-unit2 li {
+	background: url("../../images/pattern/bullet_item02.gif") no-repeat 0
+		0.6em;
+	padding-left: 10px;
+}
+
+.Llist-unit3 li {
+	background: url("../../images/pattern/bullet_item01.gif") no-repeat 0
+		0.6em;
+	padding-left: 10px;
+	behavior: url(/common/htc/slinker.htc);
+}
+
+.Llist-unit-dots li {
+	background: url("../../images/pattern/dots.gif") repeat-x;
+	padding-top: 4px;
+	position: relative;
+	width: 100%;
+}
+
+.Llist-unit-dots li a {
+	background: url("../../images/pattern/bullet_item01.gif") no-repeat 0
+		30%;
+	padding-left: 10px;
+}
+
+.Llist-unit-dots li span {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.Llist-unit-dots .Llist-unit-dots-t {
+	background-image: none;
+	padding-top: 0;
+}
+
+/* Unit Box
+---------------------------------------------------------*/
+.Lunitbox {
+	border: 2px solid #EFEFEF;
+	padding: 4px;
+}
+
+.Lunitbox h2 {
+	height: 20px;
+	background-color: #EFEFEF;
+	padding: 5px 0 0 11px;
+}
+
+.Lunitbox-in {
+	padding: 12px 6px 4px;
+}

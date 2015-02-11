@@ -1,0 +1,407 @@
+/*  -------------------------------------------------------------
+  LG CNS LAF/UI
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Description:  Master Layout Styles
+  Filename:   master.css
+  Version:    LAF/UI_2.0_2007_R1_20070330
+  ------------------------------------------------------------- */
+	/* Base Setup : Default Value
+---------------------------------------------------------*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+img {
+	border: none;
+}
+
+.Ltxtcenter {
+	text-align: center;
+}
+
+.Ltxtright {
+	text-align: right;
+}
+
+.Lhide,caption,.Lmobile,.LmobileText,.LmobileTemplate {
+	display: none;
+}
+
+form * {
+	vertical-align: middle;
+}
+
+/* from CSS Master 
+------------------------------*/
+.Lfclear:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.Lfclear {
+	display: inline-block;
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix {
+	height: 1%;
+}
+
+.Lfclear {
+	display: block;
+}
+
+/* End hide from IE-mac */ /* ------ from CSS Master end */
+	/* Accessibility */
+#Laccessibility {
+	display: none;
+}
+
+hr {
+	display: none;
+}
+
+/* Base Setup : Layout Grid 
+---------------------------------------------------------*/
+body.Ltop2-a,body.Ltop2-b,body.Ltop1-a,body.Ltop1-b {
+	background: #FFF url("../../images/pattern/bg_header.gif") repeat-x;
+}
+
+body.Ltop0-a,body.Ltop0-b {
+	background: #FFF url("../../images/pattern/bg_header_top0.gif") repeat-x
+		;
+}
+
+body.Lleft {
+	background: #EFEFEF;
+}
+
+body.Lmain {
+	background: #FFF;
+}
+
+#Lwrap {
+	background: url("../../images/pattern/bg_footer.gif") repeat-x left
+		bottom;
+}
+
+#Lwrap-in {
+	width: 993px;
+	/*margin: 0 auto;*/
+}
+
+#Lheader {
+	position: relative;
+	width: 990px;
+}
+
+body.Ltop2-a #Lheader {
+	height: 92px;
+}
+
+body.Ltop1-a #Lheader {
+	height: 80px;
+}
+
+body.Ltop0-a #Lheader {
+	height: 72px;
+}
+
+#LmiddleLayer {
+	background: url("../../images/pattern/bg_under_submenu.gif") repeat-y
+		-100px 0;
+}
+
+#Lsidebar {
+	float: left;
+	width: 200px;
+}
+
+#Lcontent {
+	float: left;
+	width: 1025px;
+	padding: 15px 0 20px 25px;
+}
+
+#Lfooter {
+	clear: both;
+	width: 1025px;
+	height: 51px;
+	padding-top: 10px;
+}
+
+#Lcontent p,#Lcontent h3,#Lcontent table,#Lcontent h4,#Lcontent ul {
+	margin-left: 14px;
+}
+
+/* Homepage */
+#Lcontent-home-col1 {
+	float: left;
+	width: 190px;
+	padding-left: 17px;
+}
+
+#Lcontent-home-col2 {
+	float: left;
+	width: 913px;
+	padding: 0 30px 0;
+}
+
+#Lcontent-home-col3 {
+	float: left;
+	width: 190px;
+}
+
+/* Header : Masthead
+---------------------------------------------------------*/
+#Llogo-h {
+	float: left;
+	padding: 10px 0 0 31px;
+}
+
+body.Ltop0 #Llogo-h {
+	padding-top: 21px;
+}
+
+#Lsitesearch {
+	float: right;
+	margin: 3px 0 0 12px;
+}
+
+#Lsitemenu-h {
+	float: right;
+	margin-top: 3px;
+}
+
+#Lsitemenu-h li {
+	display: inline;
+	padding-right: 3px;
+}
+
+#Lsitemenu-h .Lpipe {
+	background: url("../../images/pattern/pipe.gif") no-repeat;
+	padding-left: 7px;
+}
+
+#Lsitemenu-h .Lpipe-t {
+	padding-right: 0;
+}
+
+#Lsitesearch #Lss-ctgr {
+	width: 90px;
+}
+
+#Lsitesearch #Lss-word {
+	width: 120px;
+}
+
+/* Header : Main Menu
+---------------------------------------------------------*/
+#LmainMenu {
+	position: absolute;
+	top: 42px;
+	left: 200px;
+	width: 790px;
+	height: 50px;
+}
+
+#LmainMenu .Ldepth1 {
+	float: left;
+	background: url("../../images/pattern/mmtab_l.gif") no-repeat;
+	margin-right: 4px;
+}
+
+#LmainMenu .Ldepth1 span {
+	display: block;
+	float: left;
+	background: url("../../images/pattern/mmtab_r.gif") no-repeat right top;
+	height: 25px;
+	padding: 5px 20px 0 20px;
+}
+
+#LmainMenu .Ldepth1Current {
+	float: left;
+	background: url("../../images/pattern/mmtab_l_on.gif") no-repeat;
+	margin-right: 4px;
+}
+
+#LmainMenu .Ldepth1Current span {
+	display: block;
+	float: left;
+	background: url("../../images/pattern/mmtab_r_on.gif") no-repeat right
+		top;
+	height: 25px;
+	padding: 5px 20px 0 20px;
+}
+
+#LmainMenu .Ldepth2 {
+	position: absolute;
+	top: 30px;
+	margin-left: -100px;
+}
+
+#LmainMenu .Ldepth2 li {
+	float: left;
+	padding: 2px 10px 0;
+}
+
+#LmainMenu .Lpipe {
+	background: url("../../images/pattern/pipe_mm.gif") no-repeat right 65%;
+}
+
+#LmainMenu #Ldepth2-7th {
+	right: 73px;
+	width: 258px;
+}
+
+/* Sidebar : Sub Menu
+---------------------------------------------------------*/
+#LsubMenu {
+	background-color: #F7F7F7;
+}
+
+body.Lleft #LsubMenu {
+	margin-top: 3px;
+}
+
+#LsubMenu-top {
+	background: url("../../images/pattern/bg_submenu_tl.gif") no-repeat;
+}
+
+#LsubMenu-top div {
+	background: url("../../images/pattern/bg_submenu_tr.gif") no-repeat
+		right top;
+	height: 3px;
+	font-size: 1px;
+}
+
+#LsubMenu-bot {
+	background: url("../../images/pattern/bg_submenu_bl.gif") no-repeat;
+}
+
+#LsubMenu-bot div {
+	background: url("../../images/pattern/bg_submenu_br.gif") no-repeat
+		right bottom;
+	height: 10px;
+	font-size: 1px;
+}
+
+#LsubMenu h1 {
+	padding: 12px 0 11px 17px;
+	background-color: #EFEFEF;
+}
+
+#LsubMenu .Ldepth1 {
+	background: url("../../images/pattern/bg_submenu.gif") repeat-x;
+	padding: 6px 0 2px 17px;
+}
+
+#LsubMenu .Ldepth2 {
+	margin: 9px 0 2px;
+	display: none;
+}
+
+#LsubMenu .Ldepth2 li span {
+	display: inline;
+	background: url("../../images/pattern/blt_orange1.gif") no-repeat;
+	padding-left: 15px;
+}
+
+#LsubMenu .Ldepth2 li ul li span {
+	padding-left: 25px;
+	background-image: url(../../images/pattern/bullet_submenu.gif);
+	background-repeat: no-repeat;
+	background-position: 15px 50%;
+}
+
+#LsubMenu .Ldepth1 span {
+	display: block;
+	margin-right: 17px;
+}
+
+#LsubMenu .Ldepth1 span.Lopen {
+	background: url("../../images/pattern/submenu_open.gif") no-repeat right
+		4px;
+}
+
+#LsubMenu .Ldepth1 span.Lclosed {
+	background: url("../../images/pattern/submenu_closed.gif") no-repeat
+		right 4px;
+}
+
+.Lbanner {
+	display: block;
+	margin-top: 10px;
+	margin-left: 4px;
+}
+
+/* Footer
+---------------------------------------------------------*/
+#Lfooter {
+	position: relative;
+}
+
+#Llogo-f {
+	padding: 5px 0 0 42px;
+}
+
+#Lsitemenu-f {
+	position: absolute;
+	top: 15px;
+	right: 0;
+}
+
+#Lcopyright {
+	position: absolute;
+	right: 0;
+	bottom: 6px;
+}
+
+#Lsitemenu-f li {
+	display: inline;
+	padding-right: 1px;
+}
+
+#Lsitemenu-f .Lpipe {
+	background: url("../../images/pattern/pipe.gif") no-repeat;
+	padding-left: 6px;
+}
+
+#Lsitemenu-f .Lpipe-t {
+	padding-right: 0;
+}
+
+/* Page Header
+---------------------------------------------------------*/
+#LpageHeader {
+	position: relative;
+	height: 21px;
+	background: url("../../images/pattern/bg_pageheader.gif") repeat-x left
+		bottom;
+	margin-bottom: 20px;
+}
+
+#Lbreadcrumb {
+	position: absolute;
+	top: 1px;
+	right: 0;
+}
+
+/*
+---------------------------------------------------------*/
+#Lcontent-popup {
+	float: left;
+	padding: 15px 25px 0 25px;
+}
+
+.Ltxtleft {
+	text-align: left;
+}

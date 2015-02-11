@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%--
+<LTag:page pageNavigation="${pageNavigation}">
+<LTag:pageData var='mPageData' />
+
+--%>
+
+<table border="0" cellspacing="0" cellpadding="0" align="left">
+	<tr align="left">
+		<td align="left" style="border: 0; width =200px; text-align: left">
+		<c:if test="#{!empty mPageData}">
+			<label for="LskillSearch">分页条数:</label>
+			<select id="selShowpageNO" name="selShowpageNO"
+				onChange="pagination(this);">
+				<option value="10"
+					<c:if test="#{search.selShowpageNO == '10' }">selected</c:if>>10</option>
+				<option value="15"
+					<c:if test="#{search.selShowpageNO == '15' }">selected</c:if>>15</option>
+				<option value="20"
+					<c:if test="#{search.selShowpageNO == '20' }">selected</c:if>>20</option>
+				<option value="40"
+					<c:if test="#{search.selShowpageNO == '40' }">selected</c:if>>40</option>
+				<option value="50"
+					<c:if test="#{search.selShowpageNO == '50' }">selected</c:if>>50</option>
+				<option value="100"
+					<c:if test="#{search.selShowpageNO == '100' }">selected</c:if>>100</option>
+				<option value="200"
+					<c:if test="#{empty search.selShowpageNO}">selected</c:if>
+					<c:if test="#{search.selShowpageNO == '200' }">selected</c:if>>200</option>
+				<option value="500"
+					<c:if test="#{search.selShowpageNO == '500' }">selected</c:if>>500</option>
+				<option value="1000"
+					<c:if test="#{search.selShowpageNO == '1000' }">selected</c:if>>1000</option>
+				<option value="100000000"
+					<c:if test="#{search.selShowpageNO == '100000000' }">selected</c:if>>全部</option>
+			</select>
+		</c:if> <script type="text/javascript" language="javascript">
+				
+				var obj = document.getElementsByName("selShowpageNO");	
+				var selShowpageNO;
+				if(obj.length>0 ){
+					selShowpageNO = obj[0].cloneNode(true);
+					selShowpageNO.selectedIndex = obj[0].selectedIndex;
+					selShowpageNO.style.display="none";
+				}	
+				if(#('formSearch')&&selShowpageNO ){
+					#('formSearch').appendChild(selShowpageNO);
+				}
+
+				function pagination(obj){
+					obj.form.submit();
+				}
+				function goOrderByPage(row,orderBy){}
+
+			</script></td>
+		<td align="left"><c:if test="#{!empty mPageData}">
+			<LTag:pageOut value='showJavaScript' />
+			<LTag:pageOut value='showHiddenParam' />
+		      Total <LTag:pageOut value='getRows' />
+		      (<LTag:pageOut value='showSelectIndex' /> / <LTag:pageOut
+				value='getPages' />)
+		      <LTag:pageOut value='showMoveFirstPage' />
+			<LTag:pageOut value='showMoveBeforePage' />
+			<LTag:pageOut value='showIndex' />
+			<LTag:pageOut value='showMoveNextPage' />
+			<LTag:pageOut value='showMoveEndPage' />
+		</c:if></td>
+	</tr>
+</table>

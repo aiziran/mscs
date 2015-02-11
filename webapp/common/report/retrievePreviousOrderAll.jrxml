@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<field name="orderNo" class="java.lang.String"/>
+	<field name="drugName" class="java.lang.String"/>
+	<field name="orderBatchNo" class="java.lang.String"/>
+	<field name="supplierName" class="java.lang.String"/>
+	<field name="approveBy" class="java.lang.String"/>
+	<field name="deptName" class="java.lang.String"/>
+	<field name="approveDate" class="java.lang.String"/>
+	<field name="packageSpec" class="java.lang.String"/>
+	<field name="manufactName" class="java.lang.String"/>
+	<field name="supplierAmount" class="java.lang.String"/>
+	<field name="supplierUnits" class="java.lang.String"/>
+	<field name="rowIn" class="java.lang.String"/>
+	<field name="orderstatus" class="java.lang.String"/>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="38" width="27" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[序号]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="38" width="43" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[规格]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="38" width="94" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[药品名称]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="38" width="83" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[生产厂家]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="38" width="52" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[采购数量]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="621" y="38" width="53" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[审批日期]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="10" width="65" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[订单批号：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="10" width="62" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[部门：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="497" y="10" width="60" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[日期：]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="302" y="10" width="89" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{deptName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="10" width="55" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{orderBatchNo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy-MM-dd">
+				<reportElement x="557" y="10" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="19" y="49" width="715" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="687" y="38" width="17" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="720" y="38" width="14" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="704" y="38" width="16" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[of]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="38" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[订单号]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="38" width="31" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[单位]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="38" width="111" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[供应商]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="38" width="63" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[订单状态]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="573" y="38" width="48" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[审批人]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement x="96" y="0" width="94" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{drugName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="0" width="43" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{packageSpec}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="52" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{supplierAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="31" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{supplierUnits}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="21" y="0" width="25" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{rowIn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="0" width="83" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{manufactName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="19" y="11" width="655" height="1">
+					<printWhenExpression><![CDATA[$V{COLUMN_COUNT} % 5 ==0]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="46" y="0" width="50" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{orderNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="0" width="111" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{supplierName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="0" width="63" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{orderstatus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="573" y="0" width="48" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{approveBy}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="621" y="0" width="53" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{approveDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="3" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

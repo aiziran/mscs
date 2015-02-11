@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="outin" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<field name="hosDrugCode" class="java.lang.String"/>
+	<field name="drugName" class="java.lang.String"/>
+	<field name="packageSpec" class="java.lang.String"/>
+	<field name="manufactId" class="java.lang.String"/>
+	<field name="stock" class="java.lang.String"/>
+	<field name="totalAll" class="java.lang.String"/>
+	<field name="avgAll" class="java.lang.String"/>
+	<field name="monthNo" class="java.lang.String"/>
+	<field name="date1" class="java.lang.String"/>
+	<field name="date2" class="java.lang.String"/>
+	<field name="date3" class="java.lang.String"/>
+	<field name="date4" class="java.lang.String"/>
+	<field name="date5" class="java.lang.String"/>
+	<field name="date6" class="java.lang.String"/>
+	<field name="date7" class="java.lang.String"/>
+	<field name="date8" class="java.lang.String"/>
+	<field name="date9" class="java.lang.String"/>
+	<field name="date10" class="java.lang.String"/>
+	<field name="date11" class="java.lang.String"/>
+	<field name="date12" class="java.lang.String"/>
+	<field name="queryStartDate" class="java.lang.String"/>
+	<field name="queryEndDate" class="java.lang.String"/>
+	<field name="queryDeptName" class="java.lang.String"/>
+	<field name="col1" class="java.lang.String"/>
+	<field name="col2" class="java.lang.String"/>
+	<field name="col3" class="java.lang.String"/>
+	<field name="col4" class="java.lang.String"/>
+	<field name="col5" class="java.lang.String"/>
+	<field name="col6" class="java.lang.String"/>
+	<field name="col7" class="java.lang.String"/>
+	<field name="col8" class="java.lang.String"/>
+	<field name="col9" class="java.lang.String"/>
+	<field name="col10" class="java.lang.String"/>
+	<field name="col11" class="java.lang.String"/>
+	<field name="col12" class="java.lang.String"/>
+	<field name="queryInOutType" class="java.lang.String"/>
+	<field name="reportTitle" class="java.lang.String"/>
+	<field name="drugCommName" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="13" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="14" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{reportTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="14" width="43" height="20"/>
+				<textElement>
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[时间：]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="14" width="52" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{queryStartDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="115" y="14" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[~]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="14" width="43" height="20"/>
+				<textElement>
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[部门：]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="294" y="14" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{queryDeptName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="453" y="14" width="61" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[创建时间：]]></text>
+			</staticText>
+			<textField pattern="yyyy-MM-dd">
+				<reportElement x="514" y="14" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="18" y="42" width="75" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[药品名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="93" y="42" width="79" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[通用名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="42" width="37" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[规格]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="42" width="39" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[生产厂家]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="42" width="44" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[库存数量]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="42" width="44" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[月平均]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="379" y="42" width="38" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=0]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=1]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=2]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="485" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=3]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="519" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=4]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="553" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=5]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="587" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=6]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="621" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=7]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="655" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=8]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="689" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=9]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="723" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=10]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col11}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="757" y="42" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=11]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{col12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="729" y="21" width="17" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="746" y="21" width="16" height="12"/>
+				<textElement>
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[of]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="21" width="14" height="12"/>
+				<textElement>
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="8" y="53" width="785" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="292" y="42" width="43" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{queryInOutType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="42" width="10" height="11"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="6" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="14" width="85" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{queryEndDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement x="93" y="0" width="79" height="12"/>
+				<textElement>
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{drugCommName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="0" width="44" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stock}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="0" width="44" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{avgAll}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="0" width="38" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=0]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="587" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=6]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="621" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=7]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="655" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=8]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="689" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=9]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="757" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=11]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date12}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="8" y="11" width="785" height="1">
+					<printWhenExpression><![CDATA[$V{COLUMN_COUNT} % 5 ==0]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="554" y="0" width="33" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=5]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="0" width="44" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{totalAll}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="0" width="39" height="12"/>
+				<textElement>
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{manufactId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="0" width="10" height="12"/>
+				<textElement>
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="0" width="75" height="12"/>
+				<textElement>
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{drugName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="723" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=10]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date11}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="485" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=3]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="519" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=4]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=2]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="34" height="12">
+					<printWhenExpression><![CDATA[Integer.parseInt($F{monthNo})>=1]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="0" width="37" height="12"/>
+				<textElement>
+					<font size="8" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{packageSpec}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

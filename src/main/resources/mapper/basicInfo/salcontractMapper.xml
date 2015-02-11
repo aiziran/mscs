@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="salcontractManage">
+
+
+	<!-- 查询列表 -->
+	<select id="salcontractList" parameterType="cdata" resultType="cdata">
+		SELECT a.* ,b.hname FROM salecontract a,housemasterinfo b WHERE
+		a.contactpeople = b.id
+		<if test="hname !=null and hname!=''">
+			AND hname IN (SELECT hname FROM housemasterinfo,salecontract WHERE
+			contactpeople = housemasterinfo.id) AND hname LIKE
+			CONCAT('%',TRIM(#{hname}),'%')
+		</if>
+		<if test="contractname !=null and contractname!=''">
+			AND (contractname LIKE concat('%',trim(#{contractname}),'%')) 
+		</if>
+		<if test="executestatus !=null and executestatus!=''">
+			AND (executestatus LIKE concat('%',trim(#{executestatus}),'%')) 
+		</if>
+		<if test="contractnum !=null and contractnum!=''">
+			AND (a.contractnum LIKE concat('%',trim(#{contractnum}),'%')) 
+		</if>
+		<if test="contractdept !=null and contractdept!=''">
+			AND (contractdept LIKE concat('%',trim(#{contractdept}),'%')) 
+		</if>
+		order by signedtime desc
+	</select>
+
+	<!-- 新建合同 -->
+	<insert id="create" parameterType="contractEntity">
+		INSERT INTO salecontract
+		(area,
+		signedtime,
+		money,
+		renewaltime,
+		contractnum,
+		contactpeople,
+		location,
+		contactphone,
+		handletime,
+		executestatus,
+		contractname,
+		contractamount,
+		contractdept,
+		address,
+		annex,
+		access,
+		totalTime
+		)
+		VALUES
+		(
+		#{area},
+		#{signedtime},
+		#{money},
+		#{renewaltime},
+		#{contractnum},
+		#{hname},
+		#{location},
+		#{contactphone},
+		#{handletime},
+		#{executestatus},
+		#{contractname},
+		#{contractamount},
+		#{contractdept},
+		#{address},
+		#{annex},
+		#{access},
+		#{totalTime}
+		)
+	</insert>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="cdata">
+		DELETE FROM salecontract WHERE
+		id=#{id}
+	</delete>
+	<!-- 跳到修改页面 -->
+	<select id="updateInput" parameterType="cdata" resultType="cdata">
+		SELECT a.* ,b.hname FROM salecontract a,housemasterinfo b WHERE
+		a.contactpeople = b.id and a.id=#{id}
+	</select>
+	<!-- 修改 -->
+
+	<select id="doUpdate" parameterType="cdata" resultType="cdata">
+		update salecontract set
+		area=#{area},signedtime=#{signedtime},money=#{money},
+		renewaltime=#{renewaltime},contractnum=#{contractnum},contactpeople=#{hname},
+		location=#{location},contactphone=#{contactphone},handletime=#{handletime},
+		executestatus=#{executestatus},contractname=#{contractname},contractamount=#{contractamount},
+		contractdept=#{contractdept},address=#{address},annex=#{annex},access=#{access},totalTime=#{totalTime}
+		where id=#{id}
+	</select>
+	<select id="selectPeople" parameterType="cdata" resultType="cdata">
+		select * from housemasterinfo
+	</select>
+
+	<select id="selectByArchives" parameterType="string" resultType="string">
+		SELECT archivesname FROM archives WHERE id = #{archivesid}
+	</select>
+	<select id="selectByCabinet" parameterType="string" resultType="string">
+		SELECT cabinetnum FROM cabinet,archives WHERE cabinet.archivesid =
+		archives.id AND cabinet.id=#{cabinetid}
+	</select>
+	<select id="selectByGrid" parameterType="string" resultType="string">
+		SELECT * FROM grid,cabinet,archives WHERE grid.id=#{gridid} AND
+		grid.cabinetid = cabinet.id AND cabinet.archivesid = archives.id
+
+	</select>
+
+	<select id="isContractnumUnique" parameterType="string"
+		resultType="string">
+		SELECT COUNT(contractnum) ct FROM salecontract WHERE
+		contractnum=#{contractnum}
+		</select>
+
+</mapper>

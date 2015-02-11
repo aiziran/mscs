@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="typeManage">
+	<select id="typeList" parameterType="cdata" resultType="cdata">
+		SELECT *
+		FROM archivetype
+	</select>
+
+	<select id="typeSelectOne" parameterType="cdata" resultType="cdata">
+		SELECT * FROM archivetype WHERE id = #{tid}
+	</select>
+
+	<select id="typeDelete" parameterType="cdata" resultType="cdata">
+		DELETE
+		FROM archivetype WHERE id = #{tid}
+	</select>
+
+	<select id="typeInput" parameterType="cdata" resultType="cdata">
+		INSERT
+		INTO archivetype(archivename) VALUES(#{archivename})
+	</select>
+
+	<select id="typeUpdate" parameterType="cdata" resultType="cdata">
+		UPDATE archivetype SET archivename=#{archivename} WHERE id=#{tid}
+	</select>
+</mapper>

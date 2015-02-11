@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dataManage">
+	<!--排班 -->
+	<select id="handerWorking" parameterType="CData" resultType="cdata">
+		SELECT h.id,
+		h.userid,h.classesid,h.date,
+		(select user_name from
+		com_user_m m where m.user_id=h.userid )username,
+		(select classesname
+		from classes c where c.id=h.classesid)classesname
+		FROM handerworking h
+		, com_user_m m,classes c where m.user_id=h.userid and c.id=h.classesid
+		<if test="username!=null and username !='' ">
+			and m.user_name Like concat ('%',trim(#{username}),'%')
+		</if>
+		<if test="classesname!=null and  classesname !='' ">
+			and c.classesname=#{classesname} 
+		</if>
+		<if test="date!=null and  date !='' ">
+			and DATE(h.date)=DATE(#{date}) 
+		</if>
+		ORDER BY h.date desc
+	</select>
+
+	<insert id="insertWorkoing" parameterType="CData">
+		insert into
+		handerworking (userid,classesid,date) values
+		(#{userid},#{classesid},#{date})
+	</insert>
+
+	<delete id="deleteWorking" parameterType="CData">
+		delete from
+		handerworking where id=#{checkBox}
+	</delete>
+
+	<update id="updateWorking">
+		update handerworking set
+		userid=#{userid},classesid=#{classesid},date=#{date} where
+		id=#{id}
+	</update>
+
+	<select id="updateWorkoingDetail" parameterType="CData"
+		resultType="cdata">
+		SELECT id,
+		userid,classesid,date,
+		(select user_name from
+		com_user_m m where m.user_id=h.userid )username,
+		(select classesname
+		from classes c where c.id=h.classesid)classesname
+		FROM handerworking h
+		where id=#{id}
+		
+	</select>
+
+
+
+	<!--班次 -->
+	<select id="classes" parameterType="CData" resultType="cdata">
+		SELECT
+		id,classesname
+		FROM classes
+		ORDER BY id
+	</select>
+	<select id="updateClassesDetail" parameterType="CData"
+		resultType="cdata">
+		SELECT
+		id,classesname
+		FROM classes where id=#{id}
+		
+	</select>
+	<insert id="insertClasses" parameterType="CData">
+		insert into classes
+		(classesname) values
+		(#{classesname})
+	</insert>
+
+	<delete id="deleteClasses" parameterType="CData">
+		delete from
+		classes where id=#{checkBox}
+	</delete>
+
+	<update id="updateClasses">
+		update classes set classesname =#{classesname} where
+		id=#{id}
+	</update>
+	<!-- 班组 -->
+	<select id="team" parameterType="CData" resultType="cdata">
+		SELECT
+		id,teamname
+		FROM team
+		ORDER BY
+		id
+	</select>
+	<select id="updateTeamDetail" parameterType="CData" resultType="cdata">
+		SELECT
+		id,teamname
+		FROM
+		team where id=#{id}
+		ORDER BY
+		id
+	</select>
+	<insert id="insertTeam" parameterType="CData">
+		insert into team
+		(teamname) values (#{teamname})
+	</insert>
+
+	<delete id="deleteTeam" parameterType="CData">
+		delete from team where
+		id=#{checkBox}
+	</delete>
+
+	<update id="updateTeam" parameterType="CData">
+		update team set teamname
+		=#{teamname} where id=#{id}
+	</update>
+	<!-- 机手 -->
+	<select id="hander" resultType="cdata">
+		SELECT
+		id,name,age,sex,remark
+		FROM
+		hander where 1=1
+		<if test="name!=null and name!=''">
+			and name LIKE concat('%',trim(#{name}),'%')
+         </if>
+		ORDER BY id
+	</select>
+	<select id="updateHanderDetail" resultType="cdata">
+		SELECT
+		id,name,age,sex,remark
+		FROM
+		hander where id=#{id}
+	</select>
+
+	<insert id="insertHander">
+		insert into hander (name,age,sex,remark) values
+		(#{name},#{age},#{sex},#{remark})
+	</insert>
+
+	<delete id="deleteHander">
+		delete from hander where id=#{checkBox}
+	</delete>
+
+	<update id="updateHander">
+		update hander set name
+		=#{name},age=#{age},sex=#{sex},remark=#{remark} where id=#{id}
+	</update>
+
+
+	<!-- 质检员 -->
+	<select id="inspector" resultType="cdata">
+		SELECT
+		id,name,age,sex,remark
+		FROM inspector
+		where 1=1
+		<if test="name!=null and name!=''">
+			and name LIKE concat('%',trim(#{name}),'%')
+         </if>
+		ORDER BY id
+	</select>
+	<select id="updateInspectorDetail" resultType="cdata">
+		SELECT
+		id,name,age,sex,remark
+		FROM inspector where id=#{id}
+		
+	</select>
+
+	<insert id="insertInspector">
+		insert into inspector (name,age,sex,remark) values
+		(#{name},#{age},#{sex},#{remark})
+	</insert>
+
+	<delete id="deleteInspector">
+		delete from inspector where id=#{checkBox}
+	</delete>
+
+	<update id="updateInspector">
+		update inspector set name
+		=#{name},age=#{age},sex=#{sex},remark=#{remark} where id=#{id}
+	</update>
+
+
+</mapper>

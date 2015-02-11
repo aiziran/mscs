@@ -1,0 +1,266 @@
+/*  -------------------------------------------------------------
+  Package Based Framework 
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Description:    Content Styles
+  Filename:   pbf.css
+  Version:    1.0
+  ------------------------------------------------------------- */
+@import url("./lafui/screen.css");
+
+/* ID Style Sheet start */
+#menuCtrlShow {
+	position: absolute;
+	left: -3px;
+	top: 5px;
+	width: 10px;
+	height: 26px;
+	visibility: hidden;
+	z-index: 15;
+}
+
+#menuCtrlHide {
+	position: absolute;
+	left: 172px;
+	top: 5px;
+	width: 10px;
+	height: 26px;
+	visibility: visible;
+	z-index: 15;
+}
+
+/* ID Style Sheet end */
+.popup_title_table {
+	background-color: #778899;
+	border: 0px;
+	width: "100%";
+	height: 12;
+	color: white;
+	font-weight: bold;
+}
+
+.popup_body {
+	border: 1px solid;
+	border-color: #778899;
+}
+
+div.layout_popup_page {
+	width: 400px;
+	margin: 10px 10px 10px 10px;
+}
+
+/************************************** page header title ***************************************/
+#LpageTitleArea {
+	position: relative;
+	height: 21px;
+	background: url("../images/pattern/bg_pageheader.gif") repeat-x left bottom;
+	margin-bottom: 20px;
+}
+
+/************************************* search area **********************************************/
+#LsearchArea {
+	background: url(../images/pbf/sbox_tl.gif) no-repeat;
+	margin-bottom: 20px;
+}
+
+#LsearchArea form {
+	background: url(../images/pbf/sbox_tr.gif) no-repeat right top;
+	position: relative;
+	width: 100%;
+}
+
+#LsearchArea form fieldset {
+	background: url(../images/pbf/sbox_bl.gif) no-repeat left bottom;
+	padding: 10px;
+}
+
+* html #LsearchArea form fieldset {
+	padding: 9px;
+}  /* ie hack*/
+#LsearchArea form fieldset ul {
+	width: 760px;
+	display: table-cell;
+}
+
+#LsearchIcon {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background: url("../images/pbf/sbox_br.gif") no-repeat right bottom;
+	padding: 10px 13px 12px 0px;
+}
+
+* html #LsearchIcon {
+	right: 10px;
+	bottom: 1px;
+}  /* ie hack*/
+#LsearchArea form fieldset ul li {
+	float: right;
+	margin-bottom: 5px;
+}
+
+#LsearchArea form fieldset ul li label {
+	float: right;
+	display: block;
+	margin: 2px 5px 0 1px;
+}
+
+#LsearchArea form fieldset ul li input {
+	float: right;
+	border: 1px solid #CCC;
+	padding: 2px 0px 0px;
+}
+
+* html #LsearchArea form fieldset ul li input {
+	margin-bottom: 1px;
+}
+
+#LsearchArea form fieldset ul li select {
+	margin-right: 30px;
+	width: auto;
+}
+
+* html #LsearchArea form fieldset ul li select {
+	margin-bottom: 1px;
+}
+
+/**************************** border, th****************************/
+th {
+	border: 1px solid #D4D4D4;
+	padding: 4px 5px 2px;
+	background-color: #F7F7F7;
+	font-weight: normal;
+}
+
+td {
+	border: 1px solid #D4D4D4;
+	padding: 4px 5px 2px;
+}
+
+.LDetailArea,.LlistArea {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+/****************************************** detail area ****************************************************/
+.LDetailArea td select {
+	border: 1px solid #7F9DB9;
+}
+
+.LDetailArea th {
+	width: 20%;
+	text-align: right;
+}
+
+.LDetailArea td {
+	width: 30%;
+}
+
+.LDetailArea td input.Lbordercolor {
+	border: 1px solid #CCC;
+	padding: 2px 2px 0;
+}
+
+.LDetailArea td span {
+	margin-right: 20px;
+	margin-left: 3px;
+}
+
+/****************************************** list area ****************************************************/
+.LlistArea td {
+	text-align: center;
+}
+
+.LlistArea td input.Lbordercolor {
+	border: 1px solid #CCC;
+	padding: 2px 2px 0;
+}
+
+.LlistArea tr:hover {
+	background-color: #F7F9E7;
+	cursor: pointer;
+}
+
+/****************************************** button area ****************************************************/
+.LbtnArea {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	float: right;
+}
+
+.LbtnArea label {
+	display: none;
+}
+
+.LbtnArea li {
+	float: right;
+}
+
+.LbtnArea input {
+	margin-left: 4px;
+	height: 22px;
+	width: 68px;
+	color: #2359A3;
+	background: #F7F7F7;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #D8DEE2 #ACBCC6 #ACBCC6 #D8DEE2;
+}
+
+* html .LbtnArea input {
+	padding-top: 2px;
+}  /* ie hack*/
+.LbtnUpdate {
+	height: 20px;
+	width: 44px;
+	color: #615C1C;
+	background: #E3E1C5;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #DDDAAA #C9C39C #C9C39C #DDDAAA;
+}
+
+/****************************************** ****************************************************/
+input.LinputAddress {
+	width: 336px;
+}
+
+* html input.LinputAddress {
+	padding-right: 5px;
+}  /* ie hack*/
+input.LinputShort {
+	width: 70px;
+}
+
+* html input.LinputShort {
+	padding-right: 5px;
+}  /* ie hack*/
+.LclearFloat {
+	clear: both;
+}
+
+.LtxtCenter {
+	text-align: center;
+}
+
+.Wdate{
+	border:#999 1px solid;
+	height:20px;
+	background:#fff url(../js/DatePicker/skin/datePicker.gif) no-repeat right;
+}
+
+.WdateFmtErr{
+	font-weight:bold;
+	color:red;
+}
+
+label.error {     
+	color: Red;           
+	padding-left: 0px;
+	font-size: 9px;       
+}    
+input.error  {    
+	border: dashed 1px red;   
+	BACKGROUND-COLOR: #EEFFB6;    
+}
+
+._required { background-image : url(../images/required03.gif); background-position:top right; background-repeat:no-repeat;}

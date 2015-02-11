@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="officesupplyManage">
+	<!-- 查询列表 -->
+	<select id="officeList" parameterType="cdata" resultType="cdata">
+		SELECT o.*,(SELECT u.user_name FROM com_user_m u WHERE
+		o.manageuser=u.user_id)managename ,
+		(SELECT u.user_name FROM com_user_m u WHERE o.buyuser=u.user_id) buyname ,
+		(SELECT u.user_name FROM com_user_m u WHERE
+		o.approveuser=u.user_id)approvename
+		FROM officesupply o where 1 =1
+		<if test="name !=null and name!=''">
+			AND (name LIKE concat('%',trim(#{name}),'%')) 
+		</if>
+		<if test="purpose !=null and purpose!=''">
+			AND (name LIKE concat('%',trim(#{name}),'%')) 
+		</if>
+		<if test="guidprice !=null and guidprice!=''">
+			AND (#{guidprice} >=guidprice)
+		</if>
+	</select>
+
+	<!-- 详细信息 -->
+	<select id="updateInput" parameterType="cdata" resultType="cdata">
+		SELECT o.*,(SELECT u.user_name FROM com_user_m u WHERE
+		o.manageuser=u.user_id)managename ,
+		(SELECT u.user_name FROM com_user_m u WHERE o.buyuser=u.user_id) buyname ,
+		(SELECT u.user_name FROM com_user_m u WHERE
+		o.approveuser=u.user_id)approvename
+		FROM officesupply o where id=#{id}
+	</select>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="cdata">
+		update officesupply set name=#{name}, supplytype=#{supplytype},
+		supplynum=#{supplynum}, returntype=#{returntype}, price=#{price},
+		manageuser=#{manageuser}, guidprice=#{guidprice}, buyuser=#{buyuser},
+		buytime=#{buytime}, approveuser=#{approveuser}, purpose=#{purpose}
+		where id=#{id}
+	</update>
+
+	<!-- 插入 -->
+	<insert id="createInput" parameterType="cdata">
+		insert into officesupply
+		(name,supplytype,supplynum,returntype,price,manageuser,guidprice,buyuser,buytime,approveuser,purpose)
+		values(#{name},#{supplytype},#{supplynum}, #{returntype}, #{price},
+		#{manageuser}, #{guidprice}, #{buyuser}, #{buytime}, #{approveuser},
+		#{purpose})
+	</insert>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="cdata">
+		delete from officesupply
+		where id=#{id}
+	</delete>
+</mapper> 
